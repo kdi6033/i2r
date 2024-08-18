@@ -1,0 +1,1632 @@
+[
+    {
+        "id": "10a86fdc.efc16",
+        "type": "subflow",
+        "name": "Iterate",
+        "in": [
+            {
+                "x": 220,
+                "y": 219,
+                "wires": [
+                    {
+                        "id": "8709b651.7ce108"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 454,
+                "y": 174,
+                "wires": [
+                    {
+                        "id": "8709b651.7ce108",
+                        "port": 0
+                    }
+                ]
+            },
+            {
+                "x": 455,
+                "y": 259,
+                "wires": [
+                    {
+                        "id": "8709b651.7ce108",
+                        "port": 1
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "8709b651.7ce108",
+        "type": "function",
+        "z": "10a86fdc.efc16",
+        "name": "Iterate",
+        "func": "//Node has 2 outputs - 1 for itteration and 1 for completion\nvar nextObj, out;\nvar itt = msg.iterationInfo;\n\n\n//If the iterating has not yet begun set up the iteration metadata in the msg\nif (typeof itt === 'undefined') {\n    //Make sure payload is an array\n    if( Object.prototype.toString.call(msg.payload) !== '[object Array]' ) {\n       msg.payload = [msg.payload];\n    }\n\n    msg.iterationInfo = itt = {};\n    itt.index = -1;\n    itt.inArray = msg.payload;\n    itt.outArray = [];\n\n//Otherwise just push the input to the output array\n} else {\n    itt.outArray.push(msg.payload)\n}\n\n//Goto next object\nitt.index ++;\n\n//If there are stil objects left to iterate goto the next one in the original array\nif (itt.index < itt.inArray.length) {\n    nextObj = msg;\n    msg.payload = itt.inArray[itt.index];\n\n//otherwise pass the out array as the payload\n} else {\n    out = msg;\n    msg.payload = itt.outArray;\n    delete msg.iterationInfo;\n}\n\nreturn [nextObj, out];",
+        "outputs": "2",
+        "noerr": 0,
+        "x": 347,
+        "y": 220,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "634098abb09f2e81",
+        "type": "tab",
+        "label": "Node-red Local Server 01",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "3a7dc02b3dac96bd",
+        "type": "mqtt in",
+        "z": "634098abb09f2e81",
+        "name": "",
+        "topic": "i2r/kdi6033@gmail.com/out",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "f15d66b3.c7edf8",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 330,
+        "y": 560,
+        "wires": [
+            [
+                "45e90875d7d82697"
+            ]
+        ]
+    },
+    {
+        "id": "c6202a9adb163985",
+        "type": "subflow:10a86fdc.efc16",
+        "z": "634098abb09f2e81",
+        "name": "Iterate",
+        "env": [],
+        "x": 750,
+        "y": 440,
+        "wires": [
+            [
+                "b8a193009faa79e7",
+                "2e5ad52e445e199c"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "2e5ad52e445e199c",
+        "type": "function",
+        "z": "634098abb09f2e81",
+        "name": "",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 748,
+        "y": 380,
+        "wires": [
+            [
+                "c6202a9adb163985"
+            ]
+        ]
+    },
+    {
+        "id": "7d5225ba139af709",
+        "type": "udp out",
+        "z": "634098abb09f2e81",
+        "name": "",
+        "addr": "",
+        "iface": "",
+        "port": "",
+        "ipv": "udp4",
+        "outport": "",
+        "base64": false,
+        "multicast": "false",
+        "x": 1214,
+        "y": 436,
+        "wires": []
+    },
+    {
+        "id": "b8a193009faa79e7",
+        "type": "function",
+        "z": "634098abb09f2e81",
+        "name": "",
+        "func": "var server=msg.server;\nvar newMsg={};\nnewMsg.payload=\"{\\\"mqttIp\\\":\\\"\"+server+\"\\\"}\";\nnewMsg.ip=msg.payload;\nnewMsg.port=4210;\nreturn newMsg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 921,
+        "y": 438,
+        "wires": [
+            [
+                "9ae8b9c391b8b761"
+            ]
+        ]
+    },
+    {
+        "id": "9ae8b9c391b8b761",
+        "type": "change",
+        "z": "634098abb09f2e81",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "ip",
+                "pt": "msg",
+                "to": "ip",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1075,
+        "y": 437,
+        "wires": [
+            [
+                "7d5225ba139af709"
+            ]
+        ]
+    },
+    {
+        "id": "cd67eceb2fce6e80",
+        "type": "function",
+        "z": "634098abb09f2e81",
+        "name": "",
+        "func": "var ipList=[];\nvar server=global.get(\"serverIp\");\nvar a=server.split('.');\nvar ip=a[0]+'.'+a[1]+'.'+a[2]+'.';\n\nmsg.server=server;\nfor(var i=2;i<255;i++)\n    ipList.push(ip+i);\nmsg.payload=ipList;\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 440,
+        "wires": [
+            [
+                "c6202a9adb163985"
+            ]
+        ]
+    },
+    {
+        "id": "45e90875d7d82697",
+        "type": "json",
+        "z": "634098abb09f2e81",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 530,
+        "y": 560,
+        "wires": [
+            [
+                "d3fc826363b96e2b"
+            ]
+        ]
+    },
+    {
+        "id": "bce7a02bc6e786da",
+        "type": "http in",
+        "z": "634098abb09f2e81",
+        "name": "",
+        "url": "/login",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 100,
+        "y": 70,
+        "wires": [
+            [
+                "cb66bf038ee8fc70"
+            ]
+        ]
+    },
+    {
+        "id": "7deff9d827dbc696",
+        "type": "template",
+        "z": "634098abb09f2e81",
+        "name": "style",
+        "field": "payload.style",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "body {\n    background: #eab0dc;\n    font-family: Arial, Helvetica, sans-serif;\n}\ntable, th, td {\n    padding: 2px;\n    border-collapse: collapse;\n    border: 1px solid #dddddd;\n    text-align: center;\n    vertical-align: middle;\n}\n\n\n/* Full-width input fields */\ninput[type=text], input[type=password] {\n  width: 150px;\n  padding: 5px 10px;\n  margin: 8px 0;\n  display: inline-block;\n  border: 1px solid #ccc;\n  box-sizing: border-box;\n}\n\n/* Set a style for all buttons */\nbutton {\n  background-color: #4CAF50; /*Green*/\n  color: white;\n  padding: 14px 20px;\n  margin: 8px 0;\n  border: none;\n  cursor: pointer;\n}\n\n.buttonMenu {\n          padding: 5px 24px;\n          margin-left:20%;\n          background-color:black;\n          border: none;\n          border-color:black;\n          color:white;\n          text-align: left;\n          text-decoration: none;\n          display: inline-block;\n          font-size: 16px;\n          margin: 4px 2px;\n          cursor: pointer;\n        }\n        .sidenav {\n          height: 100%;\n          width: 0;\n          position: fixed;\n          z-index: 1;\n          top: 0;\n          left: 0;\n          background-color: #111;\n          overflow-x: hidden;\n          transition: 0.5s;\n          padding-top: 60px;\n        }\n        .sidenav a {\n          padding: 8px 8px 8px 32px;\n          text-decoration: none;\n          font-size: 18px;\n          color: #818181;\n          display: block;\n                transition: 0.3s;\n        }\n        .sidenav a:hover {\n          color: #f1f1f1;\n        }\n        .sidenav .closebtn {\n          position: absolute;\n          top: 0;\n          right: 25px;\n          font-size: 36px;\n          margin-left: 50px;\n        }\n\n.buttonM {background-color: #ff66cc;color:white; width:100px; height:20px; padding: 0px 0px; font-size: 16px} /* 기기선택 */  \n.buttonL {background-color: #ff66cc;color:white; width:100px; height:25px; padding: 0px 0px; font-size: 16px} /* 선택 */  \n.buttonMenu {background-color: #000000;} \n.button2 {background-color: #008CBA;} /* Blue */\n.button3 {background-color: #f44336;} /* Red */ \n.button4 {background-color: #e7e7e7; color: black;} /* Gray */ \n.button5 {background-color: #555555;} /* Black */\n.button20 {width: 20%;} \n.button-on {border-radius: 100%; padding: 20px; font-size: 18px; margin: 0px 0px; background-color: #4CAF50;}\n.button-off {border-radius: 100%; padding: 20px; font-size: 18px; background-color: #707070;}\n.button-ledon {border-radius: 100%; padding: 10px; font-size: 8px; margin: 0px 0px; background-color: #ff4500;}\n.button-ledoff {border-radius: 100%; padding: 10px; font-size: 8px; background-color: #707070;}\n\nbutton:hover {\n  opacity: 0.8;\n}\n\n/* Extra styles for the cancel button */\n.cancelbtn {\n  width: auto;\n  padding: 10px 18px;\n  background-color: #f44336;\n}\n\n/* Center the image and position the close button */\n.imgcontainer {\n  text-align: center;\n  margin: 24px 0 12px 0;\n  position: relative;\n}\n\nimg.avatar {\n  width: 40%;\n  border-radius: 50%;\n}\n\n.container {\n  padding: 16px;\n}\n\nspan.psw {\n  float: right;\n  padding-top: 16px;\n}\n\n/* The Modal (background) */\n.modal {\n  display: none; /* Hidden by default */\n  position: fixed; /* Stay in place */\n  z-index: 1; /* Sit on top */\n  left: 0;\n  top: 0;\n  width: 100%; /* Full width */\n  height: 100%; /* Full height */\n  overflow: auto; /* Enable scroll if needed */\n  background-color: rgb(0,0,0); /* Fallback color */\n  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */\n  padding-top: 60px;\n}\n\n/* Modal Content/Box */\n.modal-content {\n  background-color: #fefefe;\n  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */\n  border: 1px solid #888;\n  width: 80%; /* Could be more or less, depending on screen size */\n}\n\n/* The Close Button (x) */\n.close {\n  position: absolute;\n  right: 25px;\n  top: 0;\n  color: #000;\n  font-size: 35px;\n  font-weight: bold;\n}\n\n.close:hover,\n.close:focus {\n  color: red;\n  cursor: pointer;\n}\n\n/* Add Zoom Animation */\n.animate {\n  -webkit-animation: animatezoom 0.6s;\n  animation: animatezoom 0.6s\n}\n\n@-webkit-keyframes animatezoom {\n  from {-webkit-transform: scale(0)} \n  to {-webkit-transform: scale(1)}\n}\n  \n@keyframes animatezoom {\n  from {transform: scale(0)} \n  to {transform: scale(1)}\n}\n\n/* Change styles for span and cancel button on extra small screens */\n@media screen and (max-width: 300px) {\n  span.psw {\n     display: block;\n     float: none;\n  }\n  .cancelbtn {\n     width: 100%;\n  }\n}",
+        "x": 690,
+        "y": 70,
+        "wires": [
+            [
+                "892402b2204b8b4b"
+            ]
+        ]
+    },
+    {
+        "id": "369f3a7f4b017b9c",
+        "type": "template",
+        "z": "634098abb09f2e81",
+        "name": "script",
+        "field": "payload.script",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "// Get the modal\nvar modal = document.getElementById('id01');\n\n// When the user clicks anywhere outside of the modal, close it\nwindow.onclick = function(event) {\n    if (event.target == modal) {\n        modal.style.display = \"none\";\n    }\n}\n\nfunction openNav() {\n  document.getElementById(\"mySidenav\").style.width = \"150px\"; \n}\nfunction closeNav() {\n  document.getElementById(\"mySidenav\").style.width = \"0\";\n}\n",
+        "output": "str",
+        "x": 570,
+        "y": 80,
+        "wires": [
+            [
+                "7deff9d827dbc696"
+            ]
+        ]
+    },
+    {
+        "id": "c42aaad205074756",
+        "type": "function",
+        "z": "634098abb09f2e81",
+        "name": "global style",
+        "func": "global.set(\"style\",msg.payload.style);\nglobal.set(\"script\",msg.payload.script);\nglobal.set(\"menu\",msg.payload.menu);\nglobal.set(\"msg_main\",msg);\n/*\nmsg.collection = 'localRecord';\nmsg.operation  = 'find.toArray';\nmsg.payload    = {  };\nmsg.projection = { 'name' : 1 , '_id' : 0 };\n*/\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 950,
+        "y": 60,
+        "wires": [
+            [
+                "e0ad0eb5e7b10e1d"
+            ]
+        ]
+    },
+    {
+        "id": "892402b2204b8b4b",
+        "type": "template",
+        "z": "634098abb09f2e81",
+        "name": "menu",
+        "field": "payload.menu",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "  <div id='mySidenav' class='sidenav'>\n  <a href='javascript:void(0)' class='closebtn' onclick='closeNav()'>&times;</a>\n  <a href='/display?act=3'>홈</a>\n  <a href='/display?act=2'>환경설정</a>\n  <a href='/display?act=4'>메뉴얼</a>\n  <a href='http://i2r.link' target='_blank'>김동일홈피</a>\n  </div>\n  <span style='font-size:30px;cursor:pointer' onclick='openNav()'>&#9776; </span>\n    메뉴<br>  ",
+        "x": 810,
+        "y": 70,
+        "wires": [
+            [
+                "c42aaad205074756"
+            ]
+        ]
+    },
+    {
+        "id": "c3120bdcbda17bea",
+        "type": "http response",
+        "z": "634098abb09f2e81",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1871,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "43cd31aa8db4a911",
+        "type": "function",
+        "z": "634098abb09f2e81",
+        "name": "msg 받음",
+        "func": "var msg1=msg.payload;\nvar msg=global.get(\"msg_main\")||\"\";\nmsg.payload=msg1;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1081,
+        "y": 220,
+        "wires": [
+            [
+                "3c3ac13fce6154a6"
+            ]
+        ]
+    },
+    {
+        "id": "0c6109cfaac8d5b1",
+        "type": "http in",
+        "z": "634098abb09f2e81",
+        "name": "",
+        "url": "/display",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 290,
+        "y": 150,
+        "wires": [
+            [
+                "4efcccf662f2182b"
+            ]
+        ]
+    },
+    {
+        "id": "0b1e8d8b1dbf9a2e",
+        "type": "comment",
+        "z": "634098abb09f2e81",
+        "name": "Display",
+        "info": "1: 선택한 기기 config\n2: 메뉴의 환경설정\n3: main  기기 리스트 모니터링\n4: 메뉴얼",
+        "x": 114,
+        "y": 150,
+        "wires": []
+    },
+    {
+        "id": "fa242052c7494dcc",
+        "type": "function",
+        "z": "634098abb09f2e81",
+        "name": "get global",
+        "func": "msg.payload.style=global.get(\"style\");\nmsg.payload.script=global.get(\"script\");\nmsg.payload.menu=global.get(\"menu\");\nmsg.payload.act=global.get(\"act\");\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1192,
+        "y": 130,
+        "wires": [
+            [
+                "27067637e8be4ad4"
+            ]
+        ]
+    },
+    {
+        "id": "27067637e8be4ad4",
+        "type": "template",
+        "z": "634098abb09f2e81",
+        "name": "html 기기 name",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<html>\n    <head>\n        <meta name='viewport' content='width=device-width, initial-scale=1.0'/>\n        <style> {{{payload.style}}} </style>\n        <script> {{{payload.script}}} </script>\n</head>\n<body>\n   {{{payload.menu}}} \n   <br> &emsp;\n   <table>\n         <th>mac</th> <th>{{{payload.mac}}}</th>\n      </tr>\n      <tr>\n        <th>접속IP</th> <th>{{{payload.ip}}}</th>\n      </tr>\n      <tr>\n        <th>이름</th> \n            <form action=\"/save\" method=\"post\">\n                <input type='hidden' name='mac' value='{{{payload.mac}}}'>\n                <input type='hidden' name='act' value='1'>\n                <th><input type=\"text\" id=\"name\" name=\"name\" value=\"{{{payload.name}}}\"></th>\n                <th><button class='button buttonL' type=\"submit\" style=\"width:50px;\" >저장</button></th>\n            </form> \n      </tr>\n    </table>\n\n</body>\n</html>\n",
+        "output": "str",
+        "x": 1352,
+        "y": 130,
+        "wires": [
+            [
+                "f0acf1a64989f075"
+            ]
+        ]
+    },
+    {
+        "id": "9edf79a7edd3df84",
+        "type": "function",
+        "z": "634098abb09f2e81",
+        "name": "findOne",
+        "func": "global.set(\"msg_in\",msg);\nvar newMsg = {};\nnewMsg.payload    = { 'mac' : msg.payload.mac};\nnewMsg.projection = { 'mac' : 1 , '_id' : 0 };\nreturn newMsg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 762,
+        "y": 130,
+        "wires": [
+            [
+                "eabb99b5098c6f34"
+            ]
+        ]
+    },
+    {
+        "id": "f0acf1a64989f075",
+        "type": "http response",
+        "z": "634098abb09f2e81",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1522,
+        "y": 130,
+        "wires": []
+    },
+    {
+        "id": "4efcccf662f2182b",
+        "type": "function",
+        "z": "634098abb09f2e81",
+        "name": "",
+        "func": "global.set(\"msg_display\",msg);\nglobal.set(\"act\",msg.payload.act);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 150,
+        "wires": [
+            [
+                "a99ac6dca7dba559"
+            ]
+        ]
+    },
+    {
+        "id": "b6b46b377213a5ae",
+        "type": "function",
+        "z": "634098abb09f2e81",
+        "name": "msg 받음",
+        "func": "var msg1=msg.payload;\nvar msg=global.get(\"msg_display\")||\"\";\nmsg.payload=msg1;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1052,
+        "y": 130,
+        "wires": [
+            [
+                "fa242052c7494dcc"
+            ]
+        ]
+    },
+    {
+        "id": "a99ac6dca7dba559",
+        "type": "switch",
+        "z": "634098abb09f2e81",
+        "name": "",
+        "property": "payload.act",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 4,
+        "x": 610,
+        "y": 150,
+        "wires": [
+            [
+                "9edf79a7edd3df84"
+            ],
+            [
+                "e2c6d9178a1ff195"
+            ],
+            [
+                "2fd1ed5acc062f53"
+            ],
+            [
+                "351bf77a9634d689"
+            ]
+        ]
+    },
+    {
+        "id": "98628aa43ae27d08",
+        "type": "http in",
+        "z": "634098abb09f2e81",
+        "name": "",
+        "url": "/save",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 290,
+        "y": 320,
+        "wires": [
+            [
+                "721a6df2bcd7f6f9"
+            ]
+        ]
+    },
+    {
+        "id": "98b9fcddc1b2d394",
+        "type": "comment",
+        "z": "634098abb09f2e81",
+        "name": "Save",
+        "info": "1: name 저장\n",
+        "x": 114,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "f1d6ac8fd45b627e",
+        "type": "function",
+        "z": "634098abb09f2e81",
+        "name": "updateOne",
+        "func": "global.set(\"msg_in\",msg);\nvar newMsg = {};\nnewMsg.payload    = [{ 'mac' : msg.payload.mac}, {$set:{ 'name':msg.payload.name}} ];\nreturn newMsg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 320,
+        "wires": [
+            [
+                "533f4715dda8356a"
+            ]
+        ]
+    },
+    {
+        "id": "d3228b8524fb86a8",
+        "type": "link out",
+        "z": "634098abb09f2e81",
+        "name": "",
+        "links": [
+            "39a1973fdd9c720f",
+            "2044220.61e99de"
+        ],
+        "x": 1015,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "482262e0d42a8cb3",
+        "type": "function",
+        "z": "634098abb09f2e81",
+        "name": "msg 받음",
+        "func": "var msg=global.get(\"msg_in\")||\"\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 920,
+        "y": 320,
+        "wires": [
+            [
+                "d3228b8524fb86a8"
+            ]
+        ]
+    },
+    {
+        "id": "721a6df2bcd7f6f9",
+        "type": "switch",
+        "z": "634098abb09f2e81",
+        "name": "",
+        "property": "payload.act",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 430,
+        "y": 320,
+        "wires": [
+            [
+                "f1d6ac8fd45b627e"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "c7cc96315de0b82f",
+        "type": "template",
+        "z": "634098abb09f2e81",
+        "name": "html",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<html>\n    <head>\n        <meta name='viewport' content='width=device-width, initial-scale=1.0'/>\n        <meta http-equiv='refresh' content='0; url=http://{{payload.internalIPv4}}:1880/display?act=3' method='get'> \n    </head>\n    <body>\n       </body>\n</html",
+        "output": "str",
+        "x": 1490,
+        "y": 40,
+        "wires": [
+            [
+                "ffba2b27d5ae189f"
+            ]
+        ]
+    },
+    {
+        "id": "ffba2b27d5ae189f",
+        "type": "http response",
+        "z": "634098abb09f2e81",
+        "name": "Go Main Page",
+        "statusCode": "",
+        "headers": {},
+        "x": 1660,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "39a1973fdd9c720f",
+        "type": "link in",
+        "z": "634098abb09f2e81",
+        "name": "Main",
+        "links": [
+            "6457ed09.277674",
+            "1f045d85.6a9eb2",
+            "250eafef.fdf1f",
+            "68a5f2a5.f5958c",
+            "d1b3b938.5fd1b8",
+            "425e599b.c1d808",
+            "174175dc.9ef7ea",
+            "e0ad0eb5e7b10e1d",
+            "d3228b8524fb86a8"
+        ],
+        "x": 1259,
+        "y": 70,
+        "wires": [
+            [
+                "87d5bb64f7fc6a25"
+            ]
+        ]
+    },
+    {
+        "id": "e0ad0eb5e7b10e1d",
+        "type": "link out",
+        "z": "634098abb09f2e81",
+        "name": "",
+        "links": [
+            "39a1973fdd9c720f"
+        ],
+        "x": 1075,
+        "y": 70,
+        "wires": []
+    },
+    {
+        "id": "d1672a7de44dbad3",
+        "type": "template",
+        "z": "634098abb09f2e81",
+        "name": "html 환경설정",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<html>\n    <head>\n        <meta name='viewport' content='width=device-width, initial-scale=1.0'/>\n        <style> {{{payload.style}}} </style>\n        <script> {{{payload.script}}} </script>\n</head>\n<body>\n   {{{payload.menu}}} \n    환경설정 <br>\n    센서와 기기를 서버에 연결하려면 아래 버튼을 누르세요\n    <form action=\"/act\" method=\"post\">\n        <input type='hidden' name='act' value='1'>\n        <div class=\"container\">\n            <br> &emsp;\n            <button class='button buttonL' type=\"submit\" style=\"width:auto;\">- mqtt 통신연결 -</button>\n        </div>\n    </form>\n\n</body>\n</html>\n",
+        "output": "str",
+        "x": 920,
+        "y": 176,
+        "wires": [
+            [
+                "592665855a0bea5c"
+            ]
+        ]
+    },
+    {
+        "id": "e2c6d9178a1ff195",
+        "type": "function",
+        "z": "634098abb09f2e81",
+        "name": "Config",
+        "func": "msg.payload.style=global.get(\"style\");\nmsg.payload.script=global.get(\"script\");\nmsg.payload.menu=global.get(\"menu\");\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 176,
+        "wires": [
+            [
+                "d1672a7de44dbad3"
+            ]
+        ]
+    },
+    {
+        "id": "592665855a0bea5c",
+        "type": "http response",
+        "z": "634098abb09f2e81",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1087,
+        "y": 176,
+        "wires": []
+    },
+    {
+        "id": "dd25064e171d960a",
+        "type": "template",
+        "z": "634098abb09f2e81",
+        "name": "html 메뉴얼",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<html>\n    <head>\n        <meta name='viewport' content='width=device-width, initial-scale=1.0'/>\n        <style> {{{payload.style}}} </style>\n        <script> {{{payload.script}}} </script>\n</head>\n<body>\n   {{{payload.menu}}} \n    메뉴얼\n\n</body>\n</html>\n",
+        "output": "str",
+        "x": 910,
+        "y": 266,
+        "wires": [
+            [
+                "4a0dce66e7ee4d89"
+            ]
+        ]
+    },
+    {
+        "id": "351bf77a9634d689",
+        "type": "function",
+        "z": "634098abb09f2e81",
+        "name": "Config",
+        "func": "msg.payload.style=global.get(\"style\");\nmsg.payload.script=global.get(\"script\");\nmsg.payload.menu=global.get(\"menu\");\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 266,
+        "wires": [
+            [
+                "dd25064e171d960a"
+            ]
+        ]
+    },
+    {
+        "id": "4a0dce66e7ee4d89",
+        "type": "http response",
+        "z": "634098abb09f2e81",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1087,
+        "y": 266,
+        "wires": []
+    },
+    {
+        "id": "d8476083c4f1631e",
+        "type": "comment",
+        "z": "634098abb09f2e81",
+        "name": "Act",
+        "info": "1: \n",
+        "x": 110,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "444a448430650bf0",
+        "type": "http in",
+        "z": "634098abb09f2e81",
+        "name": "",
+        "url": "/act",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 280,
+        "y": 440,
+        "wires": [
+            [
+                "e9a12ac80ca8a770"
+            ]
+        ]
+    },
+    {
+        "id": "e9a12ac80ca8a770",
+        "type": "switch",
+        "z": "634098abb09f2e81",
+        "name": "",
+        "property": "payload.act",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 430,
+        "y": 440,
+        "wires": [
+            [
+                "cd67eceb2fce6e80"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "b31cabc4f4ee88e0",
+        "type": "function",
+        "z": "634098abb09f2e81",
+        "name": "",
+        "func": "var server=msg.payload[1].address;\nglobal.set(\"serverIp\",server);\nmsg.server=server;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 70,
+        "wires": [
+            [
+                "369f3a7f4b017b9c"
+            ]
+        ]
+    },
+    {
+        "id": "87d5bb64f7fc6a25",
+        "type": "function",
+        "z": "634098abb09f2e81",
+        "name": "",
+        "func": "var serverIp=global.get(\"serverIp\");\nmsg.payload.internalIPv4=serverIp;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1360,
+        "y": 70,
+        "wires": [
+            [
+                "c7cc96315de0b82f"
+            ]
+        ]
+    },
+    {
+        "id": "9eec193d507bd478",
+        "type": "websocket out",
+        "z": "634098abb09f2e81",
+        "name": "",
+        "server": "bf4882ef33e69fa3",
+        "client": "",
+        "x": 2060,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "21ab05b40c27ce3a",
+        "type": "websocket in",
+        "z": "634098abb09f2e81",
+        "name": "",
+        "server": "bf4882ef33e69fa3",
+        "client": "",
+        "x": 300,
+        "y": 660,
+        "wires": [
+            [
+                "0cf74ef3e6bf6a9a"
+            ]
+        ]
+    },
+    {
+        "id": "c4f5ebf2e7f52468",
+        "type": "comment",
+        "z": "634098abb09f2e81",
+        "name": "출력버튼 웹소켙",
+        "info": "",
+        "x": 300,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "86bf08081fe51fec",
+        "type": "template",
+        "z": "634098abb09f2e81",
+        "name": "Main html",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "<!DOCTYPE HTML>\n<html>\n<head>\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n    <style> {{{payload.style}}} </style>\n    <script> {{{payload.script}}} </script>\n    <script type=\"text/javascript\"> {{{payload.scriptSocket}}} </script>\n</head>\n<body onload=\"wsConnect();\" onunload=\"ws.disconnect();\">\n    {{{payload.menu}}} \n    {{{payload.list}}}\n</body>\n</html>\n\n",
+        "x": 1741,
+        "y": 220,
+        "wires": [
+            [
+                "c3120bdcbda17bea"
+            ]
+        ]
+    },
+    {
+        "id": "0cf74ef3e6bf6a9a",
+        "type": "function",
+        "z": "634098abb09f2e81",
+        "name": "",
+        "func": "var msg = {payload:msg.payload.replace(/['^']/g, \"\\\"\")};\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 660,
+        "wires": [
+            [
+                "1834b314795c7118"
+            ]
+        ]
+    },
+    {
+        "id": "1834b314795c7118",
+        "type": "json",
+        "z": "634098abb09f2e81",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 630,
+        "y": 660,
+        "wires": [
+            [
+                "54d729e949b80ec0",
+                "2bcacbbe6bdde5e5"
+            ]
+        ]
+    },
+    {
+        "id": "a7dcf94962537689",
+        "type": "comment",
+        "z": "634098abb09f2e81",
+        "name": "http://localhost:1880/login",
+        "info": "",
+        "x": 330,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "17c5a6140a690e5e",
+        "type": "comment",
+        "z": "634098abb09f2e81",
+        "name": "입력버튼 웹소켙",
+        "info": "",
+        "x": 300,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "36ac806f3ae3bbe6",
+        "type": "mqtt out",
+        "z": "634098abb09f2e81",
+        "name": "",
+        "topic": "i2r/kdi6033@gmail.com/in",
+        "qos": "0",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "f15d66b3.c7edf8",
+        "x": 810,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "bd5655b8fcae17f1",
+        "type": "subflow:10a86fdc.efc16",
+        "z": "634098abb09f2e81",
+        "name": "Iterate",
+        "env": [],
+        "x": 1590,
+        "y": 480,
+        "wires": [
+            [
+                "75926c230a7dae84",
+                "84daf35622f28032"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "84daf35622f28032",
+        "type": "function",
+        "z": "634098abb09f2e81",
+        "name": "",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1580,
+        "y": 420,
+        "wires": [
+            [
+                "bd5655b8fcae17f1"
+            ]
+        ]
+    },
+    {
+        "id": "75926c230a7dae84",
+        "type": "function",
+        "z": "634098abb09f2e81",
+        "name": "findOne",
+        "func": "var newMsg = {};\n//newMsg.payload    = { 'mac' : msg.payload.mac};\nnewMsg.payload = [{ 'mac': msg.payload.mac }, { fields: { mac: 1 }}];\nnewMsg.projection = { 'mac' : 1 , '_id' : 0 };\nreturn newMsg;\n\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1760,
+        "y": 480,
+        "wires": [
+            [
+                "06ff91dd3aeb89c2"
+            ]
+        ]
+    },
+    {
+        "id": "a150aa6ce1bd69d1",
+        "type": "delay",
+        "z": "634098abb09f2e81",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 1440,
+        "y": 480,
+        "wires": [
+            [
+                "bd5655b8fcae17f1"
+            ]
+        ]
+    },
+    {
+        "id": "42c771b4969a753d",
+        "type": "comment",
+        "z": "634098abb09f2e81",
+        "name": "웹페이지 초기화",
+        "info": "",
+        "x": 1400,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "3c3ac13fce6154a6",
+        "type": "function",
+        "z": "634098abb09f2e81",
+        "name": "0,1,2,3 List (수정)",
+        "func": "msg.payload.style=global.get(\"style\");\nmsg.payload.script=global.get(\"script\");\nmsg.payload.menu=global.get(\"menu\");\nvar i,j;\nvar s;\nvar r;\nvar sOut;\nsOut=\"<table>\"\n//sOut+=\"<tr>   <th>모델</th>  <th>모니터링</th>  </tr>\"\nfor(i=0;i<msg.payload.length;i++) {\n    //r=\"<input type='hidden' name='chip' value='\"+msg.payload[i].chip+\"'>\";\n    s=\"\";\n    s+=\"<tr><th>\";\n    s+=\"<form action='/display'>\";\n        s+=\"<input type='hidden' name='mac' value='\"+msg.payload[i].mac+\"'>\";\n        s+=\"<input type='hidden' name='act' value='1'>\";\n        s+=\"<button type='submit' name='value' value='0' class='button buttonM'>\"+msg.payload[i].model+\"</button></a>\";\n    s+=\"</form>\";\n    s += msg.payload[i].name;\n    s+=\"</th>\";\n    if(msg.payload[i].type==2) {\n        s += \"<td>\"\n        s += \"<table>\";\n        s += \"<tr>\";\n        s += \"<td></td>\";\n        for (j = 0; j < 4; j++)\n            s += \"<td>\" + String(j) + \"</td>\";\n        s += \"</tr>\";\n        s += \"<tr>\";\n        s += \"<td>입력</td>\";\n        for (j = 0; j < 4; j++)\n            s += \"<td><span id='\" + msg.payload[i].mac + \"-in\" + String(j) + \"'></span></td>\";\n        s += \"</tr>\";\n        s += \"<tr>\";\n        s += \"<td>출력</td>\";\n        for (j = 0; j < 4; j++)\n            s += \"<td><span id='\" + msg.payload[i].mac + \"-out\" + String(j) + \"'></span></td>\";\n        s += \"</tr>\";\n        s += \"</table>\";\n        s += \"</td>\";\n    }\n    else if(msg.payload[i].type==3) {\n        \n        s += \"<td>\"\n        s += \"<table>\";\n        s += \"<tr>\";\n        s += \"<td></td>\";\n        for (j = 0; j < 4; j++)\n            s += \"<td>\" + String(j) + \"</td>\";\n        s += \"</tr>\";\n        s += \"<tr>\";\n        s += \"<td>입력</td>\";\n        for (j = 0; j < 4; j++)\n            s += \"<td><span id='\" + msg.payload[i].mac + \"-in\" + String(j) + \"'></span></td>\";\n        s += \"</tr>\";\n        s += \"<tr>\";\n        s += \"<td>출력</td>\";\n        for (j = 0; j < 4; j++)\n            s += \"<td><span id='\" + msg.payload[i].mac + \"-out\" + String(j) + \"'></span></td>\";\n        s += \"</tr>\";\n        s += \"<tr><span id='\" + msg.payload[i].mac + \"-humi'></span>\" + \"  <span id='\" + msg.payload[i].mac +\"-temp'></span>\" + \"</tr> \"\n        //s += \"<tr>습도:\" + msg.payload[i].mac + \"-humi\" + \"  온도:\" + msg.payload[i].mac + \"-temp\" + \"</tr> \"\n        s += \"</table>\";\n        s += \"</td>\";\n        //s += \"<td>\" + msg.payload[i].name + \"</td>\";\n    }\n    else if(msg.payload[i].type==4) {\n        \n        s += \"<td>\"\n        s += \"<table>\";\n        s += \"<tr>\";\n        s += \"<td></td>\";\n        for (j = 0; j < 8; j++)\n            s += \"<td>\" + String(j) + \"</td>\";\n        s += \"</tr>\";\n        s += \"<tr>\";\n        s += \"<td>입력</td>\";\n        for (j = 0; j < 8; j++)\n            s += \"<td><span id='\" + msg.payload[i].mac + \"-in\" + String(j) + \"'></span></td>\";\n        s += \"</tr>\";\n        s += \"<tr>\";\n        s += \"<td>출력</td>\";\n        for (j = 0; j < 8; j++)\n            s += \"<td><span id='\" + msg.payload[i].mac + \"-out\" + String(j) + \"'></span></td>\";\n        s += \"</tr>\";\n        s += \"<tr><span id='\" + msg.payload[i].mac + \"-bat'></span>\" + \"  <span id='\" + msg.payload[i].mac +\"-adc'></span>\" + \"</tr> \"\n        //s += \"<tr>습도:\" + msg.payload[i].mac + \"-humi\" + \"  온도:\" + msg.payload[i].mac + \"-temp\" + \"</tr> \"\n        s += \"</table>\";\n        s += \"</td>\";\n        //s += \"<td>\" + msg.payload[i].name + \"</td>\";\n    }\n        \n    //s+=\"<td><a href='http://\"+msg.payload[i].ip+\"' target='_blank'>\"+msg.payload[i].ip+\"</a></td>\";\n    s+=\"</tr>\"\n    \n    sOut=sOut+s+\"<br>\";\n} \n\nmsg.payload.list=sOut;\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1271,
+        "y": 220,
+        "wires": [
+            [
+                "f7cc032cb230532e",
+                "a150aa6ce1bd69d1"
+            ]
+        ]
+    },
+    {
+        "id": "f7cc032cb230532e",
+        "type": "template",
+        "z": "634098abb09f2e81",
+        "name": "Web Socket scriptSocket (수정)",
+        "field": "payload.scriptSocket",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "        var ws;\n        var wsUri = \"ws:\";\n        var loc = window.location;\n        console.log(loc);\n        if (loc.protocol === \"https:\") { wsUri = \"wss:\"; }\n        // This needs to point to the web socket in the Node-RED flow\n        // ... in this case it's ws/simple\n        wsUri += \"//\" + loc.host + loc.pathname.replace(\"display\",\"ws/simple\");\n\n        function wsConnect() {\n            console.log(\"connect\",wsUri);\n            ws = new WebSocket(wsUri);\n            //var line = \"\";    // either uncomment this for a building list of messages\n            ws.onmessage = function(msg) {\n                var line = \"\";  // or uncomment this to overwrite the existing message\n                // parse the incoming message as a JSON object\n                var data = JSON.parse(msg.data);\n                //var data = msg.data;\n                console.log(data);\n                if(data.type==3) {\n                    document.getElementById(data.mac+'-humi').innerHTML = \"습도:\"+data.humi+\"%\";\n                    document.getElementById(data.mac+'-temp').innerHTML = \"온도:\"+data.temp+\"도\";\n                }\n                if(data.type==2 || data.type==3) {\n                    if(data.in[0]=='1') \n                        document.getElementById(data.mac+'-in0').innerHTML = \"<button class='button button-ledon' ></button>\";\n                    else\n                        document.getElementById(data.mac+'-in0').innerHTML = \"<button class='button button-ledoff' ></button>\";\n                    if(data.in[1]=='1') \n                        document.getElementById(data.mac+'-in1').innerHTML = \"<button class='button button-ledon' ></button>\";\n                    else\n                        document.getElementById(data.mac+'-in1').innerHTML = \"<button class='button button-ledoff' ></button>\";\n                    if(data.in[2]=='1') \n                        document.getElementById(data.mac+'-in2').innerHTML = \"<button class='button button-ledon' ></button>\";\n                    else\n                        document.getElementById(data.mac+'-in2').innerHTML = \"<button class='button button-ledoff' ></button>\";\n                    if(data.in[3]=='1') \n                        document.getElementById(data.mac+'-in3').innerHTML = \"<button class='button button-ledon' ></button>\";\n                    else\n                        document.getElementById(data.mac+'-in3').innerHTML = \"<button class='button button-ledoff' ></button>\";\n\n                    if(data.out[0]=='1')\n                        document.getElementById(data.mac+'-out0').innerHTML = \"<button class='button button-on' onclick='doit(\\\"{^mac^:^\"+data.mac+\"^,^type^:3,^no^:0,^value^:0}\\\");'></button>\";\n                    else\n                        document.getElementById(data.mac+'-out0').innerHTML = \"<button class='button button-off' onclick='doit(\\\"{^mac^:^\"+data.mac+\"^,^type^:3,^no^:0,^value^:1}\\\");'></button>\";\n                    if(data.out[1]=='1')\n                        document.getElementById(data.mac+'-out1').innerHTML = \"<button class='button button-on' onclick='doit(\\\"{^mac^:^\"+data.mac+\"^,^type^:3,^no^:1,^value^:0}\\\");'></button>\";\n                    else\n                        document.getElementById(data.mac+'-out1').innerHTML = \"<button class='button button-off' onclick='doit(\\\"{^mac^:^\"+data.mac+\"^,^type^:3,^no^:1,^value^:1}\\\");'></button>\";\n                    if(data.out[2]=='1')\n                        document.getElementById(data.mac+'-out2').innerHTML = \"<button class='button button-on' onclick='doit(\\\"{^mac^:^\"+data.mac+\"^,^type^:3,^no^:2,^value^:0}\\\");'></button>\";\n                    else\n                        document.getElementById(data.mac+'-out2').innerHTML = \"<button class='button button-off' onclick='doit(\\\"{^mac^:^\"+data.mac+\"^,^type^:3,^no^:2,^value^:1}\\\");'></button>\";\n                    if(data.out[3]=='1')\n                        document.getElementById(data.mac+'-out3').innerHTML = \"<button class='button button-on' onclick='doit(\\\"{^mac^:^\"+data.mac+\"^,^type^:3,^no^:3,^value^:0}\\\");'></button>\";\n                    else\n                        document.getElementById(data.mac+'-out3').innerHTML = \"<button class='button button-off' onclick='doit(\\\"{^mac^:^\"+data.mac+\"^,^type^:3,^no^:3,^value^:1}\\\");'></button>\";\n                }\n                if(data.type==4) {\n                    document.getElementById(data.mac+'-bat').innerHTML = \"밭데리:\"+data.bat+\"V\";\n                    document.getElementById(data.mac+'-adc').innerHTML = \"입력전압:\"+data.adc+\"V\";\n                    if(data.in[0]=='1')\n                        document.getElementById(data.mac+'-in0').innerHTML = \"<button class='button button-ledon' ></button>\";\n                    else\n                        document.getElementById(data.mac+'-in0').innerHTML = \"<button class='button button-ledoff' ></button>\";\n                    if(data.in[1]=='1')\n                        document.getElementById(data.mac+'-in1').innerHTML = \"<button class='button button-ledon' ></button>\";\n                    else\n                        document.getElementById(data.mac+'-in1').innerHTML = \"<button class='button button-ledoff' ></button>\";\n                    if(data.in[2]=='1')\n                        document.getElementById(data.mac+'-in2').innerHTML = \"<button class='button button-ledon' ></button>\";\n                    else\n                        document.getElementById(data.mac+'-in2').innerHTML = \"<button class='button button-ledoff' ></button>\";\n                    if(data.in[3]=='1')\n                        document.getElementById(data.mac+'-in3').innerHTML = \"<button class='button button-ledon' ></button>\";\n                    else\n                        document.getElementById(data.mac+'-in3').innerHTML = \"<button class='button button-ledoff' ></button>\";\n                    if(data.in[4]=='1')\n                        document.getElementById(data.mac+'-in4').innerHTML = \"<button class='button button-ledon' ></button>\";\n                    else\n                        document.getElementById(data.mac+'-in4').innerHTML = \"<button class='button button-ledoff' ></button>\";\n                    if(data.in[5]=='1')\n                        document.getElementById(data.mac+'-in5').innerHTML = \"<button class='button button-ledon' ></button>\";\n                    else\n                        document.getElementById(data.mac+'-in5').innerHTML = \"<button class='button button-ledoff' ></button>\";\n                    if(data.in[6]=='1')\n                        document.getElementById(data.mac+'-in6').innerHTML = \"<button class='button button-ledon' ></button>\";\n                    else\n                        document.getElementById(data.mac+'-in6').innerHTML = \"<button class='button button-ledoff' ></button>\";\n                    if(data.in[7]=='1')\n                        document.getElementById(data.mac+'-in7').innerHTML = \"<button class='button button-ledon' ></button>\";\n                    else\n                        document.getElementById(data.mac+'-in7').innerHTML = \"<button class='button button-ledoff' ></button>\";\n                    \n                    if(data.out[0]=='1')\n                        document.getElementById(data.mac+'-out0').innerHTML =\n                        \"<button class='button button-on' onclick='doit(\\\"{^mac^:^\"+data.mac+\"^,^type^:4,^no^:0,^value^:0}\\\");'></button>\";\n                    else\n                        document.getElementById(data.mac+'-out0').innerHTML =\n                        \"<button class='button button-off' onclick='doit(\\\"{^mac^:^\"+data.mac+\"^,^type^:4,^no^:0,^value^:1}\\\");'></button>\";\n                    if(data.out[1]=='1')\n                        document.getElementById(data.mac+'-out1').innerHTML =\n                        \"<button class='button button-on' onclick='doit(\\\"{^mac^:^\"+data.mac+\"^,^type^:4,^no^:1,^value^:0}\\\");'></button>\";\n                    else\n                        document.getElementById(data.mac+'-out1').innerHTML =\n                        \"<button class='button button-off' onclick='doit(\\\"{^mac^:^\"+data.mac+\"^,^type^:4,^no^:1,^value^:1}\\\");'></button>\";\n                    if(data.out[2]=='1')\n                        document.getElementById(data.mac+'-out2').innerHTML =\n                        \"<button class='button button-on' onclick='doit(\\\"{^mac^:^\"+data.mac+\"^,^type^:4,^no^:2,^value^:0}\\\");'></button>\";\n                    else\n                        document.getElementById(data.mac+'-out2').innerHTML =\n                        \"<button class='button button-off' onclick='doit(\\\"{^mac^:^\"+data.mac+\"^,^type^:4,^no^:2,^value^:1}\\\");'></button>\";\n                    if(data.out[3]=='1')\n                        document.getElementById(data.mac+'-out3').innerHTML =\n                        \"<button class='button button-on' onclick='doit(\\\"{^mac^:^\"+data.mac+\"^,^type^:4,^no^:3,^value^:0}\\\");'></button>\";\n                    else\n                        document.getElementById(data.mac+'-out3').innerHTML =\n                        \"<button class='button button-off' onclick='doit(\\\"{^mac^:^\"+data.mac+\"^,^type^:4,^no^:3,^value^:1}\\\");'></button>\";\n                    if(data.out[3]=='1')\n                        document.getElementById(data.mac+'-out3').innerHTML =\n                        \"<button class='button button-on' onclick='doit(\\\"{^mac^:^\"+data.mac+\"^,^type^:4,^no^:3,^value^:0}\\\");'></button>\";\n                    else\n                        document.getElementById(data.mac+'-out3').innerHTML =\n                        \"<button class='button button-off' onclick='doit(\\\"{^mac^:^\"+data.mac+\"^,^type^:4,^no^:3,^value^:1}\\\");'></button>\";\n                    if(data.out[4]=='1')\n                        document.getElementById(data.mac+'-out4').innerHTML =\n                        \"<button class='button button-on' onclick='doit(\\\"{^mac^:^\"+data.mac+\"^,^type^:4,^no^:4,^value^:0}\\\");'></button>\";\n                    else\n                        document.getElementById(data.mac+'-out4').innerHTML =\n                        \"<button class='button button-off' onclick='doit(\\\"{^mac^:^\"+data.mac+\"^,^type^:4,^no^:4,^value^:1}\\\");'></button>\";\n                    if(data.out[5]=='1')\n                        document.getElementById(data.mac+'-out5').innerHTML =\n                        \"<button class='button button-on' onclick='doit(\\\"{^mac^:^\"+data.mac+\"^,^type^:4,^no^:5,^value^:0}\\\");'></button>\";\n                    else\n                        document.getElementById(data.mac+'-out5').innerHTML =\n                        \"<button class='button button-off' onclick='doit(\\\"{^mac^:^\"+data.mac+\"^,^type^:4,^no^:5,^value^:1}\\\");'></button>\";\n                    if(data.out[6]=='1')\n                        document.getElementById(data.mac+'-out6').innerHTML =\n                        \"<button class='button button-on' onclick='doit(\\\"{^mac^:^\"+data.mac+\"^,^type^:4,^no^:6,^value^:0}\\\");'></button>\";\n                    else\n                        document.getElementById(data.mac+'-out6').innerHTML =\n                        \"<button class='button button-off' onclick='doit(\\\"{^mac^:^\"+data.mac+\"^,^type^:4,^no^:6,^value^:1}\\\");'></button>\";\n                    if(data.out[7]=='1')\n                        document.getElementById(data.mac+'-out7').innerHTML =\n                        \"<button class='button button-on' onclick='doit(\\\"{^mac^:^\"+data.mac+\"^,^type^:4,^no^:7,^value^:0}\\\");'></button>\";\n                    else\n                        document.getElementById(data.mac+'-out7').innerHTML =\n                        \"<button class='button button-off' onclick='doit(\\\"{^mac^:^\"+data.mac+\"^,^type^:4,^no^:7,^value^:1}\\\");'></button>\";\n                \n                }\n                \n            }\n            ws.onopen = function() {\n                // update the status div with the connection status\n                //document.getElementById('status').innerHTML = \"connected\";\n                //ws.send(\"Open for data\");\n                console.log(\"connected\");\n            }\n            ws.onclose = function() {\n                // update the status div with the connection status\n                //document.getElementById('status').innerHTML = \"not connected\";\n                // in case of lost connection tries to reconnect every 3 secs\n                setTimeout(wsConnect,3000);\n            }\n        }\n        \n        function doit(m) {\n            if (ws) { ws.send(m); }\n        }\n        \n        function handleRange(e){\n            doit(\"{'mac':'\"+e.target.id+\"','vel':\"+e.target.value+\"}\");\n        }\n        \n        function handleRadio(e){\n            doit(\"{'mac':'\"+e.target.id+\"','dir':\"+e.target.value+\"}\");\n        }\n",
+        "x": 1511,
+        "y": 220,
+        "wires": [
+            [
+                "86bf08081fe51fec"
+            ]
+        ]
+    },
+    {
+        "id": "54d729e949b80ec0",
+        "type": "function",
+        "z": "634098abb09f2e81",
+        "name": "findOneUpdate (출력있는 경우만 수정)",
+        "func": "global.set(\"msg_in\",msg);\nvar time = new Date().toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' });\nvar newMsg = {};\nvar value;\nif(msg.payload.value == true)\n    value = 1;\nelse\n    value = 0;\n\nif(msg.payload.type==2 || msg.payload.type==3 || msg.payload.type==4 ) {\n    if(msg.payload.no == 0)\n        newMsg.payload = [{'mac': msg.payload.mac,'type':msg.payload.type}, {$set:{ 'out.0':value, 'time':time }} ];\n    else if(msg.payload.no == 1)\n        newMsg.payload = [{'mac': msg.payload.mac,'type':msg.payload.type}, {$set:{ 'out.1':value, 'time':time }} ];\n    else if(msg.payload.no == 2)\n        newMsg.payload = [{'mac': msg.payload.mac,'type':msg.payload.type}, {$set:{ 'out.2':value, 'time':time }} ];\n    else if(msg.payload.no == 3)\n        newMsg.payload = [{'mac': msg.payload.mac,'type':msg.payload.type}, {$set:{ 'out.3':value, 'time':time }} ];\n    else if(msg.payload.no == 4)\n        newMsg.payload = [{'mac': msg.payload.mac,'type':msg.payload.type}, {$set:{ 'out.4':value, 'time':time }} ];\n    else if(msg.payload.no == 5)\n        newMsg.payload = [{'mac': msg.payload.mac,'type':msg.payload.type}, {$set:{ 'out.5':value, 'time':time }} ];\n    else if(msg.payload.no == 6)\n        newMsg.payload = [{'mac': msg.payload.mac,'type':msg.payload.type}, {$set:{ 'out.6':value, 'time':time }} ];\n    else if(msg.payload.no == 7)\n        newMsg.payload = [{'mac': msg.payload.mac,'type':msg.payload.type}, {$set:{ 'out.7':value, 'time':time }} ];\n}\nreturn newMsg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 850,
+        "y": 660,
+        "wires": [
+            [
+                "d3f5c4eda89569f3"
+            ]
+        ]
+    },
+    {
+        "id": "cb66bf038ee8fc70",
+        "type": "hostip",
+        "z": "634098abb09f2e81",
+        "name": "Host IP",
+        "x": 280,
+        "y": 71,
+        "wires": [
+            [
+                "b31cabc4f4ee88e0"
+            ]
+        ]
+    },
+    {
+        "id": "d3fc826363b96e2b",
+        "type": "function",
+        "z": "634098abb09f2e81",
+        "name": "findOne (email 자동저장)",
+        "func": "global.set(\"msg_in\", msg);\nglobal.set(\"email\", msg.payload.email);\nvar newMsg = {};\nnewMsg.payload = [{mac: msg.payload.mac}, {fields: {mac:1}}];\nreturn newMsg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 710,
+        "y": 560,
+        "wires": [
+            [
+                "41efeceb20254aae"
+            ]
+        ]
+    },
+    {
+        "id": "41efeceb20254aae",
+        "type": "mongodb4",
+        "z": "634098abb09f2e81",
+        "clientNode": "e2bc7ac9aa77279e",
+        "mode": "collection",
+        "collection": "localRecord",
+        "operation": "findOne",
+        "output": "toArray",
+        "maxTimeMS": "",
+        "handleDocId": false,
+        "name": "",
+        "x": 900,
+        "y": 560,
+        "wires": [
+            [
+                "d5abd1035e16f0be"
+            ]
+        ]
+    },
+    {
+        "id": "59645b4c2c072e42",
+        "type": "mongodb4",
+        "z": "634098abb09f2e81",
+        "clientNode": "e2bc7ac9aa77279e",
+        "mode": "collection",
+        "collection": "localRecord",
+        "operation": "insertOne",
+        "output": "toArray",
+        "maxTimeMS": "",
+        "handleDocId": false,
+        "name": "",
+        "x": 1380,
+        "y": 540,
+        "wires": [
+            [
+                "6eb377df84f9b71e"
+            ]
+        ]
+    },
+    {
+        "id": "d5abd1035e16f0be",
+        "type": "switch",
+        "z": "634098abb09f2e81",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "null"
+            },
+            {
+                "t": "nnull"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1050,
+        "y": 560,
+        "wires": [
+            [
+                "95aee86f19c05052"
+            ],
+            [
+                "82c118590f97484d"
+            ]
+        ]
+    },
+    {
+        "id": "82c118590f97484d",
+        "type": "function",
+        "z": "634098abb09f2e81",
+        "name": "findOneUpdate (수정)",
+        "func": "var time = new Date().toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' });\nvar msg=global.get(\"msg_in\")||\"\";\nvar newMsg = {};\n\nnewMsg.collection = 'localRecord';\nnewMsg.operation  = 'findOneAndUpdate';\nif(msg.payload.type==2)\n    newMsg.payload = [{ 'mac': msg.payload.mac, 'type': msg.payload.type }, { $set: { 'time': time, \n    'in.0': msg.payload.in[0], 'in.1': msg.payload.in[1], 'in.2': msg.payload.in[2], 'in.3': msg.payload.in[3],\n    'out.0': msg.payload.out[0], 'out.1': msg.payload.out[1], 'out.2': msg.payload.out[2], 'out.3': msg.payload.out[3]\n     }} ];\nelse if (msg.payload.type == 3)\n    newMsg.payload = [{ 'mac': msg.payload.mac, 'type': msg.payload.type }, {\n        $set: {\n            'humi': msg.payload.humi, 'temp': msg.payload.temp, 'time': time,\n            'in.0': msg.payload.in[0], 'in.1': msg.payload.in[1], 'in.2': msg.payload.in[2], 'in.3': msg.payload.in[3],\n            'out.0': msg.payload.out[0], 'out.1': msg.payload.out[1], 'out.2': msg.payload.out[2], 'out.3': msg.payload.out[3]\n        }\n    }];\nelse if (msg.payload.type == 4)\n    newMsg.payload = [{ 'mac': msg.payload.mac, 'type': msg.payload.type }, {\n        $set: {\n            'bat': msg.payload.bat, 'adc': msg.payload.adc, 'time': time,\n            'in.0': msg.payload.in[0], 'in.1': msg.payload.in[1], 'in.2': msg.payload.in[2], 'in.3': msg.payload.in[3],\n            'in.4': msg.payload.in[4], 'in.5': msg.payload.in[5], 'in.6': msg.payload.in[6], 'in.7': msg.payload.in[7],\n            'out.0': msg.payload.out[0], 'out.1': msg.payload.out[1], 'out.2': msg.payload.out[2], 'out.3': msg.payload.out[3],\n            'out.4': msg.payload.out[4], 'out.5': msg.payload.out[5], 'out.6': msg.payload.out[6], 'out.7': msg.payload.out[7]\n        }\n    }];\nnewMsg.projection = { 'mac' : 1 , '_id' : 0 };\nreturn newMsg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1240,
+        "y": 600,
+        "wires": [
+            [
+                "026ea843c29f180f"
+            ]
+        ]
+    },
+    {
+        "id": "026ea843c29f180f",
+        "type": "mongodb4",
+        "z": "634098abb09f2e81",
+        "clientNode": "e2bc7ac9aa77279e",
+        "mode": "collection",
+        "collection": "localRecord",
+        "operation": "updateOne",
+        "output": "forEach",
+        "maxTimeMS": "",
+        "handleDocId": false,
+        "name": "",
+        "x": 1430,
+        "y": 600,
+        "wires": [
+            [
+                "df486e6d1c9812d1"
+            ]
+        ]
+    },
+    {
+        "id": "95aee86f19c05052",
+        "type": "function",
+        "z": "634098abb09f2e81",
+        "name": "insertOne (수정)",
+        "func": "var msg = global.get(\"msg_in\") || \"\";\nvar model = [];\nmodel[2] = 'i2r-02';\nmodel[3] = 'i2r-03';\nmodel[4] = 'i2r-04';\nvar newMsg = {};\nif (msg.payload.type == 2 || msg.payload.type == 3)\n    newMsg.payload = { 'type': msg.payload.type, 'email': msg.payload.email, 'mac': msg.payload.mac, 'model': model[msg.payload.type], 'out': [0, 0, 0, 0], 'in': [0, 0, 0, 0] };\nelse if (msg.payload.type == 4)\n    newMsg.payload = { 'type': msg.payload.type, 'email': msg.payload.email, 'mac': msg.payload.mac, 'model': model[msg.payload.type], 'out': [0, 0, 0, 0, 0, 0, 0, 0], 'in': [0, 0, 0, 0, 0, 0, 0, 0] };\nelse\n    newMsg.payload = { 'type': msg.payload.type, 'mac': msg.payload.mac, 'model': model[msg.payload.type] };\nreturn newMsg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1220,
+        "y": 540,
+        "wires": [
+            [
+                "59645b4c2c072e42"
+            ]
+        ]
+    },
+    {
+        "id": "6eb377df84f9b71e",
+        "type": "link out",
+        "z": "634098abb09f2e81",
+        "name": "link out 1",
+        "mode": "link",
+        "links": [
+            "c654a1c533b28262"
+        ],
+        "x": 1485,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "df486e6d1c9812d1",
+        "type": "link out",
+        "z": "634098abb09f2e81",
+        "name": "link out 2",
+        "mode": "link",
+        "links": [
+            "c654a1c533b28262"
+        ],
+        "x": 1555,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "c654a1c533b28262",
+        "type": "link in",
+        "z": "634098abb09f2e81",
+        "name": "link in 1",
+        "links": [
+            "6eb377df84f9b71e",
+            "df486e6d1c9812d1",
+            "edac36e02ee9dd6d"
+        ],
+        "x": 1635,
+        "y": 600,
+        "wires": [
+            [
+                "e0ac32e393fd0eef"
+            ]
+        ]
+    },
+    {
+        "id": "e0ac32e393fd0eef",
+        "type": "function",
+        "z": "634098abb09f2e81",
+        "name": "findOne",
+        "func": "var msg = global.get(\"msg_in\") || \"\";\nvar newMsg = {};\nnewMsg.payload = [{ mac: msg.payload.mac }, {fields: {mac:1}}];\nreturn newMsg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1740,
+        "y": 600,
+        "wires": [
+            [
+                "06ff91dd3aeb89c2"
+            ]
+        ]
+    },
+    {
+        "id": "06ff91dd3aeb89c2",
+        "type": "mongodb4",
+        "z": "634098abb09f2e81",
+        "clientNode": "e2bc7ac9aa77279e",
+        "mode": "collection",
+        "collection": "localRecord",
+        "operation": "findOne",
+        "output": "toArray",
+        "maxTimeMS": "",
+        "handleDocId": false,
+        "name": "",
+        "x": 1880,
+        "y": 600,
+        "wires": [
+            [
+                "9eec193d507bd478"
+            ]
+        ]
+    },
+    {
+        "id": "2fd1ed5acc062f53",
+        "type": "function",
+        "z": "634098abb09f2e81",
+        "name": "ind.toArray",
+        "func": "global.set(\"msg_main\", msg);\nmsg.payload = [{}];\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 770,
+        "y": 220,
+        "wires": [
+            [
+                "115570f71f905a70"
+            ]
+        ]
+    },
+    {
+        "id": "115570f71f905a70",
+        "type": "mongodb4",
+        "z": "634098abb09f2e81",
+        "clientNode": "e2bc7ac9aa77279e",
+        "mode": "collection",
+        "collection": "localRecord",
+        "operation": "find",
+        "output": "toArray",
+        "maxTimeMS": "",
+        "handleDocId": false,
+        "name": "find.toArray",
+        "x": 930,
+        "y": 220,
+        "wires": [
+            [
+                "43cd31aa8db4a911"
+            ]
+        ]
+    },
+    {
+        "id": "d3f5c4eda89569f3",
+        "type": "mongodb4",
+        "z": "634098abb09f2e81",
+        "clientNode": "e2bc7ac9aa77279e",
+        "mode": "collection",
+        "collection": "localRecord",
+        "operation": "updateOne",
+        "output": "forEach",
+        "maxTimeMS": "",
+        "handleDocId": false,
+        "name": "",
+        "x": 1110,
+        "y": 660,
+        "wires": [
+            [
+                "edac36e02ee9dd6d"
+            ]
+        ]
+    },
+    {
+        "id": "edac36e02ee9dd6d",
+        "type": "link out",
+        "z": "634098abb09f2e81",
+        "name": "link out 3",
+        "mode": "link",
+        "links": [
+            "c654a1c533b28262"
+        ],
+        "x": 1225,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "2bcacbbe6bdde5e5",
+        "type": "function",
+        "z": "634098abb09f2e81",
+        "name": "전송 메세지 작성",
+        "func": "msg.payload.email = global.get(\"email\") || \"\";\nmsg.payload.order = 2;\nif(msg.payload.value == 1)\n    msg.payload.value = true;\nelse\n    msg.payload.value = false;\n\nreturn msg; ",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 570,
+        "y": 720,
+        "wires": [
+            [
+                "36ac806f3ae3bbe6"
+            ]
+        ]
+    },
+    {
+        "id": "eabb99b5098c6f34",
+        "type": "mongodb4",
+        "z": "634098abb09f2e81",
+        "clientNode": "e2bc7ac9aa77279e",
+        "mode": "collection",
+        "collection": "localRecord",
+        "operation": "findOne",
+        "output": "toArray",
+        "maxTimeMS": "",
+        "handleDocId": false,
+        "name": "",
+        "x": 909,
+        "y": 129,
+        "wires": [
+            [
+                "b6b46b377213a5ae"
+            ]
+        ]
+    },
+    {
+        "id": "533f4715dda8356a",
+        "type": "mongodb4",
+        "z": "634098abb09f2e81",
+        "clientNode": "e2bc7ac9aa77279e",
+        "mode": "collection",
+        "collection": "localRecord",
+        "operation": "updateOne",
+        "output": "forEach",
+        "maxTimeMS": "",
+        "handleDocId": false,
+        "name": "",
+        "x": 770,
+        "y": 320,
+        "wires": [
+            [
+                "482262e0d42a8cb3"
+            ]
+        ]
+    },
+    {
+        "id": "f15d66b3.c7edf8",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "test.mosquitto.org",
+        "port": "1883",
+        "tls": "509a45a9.089bbc",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "3",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "bf4882ef33e69fa3",
+        "type": "websocket-listener",
+        "path": "/ws/simple",
+        "wholemsg": "false"
+    },
+    {
+        "id": "e2bc7ac9aa77279e",
+        "type": "mongodb4-client",
+        "name": "simple connection",
+        "protocol": "mongodb",
+        "hostname": "localhost",
+        "port": "27017",
+        "dbName": "local",
+        "appName": "",
+        "authSource": "",
+        "authMechanism": "DEFAULT",
+        "tls": false,
+        "tlsCAFile": "",
+        "tlsCertificateKeyFile": "",
+        "tlsInsecure": false,
+        "connectTimeoutMS": "",
+        "socketTimeoutMS": "",
+        "minPoolSize": "",
+        "maxPoolSize": "",
+        "maxIdleTimeMS": "",
+        "uri": "",
+        "advanced": "{\"connectTimeoutMS\": 30000}",
+        "uriTabActive": "tab-uri-simple"
+    },
+    {
+        "id": "509a45a9.089bbc",
+        "type": "tls-config",
+        "name": "",
+        "cert": "",
+        "key": "",
+        "ca": "",
+        "certname": "94191b3ef7-certificate.pem.crt",
+        "keyname": "94191b3ef7-private.pem.key",
+        "caname": "MtestCA.pem",
+        "servername": "",
+        "verifyservercert": true,
+        "alpnprotocol": ""
+    }
+]
