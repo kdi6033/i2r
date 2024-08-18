@@ -24,6 +24,6 @@ Node-RED를 활용하여 로컬 컴퓨터, AWS 클라우드, 스마트폰 애플
 - 각 기기의 모니터링 및 제어 테스트
 
 ### 안드로이드 어플
-다운로드 QR CODE
+QR CODE 연결하거나 그림을 누르세요
 <a href="https://play.google.com/store/apps/details?id=io.ionic.i2rReactIoT">
     <img src="https://github.com/kdi6033/i2r-03/assets/37902752/4f55641c-9a50-4eda-8ada-3e0f6beb34c6" alt="다운로드 QR코드" width="200">
