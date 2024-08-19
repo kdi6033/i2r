@@ -32,11 +32,10 @@ QR CODE 연결하거나 그림을 누르세요
 - 어플에서 IoT-PLC를 와이파이에 접속만 시키면 데이터베이스에 자동 저당되고 제어판넬이 자동으로 생성되어서 모니터링/제어를 할 수 있다.    
 mongoDB에 데이터가 자동으로 저장 된 모습    
 <img src="https://github.com/user-attachments/assets/1c8ee718-8561-4eeb-bdd4-366b209b9fc6" width="50%">    
-
-node red 에서 자동 생성죈 제어판넬
-![i2r-판넬](https://github.com/user-attachments/assets/795ec810-7478-4fc8-a41f-b7e726ee1cb1)
-node red flow
-![nodered-flow](https://github.com/user-attachments/assets/69855573-c93a-4180-be8a-5cd442f85d2c)
+node red 에서 자동 생성죈 제어판넬    
+![i2r-판넬](https://github.com/user-attachments/assets/795ec810-7478-4fc8-a41f-b7e726ee1cb1 width="50%")    
+node red flow    
+![nodered-flow](https://github.com/user-attachments/assets/69855573-c93a-4180-be8a-5cd442f85d2c width="50%")    
 
 [윈도우 PC용 소스프로그램](https://github.com/kdi6033/i2r/blob/main/0%20Source-Program-IOT/nodered-local.json)    
 [아마존 크라우드 AWS 소스프로그램](https://github.com/kdi6033/i2r/blob/main/0%20Source-Program-IOT/nodered-aws.json)
