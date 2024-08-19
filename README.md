@@ -29,5 +29,8 @@ QR CODE 연결하거나 그림을 누르세요
     <img src="https://github.com/kdi6033/i2r-03/assets/37902752/4f55641c-9a50-4eda-8ada-3e0f6beb34c6" alt="다운로드 QR코드" width="200">
 
 ### node red 프로그램    
+![i2r-판넬](https://github.com/user-attachments/assets/795ec810-7478-4fc8-a41f-b7e726ee1cb1)
+![nodered-flow](https://github.com/user-attachments/assets/69855573-c93a-4180-be8a-5cd442f85d2c)
+
 [윈도우 PC용 소스프로그램](https://github.com/kdi6033/i2r/blob/main/0%20Source-Program-IOT/nodered-local.json)    
 [아마존 크라우드 AWS 소스프로그램](https://github.com/kdi6033/i2r/blob/main/0%20Source-Program-IOT/nodered-aws.json)
