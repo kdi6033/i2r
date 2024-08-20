@@ -18,12 +18,13 @@ Node-RED를 활용하여 로컬 컴퓨터, AWS 클라우드, 스마트폰 애플
 - [i2r-04](https://github.com/kdi6033/i2r-04) : 입출력 각2채널의 입출력 제어하는 IoT PLC, 2개의 아나로그 입력    
 
 ### 사용 방법    
-- 어플설치    
-- Node-RED 설치 및 설정    
-- 로컬, AWS, 스마트폰 애플리케이션 환경에서의 Node-RED 플로우 설정    
-- 각 기기의 모니터링 및 제어 테스트
+- 스마트폰 또는 탭으로 제어 : 어플설치    
+- PC IoT 서버  
+- 아마존 크라우드 AWS IoT 서버
+- 자세한 사용법과 서버 구축의 세부내용은 아래를 참조하세요
 
-### 안드로이드 어플
+### 스마트폰 또는 탭으로 제어
+다음 QR 링크를 눌러 어플을 설치하고 유튜브의 사용법을 따라하세요.
 QR CODE 연결하거나 그림을 누르세요
 <a href="https://play.google.com/store/apps/details?id=io.ionic.i2rReactIoT">
     <img src="https://github.com/kdi6033/i2r-03/assets/37902752/4f55641c-9a50-4eda-8ada-3e0f6beb34c6" alt="다운로드 QR코드" width="200">
