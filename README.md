@@ -31,10 +31,10 @@ QR CODE 연결하거나 그림을 누르세요
 -----------------------------
 |------|--------|-----------|
 <a href="https://play.google.com/store/apps/details?id=io.ionic.i2rReactIoT">
-    <img src="https://github.com/user-attachments/assets/9523bd58-8626-4707-af54-0d5fd12a8c82" alt="IoT PLC App 통신 설정" width="200">
+    <img src="https://github.com/user-attachments/assets/9523bd58-8626-4707-af54-0d5fd12a8c82" alt="IoT PLC App 통신 설정" width="400">
 </a>
 <a href="https://play.google.com/store/apps/details?id=io.ionic.i2rReactIoT">
-    <img src="https://github.com/user-attachments/assets/4b88edef-1c0a-4c19-bd82-464cf4cacede" alt="입출력, 온도, 습도 동작설정" width="200">
+    <img src="https://github.com/user-attachments/assets/4b88edef-1c0a-4c19-bd82-464cf4cacede" alt="입출력, 온도, 습도 동작설정" width="400">
 </a>
 
 ### node red 프로그램    
