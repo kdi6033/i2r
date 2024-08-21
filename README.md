@@ -40,11 +40,11 @@ QR CODE 연결하거나 그림을 누르세요 <br>
 - PC에서 node red 와 mongoDB를 설치하여 인터넷 상에서 제어한다.
 - 어플에서 IoT-PLC를 와이파이에 접속만 시키면 데이터베이스에 자동 저당되고 제어판넬이 자동으로 생성되어서 모니터링/제어를 할 수 있다.
 
-<a href="[https://youtu.be/bLvpejVkJcQ](https://youtu.be/nL3qdDtZC98)">
+<a href="https://youtu.be/bLvpejVkJcQ](https://youtu.be/nL3qdDtZC98">
     <img src="https://github.com/user-attachments/assets/1015639c-ed79-44fb-a690-3545664a31e7" alt="node red 설치 윈도우용 " width="400">
 </a>
-<a href="[https://youtu.be/5spmnQX0IjM">
-    <img src="https://github.com/user-attachments/assets/9da548f6-9872-48d7-846c-e790586c5511" alt="node red 설치 윈도우용 " width="400">
+<a href="https://youtu.be/5spmnQX0IjM">
+    <img src="https://github.com/user-attachments/assets/9da548f6-9872-48d7-846c-e790586c5511" alt="mongodb, compass 윈도우용 설치하기 " width="400">
 </a>
 ![5-1-1 MongoDB Compass 설치하기](https://github.com/user-attachments/assets/9da548f6-9872-48d7-846c-e790586c5511)
 
