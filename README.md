@@ -36,8 +36,16 @@ QR CODE 연결하거나 그림을 누르세요 <br>
     <img src="https://github.com/user-attachments/assets/4b88edef-1c0a-4c19-bd82-464cf4cacede" alt="입출력, 온도, 습도 동작설정" width="400">
 </a>
 
-### node red 프로그램    
-- 어플에서 IoT-PLC를 와이파이에 접속만 시키면 데이터베이스에 자동 저당되고 제어판넬이 자동으로 생성되어서 모니터링/제어를 할 수 있다.    
+### PC IoT 서버    
+- PC에서 node red 와 mongoDB를 설치하여 인터넷 상에서 제어한다.
+- 어플에서 IoT-PLC를 와이파이에 접속만 시키면 데이터베이스에 자동 저당되고 제어판넬이 자동으로 생성되어서 모니터링/제어를 할 수 있다.
+
+<a href="[https://youtu.be/bLvpejVkJcQ](https://youtu.be/nL3qdDtZC98)">
+    <img src="https://github.com/user-attachments/assets/1015639c-ed79-44fb-a690-3545664a31e7" alt="node red 설치 윈도우용 " width="400">
+</a>
+
+
+ 
 mongoDB에 데이터가 자동으로 저장 된 모습    
 <img src="https://github.com/user-attachments/assets/1c8ee718-8561-4eeb-bdd4-366b209b9fc6" width="400">    <br>
 - node red 에서 자동 생성된 제어판넬    
