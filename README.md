@@ -30,7 +30,7 @@ QR CODE 연결하거나 그림을 누르세요
     <img src="https://github.com/kdi6033/i2r-03/assets/37902752/4f55641c-9a50-4eda-8ada-3e0f6beb34c6" alt="다운로드 QR코드" width="200">
 -----------------------------
 |------|--------|-----------|
-<a href="https://play.google.com/store/apps/details?id=io.ionic.i2rReactIoT">
+<a href="https://youtu.be/bLvpejVkJcQ">
     <img src="https://github.com/user-attachments/assets/9523bd58-8626-4707-af54-0d5fd12a8c82" alt="IoT PLC App 통신 설정" width="400">
 </a>
 <a href="https://play.google.com/store/apps/details?id=io.ionic.i2rReactIoT">
