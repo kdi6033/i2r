@@ -38,7 +38,7 @@ QR CODE 연결하거나 그림을 누르세요 <br>
 
 # PC IoT 서버    
 - PC에서 node red 와 mongoDB를 설치하여 인터넷 상에서 제어한다.
-- 어플에서 IoT-PLC를 와이파이에 접속만 시키면 데이터베이스에 자동 저당되고 제어판넬이 자동으로 생성되어서 모니터링/제어를 할 수 있다.
+- 어플에서 IoT-PLC를 와이파이에 접속만 시키면 데이터베이스에 자동 저장되고 제어판넬이 자동으로 생성되어서 모니터링/제어를 할 수 있다.
 
 <a href="https://youtu.be/nL3qdDtZC98">
     <img src="https://github.com/user-attachments/assets/1015639c-ed79-44fb-a690-3545664a31e7" alt="node red 설치 윈도우용 " width="400">
