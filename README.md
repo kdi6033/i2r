@@ -43,6 +43,10 @@ QR CODE 연결하거나 그림을 누르세요 <br>
 <a href="[https://youtu.be/bLvpejVkJcQ](https://youtu.be/nL3qdDtZC98)">
     <img src="https://github.com/user-attachments/assets/1015639c-ed79-44fb-a690-3545664a31e7" alt="node red 설치 윈도우용 " width="400">
 </a>
+<a href="[https://youtu.be/5spmnQX0IjM">
+    <img src="https://github.com/user-attachments/assets/9da548f6-9872-48d7-846c-e790586c5511" alt="node red 설치 윈도우용 " width="400">
+</a>
+![5-1-1 MongoDB Compass 설치하기](https://github.com/user-attachments/assets/9da548f6-9872-48d7-846c-e790586c5511)
 
 
  
