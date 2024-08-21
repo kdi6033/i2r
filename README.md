@@ -57,6 +57,10 @@ mongoDB에 데이터가 자동으로 저장 된 모습
 node red flow    
 
 # 아마존 크라우드 AWS IoT 서버
+<a href="https://youtu.be/n1MRXSVtbBI">
+    <img src="https://github.com/user-attachments/assets/c8e3f657-7bf4-4af5-bcbe-9215b66ec064" alt="AWS Instal EC2 Ubuntu Server 22.04" width="400">
+</a>
+![6-0-0-1 AWS Instal EC2 Ubuntu Server 20 04](https://github.com/user-attachments/assets/c8e3f657-7bf4-4af5-bcbe-9215b66ec064)
 
 
 [아마존 크라우드 AWS 소스프로그램](https://github.com/kdi6033/i2r/blob/main/0%20Source-Program-IOT/nodered-aws.json)
