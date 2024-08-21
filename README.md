@@ -55,7 +55,8 @@ mongoDB에 데이터가 자동으로 저장 된 모습
 - node red 에서 자동 생성된 제어판넬    
 <img src="https://github.com/user-attachments/assets/91897ea9-785e-488f-9f3e-241a049b78f3" width="30%"><br>
 node red flow    
- 
+
+# 아마존 크라우드 AWS IoT 서버
 
 
 [아마존 크라우드 AWS 소스프로그램](https://github.com/kdi6033/i2r/blob/main/0%20Source-Program-IOT/nodered-aws.json)
