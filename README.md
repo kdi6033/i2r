@@ -58,7 +58,7 @@ node red flow
 
 # 아마존 크라우드 AWS IoT 서버
 <a href="https://youtu.be/n1MRXSVtbBI">
-    <img src="https://github.com/user-attachments/assets/c8e3f657-7bf4-4af5-bcbe-9215b66ec064" alt="AWS Instal EC2 Ubuntu Server 22.04" width="400">
+    <img src="https://github.com/user-attachments/assets/8a2ccaba-8b4a-44a1-8ac9-556d96cbd0ad" alt="AWS Instal EC2 Ubuntu Server 22.04" width="400">
 </a>
 <a href="https://youtu.be/5ojpKiQ00qk">
     <img src="https://github.com/user-attachments/assets/10dfdc4e-d581-4cfe-92f1-8a700069e1f4" alt="AWS IOT Core Mqtt" width="400">
