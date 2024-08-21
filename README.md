@@ -30,8 +30,9 @@ QR CODE 연결하거나 그림을 누르세요
     <img src="https://github.com/kdi6033/i2r-03/assets/37902752/4f55641c-9a50-4eda-8ada-3e0f6beb34c6" alt="다운로드 QR코드" width="200">
 -----------------------------
 |------|--------|-----------|
-|![22-0 IoT PLC App 통신 설정](https://github.com/user-attachments/assets/ceb4672c-555c-4f25-88ea-0f68014dba02)|-------|----------|
---------------------------------
+![22-0 IoT PLC App 통신 설정](https://github.com/user-attachments/assets/ceb4672c-555c-4f25-88ea-0f68014dba02 width=50%)
+
+![22-0-1 입출력, 온도, 습도 동작설정](https://github.com/user-attachments/assets/4b88edef-1c0a-4c19-bd82-464cf4cacede)
 
 ### node red 프로그램    
 - 어플에서 IoT-PLC를 와이파이에 접속만 시키면 데이터베이스에 자동 저당되고 제어판넬이 자동으로 생성되어서 모니터링/제어를 할 수 있다.    
