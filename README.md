@@ -63,7 +63,16 @@ node red flow
 <a href="https://youtu.be/5ojpKiQ00qk">
     <img src="https://github.com/user-attachments/assets/10dfdc4e-d581-4cfe-92f1-8a700069e1f4" alt="AWS IOT Core Mqtt" width="400">
 </a>
-<br>    
+<a href="https://youtu.be/vLT3sr_xAFE">
+    <img src="https://github.com/user-attachments/assets/6546debd-2348-40f3-8799-9924fc3f658" alt="AWS IoT server" width="400">
+</a>
+<a href="https://youtu.be/Q7IL_ERRIwI">
+    <img src="https://github.com/user-attachments/assets/5f8fae58-d80b-4d26-b863-c20c24a20021" alt="AWS IoT 보안 server" width="400">
+</a>
+
+
+<br>
+    
 
 [Node-RED 설치순서](https://github.com/kdi6033/i2r/blob/main/txt/aws%20node%20red%20install.txt)    
 
