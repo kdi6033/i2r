@@ -64,12 +64,13 @@ node red flow
     <img src="https://github.com/user-attachments/assets/10dfdc4e-d581-4cfe-92f1-8a700069e1f4" alt="AWS IOT Core Mqtt" width="400">
 </a>
 <a href="https://youtu.be/vLT3sr_xAFE">
-    <img src="https://github.com/user-attachments/assets/6546debd-2348-40f3-8799-9924fc3f658" alt="AWS IoT server" width="400">
+    <img src="https://github.com/user-attachments/assets/7c56667a-631c-4bc4-a681-a7a4a49cb729" alt="AWS IoT server" width="400">
 </a>
 <a href="https://youtu.be/Q7IL_ERRIwI">
     <img src="https://github.com/user-attachments/assets/5f8fae58-d80b-4d26-b863-c20c24a20021" alt="AWS IoT 보안 server" width="400">
 </a>
 
+![6-0 AWS IoT server](https://github.com/user-attachments/assets/7c56667a-631c-4bc4-a681-a7a4a49cb729)
 
 <br>
     
