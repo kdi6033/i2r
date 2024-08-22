@@ -63,6 +63,6 @@ node red flow
 <a href="https://youtu.be/5ojpKiQ00qk">
     <img src="https://github.com/user-attachments/assets/10dfdc4e-d581-4cfe-92f1-8a700069e1f4" alt="AWS IOT Core Mqtt" width="400">
 </a>
-
+[Node-RED 설치](https://github.com/kdi6033/i2r/blob/main/txt/aws%20node%20red%20install.txt)
 
 [아마존 크라우드 AWS 소스프로그램](https://github.com/kdi6033/i2r/blob/main/0%20Source-Program-IOT/nodered-aws.json)
