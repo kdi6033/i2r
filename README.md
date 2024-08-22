@@ -71,7 +71,10 @@ node red flow
 </a>
 
 <br>
-    
+
+[i2r-02 보드 AWS 아두이노 프로그램](https://github.com/kdi6033/i2r-02/tree/main/0%20Source-Program-IoT/board-i2r-02-aws)  
+[i2r-03 보드 AWS 아두이노 프로그램](https://github.com/kdi6033/i2r/blob/main/txt/aws%20node%20red%20install.txt)  
+[i2r-04 보드 AWS 아두이노 프로그램](https://github.com/kdi6033/i2r/blob/main/txt/aws%20node%20red%20install.txt)  
 
 [Node-RED 설치순서](https://github.com/kdi6033/i2r/blob/main/txt/aws%20node%20red%20install.txt)    
 
