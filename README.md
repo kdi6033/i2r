@@ -67,6 +67,18 @@ node red flow
 <a href="https://youtu.be/5ojpKiQ00qk">
     <img src="https://github.com/user-attachments/assets/10dfdc4e-d581-4cfe-92f1-8a700069e1f4" alt="AWS IOT Core Mqtt" width="400">
 </a>
+
+<a href="https://youtu.be/mruzmon95BE">
+    <img src="https://github.com/user-attachments/assets/bb05f92c-e8d3-4ca2-a0c4-7a97adb5c08f" alt="AWS IOT Core Mqtt" width="400">
+</a>
+<a href="https://youtu.be/WJrOxAN7ZH0">
+    <img src="https://github.com/user-attachments/assets/69d1455b-cbb1-4f09-b0c2-356d4bbcc515" alt="AWS IOT Core Mqtt" width="400">
+</a>
+![6-0-3 Installation Node-RED on AWS](https://github.com/user-attachments/assets/bb05f92c-e8d3-4ca2-a0c4-7a97adb5c08f)
+
+![6-1-3 Installation MongoDB on AWS](https://github.com/user-attachments/assets/69d1455b-cbb1-4f09-b0c2-356d4bbcc515)
+
+
 <a href="https://youtu.be/vLT3sr_xAFE">
     <img src="https://github.com/user-attachments/assets/7c56667a-631c-4bc4-a681-a7a4a49cb729" alt="AWS IoT server" width="400">
 </a>
