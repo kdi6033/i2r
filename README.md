@@ -70,8 +70,6 @@ node red flow
     <img src="https://github.com/user-attachments/assets/5f8fae58-d80b-4d26-b863-c20c24a20021" alt="AWS IoT 보안 server" width="400">
 </a>
 
-![6-0 AWS IoT server](https://github.com/user-attachments/assets/7c56667a-631c-4bc4-a681-a7a4a49cb729)
-
 <br>
     
 
