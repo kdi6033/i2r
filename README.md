@@ -35,6 +35,7 @@ QR CODE 연결하거나 그림을 누르세요 <br>
 <a href="https://youtu.be/-O2wFqJ9-Qw">
     <img src="https://github.com/user-attachments/assets/4b88edef-1c0a-4c19-bd82-464cf4cacede" alt="입출력, 온도, 습도 동작설정" width="400">
 </a>    
+    
 구매하신 보드에는 다음 프로그램이 설치되어 있습습니다. 어플과 연동하는 아두이노 프로그램으로 응용해서 사용하실 분들은 이 프로그램을 활용하세요.    
     
 [i2r-02 보드 아두이노 소스프로그램](https://github.com/kdi6033/i2r-02/blob/main/0%20Source-Program-IoT/board-i2r-02-local.ino)    
