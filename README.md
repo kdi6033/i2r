@@ -117,7 +117,7 @@ node red flow
 |7|습도변화에 출력설정|예제<br>{"order":7,"oper":"save","mac":"A0:B7:65:CD:4D:34","humiHigh":50,"humiLow":49,"portState":[{"mac":"D4:8A:FC:B5:30:10","port":0,"value":false},{"mac":"D4:8A:FC:B5:30:10","port":0,"value":true}]}<blockquote> 습도가 50을 넘어설 때 맥어드레스 "D4:8A:FC:B5:30:10" 0번핀이 on 되고 습도가 49로 떨어질 때 맥어드레스 "D4:8A:FC:B5:30:10" 0번핀이 off 된다</blockquote>{"order":7,"mac":"A0:B7:65:CD:4D:34","oper":"list"}<blockquote>맥어드레스 "A0:B7:65:CD:4D:34" 기기 온도설정 리스트를 요청한다.</blockquote> {"order":7,"oper":"cali","mac":"A0:B7:65:CD:4D:34","calHumi":48}<br><blockquote> 맥어드레스가 "A0:B7:65:CD:4D:34"인 기기의 현재 습도를 48로 세팅한다.</blockquote>{"order":7,"mac":"A0:B7:65:CD:4D:34","oper":"delete"}<blockquote> 맥어드레스가 "A0:B7:65:CD:4D:34"인 기기의 습도에 따른 동작 연결을 삭제한다.</blockquote>|
 
 위에 기술한 프로토콜을 node red 에서 실행 한 것입니다. 폰의 어플에서 구현한 것을 node red로 프로그램해서 사용하세요.
-<a href="https://github.com/kdi6033/i2r/blob/main/txt/protocol%20node%20red%20example.json">
+<a href="https://youtu.be/ufBprCdABSk">
     <img src="https://github.com/user-attachments/assets/01886cc0-2b59-4e1c-962b-f5b7cc751a45" alt="i2r 프로토콜" width="800">
 </a>
 
