@@ -123,4 +123,6 @@ node red flow
 
 [프로토콜 node red 소스프로그램](https://github.com/kdi6033/i2r/blob/main/txt/protocol%20node%20red%20example.json)
 
-
+<a href="https://youtu.be/ufBprCdABSk">
+    <img src="https://github.com/user-attachments/assets/fd75d17a-1c77-46e2-872d-b610dede45c3" alt="protocol" width="400">
+</a>
