@@ -43,6 +43,8 @@ QR CODE 연결하거나 그림을 누르세요 <br>
 [i2r-03 보드 아두이노 소스프로그램](https://github.com/kdi6033/i2r-03/blob/main/0%20Source-Program-IoT/board-i2r-03-local.ino)    
 [i2r-04 보드 아두이노 소스프로그램](https://github.com/kdi6033/i2r-04/blob/main/0%20Source-Program-IoT/board-i2r-04-local.ino)    
 
+<img src="https://github.com/user-attachments/assets/06ad8c17-ff02-44dc-be2c-938445e5f4b6" width="50%" />
+
 ![manager url](https://github.com/user-attachments/assets/06ad8c17-ff02-44dc-be2c-938445e5f4b6)
 
 ### 아두이노 프로그램 설정    
