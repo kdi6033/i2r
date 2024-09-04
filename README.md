@@ -45,8 +45,8 @@ QR CODE 연결하거나 그림을 누르세요 <br>
 
 File->Preferences->Additional Boards Manager URLs    
 https://dl.espressif.com/dl/package_esp32_index.json    
+<img src="https://github.com/user-attachments/assets/06ad8c17-ff02-44dc-be2c-938445e5f4b6" width="50%" />   
 
-<img src="https://github.com/user-attachments/assets/06ad8c17-ff02-44dc-be2c-938445e5f4b6" width="50%" />    
 Tools->Boars Manager   
 
 <img src="https://github.com/user-attachments/assets/51f0ed8c-96f8-4c98-aa2b-f361b2235f68" width="20%" />
