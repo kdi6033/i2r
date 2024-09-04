@@ -43,6 +43,7 @@ QR CODE 연결하거나 그림을 누르세요 <br>
 [i2r-03 보드 아두이노 소스프로그램](https://github.com/kdi6033/i2r-03/blob/main/0%20Source-Program-IoT/board-i2r-03-local.ino)    
 [i2r-04 보드 아두이노 소스프로그램](https://github.com/kdi6033/i2r-04/blob/main/0%20Source-Program-IoT/board-i2r-04-local.ino)    
 
+### 아두이노 프로그램 설정    
 File->Preferences->Additional Boards Manager URLs    
 https://dl.espressif.com/dl/package_esp32_index.json    
 <img src="https://github.com/user-attachments/assets/06ad8c17-ff02-44dc-be2c-938445e5f4b6" width="50%" />   
@@ -51,10 +52,6 @@ Tools->Boars Manager
 
 <img src="https://github.com/user-attachments/assets/51f0ed8c-96f8-4c98-aa2b-f361b2235f68" width="40%" />
 <img src="https://github.com/user-attachments/assets/3bee3090-4054-4691-9343-78a7d409f17e" width="40%" />
-
-### 아두이노 프로그램 설정    
-
-
 
 # PC IoT 서버    
 - PC에서 node red 와 mongoDB를 설치하여 인터넷 상에서 제어한다.
