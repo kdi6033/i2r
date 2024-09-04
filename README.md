@@ -49,8 +49,8 @@ https://dl.espressif.com/dl/package_esp32_index.json
 
 Tools->Boars Manager   
 
-<img src="https://github.com/user-attachments/assets/51f0ed8c-96f8-4c98-aa2b-f361b2235f68" width="40%" />
-<img src="https://github.com/user-attachments/assets/3bee3090-4054-4691-9343-78a7d409f17e" width="40%" />
+<img src="https://github.com/user-attachments/assets/51f0ed8c-96f8-4c98-aa2b-f361b2235f68" width="30%" />
+<img src="https://github.com/user-attachments/assets/3bee3090-4054-4691-9343-78a7d409f17e" width="30%" />
 
 ### 아두이노 프로그램 설정    
 
