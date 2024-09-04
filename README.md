@@ -29,6 +29,7 @@ QR CODE 연결하거나 그림을 누르세요 <br>
 
 <a href="https://play.google.com/store/apps/details?id=io.ionic.i2rReactIoT">
     <img src="https://github.com/kdi6033/i2r-03/assets/37902752/4f55641c-9a50-4eda-8ada-3e0f6beb34c6" alt="다운로드 QR코드" width="200">
+</a>  
 <a href="https://youtu.be/bLvpejVkJcQ">
     <img src="https://github.com/user-attachments/assets/9523bd58-8626-4707-af54-0d5fd12a8c82" alt="IoT PLC App 통신 설정" width="400">
 </a>
@@ -41,6 +42,14 @@ QR CODE 연결하거나 그림을 누르세요 <br>
 [i2r-02 보드 아두이노 소스프로그램](https://github.com/kdi6033/i2r-02/blob/main/0%20Source-Program-IoT/board-i2r-02-local.ino)    
 [i2r-03 보드 아두이노 소스프로그램](https://github.com/kdi6033/i2r-03/blob/main/0%20Source-Program-IoT/board-i2r-03-local.ino)    
 [i2r-04 보드 아두이노 소스프로그램](https://github.com/kdi6033/i2r-04/blob/main/0%20Source-Program-IoT/board-i2r-04-local.ino)    
+
+<img src="(https://github.com/user-attachments/assets/06ad8c17-ff02-44dc-be2c-938445e5f4b6" alt="다운로드 QR코드" width="200">
+
+![manager url](https://github.com/user-attachments/assets/06ad8c17-ff02-44dc-be2c-938445e5f4b6)
+
+### 아두이노 프로그램 설정    
+
+
 
 # PC IoT 서버    
 - PC에서 node red 와 mongoDB를 설치하여 인터넷 상에서 제어한다.
