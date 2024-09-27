@@ -50,7 +50,7 @@ https://dl.espressif.com/dl/package_esp32_index.json
 
 Tools->Boars Manager   
 
-<img src="https://github.com/user-attachments/assets/51f0ed8c-96f8-4c98-aa2b-f361b2235f68" width="40%" />
+<img src="https://github.com/user-attachments/assets/51f0ed8c-96f8-4c98-aa2b-f361b2235f68" width="30%" />
 <img src="https://github.com/user-attachments/assets/6ca31d12-2929-44b5-94b2-94f3e61f9cc4" width="30%" />
 
 # PC IoT 서버    
