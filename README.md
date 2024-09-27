@@ -51,7 +51,7 @@ https://dl.espressif.com/dl/package_esp32_index.json
 Tools->Boars Manager   
 
 <img src="https://github.com/user-attachments/assets/51f0ed8c-96f8-4c98-aa2b-f361b2235f68" width="40%" />
-<img src="https://github.com/user-attachments/assets/3bee3090-4054-4691-9343-78a7d409f17e" width="40%" />
+<img src="https://github.com/user-attachments/assets/6ca31d12-2929-44b5-94b2-94f3e61f9cc4" width="40%" />
 
 # PC IoT 서버    
 - PC에서 node red 와 mongoDB를 설치하여 인터넷 상에서 제어한다.
@@ -63,6 +63,7 @@ Tools->Boars Manager
 <a href="https://youtu.be/5spmnQX0IjM">
     <img src="https://github.com/user-attachments/assets/9da548f6-9872-48d7-846c-e790586c5511" alt="mongodb, compass 윈도우용 설치하기 " width="400">
 </a>    
+
 
 어플 아두이노 소스 프로그램과 동일 합니다.<br>
 
