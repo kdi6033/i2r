@@ -57,7 +57,42 @@ https://dl.espressif.com/dl/package_esp32_index.json
 Tools->Boars Manager   
 
 <img src="https://github.com/user-attachments/assets/51f0ed8c-96f8-4c98-aa2b-f361b2235f68" width="30%" />
-<img src="https://github.com/user-attachments/assets/6ca31d12-2929-44b5-94b2-94f3e61f9cc4" width="30%" />
+
+### partitions.csv 파일 작성
+Flash 메모리 할당을 합니다.
+Skech->Export Compiled Binary 를 실행하면 build 디렉토리가 만들어 집니다.
+다음은 생성된 파일 용량 입니다.
+```
+2024-09-29  오전 09:44         1,932,784 board-i2r-03.ino.bin
+2024-09-29  오전 09:44            24,896 board-i2r-03.ino.bootloader.bin
+2024-09-29  오전 09:44        20,233,488 board-i2r-03.ino.elf
+2024-09-29  오전 09:44        24,280,721 board-i2r-03.ino.map
+2024-09-29  오전 09:44         8,388,608 board-i2r-03.ino.merged.bin
+2024-09-29  오전 09:44             3,072 board-i2r-03.ino.partitions.bin
+               6개 파일          54,863,569 바이트
+```
+1,932,784 board-i2r-03.ino.bin 이 파일이 실행파일은 1.95M 정도의 용량 입니다.
+실행 파일을 위해 여유있게  2.5M, OTA를 위해 같은 용량 2.5M, SPIFF 에는 1.8M를 할당 하겠습니다.
+[ChatGPT]
+```
+2024-09-29  오전 09:44         1,932,784 board-i2r-03.ino.bin
+2024-09-29  오전 09:44            24,896 board-i2r-03.ino.bootloader.bin
+2024-09-29  오전 09:44        20,233,488 board-i2r-03.ino.elf
+2024-09-29  오전 09:44        24,280,721 board-i2r-03.ino.map
+2024-09-29  오전 09:44         8,388,608 board-i2r-03.ino.merged.bin
+2024-09-29  오전 09:44             3,072 board-i2r-03.ino.partitions.bin
+               6개 파일          54,863,569 바이트
+실행 파일을 위해 여유있게  2.5M, OTA를 위해 같은 용량 2.5M, SPIFF 에는 1.8M를 할당해서 partitions.csv 파일 작성해줘
+```
+다음은 생성된 partitions.csv 파일 입니다.
+```
+# Name,   Type, SubType, Offset,  Size,   Flags
+nvs,      data, nvs,     0x9000,  0x5000,
+otadata,  data, ota,     0xe000,  0x2000,
+app0,     app,  ota_0,   0x10000, 0x280000,  
+app1,     app,  ota_1,   0x290000, 0x280000, 
+spiffs,   data, spiffs,  0x510000, 0x180000  
+```
 
 # PC IoT 서버    
 - PC에서 node red 와 mongoDB를 설치하여 인터넷 상에서 제어한다.
