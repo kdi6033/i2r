@@ -177,7 +177,9 @@ node red flow
 
 
 # 프로토콜
-i2r 보드의 mqtt 통신에서는 intopic=i2r/email주소/in  outtopic=i2r/email주소/out 로 구성되어 email을 저장하면 다음 토픽으로 자신에 해당되는 데이터를 통신 할 수 있습니다.    
+i2r 보드의 mqtt 통신에서는 아래와 같이 구성되어 email을 저장하면 다음 토픽으로 자신에 해당되는 데이터를 통신 할 수 있습니다.     
+intopic : i2r/email주소/in    
+outtopic=i2r/email주소/out    
 |order|  기능  |설명 및 프로토콜|
 |--|-------|---|
 |0|펌웨어 다운로드|인터넷에서 통신으로 펌웨어를 보드로 내려 받는다<br> {'order':0,'fileName'='i2r-03.ino.bin'}|
