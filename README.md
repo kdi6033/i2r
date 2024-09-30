@@ -12,10 +12,10 @@ Node-RED를 활용하여 로컬 컴퓨터, AWS 클라우드, 스마트폰 애플
 
 ### 기기 정보   
 링크를 누르면 기기 설명 사이트로 이동 합니다.    
-- [i2r-01](https://github.com/kdi6033/i2r-01): 블루투스, mqtt, RS485, RS232 인터넷통신을 서로 연결합니다.    
+- [i2r-01](https://github.com/kdi6033/i2r-01/tree/main/0%20Android%20App%20Program/server-i2r-01): 블루투스, mqtt, RS485, RS232 인터넷통신을 서로 연결합니다.    
 - [i2r-02](https://github.com/kdi6033/i2r-02/tree/main/0%20Source-Program-IoT/board-i2r-02): 입출력 각4채널의 입출력 제어하는 IoT PLC     
-- [i2r-03](https://github.com/kdi6033/i2r-03) : 입출력 각4채널의 입출력 제어하는 IoT PLC, 온습도 센서     
-- [i2r-04](https://github.com/kdi6033/i2r-04) : 입출력 각2채널의 입출력 제어하는 IoT PLC, 2개의 아나로그 입력    
+- [i2r-03](https://github.com/kdi6033/i2r-03/tree/main/0%20Source-Program-IoT/board-i2r-03) : 입출력 각4채널의 입출력 제어하는 IoT PLC, 온습도 센서     
+- [i2r-04](https://github.com/kdi6033/i2r-04/tree/main/0%20Source-Program-IoT/board-i2r-04) : 입출력 각2채널의 입출력 제어하는 IoT PLC, 2개의 아나로그 입력    
 
 ### 사용 방법    
 - 스마트폰 또는 탭으로 제어 : 어플설치    
