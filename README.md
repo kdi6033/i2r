@@ -41,7 +41,7 @@ QR CODE 연결하거나 그림을 누르세요 <br>
 
 [i2r-02 보드 아두이노 소스프로그램](https://github.com/kdi6033/i2r-02/releases/tag/board-i2r-02-v1.0)    
 [i2r-03 보드 아두이노 소스프로그램](https://github.com/kdi6033/i2r-03/releases/tag/board-i2r-03-v1.0)    
-[i2r-04 보드 아두이노 소스프로그램](https://github.com/kdi6033/i2r-04/blob/main/0%20Source-Program-IoT/board-i2r-04-local.ino)    
+[i2r-04 보드 아두이노 소스프로그램](https://github.com/kdi6033/i2r-04/releases/tag/board-i2r-04-v1.0)    
 
 ### 아두이노 프로그램 설정    
 <a href="https://youtu.be/UrJd-RHRh6U">
