@@ -35,6 +35,9 @@ QR CODE 연결하거나 그림을 누르세요 <br>
     <img src="https://github.com/user-attachments/assets/6fcca369-0c4a-4d6f-ad9b-642c6d29bdac" alt="다운로드 QR코드" width="200">
 </a>  
 
+<a href="https://play.google.com/store/apps/details?id=io.ionic.i2rReactIoT">
+    <img src="https://github.com/user-attachments/assets/6fcca369-0c4a-4d6f-ad9b-642c6d29bdac" alt="다운로드 QR코드" width="100">
+</a>
 
 
 <a href="https://youtu.be/bLvpejVkJcQ">https://github.com/user-attachments/assets/f1c8580f-d530-4106-99ec-2ef32dcedeb1
