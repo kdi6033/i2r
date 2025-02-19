@@ -26,6 +26,7 @@ Node-RED를 활용하여 로컬 컴퓨터, AWS 클라우드, 스마트폰 애플
 ### 스마트폰 또는 탭으로 제어
 다음 QR 링크를 눌러 어플을 설치하고 유튜브의 사용법을 따라하세요.    
 QR CODE 연결하거나 그림을 누르세요 <br>   
+![qr-i2r](https://github.com/user-attachments/assets/6fcca369-0c4a-4d6f-ad9b-642c6d29bdac)
 
 <a href="https://play.google.com/store/apps/details?id=io.ionic.i2rReactIoT">
     <img src="https://github.com/user-attachments/assets/f1c8580f-d530-4106-99ec-2ef32dcedeb1" alt="다운로드 QR코드" width="200">
