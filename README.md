@@ -249,8 +249,6 @@ ESP32는 릴레이 제어 및 클라우드(MQTT) 연동을 담당하는 IoT 제�
 | **LVGL 지원**   | LVGL 8.x / 9.x 지원 (UI 개발용 라이브러리)  |
 
 
-[회로도](https://github.com/user-attachments/files/20807927/CrowPanel_Pico_Display-3.5_V1.0-SCH.pdf)
-
 GPIO Pin Definition
 
 | 핀 번호    | 기능                     |
@@ -272,6 +270,7 @@ GPIO Pin Definition
 | **P15** | GND (Ground)           |
 | **P16** | VCC (3.3V 출력)          |
 
-📺 교육 자료
-[유튜브 시](https://www.youtube.com/watch?v=5lLdKOjR-Lo&list=PLwh4PlcPx2GdvAtPGuAf1ocWj1UyPWw3W)
-[Wiki](https://www.elecrow.com/wiki/CrowPanel_Pico_HMI_Display-3.5.html)
+📺 기술 자료    
+[회로도](https://github.com/user-attachments/files/20807927/CrowPanel_Pico_Display-3.5_V1.0-SCH.pdf)    
+[유튜브 시](https://www.youtube.com/watch?v=5lLdKOjR-Lo&list=PLwh4PlcPx2GdvAtPGuAf1ocWj1UyPWw3W)    
+[Wiki](https://www.elecrow.com/wiki/CrowPanel_Pico_HMI_Display-3.5.html)    
