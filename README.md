@@ -225,8 +225,8 @@ ESP32는 릴레이 제어 및 클라우드(MQTT) 연동을 담당하는 IoT 제�
 연결 핀 구성 (예시)
 | 장치                 | 기능  | 핀       |
 | ------------------ | --- | ------- |
-| CrowPanel (RP2040) | SDA | GPIO 16 |
-|                    | SCL | GPIO 17 |
+| CrowPanel (RP2040) | SDA | GPIO 20 |
+|                    | SCL | GPIO 21 |
 | ESP32              | SDA | GPIO 16 |
 |                    | SCL | GPIO 17 |
 
