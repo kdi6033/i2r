@@ -278,6 +278,18 @@ GPIO Pin Definition
 [Wiki](https://www.elecrow.com/wiki/CrowPanel_Pico_HMI_Display-3.5.html)    
 
 ### ✅ 터치스크린 프로토콜
+첫번째 입력포트의 값이 on 일때
+```
+{ "c":1,"n":0,"v":1)
+```
+
+| 항목     | 바이트 수   | 설명                           |
+| ------ | ------- | ---------------------------- |
+| c | 1 byte  | commmand  (1:입력, 2:출력 )                |
+| n  | 1 byte  | 입출력 포트번호 |
+| v  | 1 byte  | int bool 등의 값  |
+
+
 ```
 [0xA5][len][cmd][data...][chk]
 ```
