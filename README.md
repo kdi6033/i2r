@@ -276,3 +276,55 @@ GPIO Pin Definition
 [회로도](https://github.com/user-attachments/files/20807927/CrowPanel_Pico_Display-3.5_V1.0-SCH.pdf)    
 [유튜브 시](https://www.youtube.com/watch?v=5lLdKOjR-Lo&list=PLwh4PlcPx2GdvAtPGuAf1ocWj1UyPWw3W)    
 [Wiki](https://www.elecrow.com/wiki/CrowPanel_Pico_HMI_Display-3.5.html)    
+
+✅ 프로토콜
+```
+[0xA5][len][cmd][data...][chk]
+```
+
+| 항목     | 바이트 수   | 설명                           |
+| ------ | ------- | ---------------------------- |
+| `0xA5` | 1 byte  | 헤더 (시작 구분자)                  |
+| `len`  | 1 byte  | 데이터 길이 (`cmd + data`의 바이트 수) |
+| `cmd`  | 1 byte  | 명령 코드 (1=입력, 2=출력, 3=온도...)  |
+| `data` | N bytes | 명령에 따른 실제 데이터                |
+| `chk`  | 1 byte  | CRC-8 체크섬 (헤더 제외 전체에 대해 계산)  |
+
+✅ 명령 코드 정의 (cmd)
+| 값      | 의미    | 설명                 |
+| ------ | ----- | ------------------ |
+| `0x01` | 입력    | 버튼 번호 및 on/off 상태  |
+| `0x02` | 출력    | 모터 상태 등            |
+| `0x03` | 온도 센서 | 온도 전송 (`uint16_t`) |
+
+✅ 예시 ①: 입력 명령 (버튼 2번이 ON)
+| 필드  | 값                             |
+| --- | ----------------------------- |
+| 헤더  | `0xA5`                        |
+| 길이  | `0x02` (명령 1 + 데이터 1 + 1 = 2) |
+| 명령  | `0x01` (입력)                   |
+| 데이터 | `0b00100001` = 버튼번호 2, 상태 ON  |
+| CRC | 계산된 CRC8 값                    |
+
+✅ CRC8 계산 방법 (예: x^8 + x^2 + x + 1)
+```
+uint8_t crc8(const uint8_t *data, size_t len) {
+  uint8_t crc = 0x00;
+  for (size_t i = 0; i < len; ++i) {
+    crc ^= data[i];
+    for (uint8_t j = 0; j < 8; ++j) {
+      if (crc & 0x80)
+        crc = (crc << 1) ^ 0x07;  // 다항식: x^8 + x^2 + x + 1 (0x07)
+      else
+        crc <<= 1;
+    }
+  }
+  return crc;
+}
+```
+
+
+
+
+
+
