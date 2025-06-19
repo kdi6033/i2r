@@ -272,4 +272,7 @@ GPIO Pin Definition
 | **P15** | GND (Ground)           |
 | **P16** | VCC (3.3V 출력)          |
 
-https://chatgpt.com/g/g-p-685200b8a8a081919cba3e4ede917218-crowpanel/c/68535723-1950-8004-9e20-69e08bdf68d8#:~:text=%EA%B5%90%EC%9C%A1%EC%9A%A9%20%EC%9C%A0%ED%8A%9C%EB%B8%8C%20%EC%97%90%EC%84%9C%20CrowPanel%EA%B3%BC%20ESP32%20IoT%20PLC%EB%A5%BC%20%EC%9D%B4%EC%9A%A9%ED%95%9C%20%EC%8B%A4%EC%8A%B5%20%EC%98%81%EC%83%81%EC%9D%84%20%ED%99%95%EC%9D%B8%ED%95%A0%20%EC%88%98%20%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4.
+📺 교육 자료
+👉 교육용 유튜브 에서 CrowPanel과 ESP32 IoT PLC를 이용한 실습 영상을 확인할 수 있습니다.
+
+이 영상은 CrowPanel을 이용한 I2C 통신, 센서 계측, ESP32 제어 과정을 포함한 실습 중심의 교육용 시리즈입니다.
