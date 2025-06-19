@@ -277,7 +277,7 @@ GPIO Pin Definition
 [유튜브 시](https://www.youtube.com/watch?v=5lLdKOjR-Lo&list=PLwh4PlcPx2GdvAtPGuAf1ocWj1UyPWw3W)    
 [Wiki](https://www.elecrow.com/wiki/CrowPanel_Pico_HMI_Display-3.5.html)    
 
-✅ 프로토콜
+### ✅ 터치스크린 프로토콜
 ```
 [0xA5][len][cmd][data...][chk]
 ```
