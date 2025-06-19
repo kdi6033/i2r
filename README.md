@@ -273,6 +273,5 @@ GPIO Pin Definition
 | **P16** | VCC (3.3V 출력)          |
 
 📺 교육 자료
-👉 교육용 유튜브 에서 CrowPanel과 ESP32 IoT PLC를 이용한 실습 영상을 확인할 수 있습니다.
-
-이 영상은 CrowPanel을 이용한 I2C 통신, 센서 계측, ESP32 제어 과정을 포함한 실습 중심의 교육용 시리즈입니다.
+[유튜브 시](https://www.youtube.com/watch?v=5lLdKOjR-Lo&list=PLwh4PlcPx2GdvAtPGuAf1ocWj1UyPWw3W)
+[Wiki](https://www.elecrow.com/wiki/CrowPanel_Pico_HMI_Display-3.5.html)
