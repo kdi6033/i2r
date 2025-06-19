@@ -323,8 +323,12 @@ uint8_t crc8(const uint8_t *data, size_t len) {
 }
 ```
 
+# LVGL (Light and Versatile Graphics Library)
+임베디드 시스템용 고성능 그래픽 UI 프레임워크
+적은 메모리에서도 부드럽고 직관적인 터치 UI를 구현할 수 있는 오픈소스 그래픽 라이브러리입니다
 
-
+TFT_eSPI 라이브러리 설치
+![TFT_eSPI](https://github.com/user-attachments/assets/1423d2ef-853d-418b-8de9-22546349be82)
 
 
 
