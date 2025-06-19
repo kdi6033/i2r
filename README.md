@@ -417,32 +417,70 @@ void loop() {
 ```
 
 # I2C 통신 프로그램
-마스터 프로그램
+마스터 프로그램 : 터치스크린 RP2040
 ```
 #include <Wire.h>
 
-#define I2C_SLAVE_ADDR 0x01
-#define SCL_PIN 17
-#define SDA_PIN 16
+#define I2C_ADDR 0x08  // ESP32 슬레이브 주소
+#define SDA_PIN 20     // I2C SDA 핀
+#define SCL_PIN 21     // I2C SCL 핀
 
 void setup() {
-  Wire.begin(SDA_PIN, SCL_PIN);
+  Wire.setSDA(SDA_PIN);
+  Wire.setSCL(SCL_PIN);
+  Wire.begin();  // I2C 마스터 시작
   Serial.begin(115200);
-  Serial.println("i2c start");
+  delay(1000);
+  Serial.println("I2C Master 시작");
+}
+
+void sendCommand(const String& cmd) {
+  Wire.beginTransmission(I2C_ADDR);
+  Wire.write(cmd.c_str());
+  Wire.endTransmission();
+  Serial.println("전송: " + cmd);
 }
 
 void loop() {
-  Wire.beginTransmission(I2C_SLAVE_ADDR);
-  Wire.write("Hello, Slave!");
-  Wire.endTransmission();
-  delay(1000);
+  sendCommand("{\"cmd\":\"on\"}");
+  delay(3000);
 
-  Wire.requestFrom(I2C_SLAVE_ADDR, 16); //슬레이브(1)에 13byte 요청
+  sendCommand("{\"cmd\":\"off\"}");
+  delay(3000);
+}
+```
+
+슬레이브 프로그램 : IoT PLC ESP32
+```
+#include <Wire.h>
+
+#define SLAVE_ADDR 0x08
+#define SDA_PIN 16
+#define SCL_PIN 17
+
+String received = "";
+
+void receiveEvent(int howMany) {
+  char c;
+  received = "";
   while (Wire.available()) {
-    char c = Wire.read();
-    Serial.print(c);
+    c = Wire.read();
+    received += c;
   }
-  Serial.println();
-  delay(1000);
+  Serial.println("수신된 데이터: " + received);
+}
+
+void setup() {
+  Serial.begin(115200);
+  delay(500);
+  Serial.println("I2C Slave 시작");
+
+  // 슬레이브 모드로 SDA/SCL 핀 지정
+  Wire.begin(SLAVE_ADDR, SDA_PIN, SCL_PIN, 100000);
+  Wire.onReceive(receiveEvent);
+}
+
+void loop() {
+  // 슬레이브는 이벤트 기반이므로 loop는 비워둠
 }
 ```
