@@ -334,5 +334,83 @@ TFT_eSPI 라이브러리 설치
 여기서 다운로드 받은 파일중에 User_Setup.h 를 아두이노 라이브러리 디렉토리에 복사 한다.   
 ![TFT_eSPI-1](https://github.com/user-attachments/assets/0839872d-5459-4bf3-996e-cec4612d6493)
 
+lvgl 라이브러리 설치     
+그림과 같이 꼭 8.3.11 버젼을 설치해야 프로그램이 실행 됩니다.
+위에서 다운로드 받은 파일중에 lv_conf.h 를 아두이노 라이브러리 디렉토리에 복사 한다.  
+![lvgl](https://github.com/user-attachments/assets/070e58a6-ff88-46ab-a752-f6446f9c30a9)
 
+버튼 출력 프로그램
+```
+#include <lvgl.h>
+#include <TFT_eSPI.h>
 
+static const uint16_t screenWidth  = 480;
+static const uint16_t screenHeight = 320;
+
+static lv_disp_draw_buf_t draw_buf;
+static lv_color_t buf[screenWidth * screenHeight / 10];
+
+TFT_eSPI tft = TFT_eSPI();  // TFT 인스턴스
+
+/* 화면 갱신 콜백 */
+void my_disp_flush(lv_disp_drv_t *disp, const lv_area_t *area, lv_color_t *color_p) {
+  uint32_t w = area->x2 - area->x1 + 1;
+  uint32_t h = area->y2 - area->y1 + 1;
+
+  tft.startWrite();
+  tft.setAddrWindow(area->x1, area->y1, w, h);
+  tft.pushColors((uint16_t *)&color_p->full, w * h, true);
+  tft.endWrite();
+
+  lv_disp_flush_ready(disp);
+}
+
+/* 버튼 클릭 이벤트 핸들러 */
+void btn_event_cb(lv_event_t *e) {
+  lv_obj_t *btn = lv_event_get_target(e);
+  const char *txt = lv_label_get_text(lv_obj_get_child(btn, 0));
+  Serial.print("Button pressed: ");
+  Serial.println(txt);
+}
+
+void setup() {
+  Serial.begin(115200);
+  lv_init();
+  tft.begin();
+  tft.setRotation(3);  // 필요 시 회전 변경
+
+  lv_disp_draw_buf_init(&draw_buf, buf, NULL, screenWidth * screenHeight / 10);
+
+  static lv_disp_drv_t disp_drv;
+  lv_disp_drv_init(&disp_drv);
+  disp_drv.hor_res = screenWidth;
+  disp_drv.ver_res = screenHeight;
+  disp_drv.flush_cb = my_disp_flush;
+  disp_drv.draw_buf = &draw_buf;
+  lv_disp_drv_register(&disp_drv);
+
+  // 버튼 생성 (세로 정렬)
+  lv_obj_t *btn_up = lv_btn_create(lv_scr_act());
+  lv_obj_align(btn_up, LV_ALIGN_CENTER, 0, -60);
+  lv_obj_add_event_cb(btn_up, btn_event_cb, LV_EVENT_CLICKED, NULL);
+  lv_obj_t *label_up = lv_label_create(btn_up);
+  lv_label_set_text(label_up, "up");
+
+  lv_obj_t *btn_stop = lv_btn_create(lv_scr_act());
+  lv_obj_align(btn_stop, LV_ALIGN_CENTER, 0, 0);
+  lv_obj_add_event_cb(btn_stop, btn_event_cb, LV_EVENT_CLICKED, NULL);
+  lv_obj_t *label_stop = lv_label_create(btn_stop);
+  lv_label_set_text(label_stop, "stop");
+
+  lv_obj_t *btn_down = lv_btn_create(lv_scr_act());
+  lv_obj_align(btn_down, LV_ALIGN_CENTER, 0, 60);
+  lv_obj_add_event_cb(btn_down, btn_event_cb, LV_EVENT_CLICKED, NULL);
+  lv_obj_t *label_down = lv_label_create(btn_down);
+  lv_label_set_text(label_down, "down");
+}
+
+void loop() {
+  lv_timer_handler();
+  delay(5);
+}
+```
