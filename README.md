@@ -202,3 +202,19 @@ outtopic=i2r/email주소/out
 <a href="https://youtu.be/ufBprCdABSk">
     <img src="https://github.com/user-attachments/assets/fd75d17a-1c77-46e2-872d-b610dede45c3" alt="protocol" width="400">
 </a>
+
+
+# IoT PLC 터치스크린
+ESP32 IoT PLC와 CrowPanel(RP2040)을 I2C로 연결하여,
+CrowPanel은 사용자 인터페이스와 I2C 센서 계측을 담당하고,
+ESP32는 릴레이 제어 및 클라우드(MQTT) 연동을 담당하는 IoT 제어 시스템입니다.    
+
++----------------------+         +--------------------------+
+| CrowPanel (RP2040)  |         | ESP32 IoT PLC            |
+|----------------------|         |--------------------------|
+| - LVGL UI (터치)     |  I2C    | - 릴레이/모터 제어       |
+| - I2C 센서 계측      | <-----> | - 명령 수신 (I2C Slave)  |
+| - I2C Master 역할    |         | - MQTT, OTA, Wi-Fi       |
++----------------------+         +--------------------------+
+         |                                
+         +--> BH1750, SHT30 등 I2C 센서 연결
