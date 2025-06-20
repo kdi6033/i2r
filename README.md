@@ -346,12 +346,69 @@ TFT_eSPI 라이브러리 설치
 [참조기술문서 및 프로그램 다운로드](https://github.com/Elecrow-RD/CrowPanel-Pico-Display-Course-File)    
 여기서 다운로드 받은 파일중에 User_Setup.h 를 아두이노 라이브러리 디렉토리에 복사 한다.   
 ![TFT_eSPI-1](https://github.com/user-attachments/assets/0839872d-5459-4bf3-996e-cec4612d6493)
-
+World
 lvgl 라이브러리 설치     
 그림과 같이 꼭 8.3.11 버젼을 설치해야 프로그램이 실행 됩니다.
 위에서 다운로드 받은 파일중에 lv_conf.h 를 아두이노 라이브러리 디렉토리에 복사 한다.  
 ![lvgl](https://github.com/user-attachments/assets/070e58a6-ff88-46ab-a752-f6446f9c30a9)
 
+기본적인 문자를 출력해 봅니다.
+Text 출력 Hello 
+```
+#include <lvgl.h>
+#include <TFT_eSPI.h>
+
+/* 디스플레이 해상도 */
+static const uint16_t screenWidth  = 480;
+static const uint16_t screenHeight = 320;
+
+static lv_disp_draw_buf_t draw_buf;
+static lv_color_t buf[screenWidth * screenHeight / 10];
+
+TFT_eSPI tft = TFT_eSPI();  // TFT 객체
+
+/* 화면 갱신 함수 */
+void my_disp_flush(lv_disp_drv_t *disp, const lv_area_t *area, lv_color_t *color_p) {
+  uint32_t w = area->x2 - area->x1 + 1;
+  uint32_t h = area->y2 - area->y1 + 1;
+
+  tft.startWrite();
+  tft.setAddrWindow(area->x1, area->y1, w, h);
+  tft.pushColors((uint16_t *)&color_p->full, w * h, true);
+  tft.endWrite();
+
+  lv_disp_flush_ready(disp);
+}
+
+void setup() {
+  Serial.begin(115200);
+  lv_init();        // LVGL 초기화
+  tft.begin();      // TFT 초기화
+  tft.setRotation(3);  // 필요에 따라 회전값 변경
+
+  // 버퍼 초기화
+  lv_disp_draw_buf_init(&draw_buf, buf, NULL, screenWidth * screenHeight / 10);
+
+  // 디스플레이 드라이버 설정
+  static lv_disp_drv_t disp_drv;
+  lv_disp_drv_init(&disp_drv);
+  disp_drv.hor_res = screenWidth;
+  disp_drv.ver_res = screenHeight;
+  disp_drv.flush_cb = my_disp_flush;
+  disp_drv.draw_buf = &draw_buf;
+  lv_disp_drv_register(&disp_drv);
+
+  // 간단한 Hello World 라벨
+  lv_obj_t *label = lv_label_create(lv_scr_act());
+  lv_label_set_text(label, "Hello World");
+  lv_obj_align(label, LV_ALIGN_CENTER, 0, 0);  // 가운데 정렬
+}
+
+void loop() {
+  lv_timer_handler();  // LVGL 내부 작업 처리
+  delay(5);
+}
+```
 버튼 출력 프로그램
 ```
 #include <lvgl.h>
