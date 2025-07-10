@@ -133,7 +133,7 @@ outtopic=i2r/email주소/out
 
       
 
-위에 기술한 프로토콜을 node red 에서 실행 한 것입니다. 폰의 어플에서 구현한 것을 node red로 프로그램해서 사용하세요.
+위에 기술한 프로토콜을 node red 에서 실행 한 것입니다. 폰의 어플에서 구현한 것을 node red로 프로그램해서 사용할수 있습니다.
 <a href="https://youtu.be/ufBprCdABSk">
     <img src="https://github.com/user-attachments/assets/01886cc0-2b59-4e1c-962b-f5b7cc751a45" alt="i2r 프로토콜" width="800">
 </a>
