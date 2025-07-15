@@ -43,6 +43,41 @@ QR CODE 연결하거나 그림을 누르세요 <br>
 [i2r-03 보드 아두이노 소스프로그램](https://github.com/kdi6033/i2r-03/releases/tag/board-i2r-03-v1.0)    
 [i2r-04 보드 아두이노 소스프로그램](https://github.com/kdi6033/i2r-04/releases/tag/board-i2r-04-v1.0)    
 
+
+# 프로토콜
+i2r 보드의 mqtt 통신에서는 아래와 같이 구성되어 email을 저장하면 다음 토픽으로 자신에 해당되는 데이터를 통신 할 수 있습니다.     
+intopic : i2r/email주소/in    
+outtopic=i2r/email주소/out  
+
+|order|  기능  |설명 및 프로토콜|
+|--|-------|---|
+|0|펌웨어 다운로드|인터넷에서 통신으로 펌웨어를 보드로 내려 받는다<br> {"mac":"D8:13:2A:C3:E7:68","order":0,"fileName":"i2r-03.ino.bin"}|
+|1|정보입력|와이파이 및 통신에 필요한 정보를 보내 보드에 기록하여 기기는 여기 정보로 통신을 연결한다.<br> {"order":1,'ssid':'***','password'='***', 'email':'***', 'mqttBroker':'ai.doowon.ac.kr'}|
+|2|핀출력| IoT PLC의 핀번호(0,1,2,3 4개)와 true/false를 보내면 릴레이가 동작한다. <br>{"mac":"A0:B7:65:CD:4D:34","order":2,"no":1,"value":true}<blockquote>맥어드레스가 "A0:B7:65:CD:4D:34"인 기기의 1번핀 릴레이를 on 시킨다.</blockquote> |
+|3|상태전송요청|보드의 현재 상태를 mqtt로 보낸다.<br>요청 : {"mac":"EC:64:C9:43:E8:B8",'order':3}<blockquote> 맥어드레스가 "EC:64:C9:43:E8:B8"인 기기의 현재 상태를 보내온다. </blockquote> 응답예시  <br>{"type":3,"email":"kdi6033@gmail.com","mac":"EC:64:C9:43:E8:B8","temp":28.4,"humi":38,"in":[0,0,0,0],"out":[0,0,0,0]}|
+|4|동작시간설정 | 보드의 동작시간을 일일 일주일 단위로 설정한다. <br>{'order':4,"oper":operation,"pI":pinIndex,"sH":시작시간,"sM":시작분,"eH":종료시간,"eM":종료분, "rM":repeatMode,"dW":dayOfWeek}<br>pI:pinIndex 출력핀 번호 0번부터 시작한다.<br> operation : "insert":설정을 추가한다. "delete":한개의 설정을 삭제한다. "deleteAll":모두 삭제한다.<br>repeatMode : "daily"="d", "weekly"="w"<br>dayOfWeek : 일주일 중 요일설정 일=0,월=1,화=2,수=3,목=4,금=5,토=6<br>예제<br>{"order":4,"mac":"A0:B7:65:CD:4D:34","oper":"insert","pI":0,"sH":9,"sM":55,"eH":9,"eM":57,"rM":"d","dW":0}<blockquote>오전9시55분부터 9시57분까지 매일 동작한다.</blockquote>{"order":4,"mac":"A0:B7:65:CD:4D:34","oper":"insert","pI":0,"sH":9,"sM":55,"eH":9,"eM":57,"rM":"w","dW":1}<blockquote>오전9시55분부터 9시57분까지 매주 월요일에 동작한다.</blockquote>{"order":4,"mac":"A0:B7:65:CD:4D:34","oper":"list","pI":0}<blockquote>0번 포트에 저장 리스트를 보여준다.</blockquote>{"order":4,"mac":"A0:B7:65:CD:4D:34","oper":"delete","pI":0,"slotIndex":0}<blockquote>0번핀의 0번째 리스트를 삭제한다.</blockquote>{"order":4,"mac":"A0:B7:65:CD:4D:34","oper":"deleteAll","pI":0}<blockquote>0번 핀의 저장된 값을 모두 지운다.</blockquote>|
+|5|입력핀에 출력설정|입력핀의 on off 동작에 따라 출력을 연결한다. 통신에 연결되어 있는 모드 기기의 출력포트를 연결 할 수 있다.<br>예제<br> operation : "save":출력설정을 저장한다. "list":설정된 값의 리스트를 요구한다. "delete":선택한 설정 값을 지운다. <br>{"order":5,"oper":"save","mac":"A0:B7:65:CD:4D:34","portNo":0,"portState":[{"mac":"D4:8A:FC:B5:30:10","port":1,"value":false},{"mac":"B0:A7:32:1D:B3:B8","port":1,"value":true}]} <blockquote> 맥어드레스가 "A0:B7:65:CD:4D:34" 0번 핀의 동작 저장 on 될때 맥어드레스가 "A0:B7:65:CD:4D:34" 0번 핀이 on(true) 된다. off 될때 맥어드레스가 "A0:B7:65:CD:4D:34" 0번 핀이 off(false) 된다. </blockquote>{"order":5,"mac":"A0:B7:65:CD:4D:34","oper":"list","portNo":0} <blockquote>맥어드레스 "A0:B7:65:CD:4D:34" 기기 0번 핀의 설정 값을 요청한다.</blockquote>응답 메세지 예시 <br>{"order":6,"mac":"A0:B7:65:CD:4D:34","portNo":0,"portState":[{"mac":"D4:8A:FC:B5:30:10","port":1,"value":false},{"mac":"B0:A7:32:1D:B3:B8","port":1,"value":true}]}<br>{"order":5,"mac":"A0:B7:65:CD:4D:34","oper":"delete","portNo":0}<blockquote>0번 핀의 저장된 값을 모두 지운다.</blockquote>|
+|6|온도변화에 출력설정|예제<br>{"order":6,"oper":"save","mac":"A0:B7:65:CD:4D:34","tempHigh":28,"tempLow":27,"portState":[{"mac":"D4:8A:FC:B5:30:10","port":0,"value":false},{"mac":"D4:8A:FC:B5:30:10","port":0,"value":true}]} <blockquote>온도가 28도를 넘어설 때 맥어드레스 "D4:8A:FC:B5:30:10" 0번핀이 on 되고 온도가 27도에서 떨어질 때 맥어드레스 "D4:8A:FC:B5:30:10" 0번핀이 off 된다</blockquote>{"order":6,"mac":"A0:B7:65:CD:4D:34","oper":"list"}<blockquote>맥어드레스 "A0:B7:65:CD:4D:34" 기기 온도설정 리스트를 요청한다.</blockquote>    {"order":6,"oper":"cali","mac":"A0:B7:65:CD:4D:34","calTemp":28.1}<blockquote> 맥어드레스가 "A0:B7:65:CD:4D:34"인 기기의 현재 온도를 28.1로 세팅한다.</blockquote>{"order":6,"mac":"A0:B7:65:CD:4D:34","oper":"delete"}<blockquote>맥어드레스가 "A0:B7:65:CD:4D:34"인 기기의 온도에 따른 동작 연결을 삭제한다.</blockquote>|
+|7|습도변화에 출력설정|예제<br>{"order":7,"oper":"save","mac":"A0:B7:65:CD:4D:34","humiHigh":50,"humiLow":49,"portState":[{"mac":"D4:8A:FC:B5:30:10","port":0,"value":false},{"mac":"D4:8A:FC:B5:30:10","port":0,"value":true}]}<blockquote> 습도가 50을 넘어설 때 맥어드레스 "D4:8A:FC:B5:30:10" 0번핀이 on 되고 습도가 49로 떨어질 때 맥어드레스 "D4:8A:FC:B5:30:10" 0번핀이 off 된다</blockquote>{"order":7,"mac":"A0:B7:65:CD:4D:34","oper":"list"}<blockquote>맥어드레스 "A0:B7:65:CD:4D:34" 기기 온도설정 리스트를 요청한다.</blockquote> {"order":7,"oper":"cali","mac":"A0:B7:65:CD:4D:34","calHumi":48}<br><blockquote> 맥어드레스가 "A0:B7:65:CD:4D:34"인 기기의 현재 습도를 48로 세팅한다.</blockquote>{"order":7,"mac":"A0:B7:65:CD:4D:34","oper":"delete"}<blockquote> 맥어드레스가 "A0:B7:65:CD:4D:34"인 기기의 습도에 따른 동작 연결을 삭제한다.</blockquote>|
+|8| 센서변화의 출력설정 | order 6,7 을 포함한 모든 센서의 동작을 설정 합니다. 프로토콜은 온도 습도와 동일 합니다. |
+|9|센서 액튜에이터 참조값| 터치패널이 설치되어 별도의 cpu에서 센서 계측값을 메인보드로 보내면 이 값을 기록하고 크라우드 서버로 보낸자.     <br> 예제 터치스크린 rp2040에서 IoT PLC로 조도센서 값을 보낸다.     <br>{"order":8, "light":120} |
+
+      
+
+위에 기술한 프로토콜을 node red 에서 실행 한 것입니다. 폰의 어플에서 구현한 것을 node red로 프로그램해서 사용할수 있습니다.
+<a href="https://youtu.be/ufBprCdABSk">
+    <img src="https://github.com/user-attachments/assets/01886cc0-2b59-4e1c-962b-f5b7cc751a45" alt="i2r 프로토콜" width="800">
+</a>
+
+[프로토콜 node red 소스프로그램](https://github.com/kdi6033/i2r/blob/main/txt/protocol%20node%20red%20example.json)
+
+<a href="https://youtu.be/ufBprCdABSk">
+    <img src="https://github.com/user-attachments/assets/fd75d17a-1c77-46e2-872d-b610dede45c3" alt="protocol" width="400">
+</a>
+
+
+
+
 ### 아두이노 프로그램 설정    
 <a href="https://youtu.be/UrJd-RHRh6U">
     <img src="https://github.com/user-attachments/assets/67556286-b878-44ef-9175-553a6aa418ef" alt="Updating the screen" width="400">
@@ -112,39 +147,6 @@ spiffs,   data, spiffs,  0x510000, 0x180000
 - 세 번째와 네 번째로 app0과 app1 파티션은 각각 OTA 업데이트를 위한 애플리케이션 저장 공간입니다. 일반적으로 ESP32는 두 개의 애플리케이션 파티션을 가집니다. 하나는 현재 실행 중인 애플리케이션이 저장된 공간이고, 다른 하나는 새로운 업데이트를 다운로드할 공간입니다. 예를 들어, 현재 실행 중인 애플리케이션은 app0에 저장되어 있고, OTA 업데이트를 통해 새로운 펌웨어가 app1에 다운로드됩니다. 업데이트가 완료되면 다음에 디바이스가 부팅될 때 app1에서 애플리케이션이 실행됩니다. app0과 app1 파티션은 각각 2.5MB 크기로 할당되어 있어 대규모 애플리케이션을 저장할 수 있습니다. app0 는 Offset: 0x10000 에서 시작해서 Size: 0x280000 (2.5MB) 할당, app1는 Offset: 0x290000 에서 시작해서 Size: 0x280000 (2.5MB) 할당
 
 - 마지막으로 SPIFFS 파티션은 파일 시스템 저장 공간입니다. SPIFFS는 플래시 메모리를 기반으로 한 파일 시스템으로, 디바이스가 HTML 파일, 이미지, 스크립트 파일 등 다양한 파일 데이터를 저장하고 읽을 수 있도록 도와줍니다. 예를 들어, 웹서버를 구현하는 경우 웹 페이지의 정적 파일을 SPIFFS에 저장할 수 있습니다.  이 파티션은 1.5MB 크기로 할당되어 있으며, 시스템이 파일 기반 데이터를 관리할 수 있는 중요한 공간입니다. Offset: 0x510000 에서 시작해서 Size: 0x180000 (1.5MB) 할당.
-
-
-# 프로토콜
-i2r 보드의 mqtt 통신에서는 아래와 같이 구성되어 email을 저장하면 다음 토픽으로 자신에 해당되는 데이터를 통신 할 수 있습니다.     
-intopic : i2r/email주소/in    
-outtopic=i2r/email주소/out  
-
-|order|  기능  |설명 및 프로토콜|
-|--|-------|---|
-|0|펌웨어 다운로드|인터넷에서 통신으로 펌웨어를 보드로 내려 받는다<br> {"mac":"D8:13:2A:C3:E7:68","order":0,"fileName":"i2r-03.ino.bin"}|
-|1|정보입력|와이파이 및 통신에 필요한 정보를 보내 보드에 기록하여 기기는 여기 정보로 통신을 연결한다.<br> {"order":1,'ssid':'***','password'='***', 'email':'***', 'mqttBroker':'ai.doowon.ac.kr'}|
-|2|핀출력| IoT PLC의 핀번호(0,1,2,3 4개)와 true/false를 보내면 릴레이가 동작한다. <br>{"mac":"A0:B7:65:CD:4D:34","order":2,"no":1,"value":true}<blockquote>맥어드레스가 "A0:B7:65:CD:4D:34"인 기기의 1번핀 릴레이를 on 시킨다.</blockquote> |
-|3|상태전송요청|보드의 현재 상태를 mqtt로 보낸다.<br>요청 : {"mac":"EC:64:C9:43:E8:B8",'order':3}<blockquote> 맥어드레스가 "EC:64:C9:43:E8:B8"인 기기의 현재 상태를 보내온다. </blockquote> 응답예시  <br>{"type":3,"email":"kdi6033@gmail.com","mac":"EC:64:C9:43:E8:B8","temp":28.4,"humi":38,"in":[0,0,0,0],"out":[0,0,0,0]}|
-|4|동작시간설정 | 보드의 동작시간을 일일 일주일 단위로 설정한다. <br>{'order':4,"oper":operation,"pI":pinIndex,"sH":시작시간,"sM":시작분,"eH":종료시간,"eM":종료분, "rM":repeatMode,"dW":dayOfWeek}<br>pI:pinIndex 출력핀 번호 0번부터 시작한다.<br> operation : "insert":설정을 추가한다. "delete":한개의 설정을 삭제한다. "deleteAll":모두 삭제한다.<br>repeatMode : "daily"="d", "weekly"="w"<br>dayOfWeek : 일주일 중 요일설정 일=0,월=1,화=2,수=3,목=4,금=5,토=6<br>예제<br>{"order":4,"mac":"A0:B7:65:CD:4D:34","oper":"insert","pI":0,"sH":9,"sM":55,"eH":9,"eM":57,"rM":"d","dW":0}<blockquote>오전9시55분부터 9시57분까지 매일 동작한다.</blockquote>{"order":4,"mac":"A0:B7:65:CD:4D:34","oper":"insert","pI":0,"sH":9,"sM":55,"eH":9,"eM":57,"rM":"w","dW":1}<blockquote>오전9시55분부터 9시57분까지 매주 월요일에 동작한다.</blockquote>{"order":4,"mac":"A0:B7:65:CD:4D:34","oper":"list","pI":0}<blockquote>0번 포트에 저장 리스트를 보여준다.</blockquote>{"order":4,"mac":"A0:B7:65:CD:4D:34","oper":"delete","pI":0,"slotIndex":0}<blockquote>0번핀의 0번째 리스트를 삭제한다.</blockquote>{"order":4,"mac":"A0:B7:65:CD:4D:34","oper":"deleteAll","pI":0}<blockquote>0번 핀의 저장된 값을 모두 지운다.</blockquote>|
-|5|입력핀에 출력설정|입력핀의 on off 동작에 따라 출력을 연결한다. 통신에 연결되어 있는 모드 기기의 출력포트를 연결 할 수 있다.<br>예제<br> operation : "save":출력설정을 저장한다. "list":설정된 값의 리스트를 요구한다. "delete":선택한 설정 값을 지운다. <br>{"order":5,"oper":"save","mac":"A0:B7:65:CD:4D:34","portNo":0,"portState":[{"mac":"D4:8A:FC:B5:30:10","port":1,"value":false},{"mac":"B0:A7:32:1D:B3:B8","port":1,"value":true}]} <blockquote> 맥어드레스가 "A0:B7:65:CD:4D:34" 0번 핀의 동작 저장 on 될때 맥어드레스가 "A0:B7:65:CD:4D:34" 0번 핀이 on(true) 된다. off 될때 맥어드레스가 "A0:B7:65:CD:4D:34" 0번 핀이 off(false) 된다. </blockquote>{"order":5,"mac":"A0:B7:65:CD:4D:34","oper":"list","portNo":0} <blockquote>맥어드레스 "A0:B7:65:CD:4D:34" 기기 0번 핀의 설정 값을 요청한다.</blockquote>응답 메세지 예시 <br>{"order":6,"mac":"A0:B7:65:CD:4D:34","portNo":0,"portState":[{"mac":"D4:8A:FC:B5:30:10","port":1,"value":false},{"mac":"B0:A7:32:1D:B3:B8","port":1,"value":true}]}<br>{"order":5,"mac":"A0:B7:65:CD:4D:34","oper":"delete","portNo":0}<blockquote>0번 핀의 저장된 값을 모두 지운다.</blockquote>|
-|6|온도변화에 출력설정|예제<br>{"order":6,"oper":"save","mac":"A0:B7:65:CD:4D:34","tempHigh":28,"tempLow":27,"portState":[{"mac":"D4:8A:FC:B5:30:10","port":0,"value":false},{"mac":"D4:8A:FC:B5:30:10","port":0,"value":true}]} <blockquote>온도가 28도를 넘어설 때 맥어드레스 "D4:8A:FC:B5:30:10" 0번핀이 on 되고 온도가 27도에서 떨어질 때 맥어드레스 "D4:8A:FC:B5:30:10" 0번핀이 off 된다</blockquote>{"order":6,"mac":"A0:B7:65:CD:4D:34","oper":"list"}<blockquote>맥어드레스 "A0:B7:65:CD:4D:34" 기기 온도설정 리스트를 요청한다.</blockquote>    {"order":6,"oper":"cali","mac":"A0:B7:65:CD:4D:34","calTemp":28.1}<blockquote> 맥어드레스가 "A0:B7:65:CD:4D:34"인 기기의 현재 온도를 28.1로 세팅한다.</blockquote>{"order":6,"mac":"A0:B7:65:CD:4D:34","oper":"delete"}<blockquote>맥어드레스가 "A0:B7:65:CD:4D:34"인 기기의 온도에 따른 동작 연결을 삭제한다.</blockquote>|
-|7|습도변화에 출력설정|예제<br>{"order":7,"oper":"save","mac":"A0:B7:65:CD:4D:34","humiHigh":50,"humiLow":49,"portState":[{"mac":"D4:8A:FC:B5:30:10","port":0,"value":false},{"mac":"D4:8A:FC:B5:30:10","port":0,"value":true}]}<blockquote> 습도가 50을 넘어설 때 맥어드레스 "D4:8A:FC:B5:30:10" 0번핀이 on 되고 습도가 49로 떨어질 때 맥어드레스 "D4:8A:FC:B5:30:10" 0번핀이 off 된다</blockquote>{"order":7,"mac":"A0:B7:65:CD:4D:34","oper":"list"}<blockquote>맥어드레스 "A0:B7:65:CD:4D:34" 기기 온도설정 리스트를 요청한다.</blockquote> {"order":7,"oper":"cali","mac":"A0:B7:65:CD:4D:34","calHumi":48}<br><blockquote> 맥어드레스가 "A0:B7:65:CD:4D:34"인 기기의 현재 습도를 48로 세팅한다.</blockquote>{"order":7,"mac":"A0:B7:65:CD:4D:34","oper":"delete"}<blockquote> 맥어드레스가 "A0:B7:65:CD:4D:34"인 기기의 습도에 따른 동작 연결을 삭제한다.</blockquote>|
-|8| 센서변화의 출력설정 | order 6,7 을 포함한 모든 센서의 동작을 설정 합니다. 프로토콜은 온도 습도와 동일 합니다. |
-|9|센서 액튜에이터 참조값| 터치패널이 설치되어 별도의 cpu에서 센서 계측값을 메인보드로 보내면 이 값을 기록하고 크라우드 서버로 보낸자.     <br> 예제 터치스크린 rp2040에서 IoT PLC로 조도센서 값을 보낸다.     <br>{"order":8, "light":120} |
-
-      
-
-위에 기술한 프로토콜을 node red 에서 실행 한 것입니다. 폰의 어플에서 구현한 것을 node red로 프로그램해서 사용할수 있습니다.
-<a href="https://youtu.be/ufBprCdABSk">
-    <img src="https://github.com/user-attachments/assets/01886cc0-2b59-4e1c-962b-f5b7cc751a45" alt="i2r 프로토콜" width="800">
-</a>
-
-[프로토콜 node red 소스프로그램](https://github.com/kdi6033/i2r/blob/main/txt/protocol%20node%20red%20example.json)
-
-<a href="https://youtu.be/ufBprCdABSk">
-    <img src="https://github.com/user-attachments/assets/fd75d17a-1c77-46e2-872d-b610dede45c3" alt="protocol" width="400">
-</a>
-
 
 # Node-RED 서버 구축
 ## PC IoT 서버 (Node-RED)    
