@@ -87,8 +87,12 @@ outtopic=i2r/email주소/out
 | `set_info`          | `si`             | Wi-Fi, MQTT 브로커 등 설정 정보 전송 <br>기능: Wi-Fi 및 MQTT 설정 정보 등록 <br> {"c": "si","ssid": "i2r_wifi","password": "00000000","email": "user@example.com","mqttBroker": "mqtt.i2r.link"} |
 | `set_output`        | `so`             | 출력 핀을 ON/OFF 제어 (true = ON, false = OFF) <br>기능: 1번핀 on  <br> {"c": "so","m": "A0:B7:65:CD:4D:34","n": 1,"v": true}|
 | `get_status`        | `gs`             | 보드 상태 요청 (온도, 습도, in/out 등) <br> 기능: 기기의 현재 상태 요청 {"c": "gs","m": "EC:64:C9:43:E8:B8"} <br> 응답 예시: {"type": 3,"email": "kdi6033@gmail.com","mac": "EC:64:C9:43:E8:B8","temp": 28.4,"humi": 38,"in": [0, 0, 0, 0],"out": [0, 0, 0, 0]} |
-| `schedule_output`   | `sch`            | 시간 기반 출력 동작 스케줄 설정 | 
-| `bind_input_output` | `bio`            | 입력 상태에 따라 출력 연동 설정 |
+| `schedule_output`   | `sch`            | 시간 기반 출력 동작 스케줄 설정 <br> 기능: 출력핀 시간 스케줄 설정 {"c": "sch","m": "A0:B7:65:CD:4D:34","o": "save","n": 0,"sH": 9,sM": 0, "eH": 10, "eM": 0,"rM": "d", "dW": 0 } | 
+| `bind_input_output` | `bio`            | 입력 상태에 따라 출력 연동 설정 <br> 기능: 입력 상태에 따라 출력 제어 {"c": "bio","o": "save","m": "A0:B7:65:CD:4D:34","n": 0,"ps": [
+{ "m": "D4:8A:FC:B5:30:10", "n": 1, "v": true },{ "m": "B0:A7:32:1D:B3:B8", "n": 1, "v": false }
+  ]
+}
+|
 | `bind_sensor`       | `bs`             | 센서 조건에 따라 출력 제어 (온도, 습도, 조도 등) |
 | `sensor_input`      | `si2`            | 외부 센서값(RP2040 등) 전달 |
 
