@@ -83,6 +83,8 @@ outtopic=i2r/email주소/out
 | `eH` / `eM` | 종료 시간 / 분   | 스케줄 종료 시간      |
 | `rm`      | repeat mode  | 반복 주기 "d"="daily", "w"="weekly" |
 | `dw`      | day of week  | 일주일 중 요일설정 일=0,월=1,화=2,수=3,목=4,금=5,토=6 |
+| `high`    | high | 센서 동작의 상한 값  |
+| `low`     | low  | 센서 동작의 하한 값  |
 | `temp`    | temperature | 온도  |
 | `humi`    | humidity  | 습도    |
 | `light`   | light     | 조도    |
@@ -99,8 +101,8 @@ outtopic=i2r/email주소/out
 | `get_status`        | `gs`             | 보드 상태 요청 (온도, 습도, in/out 등)   |
 | `schedule_output`   | `sch`            | 시간 기반 출력 동작 스케줄 설정  | 
 | `bind_input_output` | `bio`            | 입력 상태에 따라 출력 연동 설정  |
-| `bind_sensor`       | `bs`             | 센서 조건에 따라 출력 제어 (온도, 습도, 조도 등) <br> {"c": "bs","m": "A0:B7:65:CD:4D:34","o": "save","type":"temp","tempHigh": 28,"tempLow": 27,"ps": [{ "m": "D4:8A:FC:B5:30:10", "n": 0, "v": true }]} |
-| `touchPanel_input`      | `ti`            | Touch Panel(RP2040 등) 전달 |
+| `bind_sensor`       | `bs`             | 센서 조건에 따라 출력 제어 (온도, 습도, 조도 등) |
+| `touchPanel_input`  | `ti`            | Touch Panel(RP2040 등) 전달 |
 
 ---
 ## ✅ 예제 
@@ -112,8 +114,8 @@ outtopic=i2r/email주소/out
 | **`get_status`** (`gs`)         | `{ "c": "gs", "m": "EC:64:C9:43:E8:B8" }`                                                                                                                      | 지정 보드의 현재 상태를 요청합니다. 응답으로는 온도, 습도, 입력포트 상태(`in`), 출력포트 상태(`out`), MAC, email 등의 정보가 포함됩니다. 실시간 모니터링 시 사용됩니다.    <br> 응답 예시: `{"type": 3,"email": "kdi6033@gmail.com","m": "EC:64:C9:43:E8:B8","temp": 28.4,"humi": 38,"in": [0, 0, 0, 0],"out": [0, 0, 0, 0]} `    |
 | **`schedule_output`** (`sch`)   | `{ "c": "sch", "m": "A0:B7:65:CD:4D:34", "o": "insert", "n": 0, "sH": 9, "sM": 0, "eH": 10, "eM": 20, "rM": "d", "dW": 1 }`                                     |  9:00 ~ 10:20 까지 매일 동작함 <br> 출력 핀의 동작을 시간 기반으로 자동화합니다. 시작시간(`sH:sM`)과 종료시간(`eH:eM`), 반복(`rM`=daily:`d` / weekly:`w`), 요일(`dW`) 등을 설정하여 예약 제어가 가능합니다.  |
 | **`bind_input_output`** (`bio`) | `{"c": "bio","o": "save","m": "A0:B7:65:CD:4D:34","n": 0,"ps": [{ "m": "D4:8A:FC:B5:30:10", "n": 1, "v": true },{ "m": "B0:A7:32:1D:B3:B8", "n": 1, "v": false } ]}`   | 특정 입력 포트(n)의 상태(ON/OFF)에 따라 연동된 출력 포트들을 자동으로 제어합니다. 한 개 또는 여러 기기/포트를 묶어 입력에 반응하는 출력을 구성할 수 있습니다.  "A0:B7:65:CD:4D:34" 0번 포트가 on 이 되면 "D4:8A:FC:B5:30:10" 보드의 1번포트가 on이 되고 "A0:B7:65:CD:4D:34" 0번 포트가 off가 되면 ""B0:A7:32:1D:B3:B8" 보드의 1번포트가 off 된다.     |
-| **`bind_sensor`** (`bs`)        | `{ "c": "bs", "m": "A0:B7:65:CD:4D:34", "o": "save", "type": "temp", "tempHigh": 28, "tempLow": 27, "ps": [{ "m": "D4:8A:FC:B5:30:10", "n": 0, "v": true }] }` | 온도(`temp`), 습도(`humi`), 조도(`light`) 조건에 따라 출력 포트를 제어합니다. <br>예: 온도가 `tempHigh` 이상이면 출력 ON, `tempLow` 이하이면 OFF.<br>센서 조건을 통해 환경 제어를 자동화할 수 있습니다. |
-| **`sensor_input`** (`ti`)       | `{ "c": "ti", "light": 120 }`                                                                                                                                  | 외부 센서보드(RP2040 등)에서 측정된 센서값을 PLC 메인보드로 전달합니다. <br>예: 터치패널에서 조도 센서를 측정 후 조도값을 IoT 보드에 전달해 제어 조건으로 사용합니다.                                         |
+| **`bind_sensor`** (`bs`)        | `{ "c": "bs", "m": "A0:B7:65:CD:4D:34", "o": "save", "type": "temp", "high": 28, "low": 27, "ps": [{ "m": "D4:8A:FC:B5:30:10", "n": 0, "v": true },{ "m": "D4:8A:FC:B5:30:10", "n": 0, "v": false }] }` | "A0:B7:65:CD:4D:34" 보드의 온도센서가 28도를 초과할 때는  "D4:8A:FC:B5:30:10" 보드의 0번포트를 on 하고 온도가 27도를 내려 올 떄는 "D4:8A:FC:B5:30:10" 보드의 0번포트를 off 한다. <br> 온도(`temp`), 습도(`humi`), 조도(`light`) 조건에 따라 출력 포트를 제어합니다. <br>예: 온도가 `tempHigh` 이상이면 출력 ON, `tempLow` 이하이면 OFF.<br>센서 조건을 통해 환경 제어를 자동화할 수 있습니다. |
+| **`touch_panel_input`** (`ti`)       | `{ "c": "ti", "light": 120 }`  | 외부 보드(RP2040 등)에서 측정된 센서값을 PLC 메인보드로 전달합니다. <br>예: 터치패널에서 조도 센서를 측정 후 조도값을 IoT 보드에 전달해 제어 조건으로 사용합니다.   |
 
 --------------
 
