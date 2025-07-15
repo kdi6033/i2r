@@ -91,12 +91,7 @@ outtopic=i2r/email주소/out
 | `bind_input_output` | `bio`            | 입력 상태에 따라 출력 연동 설정 <br> 기능: 입력 상태에 따라 출력 제어 {"c": "bio","o": "save","m": "A0:B7:65:CD:4D:34","n": 0,"ps": [
 { "m": "D4:8A:FC:B5:30:10", "n": 1, "v": true },{ "m": "B0:A7:32:1D:B3:B8", "n": 1, "v": false } ]} |
 | `bind_sensor`       | `bs`             | 센서 조건에 따라 출력 제어 (온도, 습도, 조도 등) <br> {"c": "bs","m": "A0:B7:65:CD:4D:34","o": "save","type": "temp","tempHigh": 28,
-  "tempLow": 27,
-  "ps": [
-    { "m": "D4:8A:FC:B5:30:10", "n": 0, "v": true }
-  ]
-}
- |
+  "tempLow": 27,"ps": [{ "m": "D4:8A:FC:B5:30:10", "n": 0, "v": true }]} |
 | `touchPanel_input`      | `ti`            | Touch Panel(RP2040 등) 전달 |
 
 ---
