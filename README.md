@@ -85,7 +85,7 @@ outtopic=i2r/email주소/out
 |---------------------|------------------|------|
 | `download_firmware` | `df`             | 보드에 펌웨어를 다운로드 <br>기능: 인터넷에서 맥어드레스가 "D8:13:2A:C3:E7:68"인 보드로 펌웨어를 다운로드 <br>{"c": "df","m": "D8:13:2A:C3:E7:68","fileName": "i2r-03.ino.bin"} |
 | `set_info`          | `si`             | Wi-Fi, MQTT 브로커 등 설정 정보 전송 <br>기능: Wi-Fi 및 MQTT 설정 정보 등록 <br> {"c": "si","ssid": "i2r_wifi","password": "00000000","email": "user@example.com","mqttBroker": "mqtt.i2r.link"} |
-| `set_output`        | `so`             | 출력 핀을 ON/OFF 제어 |
+| `set_output`        | `so`             | 출력 핀을 ON/OFF 제어 (true = ON, false = OFF) <br>기능: 1번핀 on  <br> {"c": "so","m": "A0:B7:65:CD:4D:34","n": 1,"v": true}|
 | `get_status`        | `gs`             | 보드 상태 요청 (온도, 습도, in/out 등) |
 | `schedule_output`   | `sch`            | 시간 기반 출력 동작 스케줄 설정 |
 | `bind_input_output` | `bio`            | 입력 상태에 따라 출력 연동 설정 |
