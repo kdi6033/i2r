@@ -67,27 +67,28 @@ outtopic=i2r/email주소/out
 
 ## ✅ JSON 메시지 필드명 요약
 
-| 축약 필드 | 전체 명칭 | 설명 |
-|-----------|-----------|------|
-| `c`       | command   | 명령 종류 (아래 참조) |
-| `m`       | mac       | 대상 장치의 MAC 주소 |
-| `n`       | no        | 핀 번호 (0~3) |
-| `v`       | value     | 값 (true/false 또는 숫자) |
-| `o`       | operation | 작업 종류: `save`, `list`, `delete`, 'deleteAll' `cali`, 'insert' 등 |
-| `ps`      | portState | 연동할 출력 포트 정보 배열 |
-| `gs/type` | type      | 'gs'에서는 보드형태 3:i2r-03, 4:i2r-04 <br> 'bs' 에서는 센서 유형 `temp`:온도, `humi`:습도, `light`:조도 |
-| `in`      | in port   | 입력포트 |
-| `out`     | out port  | 출력포트 |
-| `pi`      | pin index  | 출력핀 번호 0번부터 시작한다. |
-| `sH` / `sM` | 시작 시간 / 분   | 스케줄 시작 시간      |
-| `eH` / `eM` | 종료 시간 / 분   | 스케줄 종료 시간      |
-| `rm`      | repeat mode  | 반복 주기 "d"="daily", "w"="weekly" |
-| `dw`      | day of week  | 일주일 중 요일설정 일=0,월=1,화=2,수=3,목=4,금=5,토=6 |
-| `high`    | high | 센서 동작의 상한 값  |
-| `low`     | low  | 센서 동작의 하한 값  |
-| `temp`    | temperature | 온도  |
-| `humi`    | humidity  | 습도    |
-| `light`   | light     | 조도    |
+| 축약 필드              | 전체 명칭        | 설명                                                                        |
+| ---------------------- | --------------- | ---------------------------------------------------------------------------- |
+| `c`                    | command         | 명령 종류 (예: `df`, `so`, `gs`, `sch`, `bs` 등 축약어 사용)                   |
+| `m`                    | mac             | 대상 장치의 MAC 주소 (예: `"A0:B7:65:CD:4D:34"`)                              |
+| `n`                    | no              | 출력 핀 번호 (0부터 시작)                                                     |
+| `v`                    | value           | 출력 값: `true` 또는 `false`, 혹은 수치 값                                    |
+| `o`                    | operation       | 작업 종류: `"save"`, `"list"`, `"delete"`, `"deleteAll"`, `"cali"`, `"insert"` 등 |
+| `ps`                   | portState       | 제어할 출력 포트 정보 배열 (예: `[{"m": "...", "n": 0, "v": true}]`)               |
+| `type` | type          | `gs`: 보드 종류 (예: `3` = i2r-03)<br>`bs`: 센서 타입 (`temp`, `humi`, `light`)       |
+| `in`                   | input ports     | 입력 상태 배열 (예: `[0,1,0,0]`)                                                    |
+| `out`                  | output ports    | 출력 상태 배열 (예: `[1,0,0,0]`)                                                    |
+| `pi`                   | pinIndex        | 출력 핀 인덱스 (0\~3)                                                              |
+| `start`                | startTime (분)   | 시작 시간 (예: 오전 9시 30분 = `570`)                                                 |
+| `end`                  | endTime (분)     | 종료 시간 (예: 오전 10시 = `600`)                                                    |
+| `rm`                   | repeatMode      | 반복 주기: `0` = 매일, `1` = 매주                                                    |
+| `dw`                   | dayOfWeek       | 반복 요일: 숫자(0=일 \~ 6=토), 또는 배열 `[1,3,5]` (월, 수, 금)                             |
+| `high`                 | sensorHighValue | 센서 동작의 상한 값 (예: 온도 28도)                                                      |
+| `low`                  | sensorLowValue  | 센서 동작의 하한 값 (예: 온도 26도)                                                      |
+| `temp`                 | temperature     | 현재 온도 값 (예: `27.8`)                                                          |
+| `humi`                 | humidity        | 현재 습도 값 (예: `55`)                                                            |
+| `light`                | light           | 조도 값 (예: `120`)                                                              |
+
 
 ---
 
