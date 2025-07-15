@@ -120,21 +120,7 @@ outtopic=i2r/email주소/out
 
 --------------
 
-
-| command              | 기능                       | 설명 및 예시                                                                                                                                                                                                                                                                                                    |
-| -------------------- | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `download_firmware`  | 펌웨어 다운로드                 | 인터넷에서 보드로 펌웨어를 내려받음  <br>`json { "mac":"D8:13:2A:C3:E7:68", "command":"download_firmware", "fileName":"i2r-03.ino.bin" } `                                                                                                                                                                                 |
-| `set_info`           | 정보 입력 (Wi-Fi, MQTT 등 설정) | 보드에 통신정보를 저장함 <br>`json { "command":"set_info", "ssid":"***", "password":"***", "email":"***", "mqttBroker":"ai.doowon.ac.kr" } `                                                                                                                                                                          |
-| `set_output`         | 핀 출력 제어                  | 지정된 핀에 true/false 출력 <br>`json { "mac":"A0:B7:65:CD:4D:34", "command":"set_output", "no":1, "value":true } `                                                                                                                                                                                               |
-| `get_status`         | 상태 요청                    | 현재 상태를 요청함 <br>요청: `json { "mac":"EC:64:C9:43:E8:B8", "command":"get_status" } `<br>응답: `json { "type":3, "email":"kdi6033@gmail.com", "mac":"EC:64:C9:43:E8:B8", "temp":28.4, "humi":38, "in":[0,0,0,0], "out":[0,0,0,0] } `                                                                              |
-| `schedule_output`    | 동작시간 설정                  | 출력핀에 시간 예약 제어 <br>`json { "command":"schedule_output", "mac":"A0:B7:65:CD:4D:34", "oper":"insert", "pI":0, "sH":9, "sM":55, "eH":9, "eM":57, "rM":"d", "dW":0 } `<br>`oper`: `"insert"`, `"list"`, `"delete"`, `"deleteAll"`                                                                               |
-| `bind_input_output`  | 입력에 따른 출력 연동             | 입력핀에 따라 다른 기기의 출력을 제어함 <br>`json { "command":"bind_input_output", "oper":"save", "mac":"A0:B7:65:CD:4D:34", "portNo":0, "portState":[{"mac":"D4:8A:FC:B5:30:10","port":1,"value":false}] } `<br>`oper`: `"save"`, `"list"`, `"delete"`                                                                     |
-| `bind_temp_output`   | 온도변화에 따른 출력 설정           | 온도 조건에 따라 출력 제어 <br>`json { "command":"bind_temp_output", "oper":"save", "mac":"A0:B7:65:CD:4D:34", "tempHigh":28, "tempLow":27, "portState":[{"mac":"D4:8A:FC:B5:30:10","port":0,"value":true}] } `<br>`json { "command":"bind_temp_output", "oper":"cali", "mac":"A0:B7:65:CD:4D:34", "calTemp":28.1 } ` |
-| `bind_humi_output`   | 습도변화에 따른 출력 설정           | 습도 조건에 따라 출력 제어 <br>`json { "command":"bind_humi_output", "oper":"save", "mac":"A0:B7:65:CD:4D:34", "humiHigh":50, "humiLow":49, "portState":[{"mac":"D4:8A:FC:B5:30:10","port":0,"value":true}] } `<br>`json { "command":"bind_humi_output", "oper":"cali", "mac":"A0:B7:65:CD:4D:34", "calHumi":48 } `   |
-| `bind_sensor_output` | 센서 상태 기반 출력 설정 (통합)      | 온도/습도/조도 등 복합 센서기반 출력 <br> → 온도/습도 포맷과 동일, `command`는 `"bind_sensor_output"` 사용                                                                                                                                                                                                                            |
-| `sensor_input`       | 외부 센서 입력 참조값             | 외부 장치(RP2040 등)에서 측정한 센서값을 전달 <br>`json { "command":"sensor_input", "light":120 } `                                                                                                                                                                                                                        |
-
-
+ # 이전 프로토콜 (앞에 정의된 프로토콜로 프로그램 수정 중)
 |order|  기능  |설명 및 프로토콜|
 |--|-------|---|
 |0|펌웨어 다운로드|인터넷에서 통신으로 펌웨어를 보드로 내려 받는다<br> {"mac":"D8:13:2A:C3:E7:68","order":0,"fileName":"i2r-03.ino.bin"}|
