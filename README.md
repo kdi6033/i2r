@@ -73,7 +73,7 @@ outtopic=i2r/email주소/out
 | `m`       | mac       | 대상 장치의 MAC 주소 |
 | `n`       | no        | 핀 번호 (0~3) |
 | `v`       | value     | 값 (true/false 또는 숫자) |
-| `o`       | oper      | 작업 종류: `save`, `list`, `delete`, `cali` 등 |
+| `o`       | operation | 작업 종류: `save`, `list`, `delete`, `cali` 등 |
 | `ps`      | portState | 연동할 출력 포트 정보 배열 |
 | `gs/type`    | type      | 보드형태 3:i2r-03, 4:i2r-04 |
 | `bs/type`    | type      | 센서 유형 `temp`:온도, `humi`:습도, `light`:조도 |
