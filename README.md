@@ -83,7 +83,7 @@ outtopic=i2r/email주소/out
 
 | Full Command Name  | 축약 코드 (`c`) | 설명 |
 |---------------------|------------------|------|
-| `download_firmware` | `df`             | 보드에 펌웨어를 다운로드 |
+| `download_firmware` | `df`             | 보드에 펌웨어를 다운로드 <br>인터넷에서 보드로 펌웨어를 다운로드 {"c": "df","m": "D8:13:2A:C3:E7:68","fileName": "i2r-03.ino.bin"} |
 | `set_info`          | `si`             | Wi-Fi, MQTT 브로커 등 설정 정보 전송 |
 | `set_output`        | `so`             | 출력 핀을 ON/OFF 제어 |
 | `get_status`        | `gs`             | 보드 상태 요청 (온도, 습도, in/out 등) |
