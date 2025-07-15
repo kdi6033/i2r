@@ -75,10 +75,13 @@ outtopic=i2r/email주소/out
 | `v`       | value     | 값 (true/false 또는 숫자) |
 | `o`       | operation | 작업 종류: `save`, `list`, `delete`, `cali` 등 |
 | `ps`      | portState | 연동할 출력 포트 정보 배열 |
-| `gs/type`    | type      | 보드형태 3:i2r-03, 4:i2r-04 |
-| `bs/type`    | type      | 센서 유형 `temp`:온도, `humi`:습도, `light`:조도 |
+| `gs/type` | type      | 보드형태 3:i2r-03, 4:i2r-04 |
+| `bs/type` | type      | 센서 유형 `temp`:온도, `humi`:습도, `light`:조도 |
 | `in`      | in port   | 입력포트 |
-| `out`      | out port | 출력포트 |
+| `out`     | out port  | 출력포트 |
+| `temp`    | temperature | 온도  |
+| `humi`    | humidity  | 습도    |
+| `light`   | light     | 조도    |
 
 ---
 
