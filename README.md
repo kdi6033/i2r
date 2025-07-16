@@ -124,7 +124,7 @@ outtopic=i2r/email주소/out
 
 | `command` (`c`) | 예제 및 상세 설명 |
 |----------------|-------------------|
-| **`download_firmware`** (`df`) | ```json<br>{ "c": "df", "m": "D8:13:2A:C3:E7:68", "fileName": "i2r-03.ino.bin" }<br>```지정한 MAC 주소를 가진 보드에 인터넷을 통해 펌웨어를 다운로드합니다. `.ino.bin` 또는 `.bin` 파일이 대상이며, OTA 업데이트를 통해 자동 적용됩니다. |
+| **`download_firmware`** (`df`) | ```{ "c": "df", "m": "D8:13:2A:C3:E7:68", "fileName": "i2r-03.ino.bin" }``` <br>지정한 MAC 주소를 가진 보드에 인터넷을 통해 펌웨어를 다운로드합니다. `.ino.bin` 또는 `.bin` 파일이 대상이며, OTA 업데이트를 통해 자동 적용됩니다. |
 | **`set_info`** (`si`) | ```json<br>{ "c": "si", "ssid": "i2r_wifi", "password": "00000000", "email": "user@example.com", "mqttBroker": "mqtt.i2r.link" }<br>```보드가 Wi-Fi 및 MQTT 브로커에 연결할 수 있도록 설정 정보를 저장합니다. 이후 재시작 시 자동 연결됩니다. |
 | **`set_output`** (`so`) | ```json<br>{ "c": "so", "m": "A0:B7:65:CD:4D:34", "n": 1, "v": 1 }<br>```지정 보드의 `n`번 출력 핀을 제어합니다. `v: 1`은 ON, `v: 0`은 OFF입니다. 릴레이, 모터, LED 등에 사용됩니다. |
 | **`get_status`** (`gs`) | ```json<br>{ "c": "gs", "m": "EC:64:C9:43:E8:B8" }<br>```지정 보드의 상태를 요청합니다. 응답으로 온도, 습도, 입력포트(`in`), 출력포트(`out`) 정보가 포함됩니다.<br><br>응답 예시:<br>`{"t":3,"email":"kdi6033@gmail.com","m":"EC:64:C9:43:E8:B8","temp":28.4,"humi":38,"in":[0,0,0,0],"out":[0,0,0,0]}` |
