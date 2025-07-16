@@ -86,9 +86,11 @@ outtopic=i2r/email주소/out
 | `dw`                   | dayOfWeek       | 반복 요일: 숫자(0=일 \~ 6=토), 또는 배열 `[1,3,5]` (월, 수, 금)                     |
 | `h`                    | sensorHighValue | 센서 동작의 상한 값 (예: 온도 28도)                                                |
 | `l`                    | sensorLowValue  | 센서 동작의 하한 값 (예: 온도 26도)                                                 |
-| `temp`                 | temperature     | 현재 온도 값 (예: `27.8`)                                                          |
-| `humi`                 | humidity        | 현재 습도 값 (예: `55`)                                                            |
-| `light`                | light           | 조도 값 (예: `120`)                                                              |
+| `temp`                 | temperature     | 센서 현재 온도 값 (예: `27.8`)                                                     |
+| `humi`                 | humidity        | 센서 현재 습도 값 (예: `55`)                                                       |
+| `light`                | light           | 센서 조도 값 (예: `120`)                                                          |
+| `adc`                  | analog to digital | 센서 ad converter (예: `3.4`)                                                   |
+| `bat`                  | battaery doutput  | 센서 보드에 들어오는 밭데리 전압 (예: `3.4`)                                                   |
 
 
 ---
