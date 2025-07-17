@@ -68,29 +68,29 @@ outtopic=i2r/email주소/out
 
 ## ✅ JSON 메시지 필드명 요약
 
-| 축약 필드              | 전체 명칭        | 설명                                                                        |
-| ---------------------- | --------------- | ---------------------------------------------------------------------------- |
-| `c`                    | command         | 명령 종류 (예: `df`, `so`, `gs`, `sch`, `bs` 등 축약어 사용)                   |
-| `m`                    | mac             | 대상 장치의 MAC 주소 (예: `"A0:B7:65:CD:4D:34"`)                              |
-| `n`                    | no              | 출력 핀 번호 (0부터 시작)                                                     |
-| `v`                    | value           | 출력 값: `true` 또는 `false`, 혹은 수치 값                                    |
-| `o`                    | operation       | 작업 종류: `"save"`, `"list"`, `"delete"`, `"deleteAll"`, `"cali"`, `"insert"` 등 |
-| `ps`                   | portState       | 제어할 출력 포트 정보 배열 (예: `[{"m": "...", "n": 0, "v": true}]`)               |
-| `t`                    | type            | `gs`: 보드 종류 (예: `3` = i2r-03)<br>`bs`: 센서 타입 (`temp`, `humi`, `light`)    |
-| `in`                   | input ports     | 입력 상태 배열 (예: `[0,1,0,0]`)                                                  |
-| `out`                  | output ports    | 출력 상태 배열 (예: `[1,0,0,0]`)                                                  |
-| `pi`                   | pinIndex        | 출력 핀 인덱스 (0\~3)                                                             |
-| `start`                | startTime (분)   | 시작 시간 (예: 오전 9시 30분 = `570`)                                             |
-| `end`                  | endTime (분)     | 종료 시간 (예: 오전 10시 = `600`)                                                 |
-| `rm`                   | repeatMode      | 반복 주기: `0` = 매일, `1` = 매주                                                  |
-| `dw`                   | dayOfWeek       | 반복 요일: 숫자(0=일 \~ 6=토), 또는 배열 `[1,3,5]` (월, 수, 금)                     |
-| `h`                    | sensorHighValue | 센서 동작의 상한 값 (예: 온도 28도)                                                |
-| `l`                    | sensorLowValue  | 센서 동작의 하한 값 (예: 온도 26도)                                                 |
-| `temp`                 | temperature     | 센서 현재 온도 값 (예: `27.8`)                                                     |
-| `humi`                 | humidity        | 센서 현재 습도 값 (예: `55`)                                                       |
-| `light`                | light           | 센서 조도 값 (예: `120`)                                                          |
-| `adc`                  | analog to digital | 센서 ad converter (예: `3.4`)                                                   |
-| `bat`                  | battaery doutput  | 센서 보드에 들어오는 밭데리 전압 (예: `3.4`)                                                   |
+| 전체 명칭        | 축약 필드              | 설명                                                                        |
+| --------------- | ---------------------- | ---------------------------------------------------------------------------- |
+| command         | `c`                    | 명령 종류 (예: `df`, `so`, `gs`, `sch`, `bs` 등 축약어 사용)                   |
+| mac             | `m`                    | 대상 장치의 MAC 주소 (예: `"A0:B7:65:CD:4D:34"`)                              |
+| no              | `n`                    | 출력 핀 번호 (0부터 시작)                                                     |
+| value           | `v`                    | 출력 값: `true` 또는 `false`, 혹은 수치 값                                    |
+| operation       | `o`                    | 작업 종류: `"save"`, `"list"`, `"delete"`, `"deleteAll"`, `"cali"`, `"insert"` 등 |
+| portState       | `ps`                   | 제어할 출력 포트 정보 배열 (예: `[{"m": "...", "n": 0, "v": true}]`)               |
+| type            | `t`                    | `gs`: 보드 종류 (예: `3` = i2r-03)<br>`bs`: 센서 타입 (`temp`, `humi`, `light`)    |
+| input ports     | `in`                   | 입력 상태 배열 (예: `[0,1,0,0]`)                                                  |
+| output ports    | `out`                  | 출력 상태 배열 (예: `[1,0,0,0]`)                                                  |
+| pinIndex        | `pi`                   | 출력 핀 인덱스 (0\~3)                                                             |
+| startTime (분)  | `start`                | 시작 시간 (예: 오전 9시 30분 = `570`)                                             |
+| endTime (분)    | `end`                  | 종료 시간 (예: 오전 10시 = `600`)                                                 |
+| repeatMode      | `rm`                   | 반복 주기: `0` = 매일, `1` = 매주                                                  |
+| dayOfWeek       | `dw`                   | 반복 요일: 숫자(0=일 \~ 6=토), 또는 배열 `[1,3,5]` (월, 수, 금)                     |
+| sensorHighValue | `h`                    | 센서 동작의 상한 값 (예: 온도 28도)                                                |
+| sensorLowValue  | `l`                    | 센서 동작의 하한 값 (예: 온도 26도)                                                 |
+| temperature     | `temp`                 | 센서 현재 온도 값 (예: `27.8`)                                                     |
+| humidity        | `humi`                 | 센서 현재 습도 값 (예: `55`)                                                       |
+| light           | `light`                | 센서 조도 값 (예: `120`)                                                          |
+| analog to digital | `adc`                  | 센서 ad converter (예: `3.4`)                                                   |
+| battaery doutput  | `bat`                  | 센서 보드에 들어오는 밭데리 전압 (예: `3.4`)                                      |
 
 
 ---
@@ -103,7 +103,7 @@ outtopic=i2r/email주소/out
 | `set_info`          | `si`             | Wi-Fi, MQTT 브로커 등 설정 정보 전송 |
 | `set_output`        | `so`             | 핀출력을 표시 (1 = ON, 0 = OFF) |
 | `get_status`        | `gs`             | 보드 상태 요청 (온도, 습도, in/out 등)   |
-| `schedule_output`   | `sch`            | 시간 기반 출력 동작 스케줄 설정  | 
+| `schedule`          | `sch`            | 시간 기반 출력 동작 스케줄 설정  | 
 | `bind_input_output` | `bio`            | 입력 상태에 따라 출력 연동 설정  |
 | `bind_sensor`       | `bs`             | 센서 조건에 따라 출력 제어 (온도, 습도, 조도 등) |
 | `touchPanel_input`  | `ti`            | Touch Panel(RP2040 등) 전달 |
