@@ -75,22 +75,22 @@ outtopic=i2r/email주소/out
 | no              | `n`                    | 출력 핀 번호 (0부터 시작)                                                     |
 | value           | `v`                    | 출력 값: `true` 또는 `false`, 혹은 수치 값                                    |
 | operation       | `o`                    | 작업 종류: `"save"`, `"list"`, `"delete"`, `"deleteAll"`, `"cali"`, `"insert"` 등 |
-| portState       | `ps`                   | 제어할 출력 포트 정보 배열 (예: `[{"m": "...", "n": 0, "v": true}]`)               |
+| port_state      | `ps`                   | 제어할 출력 포트 정보 배열 (예: `[{"m": "...", "n": 0, "v": true}]`)               |
 | type            | `t`                    | `gs`: 보드 종류 (예: `3` = i2r-03)<br>`bs`: 센서 타입 (`temp`, `humi`, `light`)    |
-| input ports     | `in`                   | 입력 상태 배열 (예: `[0,1,0,0]`)                                                  |
-| output ports    | `out`                  | 출력 상태 배열 (예: `[1,0,0,0]`)                                                  |
-| pinIndex        | `pi`                   | 출력 핀 인덱스 (0\~3)                                                             |
-| startTime (분)  | `start`                | 시작 시간 (예: 오전 9시 30분 = `570`)                                             |
-| endTime (분)    | `end`                  | 종료 시간 (예: 오전 10시 = `600`)                                                 |
-| repeatMode      | `rm`                   | 반복 주기: `0` = 매일, `1` = 매주                                                  |
-| dayOfWeek       | `dw`                   | 반복 요일: 숫자(0=일 \~ 6=토), 또는 배열 `[1,3,5]` (월, 수, 금)                     |
-| sensorHighValue | `h`                    | 센서 동작의 상한 값 (예: 온도 28도)                                                |
-| sensorLowValue  | `l`                    | 센서 동작의 하한 값 (예: 온도 26도)                                                 |
+| in_port         | `in`                   | 입력 상태 배열 (예: `[0,1,0,0]`)                                                  |
+| out_port        | `out`                  | 출력 상태 배열 (예: `[1,0,0,0]`)                                                  |
+| pin_index        | `pi`                   | 출력 핀 인덱스 (0\~3)                                                             |
+| start_time (분)  | `start`                | 시작 시간 (예: 오전 9시 30분 = `570`)                                             |
+| end_time (분)    | `end`                  | 종료 시간 (예: 오전 10시 = `600`)                                                 |
+| repeat_mode      | `rm`                   | 반복 주기: `0` = 매일, `1` = 매주                                                  |
+| day_week         | `dw`                   | 반복 요일: 숫자(0=일 \~ 6=토), 또는 배열 `[1,3,5]` (월, 수, 금)                     |
+| high_value       | `h`                    | 센서 동작의 상한 값 (예: 온도 28도)                                                |
+| low_value        | `l`                    | 센서 동작의 하한 값 (예: 온도 26도)                                                 |
 | temperature     | `temp`                 | 센서 현재 온도 값 (예: `27.8`)                                                     |
 | humidity        | `humi`                 | 센서 현재 습도 값 (예: `55`)                                                       |
 | light           | `light`                | 센서 조도 값 (예: `120`)                                                          |
-| analog to digital | `adc`                  | 센서 ad converter (예: `3.4`)                                                   |
-| battaery doutput  | `bat`                  | 센서 보드에 들어오는 밭데리 전압 (예: `3.4`)                                      |
+| adc             | `adc`                  | analog to digital, 센서 ad converter (예: `3.4`)                                 |
+| bat             | `bat`                  | battaery output, 센서 보드에 들어오는 밭데리 전압 (예: `3.4`)                      |
 
 
 ---
