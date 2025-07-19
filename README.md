@@ -75,10 +75,10 @@ outtopic=i2r/email주소/out
 | portNo          | `n`                    | 출력 핀 번호 (0부터 시작)                                                     |
 | value           | `v`                    | 출력 값: `true` 또는 `false`, 혹은 수치 값                                    |
 | operation       | `o`                    | 작업 종류: `"save"`, `"list"`, `"delete"`, `"deleteAll"`, `"cali"`, `"insert"` 등 |
-| portState      | `ps`                   | 제어할 출력 포트 정보 배열 (예: `[{"m": "...", "n": 0, "v": true}]`)               |
+| portState       | `ps`                   | 제어할 출력 포트 정보 배열 (예: `[{"m": "...", "n": 0, "v": true}]`)               |
 | type            | `t`                    | `gs`: 보드 종류 (예: `3` = i2r-03)<br>`bs`: 센서 타입 (`temp`, `humi`, `light`)    |
-| inPort         | `in`                   | 입력 상태 배열 (예: `[0,1,0,0]`)                                                  |
-| outPort        | `out`                  | 출력 상태 배열 (예: `[1,0,0,0]`)                                                  |
+| in              | `in`                   | 입력 상태 배열 (예: `[0,1,0,0]`)                                                  |
+| out             | `out`                  | 출력 상태 배열 (예: `[1,0,0,0]`)                                                  |
 | pinIndex        | `pi`                   | 출력 핀 인덱스 (0\~3)                                                             |
 | startMinutes (분) | `start`                | 시작 시간 (예: 오전 9시 30분 = `570`)                                             |
 | endMinutes (분)   | `end`                  | 종료 시간 (예: 오전 10시 = `600`)                                                 |
