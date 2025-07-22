@@ -92,7 +92,8 @@ outtopic=i2r/email주소/out
 | light            | `light`                | 센서 조도 값 (예: `120`)                                                          |
 | adc              | `adc`                  | analog to digital, 센서 ad converter (예: `3.4`)                                 |
 | bat              | `bat`                  | battaery output, 센서 보드에 들어오는 밭데리 전압 (예: `3.4`)                      |
-| valueCalibration | `vc`                 | 	센서 보정값 (예: 28.1)                                                         |
+| calibration      | `cali`                 | 	센서값 보정 (예: 28.1)                                                         |
+
 
 
 ---
