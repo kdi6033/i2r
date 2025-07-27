@@ -95,7 +95,7 @@ outtopic=i2r/email주소/out
 | calibration      | `cali`       | 	센서값 보정 (예: 28.1)                                                         |
 | pageNo           | `pn`         | 	list 에서 데이터의 번호                                                        |
 | `slotIndex`      | `sI`         | 스케줄 작업시 슬롯 (번호)인덱스 지정 |
-
+| `getStatus`      | `gs`         | 보드 상태 요청 (온도, 습도, in/out 등)   |
 
 ---
 
@@ -106,7 +106,6 @@ outtopic=i2r/email주소/out
 | `bindIO`           | `bio`            | 입력 상태에 따라 출력 연동 설정  |
 | `bindSensor`       | `bs`             | 센서 조건에 따라 출력 제어 (온도, 습도, 조도 등) |
 | `downloadFirmware` | `df`             | 보드에 펌웨어를 다운로드 |
-| `getStatus`        | `gs`             | 보드 상태 요청 (온도, 습도, in/out 등)   |
 | `schedule`         | `sch`            | 시간 기반 출력 동작 스케줄 설정  | 
 | `setInfo`          | `si`             | Wi-Fi, MQTT 브로커 등 설정 정보 전송 |
 | `setOutput`        | `so`             | 핀출력을 표시 (1 = ON, 0 = OFF) |
