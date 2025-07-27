@@ -68,34 +68,34 @@ outtopic=i2r/email주소/out
 
 ## ✅ JSON 메시지 필드명 요약
 
-| 전체 명칭        | 축약 코드     | 설명                                                                           |
-| --------------- | ------------- | ---------------------------------------------------------------------------- |
-| email           | `e`           | email                                                                        |
-| command         | `c`           | 명령 종류 (예: `df`, `so`, `gs`, `sch`, `bs` 등 축약어 사용)                   |
-| mac             | `m`           | 대상 장치의 MAC 주소 (예: `"A0:B7:65:CD:4D:34"`)                              |
-| portNo          | `n`           | 출력 핀 번호 (0부터 시작)                                                     |
-| value           | `v`           | 출력 값: `true` 또는 `false`, 혹은 수치 값                                    |
-| operation       | `o`           | 작업 종류: `"save"`, `"list"`, `"delete"`, `"deleteAll"`, `"cali"`, `"insert"` 등 |
-| portState       | `ps`          | 제어할 출력 포트 정보 배열 (예: `[{"m": "...", "n": 0, "v": true}]`)               |
-| type            | `t`           | `gs`: 보드 종류 (예: `3` = i2r-03)<br>`bs`: 센서 타입 (`temp`, `humi`, `light`)    |
-| in              | `in`          | 입력 상태 배열 (예: `[0,1,0,0]`)                                                  |
-| out             | `out`         | 출력 상태 배열 (예: `[1,0,0,0]`)                                                  |
-| pinIndex        | `pi`          | 출력 핀 인덱스 (0\~3)                                                             |
-| startMinutes (분) | `start`     | 시작 시간 (예: 오전 9시 30분 = `570`)                                             |
-| endMinutes (분)   | `end`       | 종료 시간 (예: 오전 10시 = `600`)                                                 |
-| repeatMode      | `rm`          | 반복 주기: `0` = 매일, `1` = 매주                                                  |
-| dayOfWeek         | `dw`        | 반복 요일: 숫자(0=일 \~ 6=토), 또는 배열 `[1,3,5]` (월, 수, 금)                     |
-| sensorHighValue   | `h`         | 센서 동작의 상한 값 (예: 온도 28도)                                                |
-| sensorLowValue    | `l`         | 센서 동작의 하한 값 (예: 온도 26도)                                                 |
-| temperature      | `temp`       | 센서 현재 온도 값 (예: `27.8`)                                                     |
-| humidity         | `humi`       | 센서 현재 습도 값 (예: `55`)                                                       |
-| light            | `light`      | 센서 조도 값 (예: `120`)                                                          |
-| adc              | `adc`        | analog to digital, 센서 ad converter (예: `3.4`)                                 |
-| bat              | `bat`        | battaery output, 센서 보드에 들어오는 밭데리 전압 (예: `3.4`)                      |
-| calibration      | `cali`       | 	센서값 보정 (예: 28.1)                                                         |
-| pageNo           | `pn`         | 	list 에서 데이터의 번호                                                        |
-| `slotIndex`      | `sI`         | 스케줄 작업시 슬롯 (번호)인덱스 지정 |
-| `getStatus`      | `gs`         | 보드 상태 요청 (온도, 습도, in/out 등)   |
+| 전체 명칭         | 축약 코드 | 설명                                                                           |
+| ----------------- | -------- | ------------------------------------------------------------------------------- |
+| adc               | `adc`    | analog to digital, 센서 ad converter (예: `3.4`)                                 |
+| bat               | `bat`    | battaery output, 센서 보드에 들어오는 밭데리 전압 (예: `3.4`)                      |
+| command           | `c`      | 명령 종류 (예: `df`, `so`, `gs`, `sch`, `bs` 등 축약어 사용)                      |
+| calibration       | `cali`   | 	센서값 보정 (예: 28.1)                                                         |
+| dayOfWeek         | `dw`     | 반복 요일: 숫자(0=일 \~ 6=토), 또는 배열 `[1,3,5]` (월, 수, 금)                     |
+| email             | `e`      | email                                                                            |
+| endMinutes (분)   | `end`    | 종료 시간 (예: 오전 10시 = `600`)                                                 |
+| getStatus         | `gs`     | 보드 상태 요청 (온도, 습도, in/out 등)                                            |
+| sensorHighValue   | `h`      | 센서 동작의 상한 값 (예: 온도 28도)                                                |
+| humidity          | `humi`   | 센서 현재 습도 값 (예: `55`)                                                       |
+| in                | `in`     | 입력 상태 배열 (예: `[0,1,0,0]`)                                                  |
+| sensorLowValue    | `l`      | 센서 동작의 하한 값 (예: 온도 26도)                                                 |
+| light             | `light`  | 센서 조도 값 (예: `120`)                                                          |
+| mac               | `m`      | 대상 장치의 MAC 주소 (예: `"A0:B7:65:CD:4D:34"`)                                  |
+| portNo            | `n`      | 출력 핀 번호 (0부터 시작)                                                         |
+| value             | `v`      | 출력 값: `true` 또는 `false`, 혹은 수치 값                                        |
+| operation         | `o`      | 작업 종류: `"save"`, `"list"`, `"delete"`, `"deleteAll"`, `"cali"`, `"insert"` 등 |
+| out               | `out`    | 출력 상태 배열 (예: `[1,0,0,0]`)                                                  |
+| pinIndex          | `pi`     | 출력 핀 인덱스 (0\~3)                                                             |
+| pageNo            | `pn`     | 	list 에서 데이터의 번호                                                        |
+| portState         | `ps`     | 제어할 출력 포트 정보 배열 (예: `[{"m": "...", "n": 0, "v": true}]`)               |
+| repeatMode        | `rm`     | 반복 주기: `0` = 매일, `1` = 매주                                                  |
+| slotIndex         | `sI`     | 스케줄 작업시 슬롯 (번호)인덱스 지정                                               |
+| startMinutes (분) | `start`  | 시작 시간 (예: 오전 9시 30분 = `570`)                                             |
+| type              | `t`      | `gs`: 보드 종류 (예: `3` = i2r-03)<br>`bs`: 센서 타입 (`temp`, `humi`, `light`)    |
+| temperature       | `temp`   | 센서 현재 온도 값 (예: `27.8`)                                                     |
 
 ---
 
