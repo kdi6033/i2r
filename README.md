@@ -93,7 +93,7 @@ outtopic=i2r/email주소/out
 | adc              | `adc`                  | analog to digital, 센서 ad converter (예: `3.4`)                                 |
 | bat              | `bat`                  | battaery output, 센서 보드에 들어오는 밭데리 전압 (예: `3.4`)                      |
 | calibration      | `cali`                 | 	센서값 보정 (예: 28.1)                                                         |
-
+| pageNo           | `pn`                   | 	list 에서 데이터의 번호                                                        |
 
 
 ---
