@@ -96,8 +96,9 @@ outtopic=i2r/email주소/out
 | repeatMode        | `rm`     | 반복 주기: `0` = 매일, `1` = 매주                                                  |
 | slotIndex         | `sI`     | 스케줄 작업시 슬롯 (번호)인덱스 지정                                               |
 | startMinutes (분) | `start`  | 시작 시간 (예: 오전 9시 30분 = `570`)                                             |
-| type              | `t`      | `gs`: 보드 종류 (예: `3` = i2r-03)<br>`bs`: 센서 타입 (`temp`, `humi`, `light`)    |
 | temperature       | `temp`   | 센서 현재 온도 값 (예: `27.8`)                                                     |
+| trigger           | `tr`     | `bio`: ON(true) OFF(false) 가 될 때 트리거 설정 후 delay를 설정하면 그 시간에 동작한다.   |
+| type              | `t`      | `gs`: 보드 종류 (예: `3` = i2r-03)<br>`bs`: 센서 타입 (`temp`, `humi`, `light`)    |
 
 ---
 
