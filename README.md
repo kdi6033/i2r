@@ -78,7 +78,8 @@ outtopic=i2r/email주소/out
 | dayOfWeek         | `dw`     | 반복 요일: 숫자(0=일 \~ 6=토), 또는 배열 `[1,3,5]` (월, 수, 금)                     |
 | email             | `e`      | email                                                                            |
 | endMinutes (분)   | `end`    | 종료 시간 (예: 오전 10시 = `600`)                                                 |
-| from              | `f`      | 메세지를 보내는 기기의 mac 주소                                                   |
+| fileName          | `f`      | file Name                                                                       |
+| from              | `fr`     | 메세지를 보내는 기기의 mac 주소                                                   |
 | getStatus         | `gs`     | 보드 상태 요청 (온도, 습도, in/out 등)                                            |
 | sensorHighValue   | `h`      | 센서 동작의 상한 값 (예: 온도 28도)                                                |
 | humidity          | `humi`   | 센서 현재 습도 값 (예: `55`)                                                       |
