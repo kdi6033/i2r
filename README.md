@@ -75,6 +75,7 @@ outtopic=i2r/email주소/out
 | command           | `c`      | 명령 종류 (예: `df`, `so`, `gs`, `sch`, `bs` 등 축약어 사용)                      |
 | calibration       | `cali`   | 	센서값 보정 (예: 28.1)                                                         |
 | delay             | `d`      | 입력신호가 들어오고 출력이 나가기 까지 지연시간 단위:초                              |
+| duration          | `du`     | 센서에 의해서 동작할 때 동작시간 0이면 무한대로 지속함                               |
 | dayOfWeek         | `dw`     | 반복 요일: 숫자(0=일 \~ 6=토), 또는 배열 `[1,3,5]` (월, 수, 금)                     |
 | email             | `e`      | email                                                                            |
 | endMinutes (분)   | `end`    | 종료 시간 (예: 오전 10시 = `600`)                                                 |
