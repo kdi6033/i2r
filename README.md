@@ -685,3 +685,93 @@ ILI9341 (하드웨어 컨트롤러)
    ↓
 LCD 화면 출력
 ```   
+## lv_conf.h 파일 만들기
+lv_conf_template.h 를 필요한 항목을 수정해서 lv_conf.h 로 저장합니다.
+
+**📌 요약 (수정해야 하는 항목만)**
+1.#if 0 → #if 1
+2. LV_COLOR_DEPTH = 16 (ILI9341)
+3. LV_MEM_CUSTOM = 1 (malloc/free 사용)
+4. LV_TICK_CUSTOM = 1, millis() 기반 설정
+5. LV_DPI_DEF = 130 (3.5" 기준)
+6. 폰트 설정: 필요 시 한글 폰트 추가
+7. 위젯: 필요한 것만 1로 유지
+8. 데모: 학습 시 1, 실제 코드에선 0
+
+
+**1. 파일 활성화**
+```
+#if 0 /*Set it to "1" to enable content*/
+```
+👉 0 → 1 로 변경해야 LVGL이 이 설정을 읽습니다.
+```
+#if 1 /*Set it to "1" to enable content*/
+```
+**2. 색상 설정**
+```
+#define LV_COLOR_DEPTH 16
+#define LV_COLOR_16_SWAP 0
+```
+ILI9341은 RGB565(16bit) 사용 → LV_COLOR_DEPTH 16 유지
+색상이 뒤집혀 나오면 LV_COLOR_16_SWAP을 1로 변경
+
+**3. 메모리 설정**
+현재:
+```
+#define LV_MEM_CUSTOM 0
+```
+👉 ESP32는 malloc/free를 쓰는 게 일반적이므로 1로 변경
+```
+#define LV_MEM_CUSTOM 1
+#define LV_MEM_CUSTOM_INCLUDE <stdlib.h>
+#define LV_MEM_CUSTOM_ALLOC malloc
+#define LV_MEM_CUSTOM_FREE free
+```
+
+**4. Tick 설정**
+현재:
+```
+#define LV_TICK_CUSTOM 0
+```
+👉 Arduino 환경에서는 millis() 사용하도록 1로 변경
+```
+#define LV_TICK_CUSTOM 1
+#define LV_TICK_CUSTOM_INCLUDE "Arduino.h"
+#define LV_TICK_CUSTOM_SYS_TIME_EXPR (millis())
+```
+
+**5. DPI 설정**
+```
+#define LV_DPI_DEF 130
+```
+3.5" 320x480 해상도면 130 정도가 적당 (필요하면 100~140 사이 조정 가능)
+
+**6. 폰트 설정 (한글 UI 필요 시)**
+기본값:
+```
+#define LV_FONT_MONTSERRAT_14 1
+#define LV_FONT_DEFAULT &lv_font_montserrat_14
+```
+👉 한글 표시하려면 커스텀 폰트 선언 추가
+```
+#define LV_FONT_CUSTOM_DECLARE LV_FONT_DECLARE(NotoSansKR_20)
+```
+(NotoSansKR_20.c 파일을 프로젝트에 포함해야 함)
+
+**7. 위젯 사용 여부**
+기본값은 대부분 1 → 그대로 둬도 무방
+👉 메모리 절약하려면 안 쓰는 위젯을 0으로 꺼두기
+예: 버튼, 레이블, 슬라이더만 쓸 경우
+```
+#define LV_USE_BTN     1
+#define LV_USE_LABEL   1
+#define LV_USE_SLIDER  1
+```
+
+**8. 데모/예제**
+```
+#define LV_BUILD_EXAMPLES 1
+#define LV_USE_DEMO_WIDGETS 1
+```
+처음 테스트할 때는 1로 켜두면 좋음
+실제 제품 코드에서는 불필요하면 0으로 꺼서 용량/속도 최적화
