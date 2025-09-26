@@ -816,7 +816,6 @@ Range: 0x20-0x7F,0xAC00-0xD7A3
 0xAC00-0xD7A3 → 한글 전체 (가~힣)
 Output format: C array 선택
 Convert 버튼을 누르면 NotoSansKR_20.c 파일이 생성됩니다.
-<img width="553" height="815" alt="NotoSansKR_20" src="https://github.com/user-attachments/assets/ebed64a9-ecf0-4fb0-93fb-a0599bd62cf4" />
 <img src="https://github.com/user-attachments/assets/ebed64a9-ecf0-4fb0-93fb-a0599bd62cf4" alt="Google Fonts" width="600">
 
 
