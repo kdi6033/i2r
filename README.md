@@ -816,7 +816,9 @@ Browse: NotoSansKR-Regular.ttf 선택
 Range: 빈칸
 Symbols: 사용할 글짜들 입력
 Submit 버튼을 누르면 NotoSansKR_20.c 파일이 생성됩니다.
-<img src="https://github.com/user-attachments/assets/ebed64a9-ecf0-4fb0-93fb-a0599bd62cf4" alt="Google Fonts" width="600">
+<p align="left">
+    <img src="https://github.com/user-attachments/assets/ebed64a9-ecf0-4fb0-93fb-a0599bd62cf4" alt="Google Fonts" width="600">
+</p>
 
 
 
