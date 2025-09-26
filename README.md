@@ -793,11 +793,11 @@ ILI9341은 RGB565(16bit) 사용 → LV_COLOR_DEPTH 16 유지
 
 ## 📘 LVGL 한글 폰트 적용 가이드
 **1. Noto Sans KR 폰트 다운로드**
+
 LVGL에서 한글 UI를 만들기 위해서는 한글을 지원하는 폰트를 준비해야 합니다.
-- Google Fonts – Noto Sans KR
- 사이트에 접속합니다.
+- VGL에서 사용할 한글 폰트는 [Google Fonts – Noto Sans KR](https://fonts.google.com/noto/specimen/Noto+Sans+KR) 에서 다운로드할 수 있습니다.
 - Download Family 버튼을 눌러 전체 폰트 패밀리를 다운로드합니다.
-- 압축을 해제하면 여러 굵기(Thin, Light, Regular, Medium, Bold 등)의 .ttf 파일이 들어있습니다.
+- 압축을 해제하면 여러 굵기(Thin, Light, Regular, Medium, Bold 등)의 .ttf 파일이 들어있습니다.    
 예) NotoSansKR-Regular.ttf
 
 **2. LVGL 폰트 컨버터 사용하기**
