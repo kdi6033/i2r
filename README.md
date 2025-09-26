@@ -713,7 +713,7 @@ lv_conf_template.h 를 필요한 항목을 수정해서 lv_conf.h 로 저장합�
 8. 데모: 학습 시 1, 실제 코드에선 0
 
 
-**1. 파일 활성화**
+**1) 파일 활성화**
 ```
 #if 0 /*Set it to "1" to enable content*/
 ```
@@ -721,7 +721,7 @@ lv_conf_template.h 를 필요한 항목을 수정해서 lv_conf.h 로 저장합�
 ```
 #if 1 /*Set it to "1" to enable content*/
 ```
-**2. 색상 설정**
+**2) 색상 설정**
 ```
 #define LV_COLOR_DEPTH 16
 #define LV_COLOR_16_SWAP 0
@@ -729,7 +729,7 @@ lv_conf_template.h 를 필요한 항목을 수정해서 lv_conf.h 로 저장합�
 ILI9341은 RGB565(16bit) 사용 → LV_COLOR_DEPTH 16 유지
 색상이 뒤집혀 나오면 LV_COLOR_16_SWAP을 1로 변경
 
-**3. 메모리 설정**
+**3) 메모리 설정**
 현재:
 ```
 #define LV_MEM_CUSTOM 0
@@ -742,7 +742,7 @@ ILI9341은 RGB565(16bit) 사용 → LV_COLOR_DEPTH 16 유지
 #define LV_MEM_CUSTOM_FREE free
 ```
 
-**4. Tick 설정**
+**4) Tick 설정**
 현재:
 ```
 #define LV_TICK_CUSTOM 0
@@ -754,13 +754,13 @@ ILI9341은 RGB565(16bit) 사용 → LV_COLOR_DEPTH 16 유지
 #define LV_TICK_CUSTOM_SYS_TIME_EXPR (millis())
 ```
 
-**5. DPI 설정**
+**5) DPI 설정**
 ```
 #define LV_DPI_DEF 130
 ```
 3.5" 320x480 해상도면 130 정도가 적당 (필요하면 100~140 사이 조정 가능)
 
-**6. 폰트 설정 (한글 UI 필요 시)**
+**6) 폰트 설정 (한글 UI 필요 시)**
 기본값:
 ```
 #define LV_FONT_MONTSERRAT_14 1
@@ -772,7 +772,7 @@ ILI9341은 RGB565(16bit) 사용 → LV_COLOR_DEPTH 16 유지
 ```
 (NotoSansKR_20.c 파일을 프로젝트에 포함해야 함)
 
-**7. 위젯 사용 여부**
+**7) 위젯 사용 여부**
 기본값은 대부분 1 → 그대로 둬도 무방
 👉 메모리 절약하려면 안 쓰는 위젯을 0으로 꺼두기
 예: 버튼, 레이블, 슬라이더만 쓸 경우
@@ -782,10 +782,38 @@ ILI9341은 RGB565(16bit) 사용 → LV_COLOR_DEPTH 16 유지
 #define LV_USE_SLIDER  1
 ```
 
-**8. 데모/예제**
+**8) 데모/예제**
 ```
 #define LV_BUILD_EXAMPLES 1
 #define LV_USE_DEMO_WIDGETS 1
 ```
 처음 테스트할 때는 1로 켜두면 좋음
 실제 제품 코드에서는 불필요하면 0으로 꺼서 용량/속도 최적화
+
+
+## 📘 LVGL 한글 폰트 적용 가이드
+**1. Noto Sans KR 폰트 다운로드**
+LVGL에서 한글 UI를 만들기 위해서는 한글을 지원하는 폰트를 준비해야 합니다.
+- Google Fonts – Noto Sans KR
+ 사이트에 접속합니다.
+- Download Family 버튼을 눌러 전체 폰트 패밀리를 다운로드합니다.
+- 압축을 해제하면 여러 굵기(Thin, Light, Regular, Medium, Bold 등)의 .ttf 파일이 들어있습니다.
+예) NotoSansKR-Regular.ttf
+
+**2. LVGL 폰트 컨버터 사용하기**
+LVGL은 .ttf 폰트를 그대로 사용할 수 없으므로, LVGL 전용 C 소스 파일로 변환해야 합니다.
+LVGL Font Converter
+ 웹사이트에 접속합니다.
+다음과 같이 설정합니다:
+Font file: NotoSansKR-Regular.ttf 선택
+Font size: 20 입력 → NotoSansKR_20 생성
+Bpp: 4 (일반적으로 4bpp 권장)
+Range: 0x20-0x7F,0xAC00-0xD7A3
+
+0x20-0x7F → 기본 ASCII 문자
+
+0xAC00-0xD7A3 → 한글 전체 (가~힣)
+
+Output format: C array 선택
+
+Convert 버튼을 누르면 NotoSansKR_20.c 파일이 생성됩니다.
