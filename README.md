@@ -808,14 +808,14 @@ LVGL은 .ttf 폰트를 그대로 사용할 수 없으므로, LVGL 전용 C 소�
 [LVGL Font Converter](https://lvgl.io/tools/fontconverter)   웹사이트에 접속합니다.
 
 다음과 같이 설정합니다:
-Font file: NotoSansKR-Regular.ttf 선택
+Name : 사용할 이름 입력
 Font size: 20 입력 → NotoSansKR_20 생성
 Bpp: 4 (일반적으로 4bpp 권장)
-Range: 0x20-0x7F,0xAC00-0xD7A3
-0x20-0x7F → 기본 ASCII 문자
-0xAC00-0xD7A3 → 한글 전체 (가~힣)
 Output format: C array 선택
-Convert 버튼을 누르면 NotoSansKR_20.c 파일이 생성됩니다.
+Browse: NotoSansKR-Regular.ttf 선택
+Range: 빈칸
+Symbols: 사용할 글짜들 입력
+Submit 버튼을 누르면 NotoSansKR_20.c 파일이 생성됩니다.
 <img src="https://github.com/user-attachments/assets/ebed64a9-ecf0-4fb0-93fb-a0599bd62cf4" alt="Google Fonts" width="600">
 
 
