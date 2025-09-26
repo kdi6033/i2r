@@ -822,7 +822,10 @@ Submit 버튼을 누르면 NotoSansKR_20.c 파일이 생성됩니다.
     <img src="https://github.com/user-attachments/assets/ebed64a9-ecf0-4fb0-93fb-a0599bd62cf4" alt="Google Fonts" width="600">
 </p>
 
-### C code
+
+<details>
+<summary>💻 C code</summary>
+
 ```c
 /*Change the active screen's background color*/
 lv_obj_set_style_bg_color(lv_screen_active(), lv_color_hex(0x003a57), LV_PART_MAIN);
@@ -832,4 +835,3 @@ lv_obj_t * label = lv_label_create(lv_screen_active());
 lv_label_set_text(label, "Hello world");
 lv_obj_set_style_text_color(label, lv_color_hex(0xffffff), LV_PART_MAIN);
 lv_obj_align(label, LV_ALIGN_CENTER, 0, 0);
-
