@@ -803,8 +803,9 @@ LVGL에서 한글 UI를 만들기 위해서는 한글을 지원하는 폰트를 
 <img src="https://github.com/user-attachments/assets/c0ace5c3-56ef-4a96-b16c-aef7819f74fe" alt="Google Fonts" width="400">
 
 **2. LVGL 폰트 컨버터 사용하기**
+
 LVGL은 .ttf 폰트를 그대로 사용할 수 없으므로, LVGL 전용 C 소스 파일로 변환해야 합니다.
-LVGL Font Converter
+LVGL Font Converter  
  웹사이트에 접속합니다.
 다음과 같이 설정합니다:
 Font file: NotoSansKR-Regular.ttf 선택
