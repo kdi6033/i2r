@@ -720,7 +720,7 @@ void loop() {
   lv_timer_handler();  // LVGL 내부 작업 처리
   delay(5);
 }
-```
+</details> ```
 
 버튼 출력 프로그램
 ```
