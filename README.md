@@ -113,17 +113,6 @@ https:// i2r.link  접속하면 페이지마다 유튜브 링크를 따라 해�
 
 ----------------
 
-위에 기술한 프로토콜을 node red 에서 실행 한 것입니다. 폰의 어플에서 구현한 것을 node red로 프로그램해서 사용할수 있습니다.
-<a href="https://youtu.be/ufBprCdABSk">
-    <img src="https://github.com/user-attachments/assets/01886cc0-2b59-4e1c-962b-f5b7cc751a45" alt="i2r 프로토콜" width="800">
-</a>
-
-[프로토콜 node red 소스프로그램](https://github.com/kdi6033/i2r/blob/main/txt/protocol%20node%20red%20example.json)
-
-<a href="https://youtu.be/ufBprCdABSk">
-    <img src="https://github.com/user-attachments/assets/fd75d17a-1c77-46e2-872d-b610dede45c3" alt="protocol" width="400">
-</a>
-
 ### 아두이노 프로그램 설정    
 <a href="https://youtu.be/UrJd-RHRh6U">
     <img src="https://github.com/user-attachments/assets/67556286-b878-44ef-9175-553a6aa418ef" alt="Updating the screen" width="400">
