@@ -425,6 +425,225 @@ uint8_t crc8(const uint8_t *data, size_t len) {
 }
 ```
 
+# I2C 통신 프로그램
+마스터 프로그램 : 터치스크린 RP2040
+```
+#include <Wire.h>
+
+#define I2C_ADDR 0x08  // ESP32 슬레이브 주소
+#define SDA_PIN 20     // I2C SDA 핀
+#define SCL_PIN 21     // I2C SCL 핀
+
+void setup() {
+  Wire.setSDA(SDA_PIN);
+  Wire.setSCL(SCL_PIN);
+  Wire.begin();  // I2C 마스터 시작
+  Serial.begin(115200);
+  delay(1000);
+  Serial.println("I2C Master 시작");
+}
+
+void sendCommand(const String& cmd) {
+  Wire.beginTransmission(I2C_ADDR);
+  Wire.write(cmd.c_str());
+  Wire.endTransmission();
+  Serial.println("전송: " + cmd);
+}
+
+void loop() {
+  sendCommand("{\"cmd\":\"on\"}");
+  delay(3000);
+
+  sendCommand("{\"cmd\":\"off\"}");
+  delay(3000);
+}
+```
+
+슬레이브 프로그램 : IoT PLC ESP32
+```
+#include <Wire.h>
+
+#define SLAVE_ADDR 0x08
+#define SDA_PIN 16
+#define SCL_PIN 17
+
+String received = "";
+
+void receiveEvent(int howMany) {
+  char c;
+  received = "";
+  while (Wire.available()) {
+    c = Wire.read();
+    received += c;
+  }
+  Serial.println("수신된 데이터: " + received);
+}
+
+void setup() {
+  Serial.begin(115200);
+  delay(500);
+  Serial.println("I2C Slave 시작");
+
+  // 슬레이브 모드로 SDA/SCL 핀 지정
+  Wire.begin(SLAVE_ADDR, SDA_PIN, SCL_PIN, 100000);
+  Wire.onReceive(receiveEvent);
+}
+
+void loop() {
+  // 슬레이브는 이벤트 기반이므로 loop는 비워둠
+}
+```
+
+# LVGL 한글 터치스크린 프로그램 HMI
+LVGL (Light and Versatile Graphics Library)
+## 1. ILI9341 + LVGL + TFT_eSPI 관계
+
+**1) LVGL (Light and Versatile Graphics Library)**
+- 오픈소스 GUI 라이브러리
+- 버튼, 슬라이더, 차트, 탭, 텍스트 등 고급 UI 위젯 제공
+- 하드웨어 독립적 → 직접 LCD 제어하지 않음
+- 대신 “화면에 이 사각형을 그려라” 같은 **그리기 요청(draw call)**만 처리
+- 실제 픽셀 출력은 **디스플레이 드라이버(TFT_eSPI)**에 맡김
+- 👉 즉, UI 엔진 (사용자 인터페이스 제공)
+
+**2) TFT_eSPI (디스플레이 드라이버)**
+- ESP32 전용 고속 그래픽 라이브러리
+- ILI9341, ST7735, ST7796 등 여러 디스플레이 칩 지원
+- tft.drawPixel(x, y, color) 같은 저수준 API 제공
+- SPI 통신을 최적화하여 빠른 화면 갱신 가능
+- LVGL 같은 상위 라이브러리가 직접 ILI9341을 제어하지 않고 TFT_eSPI를 통해 제어
+- 👉 즉, 소프트웨어 드라이버 (ESP32 ↔ ILI9341 연결)
+
+**3) ILI9341 (디스플레이 컨트롤러)**
+- 2.4~3.2인치 TFT LCD에서 많이 사용하는 디스플레이 드라이버 칩
+- SPI 또는 병렬 인터페이스를 통해 픽셀 데이터를 수신
+- 하드웨어적으로 LCD 패널의 픽셀 제어, 컬러 표현, 메모리 관리를 담당
+- 예: 0,0 좌표에 빨간색 픽셀 그려라 → ILI9341이 LCD에 실제 반영
+👉 즉, 하드웨어 칩 (디스플레이 컨트롤러)
+
+**4) 관계 정리**
+- LVGL → UI를 논리적으로 관리 (버튼, 차트, 텍스트 등)
+- TFT_eSPI → LVGL이 요청한 그래픽을 픽셀 단위 명령으로 변환
+- ILI9341 → 실제 TFT LCD 패널의 픽셀을 제어하여 화면에 출력
+
+**5) 데이터 흐름**
+```
+LVGL (UI/위젯 관리)
+   ↓
+TFT_eSPI (ESP32용 디스플레이 드라이버)
+   ↓
+ILI9341 (하드웨어 컨트롤러)
+   ↓
+LCD 화면 출력
+```
+
+## 2. 디스플레이 드라이버
+
+** 디스플레이 드라이버의 역할 **
+LVGL 디스플레이 드라이버는 아래 두 가지를 담당합니다.
+1) Flush callback (disp_drv.flush_cb)
+- LVGL이 "이 영역을 빨간색으로 칠해라"라고 명령을 내리면,
+- flush_cb 함수가 해당 픽셀 데이터를 실제 LCD 드라이버(ST7796, ILI9341 등) 로 전송합니다.
+2) Buffer 관리 (lv_disp_draw_buf_t)
+- LVGL은 화면 전체 크기만큼의 버퍼를 만들 필요가 없습니다.
+- 보통 화면의 1/10~1/20 크기 버퍼만 두고, 해당 영역만 갱신합니다.
+- 이 버퍼와 실제 하드웨어 전송을 연결하는 것이 디스플레이 드라이버의 역할입니다.
+
+## lvgl 설치 후 lv_conf.h 파일 만들기
+lv_conf_template.h 를 필요한 항목을 수정해서 lv_conf.h 로 저장합니다.
+
+**📌 요약 (수정해야 하는 항목만)**
+1.#if 0 → #if 1
+2. LV_COLOR_DEPTH = 16 (ILI9341)
+3. LV_MEM_CUSTOM = 1 (malloc/free 사용)
+4. LV_TICK_CUSTOM = 1, millis() 기반 설정
+5. LV_DPI_DEF = 130 (3.5" 기준)
+6. 폰트 설정: 필요 시 한글 폰트 추가
+7. 위젯: 필요한 것만 1로 유지
+8. 데모: 학습 시 1, 실제 코드에선 0
+
+
+**1) 파일 활성화**
+```
+#if 0 /*Set it to "1" to enable content*/
+```
+👉 0 → 1 로 변경해야 LVGL이 이 설정을 읽습니다.
+```
+#if 1 /*Set it to "1" to enable content*/
+```
+**2) 색상 설정**
+```
+#define LV_COLOR_DEPTH 16
+#define LV_COLOR_16_SWAP 0
+```
+ILI9341은 RGB565(16bit) 사용 → LV_COLOR_DEPTH 16 유지
+색상이 뒤집혀 나오면 LV_COLOR_16_SWAP을 1로 변경
+
+**3) 메모리 설정**
+현재:
+```
+#define LV_MEM_CUSTOM 0
+```
+👉 ESP32는 malloc/free를 쓰는 게 일반적이므로 1로 변경
+```
+#define LV_MEM_CUSTOM 1
+#define LV_MEM_CUSTOM_INCLUDE <stdlib.h>
+#define LV_MEM_CUSTOM_ALLOC malloc
+#define LV_MEM_CUSTOM_FREE free
+```
+
+**4) Tick 설정**
+현재:
+```
+#define LV_TICK_CUSTOM 0
+```
+👉 Arduino 환경에서는 millis() 사용하도록 1로 변경
+```
+#define LV_TICK_CUSTOM 1
+#define LV_TICK_CUSTOM_INCLUDE "Arduino.h"
+#define LV_TICK_CUSTOM_SYS_TIME_EXPR (millis())
+```
+
+**5) DPI 설정**
+```
+#define LV_DPI_DEF 130
+```
+3.5" 320x480 해상도면 130 정도가 적당 (필요하면 100~140 사이 조정 가능)
+
+**6) 폰트 설정 (한글 UI 필요 시)**
+기본값:
+```
+#define LV_FONT_MONTSERRAT_14 1
+#define LV_FONT_DEFAULT &lv_font_montserrat_14
+```
+👉 한글 표시하려면 커스텀 폰트 선언 추가
+```
+#define LV_FONT_CUSTOM_DECLARE LV_FONT_DECLARE(NotoSansKR_20)
+```
+(NotoSansKR_20.c 파일을 프로젝트에 포함해야 함)
+
+**7) 위젯 사용 여부**
+기본값은 대부분 1 → 그대로 둬도 무방
+👉 메모리 절약하려면 안 쓰는 위젯을 0으로 꺼두기
+예: 버튼, 레이블, 슬라이더만 쓸 경우
+```
+#define LV_USE_BTN     1
+#define LV_USE_LABEL   1
+#define LV_USE_SLIDER  1
+```
+
+**8) 데모/예제**
+```
+#define LV_BUILD_EXAMPLES 1
+#define LV_USE_DEMO_WIDGETS 1
+```
+처음 테스트할 때는 1로 켜두면 좋음
+실제 제품 코드에서는 불필요하면 0으로 꺼서 용량/속도 최적화
+
+## 3. 디스플레이 드라이버 TFT_eSPI 설치
+CrowPanel 터치스크린은 RP2040 + ILI9488 (480x320) 디스플레이에 맞게 수정해야 합니다.
+
+
 # LVGL (Light and Versatile Graphics Library)
 임베디드 시스템용 고성능 그래픽 UI 프레임워크
 적은 메모리에서도 부드럽고 직관적인 터치 UI를 구현할 수 있는 오픈소스 그래픽 라이브러리입니다
@@ -575,223 +794,7 @@ void loop() {
 }
 ```
 
-# I2C 통신 프로그램
-마스터 프로그램 : 터치스크린 RP2040
-```
-#include <Wire.h>
 
-#define I2C_ADDR 0x08  // ESP32 슬레이브 주소
-#define SDA_PIN 20     // I2C SDA 핀
-#define SCL_PIN 21     // I2C SCL 핀
-
-void setup() {
-  Wire.setSDA(SDA_PIN);
-  Wire.setSCL(SCL_PIN);
-  Wire.begin();  // I2C 마스터 시작
-  Serial.begin(115200);
-  delay(1000);
-  Serial.println("I2C Master 시작");
-}
-
-void sendCommand(const String& cmd) {
-  Wire.beginTransmission(I2C_ADDR);
-  Wire.write(cmd.c_str());
-  Wire.endTransmission();
-  Serial.println("전송: " + cmd);
-}
-
-void loop() {
-  sendCommand("{\"cmd\":\"on\"}");
-  delay(3000);
-
-  sendCommand("{\"cmd\":\"off\"}");
-  delay(3000);
-}
-```
-
-슬레이브 프로그램 : IoT PLC ESP32
-```
-#include <Wire.h>
-
-#define SLAVE_ADDR 0x08
-#define SDA_PIN 16
-#define SCL_PIN 17
-
-String received = "";
-
-void receiveEvent(int howMany) {
-  char c;
-  received = "";
-  while (Wire.available()) {
-    c = Wire.read();
-    received += c;
-  }
-  Serial.println("수신된 데이터: " + received);
-}
-
-void setup() {
-  Serial.begin(115200);
-  delay(500);
-  Serial.println("I2C Slave 시작");
-
-  // 슬레이브 모드로 SDA/SCL 핀 지정
-  Wire.begin(SLAVE_ADDR, SDA_PIN, SCL_PIN, 100000);
-  Wire.onReceive(receiveEvent);
-}
-
-void loop() {
-  // 슬레이브는 이벤트 기반이므로 loop는 비워둠
-}
-```
-
-# LVGL 한글 터치스크린 프로그램 HMI
-
-## 1. ILI9341 + LVGL + TFT_eSPI 관계
-
-**1) LVGL (Light and Versatile Graphics Library)**
-- 오픈소스 GUI 라이브러리
-- 버튼, 슬라이더, 차트, 탭, 텍스트 등 고급 UI 위젯 제공
-- 하드웨어 독립적 → 직접 LCD 제어하지 않음
-- 대신 “화면에 이 사각형을 그려라” 같은 **그리기 요청(draw call)**만 처리
-- 실제 픽셀 출력은 **디스플레이 드라이버(TFT_eSPI)**에 맡김
-- 👉 즉, UI 엔진 (사용자 인터페이스 제공)
-
-**2) TFT_eSPI (디스플레이 드라이버)**
-- ESP32 전용 고속 그래픽 라이브러리
-- ILI9341, ST7735, ST7796 등 여러 디스플레이 칩 지원
-- tft.drawPixel(x, y, color) 같은 저수준 API 제공
-- SPI 통신을 최적화하여 빠른 화면 갱신 가능
-- LVGL 같은 상위 라이브러리가 직접 ILI9341을 제어하지 않고 TFT_eSPI를 통해 제어
-- 👉 즉, 소프트웨어 드라이버 (ESP32 ↔ ILI9341 연결)
-
-**3) ILI9341 (디스플레이 컨트롤러)**
-- 2.4~3.2인치 TFT LCD에서 많이 사용하는 디스플레이 드라이버 칩
-- SPI 또는 병렬 인터페이스를 통해 픽셀 데이터를 수신
-- 하드웨어적으로 LCD 패널의 픽셀 제어, 컬러 표현, 메모리 관리를 담당
-- 예: 0,0 좌표에 빨간색 픽셀 그려라 → ILI9341이 LCD에 실제 반영
-👉 즉, 하드웨어 칩 (디스플레이 컨트롤러)
-
-**4) 관계 정리**
-- LVGL → UI를 논리적으로 관리 (버튼, 차트, 텍스트 등)
-- TFT_eSPI → LVGL이 요청한 그래픽을 픽셀 단위 명령으로 변환
-- ILI9341 → 실제 TFT LCD 패널의 픽셀을 제어하여 화면에 출력
-
-**5) 데이터 흐름**
-```
-LVGL (UI/위젯 관리)
-   ↓
-TFT_eSPI (ESP32용 디스플레이 드라이버)
-   ↓
-ILI9341 (하드웨어 컨트롤러)
-   ↓
-LCD 화면 출력
-```
-
-## 2. 디스플레이 드라이버
-
-** 디스플레이 드라이버의 역할 **
-LVGL 디스플레이 드라이버는 아래 두 가지를 담당합니다.
-1) Flush callback (disp_drv.flush_cb)
-- LVGL이 "이 영역을 빨간색으로 칠해라"라고 명령을 내리면,
-- flush_cb 함수가 해당 픽셀 데이터를 실제 LCD 드라이버(ST7796, ILI9341 등) 로 전송합니다.
-2) Buffer 관리 (lv_disp_draw_buf_t)
-- LVGL은 화면 전체 크기만큼의 버퍼를 만들 필요가 없습니다.
-- 보통 화면의 1/10~1/20 크기 버퍼만 두고, 해당 영역만 갱신합니다.
-- 이 버퍼와 실제 하드웨어 전송을 연결하는 것이 디스플레이 드라이버의 역할입니다.
-
-## lvgl 설치 후 lv_conf.h 파일 만들기
-lv_conf_template.h 를 필요한 항목을 수정해서 lv_conf.h 로 저장합니다.
-
-**📌 요약 (수정해야 하는 항목만)**
-1.#if 0 → #if 1
-2. LV_COLOR_DEPTH = 16 (ILI9341)
-3. LV_MEM_CUSTOM = 1 (malloc/free 사용)
-4. LV_TICK_CUSTOM = 1, millis() 기반 설정
-5. LV_DPI_DEF = 130 (3.5" 기준)
-6. 폰트 설정: 필요 시 한글 폰트 추가
-7. 위젯: 필요한 것만 1로 유지
-8. 데모: 학습 시 1, 실제 코드에선 0
-
-
-**1) 파일 활성화**
-```
-#if 0 /*Set it to "1" to enable content*/
-```
-👉 0 → 1 로 변경해야 LVGL이 이 설정을 읽습니다.
-```
-#if 1 /*Set it to "1" to enable content*/
-```
-**2) 색상 설정**
-```
-#define LV_COLOR_DEPTH 16
-#define LV_COLOR_16_SWAP 0
-```
-ILI9341은 RGB565(16bit) 사용 → LV_COLOR_DEPTH 16 유지
-색상이 뒤집혀 나오면 LV_COLOR_16_SWAP을 1로 변경
-
-**3) 메모리 설정**
-현재:
-```
-#define LV_MEM_CUSTOM 0
-```
-👉 ESP32는 malloc/free를 쓰는 게 일반적이므로 1로 변경
-```
-#define LV_MEM_CUSTOM 1
-#define LV_MEM_CUSTOM_INCLUDE <stdlib.h>
-#define LV_MEM_CUSTOM_ALLOC malloc
-#define LV_MEM_CUSTOM_FREE free
-```
-
-**4) Tick 설정**
-현재:
-```
-#define LV_TICK_CUSTOM 0
-```
-👉 Arduino 환경에서는 millis() 사용하도록 1로 변경
-```
-#define LV_TICK_CUSTOM 1
-#define LV_TICK_CUSTOM_INCLUDE "Arduino.h"
-#define LV_TICK_CUSTOM_SYS_TIME_EXPR (millis())
-```
-
-**5) DPI 설정**
-```
-#define LV_DPI_DEF 130
-```
-3.5" 320x480 해상도면 130 정도가 적당 (필요하면 100~140 사이 조정 가능)
-
-**6) 폰트 설정 (한글 UI 필요 시)**
-기본값:
-```
-#define LV_FONT_MONTSERRAT_14 1
-#define LV_FONT_DEFAULT &lv_font_montserrat_14
-```
-👉 한글 표시하려면 커스텀 폰트 선언 추가
-```
-#define LV_FONT_CUSTOM_DECLARE LV_FONT_DECLARE(NotoSansKR_20)
-```
-(NotoSansKR_20.c 파일을 프로젝트에 포함해야 함)
-
-**7) 위젯 사용 여부**
-기본값은 대부분 1 → 그대로 둬도 무방
-👉 메모리 절약하려면 안 쓰는 위젯을 0으로 꺼두기
-예: 버튼, 레이블, 슬라이더만 쓸 경우
-```
-#define LV_USE_BTN     1
-#define LV_USE_LABEL   1
-#define LV_USE_SLIDER  1
-```
-
-**8) 데모/예제**
-```
-#define LV_BUILD_EXAMPLES 1
-#define LV_USE_DEMO_WIDGETS 1
-```
-처음 테스트할 때는 1로 켜두면 좋음
-실제 제품 코드에서는 불필요하면 0으로 꺼서 용량/속도 최적화
-
-## 3. 디스플레이 드라이버 TFT_eSPI 설치
-CrowPanel 터치스크린은 RP2040 + ILI9488 (480x320) 디스플레이에 맞게 수정해야 합니다.
 1) 드라이버 선택
 기본값:
 ```
