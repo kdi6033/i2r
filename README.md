@@ -665,7 +665,8 @@ lvgl 라이브러리 설치
 
 <details>
 <summary>💻 C code Text 출력 Hello </summary>
-```
+    
+```cpp
 #include <lvgl.h>
 #include <TFT_eSPI.h>
 
