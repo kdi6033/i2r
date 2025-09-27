@@ -495,8 +495,11 @@ void loop() {
 ```
 
 # LVGL 한글 터치스크린 프로그램 HMI
-LVGL (Light and Versatile Graphics Library)
-## 1. ILI9341 + LVGL + TFT_eSPI 관계
+그래픽과 터치스크린을 구현하기 위한 구조를 설명하겠습니다.
+- LVGL 에서는 그래픽에 필요한 설정을 해야 합니다.
+- ILI9341 는 터치 스크린마다 사용하는 종류가 달라지므로 TFT_eSPI 에 정의를 해야 합니다.
+     
+## 1. LVGL + TFT_eSPI + ILI9341 관계
 
 **1) LVGL (Light and Versatile Graphics Library)**
 - 오픈소스 GUI 라이브러리
@@ -537,7 +540,10 @@ ILI9341 (하드웨어 컨트롤러)
 LCD 화면 출력
 ```
 
-## 2. 디스플레이 드라이버
+## 2. LVGL (Light and Versatile Graphics Library) 디스플레이 드라이버
+적은 메모리에서도 부드럽고 직관적인 터치 UI를 구현할 수 있는 오픈소스 그래픽 라이브러리입니다    
+다음 기술 사이트를 참조하세요   
+[lvgl 기술사이트](https://github.com/lvgl/lvgl)    
 
 ** 디스플레이 드라이버의 역할 **
 LVGL 디스플레이 드라이버는 아래 두 가지를 담당합니다.
@@ -643,12 +649,6 @@ ILI9341은 RGB565(16bit) 사용 → LV_COLOR_DEPTH 16 유지
 ## 3. 디스플레이 드라이버 TFT_eSPI 설치
 CrowPanel 터치스크린은 RP2040 + ILI9488 (480x320) 디스플레이에 맞게 수정해야 합니다.
 
-
-# LVGL (Light and Versatile Graphics Library)
-임베디드 시스템용 고성능 그래픽 UI 프레임워크
-적은 메모리에서도 부드럽고 직관적인 터치 UI를 구현할 수 있는 오픈소스 그래픽 라이브러리입니다
-[lvgl 기술사이트](https://github.com/lvgl/lvgl)    
-
 TFT_eSPI 라이브러리 설치     
 ![TFT_eSPI](https://github.com/user-attachments/assets/1423d2ef-853d-418b-8de9-22546349be82)    
 
@@ -662,7 +662,9 @@ lvgl 라이브러리 설치
 ![lvgl](https://github.com/user-attachments/assets/070e58a6-ff88-46ab-a752-f6446f9c30a9)
 
 기본적인 문자를 출력해 봅니다.
-Text 출력 Hello 
+
+<details>
+<summary>💻 C code Text 출력 Hello </summary>
 ```
 #include <lvgl.h>
 #include <TFT_eSPI.h>
@@ -717,7 +719,7 @@ void loop() {
   lv_timer_handler();  // LVGL 내부 작업 처리
   delay(5);
 }
-```
+
 버튼 출력 프로그램
 ```
 #include <lvgl.h>
@@ -793,7 +795,6 @@ void loop() {
   delay(5);
 }
 ```
-
 
 1) 드라이버 선택
 기본값:
