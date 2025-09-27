@@ -661,6 +661,92 @@ lvgl 라이브러리 설치
 위에서 다운로드 받은 파일중에 lv_conf.h 를 아두이노 라이브러리 디렉토리에 복사 한다.  
 ![lvgl](https://github.com/user-attachments/assets/070e58a6-ff88-46ab-a752-f6446f9c30a9)
 
+1) 드라이버 선택
+기본값:
+```
+#define ILI9341_DRIVER
+```
+수정 후 (CrowPanel 제공):
+```
+#define ILI9488_DRIVER
+```
+👉 CrowPanel 3.5"는 ILI9488 드라이버 기반이므로, 드라이버를 ILI9341 → ILI9488로 변경.
+
+2) 디스플레이 해상도
+기본값: 정의 없음 (ILI9341는 기본적으로 240x320)
+수정 후:
+```
+#define TFT_WIDTH  320
+#define TFT_HEIGHT 480
+```
+👉 CrowPanel 디스플레이 해상도(320×480)에 맞게 설정.
+
+3) 백라이트 제어
+기본값:
+```
+// #define TFT_BL   32
+// #define TFT_BACKLIGHT_ON HIGH
+```
+수정 후:
+```
+#define TFT_BL 18
+#define TFT_BACKLIGHT_ON HIGH
+```
+👉 CrowPanel 보드에서 TFT 백라이트 제어 핀이 GPIO18이므로 핀 지정 추가.
+
+4) 핀 매핑 (SPI + 제어 핀)
+
+기본값 (ESP8266/ESP32용 예시 핀):
+```
+#define TFT_MISO  PIN_D6
+#define TFT_MOSI  PIN_D7
+#define TFT_SCLK  PIN_D5
+#define TFT_CS    PIN_D8
+#define TFT_DC    PIN_D3
+#define TFT_RST   PIN_D4
+```
+
+수정 후 (RP2040 CrowPanel 전용 핀맵):
+```
+#define TFT_MISO  12
+#define TFT_MOSI  11
+#define TFT_SCLK  10
+#define TFT_CS     9
+#define TFT_DC     8
+#define TFT_RST   15
+#define TOUCH_CS  16
+```
+👉 RP2040 Pico HMI 보드에 맞게 핀 번호를 10~16번 핀으로 새롭게 매핑.
+
+5) SPI 포트 선택
+기본값: 없음
+
+수정 후:
+```
+#define TFT_SPI_PORT 1
+```
+👉 RP2040은 SPI0/SPI1을 선택할 수 있는데, CrowPanel 보드는 SPI1을 사용.
+
+6) SPI 클럭 주파수
+기본값:
+```
+#define SPI_FREQUENCY  27000000
+```
+
+수정 후:
+```
+#define SPI_FREQUENCY  80000000
+```
+👉 ILI9488 드라이버와 RP2040 성능에 맞춰 최대 80MHz로 변경.
+
+7) 추가된 항목
+터치스크린 CS 핀 정의:
+```
+#define TOUCH_CS 16
+```
+👉 XPT2046 터치 컨트롤러용 CS 핀을 별도로 지정.
+
+
 기본적인 문자를 출력해 봅니다.
 <details>
 <summary>💻 아두이노 예제 - 문자 출력</summary>
@@ -800,91 +886,6 @@ void loop() {
 }
 ```
 </details>
-
-1) 드라이버 선택
-기본값:
-```
-#define ILI9341_DRIVER
-```
-수정 후 (CrowPanel 제공):
-```
-#define ILI9488_DRIVER
-```
-👉 CrowPanel 3.5"는 ILI9488 드라이버 기반이므로, 드라이버를 ILI9341 → ILI9488로 변경.
-
-2) 디스플레이 해상도
-기본값: 정의 없음 (ILI9341는 기본적으로 240x320)
-수정 후:
-```
-#define TFT_WIDTH  320
-#define TFT_HEIGHT 480
-```
-👉 CrowPanel 디스플레이 해상도(320×480)에 맞게 설정.
-
-3) 백라이트 제어
-기본값:
-```
-// #define TFT_BL   32
-// #define TFT_BACKLIGHT_ON HIGH
-```
-수정 후:
-```
-#define TFT_BL 18
-#define TFT_BACKLIGHT_ON HIGH
-```
-👉 CrowPanel 보드에서 TFT 백라이트 제어 핀이 GPIO18이므로 핀 지정 추가.
-
-4) 핀 매핑 (SPI + 제어 핀)
-
-기본값 (ESP8266/ESP32용 예시 핀):
-```
-#define TFT_MISO  PIN_D6
-#define TFT_MOSI  PIN_D7
-#define TFT_SCLK  PIN_D5
-#define TFT_CS    PIN_D8
-#define TFT_DC    PIN_D3
-#define TFT_RST   PIN_D4
-```
-
-수정 후 (RP2040 CrowPanel 전용 핀맵):
-```
-#define TFT_MISO  12
-#define TFT_MOSI  11
-#define TFT_SCLK  10
-#define TFT_CS     9
-#define TFT_DC     8
-#define TFT_RST   15
-#define TOUCH_CS  16
-```
-👉 RP2040 Pico HMI 보드에 맞게 핀 번호를 10~16번 핀으로 새롭게 매핑.
-
-5) SPI 포트 선택
-기본값: 없음
-
-수정 후:
-```
-#define TFT_SPI_PORT 1
-```
-👉 RP2040은 SPI0/SPI1을 선택할 수 있는데, CrowPanel 보드는 SPI1을 사용.
-
-6) SPI 클럭 주파수
-기본값:
-```
-#define SPI_FREQUENCY  27000000
-```
-
-수정 후:
-```
-#define SPI_FREQUENCY  80000000
-```
-👉 ILI9488 드라이버와 RP2040 성능에 맞춰 최대 80MHz로 변경.
-
-7) 추가된 항목
-터치스크린 CS 핀 정의:
-```
-#define TOUCH_CS 16
-```
-👉 XPT2046 터치 컨트롤러용 CS 핀을 별도로 지정.
 
 
 ## 📘 LVGL 한글 폰트 적용 가이드
