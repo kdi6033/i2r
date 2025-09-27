@@ -664,6 +664,7 @@ lvgl 라이브러리 설치
 기본적인 문자를 출력해 봅니다.
 <details>
 <summary>💻 C code - 문자 출력</summary>
+    
 ```c
 #include <lvgl.h>
 #include <TFT_eSPI.h>
