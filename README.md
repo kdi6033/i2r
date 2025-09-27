@@ -22,21 +22,8 @@ Node-RED를 활용하여 로컬 컴퓨터, AWS 클라우드, 스마트폰 애플
 - 아마존 크라우드 AWS IoT 서버
 - 자세한 사용법과 서버 구축의 세부내용은 아래를 참조하세요
 
-**스마트폰,탭,PC로 제어**
-다음 QR 링크를 눌러 어플을 설치하고 유튜브의 사용법을 따라하세요.    
-QR CODE 연결하거나 그림을 누르세요 <br>   
-
-<a href="https://play.google.com/store/apps/details?id=io.ionic.i2rReactIoT">
-    <img src="https://github.com/user-attachments/assets/6fcca369-0c4a-4d6f-ad9b-642c6d29bdac" alt="다운로드 QR코드" width="200">
-</a>  
-<a href="https://youtu.be/bLvpejVkJcQ">
-    <img src="https://github.com/user-attachments/assets/9523bd58-8626-4707-af54-0d5fd12a8c82" alt="IoT PLC App 통신 설정" width="400">
-</a>
-<a href="https://youtu.be/-O2wFqJ9-Qw">
-    <img src="https://github.com/user-attachments/assets/4b88edef-1c0a-4c19-bd82-464cf4cacede" alt="입출력, 온도, 습도 동작설정" width="400">
-</a>    
-    
-구매하신 보드에는 다음 프로그램이 설치되어 있습습니다. 어플과 연동하는 아두이노 프로그램으로 응용해서 사용하실 분들은 이 프로그램을 활용하세요. <br>
+**스마트폰,탭,PC로 제어**    
+https:// i2r.link  접속하면 페이지마다 유튜브 링크를 따라 해보시면 쉽게 사용할 수 있습니다.
 
 [i2r-02 보드 아두이노 소스프로그램](https://github.com/kdi6033/i2r-02/releases/tag/board-i2r-02-v1.0)    
 [i2r-03 보드 아두이노 소스프로그램](https://github.com/kdi6033/i2r-03/releases/tag/board-i2r-03-v1.0)    
@@ -44,7 +31,8 @@ QR CODE 연결하거나 그림을 누르세요 <br>
 
 
 # 프로토콜
-## 2025년7월15일 chatgpt에 적합한 프로토콜을 새로 작성하고 있습니다. 이전에 구매한 보드는 7월30일 이후 새로운 펌웨어를 다운 받아 주세요
+**2025년7월15일 chatgpt에 적합한 프로토콜을 새로 작성하고 있습니다. 이전에 구매한 보드는 7월30일 이후 새로운 펌웨어를 다운 받아 주세요**
+
 i2r 보드의 mqtt 통신에서는 아래와 같이 구성되어 email을 저장하면 다음 토픽으로 자신에 해당되는 데이터를 통신 할 수 있습니다.     
 intopic : i2r/email주소/in    
 outtopic=i2r/email주소/out  
