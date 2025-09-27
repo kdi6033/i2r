@@ -663,10 +663,7 @@ lvgl 라이브러리 설치
 
 기본적인 문자를 출력해 봅니다.
 
-<details>
-<summary>💻 C code Text 출력 Hello </summary>
-
-```cpp
+```
 #include <lvgl.h>
 #include <TFT_eSPI.h>
 
@@ -720,7 +717,7 @@ void loop() {
   lv_timer_handler();  // LVGL 내부 작업 처리
   delay(5);
 }
-</details> ```
+ ```
 
 버튼 출력 프로그램
 ```
