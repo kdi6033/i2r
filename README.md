@@ -1,4 +1,4 @@
-# i2r IoT 기기
+#✅ i2r IoT 기기
 아이티알에서 제작한 기기 관련 정보를 제공합니다.    
 Data Scientist, AI Scientist 를 희망하시는 분들에게 도움을 드리려 합니다.    
 <br>
@@ -30,7 +30,7 @@ https:// i2r.link  접속하면 페이지마다 유튜브 링크를 따라 해�
 [i2r-04 보드 아두이노 소스프로그램](https://github.com/kdi6033/i2r-04/releases/tag/board-i2r-04-v1.0)    
 
 
-# 프로토콜
+#✅ 프로토콜
 **2025년7월15일 chatgpt에 적합한 프로토콜을 새로 작성하고 있습니다. 이전에 구매한 보드는 7월30일 이후 새로운 펌웨어를 다운 받아 주세요**
 
 i2r 보드의 mqtt 통신에서는 아래와 같이 구성되어 email을 저장하면 다음 토픽으로 자신에 해당되는 데이터를 통신 할 수 있습니다.     
@@ -44,7 +44,7 @@ outtopic=i2r/email주소/out
 
 ---
 
-## ✅ 기본 MQTT 토픽 구조
+## 기본 MQTT 토픽 구조
 
 - **intopic**  : `i2r/{email}/in`  
 - **outtopic** : `i2r/{email}/out`
@@ -53,7 +53,7 @@ outtopic=i2r/email주소/out
 
 ---
 
-## ✅ JSON 메시지 필드명 요약
+## JSON 메시지 필드명 요약
 
 | 전체 명칭         | 축약 코드 | 설명                                                                           |
 | ----------------- | -------- | ------------------------------------------------------------------------------- |
@@ -91,7 +91,7 @@ outtopic=i2r/email주소/out
 
 ---
 
-## ✅ 명령어 축약 코드 목록
+## 명령어 축약 코드 목록
 
 | 전체 명칭           | 축약 코드 (`c`)   | 설명 |
 |---------------------|------------------|------|
@@ -104,7 +104,7 @@ outtopic=i2r/email주소/out
 | `touchInput`       | `ti`            | Touch Panel(RP2040 등) 전달 |
 
 ---
-## ✅ 예제 및 상세 설명 
+## 예제 및 상세 설명 
 
 | `command` (`c`) | 예제 및 상세 설명 |
 |----------------|-------------------|
@@ -203,28 +203,14 @@ spiffs,   data, spiffs,  0x510000, 0x180000
 
 - 마지막으로 SPIFFS 파티션은 파일 시스템 저장 공간입니다. SPIFFS는 플래시 메모리를 기반으로 한 파일 시스템으로, 디바이스가 HTML 파일, 이미지, 스크립트 파일 등 다양한 파일 데이터를 저장하고 읽을 수 있도록 도와줍니다. 예를 들어, 웹서버를 구현하는 경우 웹 페이지의 정적 파일을 SPIFFS에 저장할 수 있습니다.  이 파티션은 1.5MB 크기로 할당되어 있으며, 시스템이 파일 기반 데이터를 관리할 수 있는 중요한 공간입니다. Offset: 0x510000 에서 시작해서 Size: 0x180000 (1.5MB) 할당.
 
-# Node-RED 서버 구축
-## PC IoT 서버 (Node-RED)    
-- PC에서 node red 와 mongoDB를 설치하여 인터넷 상에서 제어한다.
+# PC 서버 구축
+## PC IoT 서버 (React)    
+- PC에서 React 와 mongoDB를 설치하여 인터넷 상에서 제어한다.
 - 어플에서 IoT-PLC를 와이파이에 접속만 시키면 데이터베이스에 자동 저장되고 제어판넬이 자동으로 생성되어서 모니터링/제어를 할 수 있다.
-
-<a href="https://youtu.be/nL3qdDtZC98">
-    <img src="https://github.com/user-attachments/assets/1015639c-ed79-44fb-a690-3545664a31e7" alt="node red 설치 윈도우용 " width="400">
-</a>
 <a href="https://youtu.be/5spmnQX0IjM">
     <img src="https://github.com/user-attachments/assets/9da548f6-9872-48d7-846c-e790586c5511" alt="mongodb, compass 윈도우용 설치하기 " width="400">
 </a>    
 
-
-어플 아두이노 소스 프로그램과 동일 합니다.<br>
-
-[i2r-02 보드 아두이노 프로그램](https://github.com/kdi6033/i2r-02/blob/main/0%20Source-Program-IoT/board-i2r-02-local.ino)  
-[i2r-03 보드 아두이노 프로그램](https://github.com/kdi6033/i2r-03/blob/main/0%20Source-Program-IoT/board-i2r-03-local.ino)  
-[i2r-04 보드 아두이노 프로그램](https://github.com/kdi6033/i2r-04/blob/main/0%20Source-Program-IoT/board-i2r-04-local.ino)  
-
-[윈도우 PC용 NodeRED 소스프로그램](https://github.com/kdi6033/i2r/blob/main/0%20Source-Program-IOT/nodered-local.json)    
-![nodered-flow](https://github.com/user-attachments/assets/69855573-c93a-4180-be8a-5cd442f85d2c)   
- 
 mongoDB에 데이터가 자동으로 저장 된 모습    
 <img src="https://github.com/user-attachments/assets/1c8ee718-8561-4eeb-bdd4-366b209b9fc6" width="400">    <br>
 - node red 에서 자동 생성된 제어판넬    
