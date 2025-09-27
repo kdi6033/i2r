@@ -662,8 +662,9 @@ lvgl 라이브러리 설치
 ![lvgl](https://github.com/user-attachments/assets/070e58a6-ff88-46ab-a752-f6446f9c30a9)
 
 기본적인 문자를 출력해 봅니다.
-
-```
+<details>
+<summary>💻 C code - 문자 출력</summary>
+```c
 #include <lvgl.h>
 #include <TFT_eSPI.h>
 
@@ -718,6 +719,7 @@ void loop() {
   delay(5);
 }
  ```
+</details>
 
 버튼 출력 프로그램
 ```
