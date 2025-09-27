@@ -644,7 +644,7 @@ void loop() {
 }
 ```
 
-# LVGL 한글 터치스크린 프로그램
+# LVGL 한글 터치스크린 프로그램 HMI
 
 ## 1. ILI9341 + LVGL + TFT_eSPI 관계
 
@@ -656,7 +656,7 @@ void loop() {
 - 실제 픽셀 출력은 **디스플레이 드라이버(TFT_eSPI)**에 맡김
 - 👉 즉, UI 엔진 (사용자 인터페이스 제공)
 
-**2) TFT_eSPI (디스플레니 드라이버)**
+**2) TFT_eSPI (디스플레이 드라이버)**
 - ESP32 전용 고속 그래픽 라이브러리
 - ILI9341, ST7735, ST7796 등 여러 디스플레이 칩 지원
 - tft.drawPixel(x, y, color) 같은 저수준 API 제공
