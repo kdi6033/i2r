@@ -270,7 +270,7 @@ ESP32는 릴레이 제어 및 클라우드(MQTT) 연동을 담당하는 IoT 제�
 - GPIO 확장 핀 제공 → 센서, 액추에이터 등 외부 장치 연결 가능
 - HMI 전용 설계 → IoT, 스마트 제어, 교육용 UI 개발에 최적화
 
-⚙️GPIO Pin Definition
+⚙️ GPIO Pin Definition
 
 | Pin | Function       | Pin | Function               |
 | --- | -------------- | --- | ---------------------- |
@@ -285,7 +285,7 @@ ESP32는 릴레이 제어 및 클라우드(MQTT) 연동을 담당하는 IoT 제�
 
 ## CrowPanel(RP2040) 3.5" 터치스크린
 
-주요 사양 (Specifications)
+⚙️ 주요 사양 (Specifications)
 | 항목            | 내용                                |
 | ------------- | --------------------------------- |
 | **MCU**       | Raspberry Pi RP2040               |
@@ -301,27 +301,6 @@ ESP32는 릴레이 제어 및 클라우드(MQTT) 연동을 담당하는 IoT 제�
 | **사용가능 언어**   | C/C++, MicroPython                |
 | **LVGL 지원**   | LVGL 8.x / 9.x 지원 (UI 개발용 라이브러리)  |
 
-
-GPIO Pin Definition
-
-| 핀 번호    | 기능                     |
-| ------- | ---------------------- |
-| **P1**  | GP0 / UART0 TX         |
-| **P2**  | GP1 / UART0 RX         |
-| **P3**  | GP2 / I2C1 SDA         |
-| **P4**  | GP3 / I2C1 SCL         |
-| **P5**  | GP4 / UART1 TX         |
-| **P6**  | GP5 / UART1 RX         |
-| **P7**  | GP6 / I2C1 SDA         |
-| **P8**  | GP7 / I2C1 SCL         |
-| **P9**  | GP19                   |
-| **P10** | GP20 / I2C0 SDA        |
-| **P11** | GP21 / I2C0 SCL        |
-| **P12** | GP26 / ADC1 / I2C1 SDA |
-| **P13** | GP27 / ADC0 / I2C1 SCL |
-| **P14** | GP28 / ADC2            |
-| **P15** | GND (Ground)           |
-| **P16** | VCC (3.3V 출력)          |
 
 📺 기술 자료    
 [참조기술문서 및 프로그램 다운로드](https://github.com/Elecrow-RD/CrowPanel-Pico-Display-Course-File)    
