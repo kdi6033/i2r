@@ -236,14 +236,21 @@ react로 구축한 서버는 제 github "React"에 정리해 놓았습니다.
 ** 앞으로 다른 바쁜 작업이 끝나고 나면 정리해서 올리겠습니다.
 - PC에서 React 와 mongoDB를 설치하여 인터넷 상에서 제어한다.
 - 어플에서 IoT-PLC를 와이파이에 접속만 시키면 데이터베이스에 자동 저장되고 제어판넬이 자동으로 생성되어서 모니터링/제어를 할 수 있다.
-<a href="https://youtu.be/5spmnQX0IjM">
-    <img src="https://github.com/user-attachments/assets/9da548f6-9872-48d7-846c-e790586c5511" alt="mongodb, compass 윈도우용 설치하기 " width="400">
-</a>    
 
-mongoDB에 데이터가 자동으로 저장 된 모습    
-<img src="https://github.com/user-attachments/assets/1c8ee718-8561-4eeb-bdd4-366b209b9fc6" width="400">    <br>
+<table>
+  <tr>
+    <td>
+        <a href="https://youtu.be/5spmnQX0IjM">
+            <img src="https://github.com/user-attachments/assets/9da548f6-9872-48d7-846c-e790586c5511" alt="mongodb, compass 윈도우용 설치하기 " width="400">
+        </a>  
+    </td>
+    <td>
+        mongoDB에 데이터가 자동으로 저장 된 모습    
+        <img src="https://github.com/user-attachments/assets/1c8ee718-8561-4eeb-bdd4-366b209b9fc6" width="400">    <br>
+    </td>
+  </tr>
 
-# IoT PLC 터치스크린
+# ✅ IoT PLC HMI 한글 터치스크린
 
 ESP32 IoT PLC와 CrowPanel(RP2040)을 RS232 직렬 통신으로 연결하여,
 CrowPanel은 사용자 인터페이스(UI) 및 I2C 센서 계측을 담당하고,
@@ -316,10 +323,10 @@ ESP32는 릴레이 제어 및 클라우드(MQTT) 연동을 담당하는 IoT 제�
 | **LVGL 지원**   | LVGL 8.x / 9.x 지원 (UI 개발용 라이브러리)  |
 
 
-📺 기술 자료    
+📺 CrowPanel(RP2040) 기술 자료    
 [참조기술문서 및 프로그램 다운로드](https://github.com/Elecrow-RD/CrowPanel-Pico-Display-Course-File)    
 [회로도](https://github.com/user-attachments/files/20807927/CrowPanel_Pico_Display-3.5_V1.0-SCH.pdf)    
-[유튜브 시](https://www.youtube.com/watch?v=5lLdKOjR-Lo&list=PLwh4PlcPx2GdvAtPGuAf1ocWj1UyPWw3W)    
+[유튜브 시청](https://www.youtube.com/watch?v=5lLdKOjR-Lo&list=PLwh4PlcPx2GdvAtPGuAf1ocWj1UyPWw3W)    
 [Wiki](https://www.elecrow.com/wiki/CrowPanel_Pico_HMI_Display-3.5.html)    
 
 ###  터치스크린 프로토콜
@@ -328,9 +335,11 @@ ESP32는 릴레이 제어 및 클라우드(MQTT) 연동을 담당하는 IoT 제�
 { "c": "ti", "light": 120 }
 ```
 
-# I2C 통신 프로그램
-마스터 프로그램 : 터치스크린 RP2040
-```
+# ✅ I2C 통신 프로그램
+<details>
+<summary>💻 C code 예제 - 마스터 프로그램 : 터치스크린 RP2040</summary>
+
+```c
 #include <Wire.h>
 
 #define I2C_ADDR 0x08  // ESP32 슬레이브 주소
@@ -361,6 +370,7 @@ void loop() {
   delay(3000);
 }
 ```
+</details>
 
 슬레이브 프로그램 : IoT PLC ESP32
 ```
@@ -397,7 +407,7 @@ void loop() {
 }
 ```
 
-# LVGL 한글 터치스크린 프로그램 HMI
+# ✅ LVGL 한글 터치스크린 프로그램 HMI
 그래픽과 터치스크린을 구현하기 위한 구조를 설명하겠습니다.
 - LVGL 에서는 그래픽에 필요한 설정을 해야 합니다.
 - ILI9341 는 터치 스크린마다 사용하는 종류가 달라지므로 TFT_eSPI 에 정의를 해야 합니다.
