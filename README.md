@@ -275,7 +275,7 @@ ESP32는 릴레이 제어 및 클라우드(MQTT) 연동을 담당하는 IoT 제�
     - I2C는 최대 32바이트 프레임 제한과 양방향 통신의 한계가 있어, PLC와 UI 간 통신에는 적합하지 않음
     - 따라서 UI ↔ PLC 통신은 RS232, 센서 ↔ RP2040 통신만 I2C로 유지
 
-## 1. CrowPanel Pico Display 3.5" HMI 모듈
+## CrowPanel Pico Display 3.5" HMI 모듈
 
 이 보드는 RP2040 MCU + 3.5" 480×320 TFT LCD + 정전식 터치스크린이 결합된 HMI(Human Machine Interface) 모듈입니다. LVGL, C/C++, MicroPython을 지원하여 다양한 UI 및 IoT 응용에 활용할 수 있습니다.
 
@@ -304,9 +304,8 @@ ESP32는 릴레이 제어 및 클라우드(MQTT) 연동을 담당하는 IoT 제�
 | P7  | GP6 / I2C1 SDA | P15 | GND                    |
 | P8  | GP7 / I2C1 SCL | P16 | VCC 3V3                |
 
-## CrowPanel(RP2040) 3.5" 터치스크린
 
-⚙️ 주요 사양 (Specifications)
+**⚙️ 주요 사양 (Specifications)**
 | 항목            | 내용                                |
 | ------------- | --------------------------------- |
 | **MCU**       | Raspberry Pi RP2040               |
