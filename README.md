@@ -247,6 +247,8 @@ react로 구축한 서버는 제 github "React"에 정리해 놓았습니다.
         <img src="https://github.com/user-attachments/assets/1c8ee718-8561-4eeb-bdd4-366b209b9fc6" width="400">    <br>
     </td>
   </tr>
+</table>
+
 
 # ✅ IoT PLC HMI 한글 터치스크린
 
