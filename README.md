@@ -338,7 +338,6 @@ ESP32는 릴레이 제어 및 클라우드(MQTT) 연동을 담당하는 IoT 제�
 # ✅ I2C 통신 프로그램
 <details>
 <summary>💻 C code 예제 - 마스터 프로그램 : 터치스크린 RP2040</summary>
-
 ```c
 #include <Wire.h>
 
@@ -372,8 +371,9 @@ void loop() {
 ```
 </details>
 
-슬레이브 프로그램 : IoT PLC ESP32
-```
+<details>
+<summary>💻 C code 예제 - 슬레이브 프로그램 : IoT PLC ESP32</summary>
+```c
 #include <Wire.h>
 
 #define SLAVE_ADDR 0x08
@@ -406,6 +406,7 @@ void loop() {
   // 슬레이브는 이벤트 기반이므로 loop는 비워둠
 }
 ```
+</details>
 
 # ✅ LVGL 한글 터치스크린 프로그램 HMI
 그래픽과 터치스크린을 구현하기 위한 구조를 설명하겠습니다.
