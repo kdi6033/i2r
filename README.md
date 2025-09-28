@@ -206,6 +206,48 @@ react로 구축한 서버는 제 github "React"에 정리해 놓았습니다.
     <img src="https://github.com/user-attachments/assets/5f8fae58-d80b-4d26-b863-c20c24a20021" alt="AWS IoT 보안 server" width="400">
 </a>
 
+
+
+<table>
+  <tr>
+    <td>
+      <a href="https://youtu.be/n1MRXSVtbBI">
+        <img src="https://github.com/user-attachments/assets/8a2ccaba-8b4a-44a1-8ac9-556d96cbd0ad" alt="AWS Instal EC2 Ubuntu Server 22.04" width="400">
+      </a>
+    </td>
+    <td>
+      <a href="https://youtu.be/5ojpKiQ00qk">
+        <img src="https://github.com/user-attachments/assets/10dfdc4e-d581-4cfe-92f1-8a700069e1f4" alt="AWS IOT Core Mqtt" width="400">
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <a href="https://youtu.be/mruzmon95BE">
+        <img src="https://github.com/user-attachments/assets/bb05f92c-e8d3-4ca2-a0c4-7a97adb5c08f" alt="AWS IOT Core Mqtt" width="400">
+      </a>
+    </td>
+    <td>
+      <a href="https://youtu.be/WJrOxAN7ZH0">
+        <img src="https://github.com/user-attachments/assets/69d1455b-cbb1-4f09-b0c2-356d4bbcc515" alt="AWS IOT Core Mqtt" width="400">
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <a href="https://youtu.be/vLT3sr_xAFE">
+        <img src="https://github.com/user-attachments/assets/7c56667a-631c-4bc4-a681-a7a4a49cb729" alt="AWS IoT server" width="400">
+      </a>
+    </td>
+    <td>
+      <a href="https://youtu.be/Q7IL_ERRIwI">
+        <img src="https://github.com/user-attachments/assets/5f8fae58-d80b-4d26-b863-c20c24a20021" alt="AWS IoT 보안 server" width="400">
+      </a>
+    </td>
+  </tr>
+</table>
+
+
 <br>
 
 [i2r-02 보드 AWS 아두이노 프로그램](https://github.com/kdi6033/i2r-02/tree/main/0%20Source-Program-IoT/board-i2r-02-aws)  
