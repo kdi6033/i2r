@@ -861,7 +861,7 @@ extern const lv_font_t NotoSansKR_20;
 </details>
 
 <details>
-<summary>💻 C code 예제</summary>
+    <summary>💻 C code 예제</summary>
 
 ```c
 // ✅ 여기에 C 코드 작성
