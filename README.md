@@ -227,8 +227,38 @@ react로 구축한 서버는 제 github "React"에 정리해 놓았습니다.
 
 [mongoDB 설치순서](https://github.com/kdi6033/i2r/blob/main/txt/aws%20mongoDB%20install)    
 
-
 [아마존 크라우드 AWS NodeRED 소스프로그램](https://github.com/kdi6033/i2r/blob/main/0%20Source-Program-IOT/nodered-aws.json)
+
+
+## 2. CrowPanel Pico Display 3.5" HMI 모듈
+
+이 보드는 RP2040 MCU + 3.5" 480×320 TFT LCD + 정전식 터치스크린이 결합된 HMI(Human Machine Interface) 모듈입니다. LVGL, C/C++, MicroPython을 지원하여 다양한 UI 및 IoT 응용에 활용할 수 있습니다.
+
+<img src="https://github.com/user-attachments/assets/15416181-7861-4fea-976b-fcb33cc896f0" alt="회로도" width="700">
+
+📌 주요 기능
+- RP2040 듀얼코어 MCU 내장 → 외부 보드 없이 단독 동작 가능
+- 3.5인치 480×320 해상도 TFT 디스플레이 → 선명한 그래픽 표현
+- 정전식 터치스크린 → 직관적인 UI 제어 가능
+- LVGL 지원 → 버튼, 슬라이더, 차트, 키보드 등 고급 GUI 구성
+- USB-C 포트 → 전원 공급 및 펌웨어 업로드 지원
+- C/C++ & MicroPython 개발 환경 → 초보자부터 전문가까지 사용 가능
+- GPIO 확장 핀 제공 → 센서, 액추에이터 등 외부 장치 연결 가능
+- HMI 전용 설계 → IoT, 스마트 제어, 교육용 UI 개발에 최적화
+
+⚙️GPIO Pin Definition
+
+| Pin | Function       | Pin | Function               |
+| --- | -------------- | --- | ---------------------- |
+| P1  | GP0 / UART0 TX | P9  | GP19                   |
+| P2  | GP1 / UART0 RX | P10 | GP20 / I2C0 SDA        |
+| P3  | GP2 / I2C1 SDA | P11 | GP21 / I2C0 SCL        |
+| P4  | GP3 / I2C1 SCL | P12 | GP26 / ADC1 / I2C1 SDA |
+| P5  | GP4 / UART1 TX | P13 | GP27 / ADC0 / I2C1 SCL |
+| P6  | GP5 / UART1 TX | P14 | GP28 / ADC2            |
+| P7  | GP6 / I2C1 SDA | P15 | GND                    |
+| P8  | GP7 / I2C1 SCL | P16 | VCC 3V3                |
+
 
 # IoT PLC 터치스크린
 ESP32 IoT PLC와 CrowPanel(RP2040)을 I2C로 연결하여,
