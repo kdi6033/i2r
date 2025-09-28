@@ -836,12 +836,11 @@ Submit 버튼을 누르면 NotoSansKR_20.c 파일이 생성됩니다.
 
 - 생성된 "NotoSansKR_20.c" 는 소스코드와 같은 디렉토리에 위치 합니다.
 - chatgpt 에 의뢰하면 NotoSansKR_20.h 파일을 작성해 줍니다.
+  
 <details>
 <summary>💻 C code - NotoSansKR_20.h </summary>
 
 ```c
-```
-</details>
 #ifndef NOTOSANSKR_20_H
 #define NOTOSANSKR_20_H
 
@@ -858,6 +857,9 @@ extern const lv_font_t NotoSansKR_20;
 #endif
 
 #endif
+```
+</details>
+
 <details>
 <summary>💻 C code 예제</summary>
 
