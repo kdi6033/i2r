@@ -330,7 +330,7 @@ ESP32는 릴레이 제어 및 클라우드(MQTT) 연동을 담당하는 IoT 제�
 [Wiki](https://www.elecrow.com/wiki/CrowPanel_Pico_HMI_Display-3.5.html)    
 
 ###  터치스크린 프로토콜
-첫번째 입력포트의 값이 on 일때
+조도센서 값을 참조하는 예제
 ```
 { "c": "ti", "light": 120 }
 ```
