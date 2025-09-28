@@ -229,6 +229,31 @@ react로 구축한 서버는 제 github "React"에 정리해 놓았습니다.
 mongoDB에 데이터가 자동으로 저장 된 모습    
 <img src="https://github.com/user-attachments/assets/1c8ee718-8561-4eeb-bdd4-366b209b9fc6" width="400">    <br>
 
+# IoT PLC 터치스크린
+
+ESP32 IoT PLC와 CrowPanel(RP2040)을 RS232 직렬 통신으로 연결하여,
+CrowPanel은 사용자 인터페이스(UI) 및 I2C 센서 계측을 담당하고,
+ESP32는 릴레이 제어 및 클라우드(MQTT) 연동을 담당하는 IoT 제어 시스템입니다.
+
+**시스템 구성**
+| 항목             | 설명                                         |
+| -------------- | ------------------------------------------ |
+| **RS232 마스터**  | CrowPanel (RP2040)                         |
+| **RS232 슬레이브** | ESP32                                      |
+| **센서 계측**      | CrowPanel에서 I2C로 직접 계측 (조도, 온습도 등)         |
+| **UI 이벤트**     | 터치 버튼 입력 → RS232 메시지 전송 (`{"cmd":"on"}` 등) |
+| **액츄에이터 제어**   | ESP32에서 명령 수신 후 릴레이/모터 제어                  |
+| **클라우드 연동**    | ESP32 → MQTT 전송 (선택적 기능)                   |
+
+**연결 방식**    
+- CrowPanel (RP2040) ↔ ESP32 (IoT PLC)
+    - RS232 직렬 통신 사용
+    - 안정적인 양방향 데이터 전송 지원
+- 센서 계측 (CrowPanel 내부)
+    - RP2040이 I2C 버스로 조도, 온도, 습도 등 센서를 직접 읽음
+    - I2C는 최대 32바이트 프레임 제한과 양방향 통신의 한계가 있어, PLC와 UI 간 통신에는 적합하지 않음
+    - 따라서 UI ↔ PLC 통신은 RS232, 센서 ↔ RP2040 통신만 I2C로 유지
+
 ## 2. CrowPanel Pico Display 3.5" HMI 모듈
 
 이 보드는 RP2040 MCU + 3.5" 480×320 TFT LCD + 정전식 터치스크린이 결합된 HMI(Human Machine Interface) 모듈입니다. LVGL, C/C++, MicroPython을 지원하여 다양한 UI 및 IoT 응용에 활용할 수 있습니다.
@@ -257,33 +282,6 @@ mongoDB에 데이터가 자동으로 저장 된 모습
 | P6  | GP5 / UART1 TX | P14 | GP28 / ADC2            |
 | P7  | GP6 / I2C1 SDA | P15 | GND                    |
 | P8  | GP7 / I2C1 SCL | P16 | VCC 3V3                |
-
-
-# IoT PLC 터치스크린
-ESP32 IoT PLC와 CrowPanel(RP2040)을 I2C로 연결하여,
-CrowPanel은 사용자 인터페이스와 I2C 센서 계측을 담당하고,
-ESP32는 릴레이 제어 및 클라우드(MQTT) 연동을 담당하는 IoT 제어 시스템입니다.    
-![ChatGPT Image 2025년 6월 19일 오전 10_09_21](https://github.com/user-attachments/assets/06412467-1643-4176-95d3-0994f6a94572)
-
-        
-시스템 구성
-| 항목           | 설명                                      |
-| ------------ | --------------------------------------- |
-| **I2C 마스터**  | CrowPanel (RP2040)                      |
-| **I2C 슬레이브** | ESP32                                   |
-| **센서 계측**    | CrowPanel에서 직접 I2C로 계측 (조도, 온습도 등)      |
-| **UI 이벤트**   | 터치 버튼 → ESP32에 명령 전송 (`{"cmd":"on"}` 등) |
-| **액츄에이터 제어** | ESP32에서 명령 수신 후 릴레이/모터 제어               |
-| **클라우드 연동**  | ESP32 → MQTT 전송 (선택적 기능)                |
-
-연결 핀 구성 (예시)
-| 장치                 | 기능  | 핀       |
-| ------------------ | --- | ------- |
-| CrowPanel (RP2040) | SDA | GPIO 20 |
-|                    | SCL | GPIO 21 |
-| ESP32 (i2r-04)     | SDA | GPIO 16 |
-|                    | SCL | GPIO 17 |
-
 
 ## CrowPanel(RP2040) 3.5" 터치스크린
 
