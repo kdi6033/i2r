@@ -113,7 +113,7 @@ https:// i2r.link  접속하면 페이지마다 유튜브 링크를 따라 해�
 
 ----------------
 
-### 아두이노 프로그램 설정    
+# ✅ 아두이노 프로그램 설정    
 <a href="https://youtu.be/UrJd-RHRh6U">
     <img src="https://github.com/user-attachments/assets/67556286-b878-44ef-9175-553a6aa418ef" alt="Updating the screen" width="400">
 </a>    
@@ -183,7 +183,7 @@ spiffs,   data, spiffs,  0x510000, 0x180000
 
 - 마지막으로 SPIFFS 파티션은 파일 시스템 저장 공간입니다. SPIFFS는 플래시 메모리를 기반으로 한 파일 시스템으로, 디바이스가 HTML 파일, 이미지, 스크립트 파일 등 다양한 파일 데이터를 저장하고 읽을 수 있도록 도와줍니다. 예를 들어, 웹서버를 구현하는 경우 웹 페이지의 정적 파일을 SPIFFS에 저장할 수 있습니다.  이 파티션은 1.5MB 크기로 할당되어 있으며, 시스템이 파일 기반 데이터를 관리할 수 있는 중요한 공간입니다. Offset: 0x510000 에서 시작해서 Size: 0x180000 (1.5MB) 할당.
 
-## 아마존 크라우드 AWS IoT 서버  (React)     
+# ✅ 아마존 크라우드 AWS IoT 서버  (React)     
 react로 구축한 서버는 제 github "React"에 정리해 놓았습니다.
 <a href="https://youtu.be/n1MRXSVtbBI">
     <img src="https://github.com/user-attachments/assets/8a2ccaba-8b4a-44a1-8ac9-556d96cbd0ad" alt="AWS Instal EC2 Ubuntu Server 22.04" width="400">
@@ -218,7 +218,7 @@ react로 구축한 서버는 제 github "React"에 정리해 놓았습니다.
 
 [아마존 크라우드 AWS NodeRED 소스프로그램](https://github.com/kdi6033/i2r/blob/main/0%20Source-Program-IOT/nodered-aws.json)
 
-## PC IoT 서버 (React)    
+# ✅ PC IoT 서버 (React)    
 ** 앞으로 다른 바쁜 작업이 끝나고 나면 정리해서 올리겠습니다.
 - PC에서 React 와 mongoDB를 설치하여 인터넷 상에서 제어한다.
 - 어플에서 IoT-PLC를 와이파이에 접속만 시키면 데이터베이스에 자동 저장되고 제어판넬이 자동으로 생성되어서 모니터링/제어를 할 수 있다.
