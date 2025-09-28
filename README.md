@@ -803,7 +803,7 @@ void loop() {
 </details>
 
 
-## 📘 LVGL 한글 폰트 적용 가이드
+## 4.📘 LVGL 한글 폰트 적용 가이드
 **1. Noto Sans KR 폰트 다운로드**
 
 LVGL에서 한글 UI를 만들기 위해서는 한글을 지원하는 폰트를 준비해야 합니다.
@@ -834,18 +834,36 @@ Submit 버튼을 누르면 NotoSansKR_20.c 파일이 생성됩니다.
     <img src="https://github.com/user-attachments/assets/ebed64a9-ecf0-4fb0-93fb-a0599bd62cf4" alt="Google Fonts" width="600">
 </p>
 
+- 생성된 "NotoSansKR_20.c" 는 소스코드와 같은 디렉토리에 위치 합니다.
+- chatgpt 에 의뢰하면 NotoSansKR_20.h 파일을 작성해 줍니다.
+<details>
+<summary>💻 C code - NotoSansKR_20.h </summary>
 
+```c
+```
+</details>
+#ifndef NOTOSANSKR_20_H
+#define NOTOSANSKR_20_H
+
+#include "lvgl.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+extern const lv_font_t NotoSansKR_20;
+
+#ifdef __cplusplus
+} /* extern "C" */
+#endif
+
+#endif
 <details>
 <summary>💻 C code 예제</summary>
 
 ```c
 // ✅ 여기에 C 코드 작성
-#include <stdio.h>
 
-int main() {
-    printf("Hello, GitHub!\n");
-    return 0;
-}
 ```
 </details>
 
