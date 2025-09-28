@@ -230,8 +230,6 @@ react로 구축한 서버는 제 github "React"에 정리해 놓았습니다.
 
 [mongoDB 설치순서](https://github.com/kdi6033/i2r/blob/main/txt/aws%20mongoDB%20install)    
 
-[아마존 크라우드 AWS NodeRED 소스프로그램](https://github.com/kdi6033/i2r/blob/main/0%20Source-Program-IOT/nodered-aws.json)
-
 # ✅ PC IoT 서버 (React)    
 ** 앞으로 다른 바쁜 작업이 끝나고 나면 정리해서 올리겠습니다.
 - PC에서 React 와 mongoDB를 설치하여 인터넷 상에서 제어한다.
