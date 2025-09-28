@@ -860,6 +860,33 @@ extern const lv_font_t NotoSansKR_20;
 ```
 </details>
 
+- NotoSansKR_20.c 파일 중 다음 두곳을 수정 합니다. 두 곳을 찿아서 아래와 같이 수정 하세요
+```
+/*
+#ifdef __has_include
+    #if __has_include("lvgl.h")
+        #ifndef LV_LVGL_H_INCLUDE_SIMPLE
+            #define LV_LVGL_H_INCLUDE_SIMPLE
+        #endif
+    #endif
+#endif
+
+#ifdef LV_LVGL_H_INCLUDE_SIMPLE
+    #include "lvgl.h"
+#else
+    #include "lvgl/lvgl.h"
+#endif
+*/
+#include "lvgl.h"
+```
+
+```
+    //.static_bitmap = 0,
+    .dsc = &font_dsc,          /*The custom font data. Will be accessed by `get_glyph_bitmap/dsc` */
+```
+
+
+---
 <details>
     <summary>💻 C code 예제</summary>
 
