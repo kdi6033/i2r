@@ -419,7 +419,7 @@ void loop() {
 ```
 Additional Boards Manager URLs
 https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json
-``
+```
 
 ## 1. LVGL + TFT_eSPI + ILI9341 관계
 
