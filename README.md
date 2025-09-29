@@ -322,12 +322,6 @@ ESP32는 릴레이 제어 및 클라우드(MQTT) 연동을 담당하는 IoT 제�
 | **LVGL 지원**   | LVGL 8.x / 9.x 지원 (UI 개발용 라이브러리)  |
 
 
-📺 CrowPanel(RP2040) 기술 자료    
-[참조기술문서 및 프로그램 다운로드](https://github.com/Elecrow-RD/CrowPanel-Pico-Display-Course-File)    
-[회로도](https://github.com/user-attachments/files/20807927/CrowPanel_Pico_Display-3.5_V1.0-SCH.pdf)    
-[유튜브 시청](https://www.youtube.com/watch?v=5lLdKOjR-Lo&list=PLwh4PlcPx2GdvAtPGuAf1ocWj1UyPWw3W)    
-[Wiki](https://www.elecrow.com/wiki/CrowPanel_Pico_HMI_Display-3.5.html)    
-
 **터치스크린 프로토콜**
 조도센서 값을 참조하는 예제
 ```
@@ -413,6 +407,13 @@ void loop() {
 그래픽과 터치스크린을 구현하기 위한 구조를 설명하겠습니다.
 - LVGL 에서는 그래픽에 필요한 설정을 해야 합니다.
 - ILI9341 는 터치 스크린마다 사용하는 종류가 달라지므로 TFT_eSPI 에 정의를 해야 합니다.
+
+📺 CrowPanel(RP2040) 기술 자료    
+[참조기술문서 및 프로그램 다운로드](https://github.com/Elecrow-RD/CrowPanel-Pico-Display-Course-File)    
+[회로도](https://github.com/user-attachments/files/20807927/CrowPanel_Pico_Display-3.5_V1.0-SCH.pdf)    
+[유튜브 시청](https://www.youtube.com/watch?v=5lLdKOjR-Lo&list=PLwh4PlcPx2GdvAtPGuAf1ocWj1UyPWw3W)    
+[Wiki](https://www.elecrow.com/wiki/CrowPanel_Pico_HMI_Display-3.5.html)    
+
      
 ## 1. LVGL + TFT_eSPI + ILI9341 관계
 
