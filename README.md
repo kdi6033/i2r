@@ -841,6 +841,11 @@ Submit 버튼을 누르면 NotoSansKR_20.c 파일이 생성됩니다.
     <img src="https://github.com/user-attachments/assets/ebed64a9-ecf0-4fb0-93fb-a0599bd62cf4" alt="Google Fonts" width="600">
 </p>
 
+Symbols
+```
+안녕 아이티알 0123456789 ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefgh기ijklmnopqrstuvwxyz ~!@#$%^&*()_+-=[]{}|;':",./<>? 
+```
+
 - 생성된 "NotoSansKR_20.c" 는 소스코드와 같은 디렉토리에 위치 합니다.
 - chatgpt 에 의뢰하면 NotoSansKR_20.h 파일을 작성해 줍니다.
   
