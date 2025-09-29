@@ -889,7 +889,7 @@ extern const lv_font_t NotoSansKR_20;
 
 디렉토리에 생성한 파일입니다.     
 
-<img src="https://github.com/user-attachments/assets/c5f29d31-2507-4ac5-ac1b-34944f8d295f" width="600" align="left">
+<img src="https://github.com/user-attachments/assets/c5f29d31-2507-4ac5-ac1b-34944f8d295f" width="600" align="left">    
 
 ---
 <details>
