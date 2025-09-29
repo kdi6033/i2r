@@ -811,6 +811,66 @@ void loop() {
 
 
 ## 4.📘 LVGL 한글 폰트 적용 가이드
+
+한글 출력 예제 프로그램 
+<details>
+<summary>💻 아두이노 예제 - 한글문자 출력</summary>
+    
+```c
+#include <lvgl.h>
+#include <TFT_eSPI.h>
+#include "NotoSansKR_20.h"  // 생성한 한글 포함 폰트
+
+static const uint16_t screenWidth  = 480;
+static const uint16_t screenHeight = 320;
+static lv_disp_draw_buf_t draw_buf;
+static lv_color_t buf[screenWidth * screenHeight / 10];
+
+TFT_eSPI tft = TFT_eSPI();
+
+void my_disp_flush(lv_disp_drv_t *disp, const lv_area_t *area, lv_color_t *color_p) {
+  uint32_t w = area->x2 - area->x1 + 1;
+  uint32_t h = area->y2 - area->y1 + 1;
+
+  tft.startWrite();
+  tft.setAddrWindow(area->x1, area->y1, w, h);
+  tft.pushColors((uint16_t *)&color_p->full, w * h, true);
+  tft.endWrite();
+
+  lv_disp_flush_ready(disp);
+}
+
+void setup() {
+  Serial.begin(115200);
+  lv_init();
+  tft.begin();
+  tft.setRotation(3);
+
+  lv_disp_draw_buf_init(&draw_buf, buf, NULL, screenWidth * screenHeight / 10);
+
+  static lv_disp_drv_t disp_drv;
+  lv_disp_drv_init(&disp_drv);
+  disp_drv.hor_res = screenWidth;
+  disp_drv.ver_res = screenHeight;
+  disp_drv.flush_cb = my_disp_flush;
+  disp_drv.draw_buf = &draw_buf;
+  lv_disp_drv_register(&disp_drv);
+
+  lv_obj_t* label = lv_label_create(lv_scr_act());
+  lv_obj_set_style_text_font(label, &NotoSansKR_20, LV_PART_MAIN);  // 폰트 직접 지정
+  lv_label_set_text(label, "Hello 안녕");  // 테스트
+  lv_obj_align(label, LV_ALIGN_CENTER, 0, 0);
+
+}
+
+void loop() {
+  lv_timer_handler();
+  delay(5);
+}
+ ```
+</details>
+
+
 **1. Noto Sans KR 폰트 다운로드**
 
 LVGL에서 한글 UI를 만들기 위해서는 한글을 지원하는 폰트를 준비해야 합니다.
