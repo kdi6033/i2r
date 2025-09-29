@@ -891,7 +891,7 @@ extern const lv_font_t NotoSansKR_20;
 
 <img src="https://github.com/user-attachments/assets/c5f29d31-2507-4ac5-ac1b-34944f8d295f" width="600" >       
 <br>    
--------------------------------
+---
 <br>     
 
 
