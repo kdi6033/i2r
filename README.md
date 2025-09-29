@@ -407,6 +407,7 @@ void loop() {
 그래픽과 터치스크린을 구현하기 위한 구조를 설명하겠습니다.
 - LVGL 에서는 그래픽에 필요한 설정을 해야 합니다.
 - ILI9341 는 터치 스크린마다 사용하는 종류가 달라지므로 TFT_eSPI 에 정의를 해야 합니다.
+- IoT PLC는  CrowPanel(RP2040) 터치 스크린을 사용합니다. 와이파이가 있는 제품을 전파인증을 받아 판매해야 함으로 인증이 필요없는 제품을 선택했습니다. 아래는 당사의 기술자료 입니다. 
 
 📺 CrowPanel(RP2040) 기술 자료    
 [참조기술문서 및 프로그램 다운로드](https://github.com/Elecrow-RD/CrowPanel-Pico-Display-Course-File)    
