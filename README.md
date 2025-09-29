@@ -415,7 +415,12 @@ void loop() {
 [유튜브 시청](https://www.youtube.com/watch?v=5lLdKOjR-Lo&list=PLwh4PlcPx2GdvAtPGuAf1ocWj1UyPWw3W)    
 [Wiki](https://www.elecrow.com/wiki/CrowPanel_Pico_HMI_Display-3.5.html)    
 
-     
+아두이노에서 보드 설정할 때 사용하세요
+```
+Additional Boards Manager URLs
+https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json
+``
+
 ## 1. LVGL + TFT_eSPI + ILI9341 관계
 
 **1) LVGL (Light and Versatile Graphics Library)**
