@@ -250,11 +250,12 @@ react로 구축한 서버는 제 github "React"에 정리해 놓았습니다.
 </table>
 
 
-# ✅ IoT PLC HMI 한글 터치스크린
+# ✅ IoT PLC HMI 한글 터치스크린 ChatGPT
 
-ESP32 IoT PLC와 CrowPanel(RP2040)을 RS232 직렬 통신으로 연결하여,
-CrowPanel은 사용자 인터페이스(UI) 및 I2C 센서 계측을 담당하고,
-ESP32는 릴레이 제어 및 클라우드(MQTT) 연동을 담당하는 IoT 제어 시스템입니다.
+- ESP32 IoT PLC와 CrowPanel(RP2040)을 RS232 직렬 통신으로 연결하여,
+- CrowPanel은 사용자 인터페이스(UI) 및 I2C 센서 계측을 담당하고,
+- ESP32는 릴레이 제어 및 클라우드(MQTT) 연동을 담당하는 IoT 제어 시스템입니다.
+- IoT PLC는  CrowPanel(RP2040) 터치 스크린을 사용합니다. 와이파이가 있는 제품을 전파인증을 받아 판매해야 함으로 인증이 필요없는 제품을 선택했습니다. 아래는 당사의 기술자료 입니다. 
 
 **시스템 구성**
 | 항목             | 설명                                         |
@@ -403,11 +404,10 @@ void loop() {
 ```
 </details>
 
-# ✅ LVGL 한글 터치스크린 프로그램 HMI
+# ✅ LVGL 한글 터치스크린 프로그램 HMI ChatGPT
 그래픽과 터치스크린을 구현하기 위한 구조를 설명하겠습니다.
 - LVGL 에서는 그래픽에 필요한 설정을 해야 합니다.
 - ILI9341 는 터치 스크린마다 사용하는 종류가 달라지므로 TFT_eSPI 에 정의를 해야 합니다.
-- IoT PLC는  CrowPanel(RP2040) 터치 스크린을 사용합니다. 와이파이가 있는 제품을 전파인증을 받아 판매해야 함으로 인증이 필요없는 제품을 선택했습니다. 아래는 당사의 기술자료 입니다. 
 
 📺 CrowPanel(RP2040) 기술 자료    
 [참조기술문서 및 프로그램 다운로드](https://github.com/Elecrow-RD/CrowPanel-Pico-Display-Course-File)    
