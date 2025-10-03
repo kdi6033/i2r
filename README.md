@@ -817,6 +817,11 @@ void loop() {
 
 ## 4.📘 LVGL 한글 폰트 적용 가이드
 
+### 📺 시연 영상 (IoT PLC HMI, 한글 띄우기)
+<a href="https://youtu.be/4TOUC_N_nwQ">
+  <img src="https://github.com/user-attachments/assets/07f24466-0a23-4921-a16c-edf3d1b6fb63" width="300" />
+</a>
+
 한글 출력 예제 프로그램 
 <details>
 <summary>💻 아두이노 예제 - 한글문자 출력</summary>
