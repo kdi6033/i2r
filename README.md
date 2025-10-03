@@ -467,6 +467,11 @@ LCD 화면 출력
 다음 기술 사이트를 참조하세요   
 [lvgl 기술사이트](https://github.com/lvgl/lvgl)    
 
+### 📺 시연 영상 (IoT PLC HMI, LVGL 설치와 Hello 띄우기)
+<a href="https://youtu.be/wRLgRPrYtvk">
+  <img src="https://github.com/user-attachments/assets/6dea72b2-359e-486d-a27f-4110a77b258c" width="300" />
+</a>
+
 ** 디스플레이 드라이버의 역할 **
 LVGL 디스플레이 드라이버는 아래 두 가지를 담당합니다.
 1) Flush callback (disp_drv.flush_cb)
