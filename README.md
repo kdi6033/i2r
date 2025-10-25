@@ -48,19 +48,12 @@ PLC 제어와 센서 데이터를 통합 관리할 수 있는 **클라우드형 
 아이티알에서 제작한 기기 관련 정보를 제공합니다.    
 Data Scientist, AI Scientist 를 희망하시는 분들에게 도움을 드리려 합니다.    
 <br>
-Node-RED를 활용하여 로컬 컴퓨터, AWS 클라우드, 스마트폰 애플리케이션에서 i2r-02, i2r-03, i2r-04 기기의 모니터링 및 제어를 가능하게 합니다.
+React 웹앱 프로그램를 활용하여 로컬 컴퓨터, AWS 클라우드, 스마트폰 애플리케이션에서 i2r-01, i2r-02, i2r-03, i2r-04, i2r-05 기기의 모니터링 및 제어를 가능하게 합니다.
 **주요 기능 **   
 - React 웹앱 기반 모니터링 및 제어: 다양한 환경에서 i2r 기기를 실시간으로 모니터링하고 제어할 수 있습니다.    
 - 로컬 컴퓨터: 로컬 네트워크를 통해 기기를 모니터링하고 제어할 수 있습니다.
 - AWS 클라우드: 클라우드 기반으로 원격지에서도 기기의 상태를 모니터링하고 제어가 가능합니다.     
 - 스마트폰 애플리케이션: 모바일 앱을 통해 언제 어디서나 기기의 상태를 확인하고 제어할 수 있습니다.
-
-**기기 정보**   
-링크를 누르면 기기 설명 사이트로 이동 합니다.    
-- [i2r-01](https://github.com/kdi6033/i2r-01/tree/main/0%20Android%20App%20Program/server-i2r-01): 블루투스, mqtt, RS485, RS232 인터넷통신을 서로 연결합니다.    
-- [i2r-02](https://github.com/kdi6033/i2r-02/tree/main/0%20Source-Program-IoT/board-i2r-02): 입출력 각4채널의 입출력 제어하는 IoT PLC     
-- [i2r-03](https://github.com/kdi6033/i2r-03/tree/main/0%20Source-Program-IoT/board-i2r-03) : 입출력 각4채널의 입출력 제어하는 IoT PLC, 온습도 센서     
-- [i2r-04](https://github.com/kdi6033/i2r-04/tree/main/0%20Source-Program-IoT/board-i2r-04) : 입출력 각2채널의 입출력 제어하는 IoT PLC, 2개의 아나로그 입력    
 
 **사용 방법**      
 - 스마트폰 또는 탭으로 제어 : AWS 클라우드 웹앱 프로그램    
