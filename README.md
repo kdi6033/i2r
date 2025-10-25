@@ -40,16 +40,7 @@ PLC 제어와 센서 데이터를 통합 관리할 수 있는 **클라우드형 
 | [plc](https://github.com/kdi6033/plc) | LS산전 PLC 와 기타 PLC를 IoT 연동 |
 | [HomeAuto](https://github.com/kdi6033/HomeAuto) | 스마트홈 제어 예제 |
 | [LabVIEW](https://github.com/kdi6033/LabVIEW) | LabVIEW 연동 예제 |
-
----
-
-## 🔹 Forked / Reference
-
-| 저장소 | 출처 | 설명 |
-|--------|------|------|
-| [arduino-esp32](https://github.com/kdi6033/arduino-esp32) | Espressif | ESP32 아두이노 코어 |
-| [korea-digital](https://github.com/kdi6033/korea-digital) | Kimseongbeen | 센서 라이브러리 |
-| [otto](https://github.com/kdi6033/otto) | hojimint | 오또 로봇 영상 및 코드 |
+| [korea-digital](https://github.com/kdi6033/korea-digital) | Kimseongbeen | 코리아디지털 회사 제품을 IoT 연동 프로그램 |
 
 ---
 
