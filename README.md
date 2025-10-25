@@ -1,3 +1,12 @@
+# i2r (Idea to Reality) Platform
+
+**ESP32 기반 IoT PLC & Sensor 통합 시스템**을 자동 설계·생성하는 오픈소스 프로젝트입니다.  
+i2r 플랫폼은 MQTT · MongoDB · React UI를 연동하여  
+PLC 제어와 센서 데이터를 통합 관리할 수 있는 **클라우드형 IoT 시스템**을 구축합니다.
+
+> 💡 유튜브에서 “김동일” 검색 또는 [GitHub: kdi6033](https://github.com/kdi6033) 참고
+
+---
 # ✅ i2r IoT 기기
 아이티알에서 제작한 기기 관련 정보를 제공합니다.    
 Data Scientist, AI Scientist 를 희망하시는 분들에게 도움을 드리려 합니다.    
