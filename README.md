@@ -34,7 +34,7 @@ PLC 제어와 센서 데이터를 통합 관리할 수 있는 **클라우드형 
 
 | 저장소 | 설명 |
 |--------|------|
-| [teach-iot](https://github.com/kdi6033/teach-iot) | IoT 실습 예제 |
+| [teach-iot](https://github.com/kdi6033/teach-iot) | IoT 실습 예제, 경기도경제괗진흥원 교육 사이트 |
 | [teach](https://github.com/kdi6033/teach) | 강의용 사이트 및 교재 |
 | [lecture](https://github.com/kdi6033/lecture) | 강의 자료 (Private) |
 
