@@ -6,6 +6,15 @@ PLC 제어와 센서 데이터를 통합 관리할 수 있는 **클라우드형 
 
 > 💡 유튜브에서 “김동일” 검색 또는 [GitHub: kdi6033](https://github.com/kdi6033) 참고
 
+| 모델         | 주요 사양                                 | 네이버 쇼핑                                     | 쿠팡                                               | Café24                            | GitHub 문서                                   |
+| ---------- | ------------------------------------- | ------------------------------------------ | ------------------------------------------------ | --------------------------------- | ------------------------------------------- |
+| **i2r-01** | RS232, RS485, Wi-Fi, BLE 통신모듈 (5~30V) | [네이버 쇼핑](https://smartstore.naver.com/i2r) | [쿠팡](https://www.coupang.com/np/search?q=i2r-01) | [Café24](https://i2r.cafe24.com/) | [GitHub](https://github.com/kdi6033/i2r-01) |
+| **i2r-02** | IoT PLC (4채널 릴레이) — 30A 1개, 10A 3개    | [네이버 쇼핑](https://smartstore.naver.com/i2r) | [쿠팡](https://www.coupang.com/np/search?q=i2r-02) | [Café24](https://i2r.cafe24.com/) | [GitHub](https://github.com/kdi6033/i2r-02) |
+| **i2r-03** | IoT PLC (4채널 릴레이 + 센서 입력)             | [네이버 쇼핑](https://smartstore.naver.com/i2r) | [쿠팡](https://www.coupang.com/np/search?q=i2r-03) | [Café24](https://i2r.cafe24.com/) | [GitHub](https://github.com/kdi6033/i2r-03) |
+| **i2r-04** | IoT PLC (8채널 릴레이, Wi-Fi + BLE)        | [네이버 쇼핑](https://smartstore.naver.com/i2r) | [쿠팡](https://www.coupang.com/np/search?q=i2r-04) | [Café24](https://i2r.cafe24.com/) | [GitHub](https://github.com/kdi6033/i2r-04) |
+| **i2r-05** | IoT PLC (AI·OTA·보안형, 고급형)             | [네이버 쇼핑](https://smartstore.naver.com/i2r) | [쿠팡](https://www.coupang.com/np/search?q=i2r-05) | [Café24](https://i2r.cafe24.com/) | [GitHub](https://github.com/kdi6033/i2r-05) |
+
+
 ---
 
 ## 🔹 Firmware & Hardware 개발보드
