@@ -35,16 +35,9 @@ PLC 제어와 센서 데이터를 통합 관리할 수 있는 **클라우드형 
 | 저장소 | 설명 |
 |--------|------|
 | [teach-iot](https://github.com/kdi6033/teach-iot) | IoT 실습 예제, 경기도경제괗진흥원 교육 사이트 |
-
----
-
-## 🔹 Sensors, Robots & Others
-
-| 저장소 | 설명 |
-|--------|------|
-| [sensor](https://github.com/kdi6033/sensor) | 다양한 센서 라이브러리 |
-| [Robot](https://github.com/kdi6033/Robot) | 로봇 설계 및 제어 예제 |
-| [plc](https://github.com/kdi6033/plc) | 초기형 PLC 코드 |
+| [sensor](https://github.com/kdi6033/sensor) | 아두이노를 활용한 다양한 센서 프로그램 |
+| [Robot](https://github.com/kdi6033/Robot) | 교육용 로봇 설계 및 제어 예제 |
+| [plc](https://github.com/kdi6033/plc) | LS산전 PLC 와 기타 PLC를 IoT 연동 |
 | [HomeAuto](https://github.com/kdi6033/HomeAuto) | 스마트홈 제어 예제 |
 | [LabVIEW](https://github.com/kdi6033/LabVIEW) | LabVIEW 연동 예제 |
 
