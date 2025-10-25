@@ -10,13 +10,13 @@ PLC 제어와 센서 데이터를 통합 관리할 수 있는 **클라우드형 
 
 ## 🔹 Firmware & Hardware 개발보드
 
-| 저장소 | 설명 |
+| 보드이름 | 설명 |
 |--------|------|
-| [i2r-01](https://github.com/kdi6033/i2r-01) | RS232 RS485 통신을 WiFi 통신과 연결한다. 통신 인터페이스|
-| [i2r-02](https://github.com/kdi6033/i2r-02) | WiFi/BLE 4채널 2접점 릴레이 IoT PLC|
-| [i2r-03](https://github.com/kdi6033/i2r-03) | WiFi/BLE 4채널 3접점 릴레이 + 온습도센서 |
-| [i2r-04](https://github.com/kdi6033/i2r-04) | WiFi/BLE 8채널 3접점 릴레이 |
-| [i2r-05](https://github.com/kdi6033/i2r-05) | ESP32-S3 기반 AI IoT 아두이노 개발 보드 |
+| [i2r-01 IoT PLC](https://github.com/kdi6033/i2r-01) | RS232 RS485 통신을 WiFi 통신과 연결한다. 통신 인터페이스|
+| [i2r-02 IoT PLC](https://github.com/kdi6033/i2r-02) | WiFi/BLE 4채널 2접점 릴레이 IoT PLC|
+| [i2r-03 IoT PLC](https://github.com/kdi6033/i2r-03) | WiFi/BLE 4채널 3접점 릴레이 + 온습도센서 |
+| [i2r-04 IoT PLC](https://github.com/kdi6033/i2r-04) | WiFi/BLE 8채널 3접점 릴레이 |
+| [i2r-05 IoT PLC](https://github.com/kdi6033/i2r-05) | ESP32-S3 기반 AI IoT 아두이노 개발 보드 |
 
 ---
 ## 🔹 Software & Cloud Integration
