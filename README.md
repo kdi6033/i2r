@@ -19,6 +19,49 @@ PLC 제어와 센서 데이터를 통합 관리할 수 있는 **클라우드형 
 | [i2r-05](https://github.com/kdi6033/i2r-05) | ESP32-S3 기반 AI IoT 아두이노 개발 보드 |
 
 ---
+## 🔹 Software & Cloud Integration
+
+| 저장소 | 설명 |
+|--------|------|
+| [cloud](https://github.com/kdi6033/cloud) | IBM/AWS 클라우드 연동 실습 |
+| [IoT](https://github.com/kdi6033/IoT) | ESP32와 클라우드 연동 예제 |
+| [node-red](https://github.com/kdi6033/node-red) | Node-RED 기반 자동화 제어 |
+| [react](https://github.com/kdi6033/react) | React 기반 UI 및 AI/데이터 사이언스 응용 |
+| [react-home](https://github.com/kdi6033/react-home) | PC용 React 학습 및 응용 버전 |
+
+---
+
+## 🔹 Education & Lecture
+
+| 저장소 | 설명 |
+|--------|------|
+| [teach-iot](https://github.com/kdi6033/teach-iot) | IoT 실습 예제 |
+| [teach](https://github.com/kdi6033/teach) | 강의용 사이트 및 교재 |
+| [lecture](https://github.com/kdi6033/lecture) | 강의 자료 (Private) |
+
+---
+
+## 🔹 Sensors, Robots & Others
+
+| 저장소 | 설명 |
+|--------|------|
+| [sensor](https://github.com/kdi6033/sensor) | 다양한 센서 라이브러리 |
+| [Robot](https://github.com/kdi6033/Robot) | 로봇 설계 및 제어 예제 |
+| [plc](https://github.com/kdi6033/plc) | 초기형 PLC 코드 |
+| [HomeAuto](https://github.com/kdi6033/HomeAuto) | 스마트홈 제어 예제 |
+| [LabVIEW](https://github.com/kdi6033/LabVIEW) | LabVIEW 연동 예제 |
+
+---
+
+## 🔹 Forked / Reference
+
+| 저장소 | 출처 | 설명 |
+|--------|------|------|
+| [arduino-esp32](https://github.com/kdi6033/arduino-esp32) | Espressif | ESP32 아두이노 코어 |
+| [korea-digital](https://github.com/kdi6033/korea-digital) | Kimseongbeen | 센서 라이브러리 |
+| [otto](https://github.com/kdi6033/otto) | hojimint | 오또 로봇 영상 및 코드 |
+
+---
 
 # ✅ i2r IoT 기기
 아이티알에서 제작한 기기 관련 정보를 제공합니다.    
