@@ -23,9 +23,8 @@ PLC 제어와 센서 데이터를 통합 관리할 수 있는 **클라우드형 
 
 | 저장소 | 설명 |
 |--------|------|
-| [react](https://github.com/kdi6033/react) | React 기반 UI 및 AI/데이터 사이언스 응용, 웹앱 프로그램, AWS 서버구축|
+| [react](https://github.com/kdi6033/react) | React 기반 UI 및 AI/데이터 사이언스 응용, 웹앱 프로그램, AWS 서버구축, MQTT와 MongoDB 서버 구축|
 | [IoT](https://github.com/kdi6033/IoT) | ESP32와 센서들을 클라우드 연결하는 예제 |
-| [cloud](https://github.com/kdi6033/cloud) | IBM/AWS 클라우드 연동 실습 |
 | [node-red](https://github.com/kdi6033/node-red) | Node-RED 기반 자동화 제어 |
 
 
