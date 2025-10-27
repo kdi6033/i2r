@@ -1,12 +1,17 @@
 MongoDB 최신 버전 설치
-MongoDB를 설치하고, MongoDB 서비스를 시작합니다.
-1. MongoDB 최신 버전의 키 추가:
+Ubuntu 버전	24.04 LTS (noble)
+MongoDB 버전	7.0 (공식 지원)
+
+1.MongoDB 공식 GPG 키 추가:
 ------------------------------------------------------------------------------------
-wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | sudo apt-key add -
+curl -fsSL https://pgp.mongodb.com/server-7.0.asc | \
+sudo gpg -o /usr/share/keyrings/mongodb-server-7.0.gpg --dearmor
 ------------------------------------------------------------------------------------
-2. 리포지토리 추가:
+2. 리포지토리 등록 (24.04 = noble)
 ------------------------------------------------------------------------------------
-echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
+echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] \
+https://repo.mongodb.org/apt/ubuntu noble/mongodb-org/7.0 multiverse" | \
+sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
 ------------------------------------------------------------------------------------
 3. 패키지 목록 업데이트 및 MongoDB 설치:
 ------------------------------------------------------------------------------------
