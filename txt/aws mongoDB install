@@ -1,156 +1,91 @@
-MongoDB 최신 버전 설치
-Ubuntu 버전	24.04 LTS (noble)
-MongoDB 버전	7.0 (공식 지원)
-
-1.MongoDB 공식 GPG 키 추가:
-
-------------------------------------------------------------------------------------
-sudo apt-get install -y curl gnupg
-------------------------------------------------------------------------------------
-
-------------------------------------------------------------------------------------
-curl -fsSL https://pgp.mongodb.com/server-8.0.asc | \
-sudo gpg -o /usr/share/keyrings/mongodb-server-8.0.gpg --dearmor
-------------------------------------------------------------------------------------
-
-2. 리포지토리 등록 (24.04 = noble)
-------------------------------------------------------------------------------------
-echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] \
-https://repo.mongodb.org/apt/ubuntu noble/mongodb-org/7.0 multiverse" | \
-sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
-------------------------------------------------------------------------------------
-3. 패키지 목록 업데이트 및 MongoDB 설치:
-------------------------------------------------------------------------------------
-sudo apt update
-sudo apt install -y mongodb-org
-------------------------------------------------------------------------------------
-4. MongoDB 서비스 시작:
-------------------------------------------------------------------------------------
-sudo systemctl start mongod
-------------------------------------------------------------------------------------
-5. MongoDB 서비스 상태 확인:
-MongoDB 서비스가 제대로 시작되었는지 확인합니다.
-------------------------------------------------------------------------------------
-sudo systemctl status mongod
-------------------------------------------------------------------------------------
-서비스가 성공적으로 시작되었다면, 상태 출력에서 active (running) 상태를 확인할 수 있습니다.
-6. 서비스 자동 시작 설정
-MongoDB 서비스가 서버 재부팅 후 자동으로 시작되도록 설정합니다.
-------------------------------------------------------------------------------------
-sudo systemctl enable mongod
-------------------------------------------------------------------------------------
-
-
-===================================================
-===================================================
-
 # 🟢 MongoDB 8.0 설치 가이드 (Ubuntu 24.04 LTS)
-
 이 문서는 **Ubuntu 24.04 (Noble Numbat)** 환경에서 **MongoDB 8.0**을 처음부터 설치하는 과정을 단계별로 설명합니다.
-
 ---
-
 ## 📌 1. 시스템 업데이트
 Ubuntu를 설치한 직후, 시스템 패키지를 최신 상태로 업데이트합니다.
-
-```bash
+```
 sudo apt-get update
 sudo apt-get upgrade -y
 ```
-
 ---
-
 ## 📌 2. 필수 패키지 설치
 MongoDB 리포지토리 등록에 필요한 `curl`과 `gnupg`를 설치합니다.
-
-```bash
+```
 sudo apt-get install -y curl gnupg
 ```
-
 ---
-
 ## 📌 3. MongoDB 8.0 GPG 키 추가
 MongoDB 저장소의 서명을 인증할 공개 키를 추가합니다.
-
-```bash
+```
 curl -fsSL https://pgp.mongodb.com/server-8.0.asc | sudo gpg -o /usr/share/keyrings/mongodb-server-8.0.gpg --dearmor
 ```
-
 ---
-
 ## 📌 4. MongoDB 8.0 APT 저장소 등록
 MongoDB 8.0용 리포지토리를 시스템에 추가합니다.
-
-```bash
+```
 echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-8.0.gpg ] https://repo.mongodb.org/apt/ubuntu noble/mongodb-org/8.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-8.0.list
 ```
-
 ---
-
 ## 📌 5. 패키지 목록 업데이트
-
-```bash
+```
 sudo apt-get update
 ```
-
 ---
-
 ## 📌 6. MongoDB 8.0 설치
-
-```bash
+```
 sudo apt-get install -y mongodb-org
 ```
-
 설치되는 주요 패키지:
 - mongodb-org-server  
 - mongodb-org-mongos  
 - mongodb-org-shell  
 - mongodb-org-tools
-
 ---
-
 ## 📌 7. MongoDB 서비스 시작 및 자동 실행 설정
-
-```bash
+```
 sudo systemctl start mongod
 sudo systemctl enable mongod
 ```
-
 ---
-
 ## 📌 8. MongoDB 서비스 상태 확인
-
-```bash
+```
 sudo systemctl status mongod
 ```
-
 정상이라면 아래와 같은 상태가 표시됩니다:
-
 ```
 Active: active (running)
 ```
-
 ---
-
 ## 📌 9. MongoDB 접속 테스트 (`mongosh`)
-
-```bash
+```
 mongosh
 ```
-
 접속 후 아래 명령으로 DB 목록을 확인합니다:
 
-```bash
+```
 show dbs
 ```
 
----
+## 📌 10. 원격접속을 위해 mongod.conf 파일 수정
+```
+sudo nano /etc/mongod.conf
+   bind_ip = 0.0.0.0
+   port = 27000
+```
 
-## 📌 10. MongoDB 서비스 제어 명령어 요약
+## 📌 11. 프로그램 다시 시작
+```
+sudo systemctl restart mongod
+```
+
+---
+## 📌 12. MongoDB 서비스 제어 명령어 요약
 
 | 동작 | 명령어 |
 |------|--------|
+| 버젼확인 | mongod -version |
 | 시작 | `sudo systemctl start mongod` |
+| 다사시작 | `sudo systemctl restart mongod` |
 | 중지 | `sudo systemctl stop mongod` |
 | 재시작 | `sudo systemctl restart mongod` |
 | 상태 확인 | `sudo systemctl status mongod` |
@@ -158,45 +93,6 @@ show dbs
 | 부팅 시 자동 실행 해제 | `sudo systemctl disable mongod` |
 
 ---
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-7. 원격접속을 위해 mongod.conf 파일 수정
-------------------------------------------------------------------------------------
-sudo nano /etc/mongod.conf
-   bind_ip = 0.0.0.0
-   port = 27000
-------------------------------------------------------------------------------------
-8. 프로그램 다시 시작
-------------------------------------------------------------------------------------
-sudo systemctl restart mongod
-------------------------------------------------------------------------------------
-
-[참조 명령]
-mongod -version
-sudo systemctl start mongod
-sudo systemctl status mongod
-sudo systemctl enable mongod
-sudo systemctl restart mongod
-mongo
 
 MongoDB Compass 다운로드 :  https://www.mongodb.com/try/download/community
 MongoDB & Compass 비밀번호 설정과 사용법 : https://youtu.be/ltLJx28tDOs
