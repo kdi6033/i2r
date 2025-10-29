@@ -3,9 +3,11 @@ Ubuntu 버전	24.04 LTS (noble)
 MongoDB 버전	7.0 (공식 지원)
 
 1.MongoDB 공식 GPG 키 추가:
+
 ```
 sudo apt-get install -y curl gnupg
 ```
+
 ```
 curl -fsSL https://pgp.mongodb.com/server-8.0.asc | \
 sudo gpg -o /usr/share/keyrings/mongodb-server-8.0.gpg --dearmor
