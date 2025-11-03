@@ -69,8 +69,8 @@ show dbs
 ## 📌 10. 원격접속을 위해 mongod.conf 파일 수정
 ```
 sudo nano /etc/mongod.conf
-   bind_ip = 0.0.0.0
-   port = 27000
+   port: 27000
+   bindIp: 0.0.0.0
 ```
 
 ## 📌 11. 프로그램 다시 시작
