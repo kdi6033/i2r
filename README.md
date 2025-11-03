@@ -1029,6 +1029,12 @@ extern const lv_font_t NotoSansKR_20;
 <img src="https://github.com/user-attachments/assets/c5f29d31-2507-4ac5-ac1b-34944f8d295f" width="600" >       
 <br>    
 
+```
+버튼을 두개 만들어줘 라벨 "1번켜" 버튼을 누르면 
+{ "c": "so", "m": "D4:8C:49:50:46:F4", "n": 1, "v": 1 }
+을 시리얼 통신으로 보내고 "1번꺼" 버튼을 누르면
+{ "c": "so", "m": "D4:8C:49:50:46:F4", "n": 1, "v": 0 } 을 보내줘
+```
 ---
 
 <br>     
