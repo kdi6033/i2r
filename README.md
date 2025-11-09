@@ -184,11 +184,11 @@ Compressed JSON (MQTT 실제 전송) <br>
 보드는 등록된 모든 트리거 목록을 응답합니다.  <br>
 { "c":"bio", "o":"l", "m":"D4:D4:DA:73:87:3C", "tr":[ {"n":0, "d":0, "ps":[{"n":1,"v":1}] }]}  <br>
 3️⃣ 트리거 삭제 (Delete)  <br>
-입력 0번 트리거를 삭제하려면 다음 메시지를 보냅니다.
+입력 0번 트리거를 삭제하려면 다음 메시지를 보냅니다. <br>
 Full JSON (개발용 / 디버그용) <br>
-{ "command": "bindIO", "operation": "delete", "mac": "D4:D4:DA:73:87:3C", "portNo": 0 }
+{ "command": "bindIO", "operation": "delete", "mac": "D4:D4:DA:73:87:3C", "portNo": 0 } <br>
  Compressed JSON (MQTT 실제 전송) <br>
-{ "c": "bio", "o": "d", "m": "D4:D4:DA:73:87:3C", "n": 0 }
+{ "c": "bio", "o": "d", "m": "D4:D4:DA:73:87:3C", "n": 0 } <br>
 
 ----------------
 
