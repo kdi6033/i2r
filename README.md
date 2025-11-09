@@ -169,25 +169,25 @@ https:// i2r.link  접속하면 페이지마다 유튜브 링크를 따라 해�
 | **`touchInput`**<br> (`ti`) | ```{ "c": "ti", "light": 120 }```<br>RP2040 등의 외부 터치패널에서 측정한 조도 값을 IoT 보드에 전달하여 조건 제어에 활용할 수 있습니다. |
 
 1️⃣ 트리거 등록 <br>
-Full JSON (개발용 / 디버그용) <br>
+📌 Full JSON (개발용 / 디버그용) <br>
 {"command": "bindIO", "operation": "insert", "trigger": true, "mac": "D4:D4:DA:73:87:3C", "portNo": 0, "delay": 0, "portState": [{ "mac": "D4:D4:DA:73:87:3C", "portNo": 1, "value": true }] } <br>
-Compressed JSON (MQTT 실제 전송) <br>
+📌 Compressed JSON (MQTT 실제 전송) <br>
 { "c": "bio", "o": "i", "t": true, "m": "D4:D4:DA:73:87:3C", "n": 0, "d": 0, "ps": [ { "m": "D4:D4:DA:73:87:3C", "n": 1, "v": 1 }] } <br>
 📌 설명: 입력 0번 포트가 ON 되면, → 출력 1번 포트를 ON 시킵니다. d:0 → 지연시간 없음 (즉시 실행) <br>
 
 2️⃣ 트리거 목록 확인 (List) <br>
 트리거 현황을 자동으로 요청하면 다음 메시지를 보냅니다. <br>
-Full JSON (개발용 / 디버그용) <br>
+📌 Full JSON (개발용 / 디버그용) <br>
 { "command": "bindIO", "operation": "list", "mac": "D4:D4:DA:73:87:3C" } <br>
-Compressed JSON (MQTT 실제 전송) <br>
+📌 Compressed JSON (MQTT 실제 전송) <br>
 { "c":"bio", "o":"l", "m":"D4:D4:DA:73:87:3C" } <br>
 보드는 등록된 모든 트리거 목록을 응답합니다.  <br>
 { "c":"bio", "o":"l", "m":"D4:D4:DA:73:87:3C", "tr":[ {"n":0, "d":0, "ps":[{"n":1,"v":1}] }]}  <br>
 3️⃣ 트리거 삭제 (Delete)  <br>
 입력 0번 트리거를 삭제하려면 다음 메시지를 보냅니다. <br>
-Full JSON (개발용 / 디버그용) <br>
+📌 Full JSON (개발용 / 디버그용) <br>
 { "command": "bindIO", "operation": "delete", "mac": "D4:D4:DA:73:87:3C", "portNo": 0 } <br>
- Compressed JSON (MQTT 실제 전송) <br>
+📌 Compressed JSON (MQTT 실제 전송) <br>
 { "c": "bio", "o": "d", "m": "D4:D4:DA:73:87:3C", "n": 0 } <br>
 
 ----------------
@@ -1070,4 +1070,23 @@ extern const lv_font_t NotoSansKR_20;
 
 ```
 </details>
+
+
+✅ 과목 문단명
+▶️[유튜브] 유튜브
+📌🔰 개요 및 준비
+🎯 학습 목표 및 기대 효과
+📋 요약 / 정리 / 확장 학습
+⚙️ 개발 환경 및 준비물
+🚀 실행, 런칭
+🟢	시작 신호 (녹색: 실행 의미)
+📦  필요 라이브러리 설치 방법 
+💻 소프트웨어 
+🔍	결과 확인, 테스트
+🔗 링크
+🌐 확장 기능 (통신)
+📚 참고 자료 및 링크
+💡	팁 / 확장 아이디어
+🧠 학생 과제 또는 연습 문제
+🤖	로봇 프로젝트 / 자율 동작 시스템
 
