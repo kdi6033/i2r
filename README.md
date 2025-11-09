@@ -175,6 +175,21 @@ Compressed JSON (MQTT 실제 전송) <br>
 { "c": "bio", "o": "i", "t": true, "m": "D4:D4:DA:73:87:3C", "n": 0, "d": 0, "ps": [ { "m": "D4:D4:DA:73:87:3C", "n": 1, "v": 1 }] } <br>
 📌 설명: 입력 0번 포트가 ON 되면, → 출력 1번 포트를 ON 시킵니다. d:0 → 지연시간 없음 (즉시 실행) <br>
 
+2️⃣ 트리거 목록 확인 (List) <br>
+트리거 현황을 자동으로 요청하면 다음 메시지를 보냅니다. <br>
+Full JSON (개발용 / 디버그용) <br>
+{ "command": "bindIO", "operation": "list", "mac": "D4:D4:DA:73:87:3C" } <br>
+Compressed JSON (MQTT 실제 전송) <br>
+{ "c":"bio", "o":"l", "m":"D4:D4:DA:73:87:3C" } <br>
+보드는 등록된 모든 트리거 목록을 응답합니다.  <br>
+{ "c":"bio", "o":"l", "m":"D4:D4:DA:73:87:3C", "tr":[ {"n":0, "d":0, "ps":[{"n":1,"v":1}] }]}  <br>
+3️⃣ 트리거 삭제 (Delete)  <br>
+입력 0번 트리거를 삭제하려면 다음 메시지를 보냅니다.
+Full JSON (개발용 / 디버그용) <br>
+{ "command": "bindIO", "operation": "delete", "mac": "D4:D4:DA:73:87:3C", "portNo": 0 }
+ Compressed JSON (MQTT 실제 전송) <br>
+{ "c": "bio", "o": "d", "m": "D4:D4:DA:73:87:3C", "n": 0 }
+
 ----------------
 
 # ✅ 아두이노 프로그램 설정    
