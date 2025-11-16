@@ -211,6 +211,44 @@ https:// i2r.link  접속하면 페이지마다 유튜브 링크를 따라 해�
   ]
 }
 
+{type: '3', command: 'bindSensor', duration: 0, email: 'kdi6033@gmail.com', mac: 'D4:D4:DA:73:87:3C', …}
+command
+: 
+"bindSensor"
+duration
+: 
+0
+email
+: 
+"kdi6033@gmail.com"
+mac
+: 
+"D4:D4:DA:73:87:3C"
+operation
+: 
+"list"
+portState
+: 
+
+mac
+: 
+"D4:D4:DA:73:87:3C"
+slotIndex
+: 
+8
+trigger
+: 
+1
+triggerValue
+: 
+55
+type
+: 
+"3"
+typeSensor
+: 
+"humidity"
+
 2️⃣ 트리거 목록 확인 (List)
 3️⃣ 트리거 삭제 (Delete)
 4️⃣ 센서 타입 전체 삭제 (DeleteAll)
