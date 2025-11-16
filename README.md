@@ -197,6 +197,7 @@ https:// i2r.link  접속하면 페이지마다 유튜브 링크를 따라 해�
 즉, “센서 값이 특정 조건을 만족하면 → 다른 장치(또는 본인)의 릴레이/스위치를 제어”합니다.
 서로 다른 IoT PLC끼리도 연결이 가능하며 중복 설정도 가능 합니다.
 1️⃣ 트리거 등록 (Insert)
+습도센서의 온도가 55로 상승할 때 맥어드레스가 "D4:D4:DA:73:87:3C"인 기기의 0번 포트의 출력을 true로 한다. "du":0 가 0 이면 지속시간은 무한대 이다.
 📌 Full JSON (개발용 / 디버그용)
 {"command": "bindSensor","operation": "insert","mac": "D4:D4:DA:73:87:3C","type": "humidity","trigger": true,"triggerValue": 55,"duration": 0,
   "portState": [{"mac": "D4:D4:DA:73:87:3C","portNo": 0,"value": true}] }     
@@ -205,6 +206,7 @@ https:// i2r.link  접속하면 페이지마다 유튜브 링크를 따라 해�
 {"c":"bs","ts":"humi","m":"D4:D4:DA:73:87:3C","o":"insert","tr":1,"tv":55,"du":0,"ps":[{"m":"D4:D4:DA:73:87:3C","n":0,"v":1}]}
 ```
 2️⃣ 트리거 목록 확인 (List)
+습도에 대한 리스트를 요청한다.
 📌 Full JSON (개발용 / 디버그용)
 {"command": "bindSensor","operation": "list","mac": "D4:D4:DA:73:87:3C","type": "humidity"}
 📌 Compressed JSON (MQTT 실제 전송) <br>
@@ -215,8 +217,31 @@ https:// i2r.link  접속하면 페이지마다 유튜브 링크를 따라 해�
 {"c":"bs","o":"list","ts":"humi","tr":1,"tv":55,"du":0,"sI":11,"ps":[{"m":"D4:D4:DA:73:87:3C","n":0,"v":1}],"e":"kdi6033@gmail.com","t":"3","fr":"D4:D4:DA:73:87:3C","m":"D4:D4:DA:73:87:3C"}
 
 3️⃣ 트리거 삭제 (Delete)
+습도센서에서 슬롯번호 1 의 설정을 제거한다.
+📌 Full JSON (개발용 / 디버그용)
+{"command": "bindSensor","operation": "delete","mac": "D4:D4:DA:73:87:3C","type": "humidity","slotIndex": 1}
+
+📌 Compressed JSON (MQTT 실제 전송) <br>
+```
+{"c":"bs","ts":"humidity","m":"D4:D4:DA:73:87:3C","o":"delete","sI":1}
+```
 4️⃣ 센서 타입 전체 삭제 (DeleteAll)
+습도센서의 설정된 모든 값을 제거한다.
+📌 Full JSON (개발용 / 디버그용)
+{"command": "bindSensor","operation": "calibration","mac": "D4:D4:DA:73:87:3C","type": "humidity","value": 44}
+
+📌 Compressed JSON (MQTT 실제 전송) <br>
+```
+ {"c":"bs","ts":"humidity","m":"D4:D4:DA:73:87:3C","o":"deleteAll"}
+```
 5️⃣ 센서 보정 (Calibration)
+습도센서의 현재 값을 44로 설정한다.
+📌 Full JSON (개발용 / 디버그용)
+{"command": "bindSensor","operation": "cali","mac": "D4:D4:DA:73:87:3C","type": "humidity","value": 44}
+📌 Compressed JSON (MQTT 실제 전송) <br>
+```
+{"c":"bs","ts":"humidity","m":"D4:D4:DA:73:87:3C","o":"cali","v":44}
+```
 
 ----------------
 
