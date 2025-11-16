@@ -118,10 +118,8 @@ https:// i2r.link  접속하면 페이지마다 유튜브 링크를 따라 해�
 | fileName          | `f`      | file Name                                                                       |
 | from              | `fr`     | 메세지를 보내는 기기의 mac 주소                                                   |
 | getStatus         | `gs`     | 보드 상태 요청 (온도, 습도, in/out 등)                                            |
-| sensorHighValue   | `h`      | 센서 동작의 상한 값 (예: 온도 28도)                                                |
 | humidity          | `humi`   | 센서 현재 습도 값 (예: `55`)                                                       |
 | in                | `in`     | 입력 상태 배열 (예: `[0,1,0,0]`)                                                  |
-| sensorLowValue    | `l`      | 센서 동작의 하한 값 (예: 온도 26도)                                                 |
 | light             | `light`  | 센서 조도 값 (예: `120`)                                                          |
 | mac               | `m`      | 대상 장치의 MAC 주소 (예: `"A0:B7:65:CD:4D:34"`)                                  |
 | portNo            | `n`      | 출력 핀 번호 (0부터 시작)                                                         |
