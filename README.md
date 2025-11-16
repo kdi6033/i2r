@@ -198,58 +198,22 @@ https:// i2r.link  접속하면 페이지마다 유튜브 링크를 따라 해�
 서로 다른 IoT PLC끼리도 연결이 가능하며 중복 설정도 가능 합니다.
 1️⃣ 트리거 등록 (Insert)
 📌 Full JSON (개발용 / 디버그용)
-{
-  "command": "bindSensor",
-  "operation": "insert",
-  "mac": "D4:D4:DA:73:87:3C",
-  "type": "humidity",
-  "trigger": true,
-  "triggerValue": 55,
-  "duration": 0,
-  "portState": [
-    { "mac": "D4:D4:DA:73:87:3C", "portNo": 0, "value": true }
-  ]
-}
-
-{type: '3', command: 'bindSensor', duration: 0, email: 'kdi6033@gmail.com', mac: 'D4:D4:DA:73:87:3C', …}
-command
-: 
-"bindSensor"
-duration
-: 
-0
-email
-: 
-"kdi6033@gmail.com"
-mac
-: 
-"D4:D4:DA:73:87:3C"
-operation
-: 
-"list"
-portState
-: 
-
-mac
-: 
-"D4:D4:DA:73:87:3C"
-slotIndex
-: 
-8
-trigger
-: 
-1
-triggerValue
-: 
-55
-type
-: 
-"3"
-typeSensor
-: 
-"humidity"
-
+{"command": "bindSensor","operation": "insert","mac": "D4:D4:DA:73:87:3C","type": "humidity","trigger": true,"triggerValue": 55,"duration": 0,
+  "portState": [{"mac": "D4:D4:DA:73:87:3C","portNo": 0,"value": true}] }     
+📌 Compressed JSON (MQTT 실제 전송) <br>
+```
+{"c":"bs","ts":"humi","m":"D4:D4:DA:73:87:3C","o":"insert","tr":1,"tv":55,"du":0,"ps":[{"m":"D4:D4:DA:73:87:3C","n":0,"v":1}]}
+```
 2️⃣ 트리거 목록 확인 (List)
+📌 Full JSON (개발용 / 디버그용)
+{"command": "bindSensor","operation": "list","mac": "D4:D4:DA:73:87:3C","type": "humidity"}
+📌 Compressed JSON (MQTT 실제 전송) <br>
+```
+ {"c":"bs","ts":"humidity","m":"D4:D4:DA:73:87:3C","o":"list"}
+```
+📌 응답예시 <br>
+{"c":"bs","o":"list","ts":"humi","tr":1,"tv":55,"du":0,"sI":11,"ps":[{"m":"D4:D4:DA:73:87:3C","n":0,"v":1}],"e":"kdi6033@gmail.com","t":"3","fr":"D4:D4:DA:73:87:3C","m":"D4:D4:DA:73:87:3C"}
+
 3️⃣ 트리거 삭제 (Delete)
 4️⃣ 센서 타입 전체 삭제 (DeleteAll)
 5️⃣ 센서 보정 (Calibration)
