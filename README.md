@@ -198,8 +198,23 @@ https:// i2r.link  접속하면 페이지마다 유튜브 링크를 따라 해�
 서로 다른 IoT PLC끼리도 연결이 가능하며 중복 설정도 가능 합니다.
 1️⃣ 트리거 등록 (Insert)
 📌 Full JSON (개발용 / 디버그용)
+{
+  "command": "bindSensor",
+  "operation": "insert",
+  "mac": "D4:D4:DA:73:87:3C",
+  "type": "humidity",
+  "trigger": true,
+  "triggerValue": 55,
+  "duration": 0,
+  "portState": [
+    { "mac": "D4:D4:DA:73:87:3C", "portNo": 0, "value": true }
+  ]
+}
 
-
+2️⃣ 트리거 목록 확인 (List)
+3️⃣ 트리거 삭제 (Delete)
+4️⃣ 센서 타입 전체 삭제 (DeleteAll)
+5️⃣ 센서 보정 (Calibration)
 
 ----------------
 
