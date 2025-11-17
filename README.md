@@ -168,13 +168,13 @@ https:// i2r.link  접속하면 페이지마다 유튜브 링크를 따라 해�
 | **`setOutput`**<br> (`so`) | ```{ "c": "so", "m": "A0:B7:65:CD:4D:34", "n": 1, "v": 1 }``` <br> 지정 보드의 `n`번 출력 핀을 제어합니다. `v: 1`은 ON, `v: 0`은 OFF입니다. 릴레이, 모터, LED 등에 사용됩니다. |
 | **`touchInput`**<br> (`ti`) | ```{ "c": "ti", "light": 120 }```<br>RP2040 등의 외부 터치패널에서 측정한 조도 값을 IoT 보드에 전달하여 조건 제어에 활용할 수 있습니다. |
 
-### ✅ 입출력 설정 프로토콜 (bindIO / c:"bio")
+### ✅ 입출력 설정 프로토콜 예제 (bindIO / c:"bio")
 1️⃣ 트리거 등록 <br>
-📌 Full JSON (개발용 / 디버그용) <br>
+입력 0번 포트가 ON 되면, → 출력 1번 포트를 ON 시킵니다. d:0 → 지연시간 없음 (즉시 실행) <br>
+- Full JSON (개발용 / 디버그용) <br>
 {"command": "bindIO", "operation": "insert", "trigger": true, "mac": "D4:D4:DA:73:87:3C", "portNo": 0, "delay": 0, "portState": [{ "mac": "D4:D4:DA:73:87:3C", "portNo": 1, "value": true }] } <br>
-📌 Compressed JSON (MQTT 실제 전송) <br>
+- Compressed JSON (MQTT 실제 전송) <br>
 { "c": "bio", "o": "i", "t": true, "m": "D4:D4:DA:73:87:3C", "n": 0, "d": 0, "ps": [ { "m": "D4:D4:DA:73:87:3C", "n": 1, "v": 1 }] } <br>
-📌 설명: 입력 0번 포트가 ON 되면, → 출력 1번 포트를 ON 시킵니다. d:0 → 지연시간 없음 (즉시 실행) <br>
 
 2️⃣ 트리거 목록 확인 (List) <br>
 트리거 현황을 자동으로 요청하면 다음 메시지를 보냅니다. <br>
@@ -191,7 +191,7 @@ https:// i2r.link  접속하면 페이지마다 유튜브 링크를 따라 해�
 📌 Compressed JSON (MQTT 실제 전송) <br>
 { "c": "bio", "o": "d", "m": "D4:D4:DA:73:87:3C", "n": 0 } <br>
 
-### ✅ 센서 트리거 프로토콜 (bindSensor / c:"bs")    
+### ✅ 센서 트리거 프로토콜 예제 (bindSensor / c:"bs")    
 - 센서의 측정값이 특정 상한(올라갈 때) 또는 하한(내려갈 때) 에 도달하면 지정한 기기의 출력을 자동으로 제어하는 기능입니다.  <br>
 - 즉, “센서 값이 특정 조건을 만족하면 → **다른 장치(또는 본인)의 릴레이/스위치**를 제어”합니다. <br>
 - 서로 다른 IoT PLC끼리도 연결이 가능하며 **중복 설정**도 가능 합니다. <br>
