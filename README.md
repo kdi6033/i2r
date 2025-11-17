@@ -178,17 +178,17 @@ https:// i2r.link  접속하면 페이지마다 유튜브 링크를 따라 해�
 
 2️⃣ 트리거 목록 확인 (List) <br>
 트리거 현황을 자동으로 요청하면 다음 메시지를 보냅니다. <br>
-📌 Full JSON (개발용 / 디버그용) <br>
+- Full JSON (개발용 / 디버그용) <br>
 { "command": "bindIO", "operation": "list", "mac": "D4:D4:DA:73:87:3C" } <br>
-📌 Compressed JSON (MQTT 실제 전송) <br>
+- Compressed JSON (MQTT 실제 전송) <br>
 { "c":"bio", "o":"l", "m":"D4:D4:DA:73:87:3C" } <br>
 보드는 등록된 모든 트리거 목록을 응답합니다.  <br>
 { "c":"bio", "o":"l", "m":"D4:D4:DA:73:87:3C", "tr":[ {"n":0, "d":0, "ps":[{"n":1,"v":1}] }]}  <br>
 3️⃣ 트리거 삭제 (Delete)  <br>
 입력 0번 트리거를 삭제하려면 다음 메시지를 보냅니다. <br>
-📌 Full JSON (개발용 / 디버그용) <br>
+- Full JSON (개발용 / 디버그용) <br>
 { "command": "bindIO", "operation": "delete", "mac": "D4:D4:DA:73:87:3C", "portNo": 0 } <br>
-📌 Compressed JSON (MQTT 실제 전송) <br>
+- Compressed JSON (MQTT 실제 전송) <br>
 { "c": "bio", "o": "d", "m": "D4:D4:DA:73:87:3C", "n": 0 } <br>
 
 ### ✅ 센서 트리거 프로토콜 예제 (bindSensor / c:"bs")    
@@ -197,46 +197,46 @@ https:// i2r.link  접속하면 페이지마다 유튜브 링크를 따라 해�
 - 서로 다른 IoT PLC끼리도 연결이 가능하며 **중복 설정**도 가능 합니다. <br>
 1️⃣ 트리거 등록 (Insert) <br>
 습도센서의 온도가 55로 상승할 때 맥어드레스가 "D4:D4:DA:73:87:3C"인 기기의 0번 포트의 출력을 true로 한다. "du":0 가 0 이면 지속시간은 무한대 이다. <br>
-📌 Full JSON (개발용 / 디버그용) <br>
+- Full JSON (개발용 / 디버그용) <br>
 {"command": "bindSensor","operation": "insert","mac": "D4:D4:DA:73:87:3C","type": "humidity","trigger": true,"triggerValue": 55,"duration": 0,
   "portState": [{"mac": "D4:D4:DA:73:87:3C","portNo": 0,"value": true}] }     <br> 
-📌 Compressed JSON (MQTT 실제 전송) <br>
+- Compressed JSON (MQTT 실제 전송) <br>
 ```
 {"c":"bs","ts":"humi","m":"D4:D4:DA:73:87:3C","o":"insert","tr":1,"tv":55,"du":0,"ps":[{"m":"D4:D4:DA:73:87:3C","n":0,"v":1}]}
 ```
 2️⃣ 트리거 목록 확인 (List) <br>
 습도에 대한 리스트를 요청한다. <br>
-📌 Full JSON (개발용 / 디버그용) <br>
+- Full JSON (개발용 / 디버그용) <br>
 {"command": "bindSensor","operation": "list","mac": "D4:D4:DA:73:87:3C","type": "humidity"} <br>
-📌 Compressed JSON (MQTT 실제 전송) <br>
+- Compressed JSON (MQTT 실제 전송) <br>
 ```
  {"c":"bs","ts":"humidity","m":"D4:D4:DA:73:87:3C","o":"list"}
 ```
-📌 응답예시 <br>
+- 응답예시 <br>
 {"c":"bs","o":"list","ts":"humi","tr":1,"tv":55,"du":0,"sI":11,"ps":[{"m":"D4:D4:DA:73:87:3C","n":0,"v":1}],"e":"kdi6033@gmail.com","t":"3","fr":"D4:D4:DA:73:87:3C","m":"D4:D4:DA:73:87:3C"} <br>
 
 3️⃣ 트리거 삭제 (Delete) <br>
 습도센서에서 슬롯번호 1 의 설정을 제거한다. <br>
-📌 Full JSON (개발용 / 디버그용) <br>
+- Full JSON (개발용 / 디버그용) <br>
 {"command": "bindSensor","operation": "delete","mac": "D4:D4:DA:73:87:3C","type": "humidity","slotIndex": 1} <br>
-📌 Compressed JSON (MQTT 실제 전송) <br>
+- Compressed JSON (MQTT 실제 전송) <br>
 ```
 {"c":"bs","ts":"humidity","m":"D4:D4:DA:73:87:3C","o":"delete","sI":1}
 ```
 4️⃣ 센서 타입 전체 삭제 (DeleteAll) <br>
 습도센서의 설정된 모든 값을 제거한다. <br>
-📌 Full JSON (개발용 / 디버그용) <br>
+- Full JSON (개발용 / 디버그용) <br>
 {"command": "bindSensor","operation": "calibration","mac": "D4:D4:DA:73:87:3C","type": "humidity","value": 44} <br>
 
-📌 Compressed JSON (MQTT 실제 전송) <br>
+- Compressed JSON (MQTT 실제 전송) <br>
 ```
  {"c":"bs","ts":"humidity","m":"D4:D4:DA:73:87:3C","o":"deleteAll"}
 ```
 5️⃣ 센서 보정 (Calibration) <br>
 습도센서의 현재 값을 44로 설정한다. <br>
-📌 Full JSON (개발용 / 디버그용) <br>
+- Full JSON (개발용 / 디버그용) <br>
 {"command": "bindSensor","operation": "cali","mac": "D4:D4:DA:73:87:3C","type": "humidity","value": 44} <br>
-📌 Compressed JSON (MQTT 실제 전송) <br>
+- Compressed JSON (MQTT 실제 전송) <br>
 ```
 {"c":"bs","ts":"humidity","m":"D4:D4:DA:73:87:3C","o":"cali","v":44}
 ```
