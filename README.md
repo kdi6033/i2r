@@ -205,6 +205,45 @@ https:// i2r.link  접속하면 페이지마다 유튜브 링크를 따라 해�
 }
 ```
 
+	
+3️⃣ 매주 스케줄 목록 조회 (List) <br>
+- 해 장치의 등록된 모든 스케줄을 조회합니다. <br>
+- Full JSON (개발용 / 디버그용) <br>
+{"command": "schedule","operation": "list","mac": "D4:8C:49:50:46:F4","pinIndex": 0} <br>
+
+- Compressed JSON (MQTT 실제 전송) <br>
+```
+{"c": "sch","m": "D4:8C:49:50:46:F4","o": "list","pi": 0}
+```
+- 응답 예시 <br>
+{"c": "sch","m": "D4:8C:49:50:46:F4","o": "list","pi": 0,"rm": "weekly","dw": [1,3],"start": 650,"end": 651,"slotIndex": 2} <br>
+
+
+4️⃣ 매주 스케줄 삭제 (Delete)  <br>
+특정 slotIndex를 지정하여 해당 스케줄 한 개만 삭제합니다.  <br>
+"sI"는 slotIndex를 의미하며, 목록 조회(List) 결과에서 받은 값을 사용합니다.  <br>
+
+- Full JSON (개발용 / 디버그용) <br>
+{"command": "schedule","operation": "delete","mac": "D4:8C:49:50:46:F4","pinIndex": 0,"slotIndex": 2}  <br>
+
+- Compressed JSON (MQTT 실제 전송) <br>
+```
+{"c": "sch","m": "D4:8C:49:50:46:F4","o": "delete","pi": 0,"sI": 2}
+```
+
+5️⃣ 매주 스케줄 전체 삭제 (DeleteAll)  <br>
+- 해당 장치의 특정 포트(pi)에 등록된 모든 주간 스케줄을 삭제합니다.  <br>
+- 여러 요일 또는 여러 시간대 스케줄을 한 번에 제거할 때 사용합니다.  <br>
+- 
+- Full JSON (개발용 / 디버그용) <br>
+{"command": "schedule","operation": "deleteAll","mac": "D4:8C:49:50:46:F4","pinIndex": 0}  <br>
+
+- Compressed JSON (MQTT 실제 전송) <br>
+```
+{"c": "sch","m": "D4:8C:49:50:46:F4","o": "deleteAll","pi": 0}
+```
+
+
 ### ✅ 입출력 설정 프로토콜 예제 (bindIO / c:"bio")
 1️⃣ 트리거 등록 <br>
 입력 0번 포트가 ON 되면, → 출력 1번 포트를 ON 시킵니다. d:0 → 지연시간 없음 (즉시 실행) <br>
