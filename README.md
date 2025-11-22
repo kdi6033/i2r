@@ -1113,7 +1113,8 @@ Submit 버튼을 누르면 NotoSansKR_20.c 파일이 생성됩니다.
 
 Symbols
 ```
-아이티알  다음 이전 와이파이 이름 온도 습도 조도 주소 사용법 보기 닫기 로그인 설정 타이머 입력 트리거 센서 트리거 모터제어 크라우드 기기연결과 사용자메뉴얼 비밀번호 이메일 입력 동영상시청 다음 정보를 입력하세요  안드로이드 어플 제품사용설명서  ° 0123456789 ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefgh기ijklmnopqrstuvwxyz ~!@#$%^&*()_+-=[]{}|;':",./<>? 
+폰트다운로드 사이트 : https://fonts.google.com/noto/specimen/Noto+Sans+KR
+아이티알  다음 이전 와이파이 이름 온도 습도 조도 주소 사용법 보기 닫기 로그인 설정 타이머 입력 트리거 센서 트리거 제어판 모터제어 블루투스 펌웨어설치 크라우드 기기연결과 사용자메뉴얼 비밀번호 이메일 입력 동영상시청 다음 정보를 입력하세요  안드로이드 어플 제품사용설명서  ° 0123456789 ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefgh기ijklmnopqrstuvwxyz ~!@#$%^&*()_+-=[]{}|;':",./<>? 
 ```
 
 - 생성된 "NotoSansKR_20.c" 는 소스코드와 같은 디렉토리에 위치 합니다.
