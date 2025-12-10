@@ -1098,8 +1098,8 @@ LVGL에서 한글 UI를 만들기 위해서는 한글을 지원하는 폰트를 
 
 - 다음과 같이 설정합니다:
 ```
-Name : 사용할 이름 입력
-Font size: 20 입력 → NotoSansKR_20 생성
+Name : 사용할 이름 입력 → NotoSansKR_20 생성
+Font size: 20 입력
 Bpp: 4 (일반적으로 4bpp 권장)
 Output format: C array 선택
 Browse: NotoSansKR-Regular.ttf 선택
@@ -1107,14 +1107,16 @@ Range: 빈칸
 Symbols: 사용할 글짜들 입력
 Submit 버튼을 누르면 NotoSansKR_20.c 파일이 생성됩니다.
 ```
+
+폰트다운로드 사이트 : https://fonts.google.com/noto/specimen/Noto+Sans+KR    
+
 <p align="left">
     <img src="https://github.com/user-attachments/assets/ebed64a9-ecf0-4fb0-93fb-a0599bd62cf4" alt="Google Fonts" width="600">
 </p>
 
 Symbols
 ```
-폰트다운로드 사이트 : https://fonts.google.com/noto/specimen/Noto+Sans+KR
-아이티알 제어판 설정 사용자메뉴얼 온도 습도 와이파이 이름 비밀번호 이메일 사용법 연결과 블루투스 펌웨어설치 다음 이전 조도 주소  기기  로그인 타이머 입력 트리거 센서 트리거 홈 한글폰트설치 모터제어 크라우드 입력 동영상시청 다음 정보를 입력하세요 안드로이드 어플 제품사용설명서 보기 닫기 ° 0123456789 ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefgh기ijklmnopqrstuvwxyz ~!@#$%^&*()_+-=[]{}|;':",./<>? 
+아이티알 제어판 설정 사용자메뉴얼 온도 습도 와이파이 이름 비밀번호 이메일 사용법 연결과 블루투스 펌웨어설치 다음 이전 조도 주소  기기  로그인 타이머 입력 트리거 센서 트리거 홈 한글폰트 설치 모터제어 크라우드 입력 동영상시청 다음 정보를 입력하세요 안드로이드 어플 제품사용설명서 보기 닫기 ° 0123456789 ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefgh기ijklmnopqrstuvwxyz ~!@#$%^&*()_+-=[]{}|;':",./<>? 
 ```
 
 - 생성된 "NotoSansKR_20.c" 는 소스코드와 같은 디렉토리에 위치 합니다.
