@@ -11,7 +11,7 @@ PLC 제어와 센서 데이터를 통합 관리할 수 있는 **클라우드형 
 - 📧 문의: kdi6033@doowon.ac.kr
 ---
 
-# ✅ i2r IoT PLC 
+## ✅ i2r IoT PLC 
 아이티알에서 제작한 기기 관련 정보를 제공합니다.    
 Data Scientist, AI Scientist 를 희망하시는 분들에게 도움을 드리려 합니다.    
 <br>
@@ -26,14 +26,14 @@ React 웹앱 프로그램를 활용하여 로컬 컴퓨터, AWS 클라우드, �
 **스마트폰,탭,PC로 제어**    
 https:// i2r.link  접속하면 페이지마다 유튜브 링크를 따라 해보시면 쉽게 사용할 수 있습니다.
 
-# ✅ 프로토콜
+## ✅ 프로토콜
 **2025년7월15일 chatgpt에 적합한 프로토콜을 새로 작성하고 있습니다. 이전에 구매한 보드는 7월30일 이후 새로운 펌웨어를 다운 받아 주세요**
 
 - i2r 보드의 mqtt 통신에서는 아래와 같이 구성되어 email을 저장하면 다음 토픽으로 자신에 해당되는 데이터를 통신 할 수 있습니다.     
 - 이 문서는 i2r IoT 보드와 클라이언트 간 MQTT 통신 시 사용하는 JSON 기반 명령어 프로토콜을 설명합니다.  
 - 모든 메시지는 경량화를 위해 **축약된 필드명**과 **축약된 명령어 코드(`c`)**를 사용합니다.
 
-## 기본 MQTT 토픽 구조
+#### 기본 MQTT 토픽 구조
 ---
 - **intopic**  : `i2r/{email}/in`  
 - **outtopic** : `i2r/{email}/out`
@@ -41,7 +41,7 @@ https:// i2r.link  접속하면 페이지마다 유튜브 링크를 따라 해�
 > `email`은 각 사용자의 고유 ID 역할을 합니다.
 ---
 
-## JSON 메시지 필드명 요약
+### JSON 메시지 필드명 요약
 
 | 전체 명칭         | 축약 코드 | 설명                                                                           |
 | ----------------- | -------- | ------------------------------------------------------------------------------- |
@@ -79,7 +79,7 @@ https:// i2r.link  접속하면 페이지마다 유튜브 링크를 따라 해�
 
 ---
 
-## 명령어 (command : c) 축약 코드 목록
+### 명령어 (command : c) 축약 코드 목록
 
 | 전체 명칭           | 축약 코드 (`c`)   | 설명 |
 |---------------------|------------------|------|
@@ -92,7 +92,7 @@ https:// i2r.link  접속하면 페이지마다 유튜브 링크를 따라 해�
 | `touchInput`       | `ti`            | Touch Panel(RP2040 등) 전달 |
 
 ---
-## 예제 및 상세 설명 
+### 예제 및 상세 설명 
 
 | `command` (`c`) | 예제 및 상세 설명 |
 |----------------|-------------------|
@@ -107,7 +107,7 @@ https:// i2r.link  접속하면 페이지마다 유튜브 링크를 따라 해�
 | **`setOutput`**<br> (`so`) | ```{ "c": "so", "m": "A0:B7:65:CD:4D:34", "n": 1, "v": 1 }``` <br> 지정 보드의 `n`번 출력 핀을 제어합니다. `v: 1`은 ON, `v: 0`은 OFF입니다. 릴레이, 모터, LED 등에 사용됩니다. |
 | **`touchInput`**<br> (`ti`) | ```{ "c": "ti", "light": 120 }```<br>RP2040 등의 외부 터치패널에서 측정한 조도 값을 IoT 보드에 전달하여 조건 제어에 활용할 수 있습니다. |
 
-### ✅ 스케줄 제어 프로토콜 (Schedule / c: "sch")
+#### ✅ 스케줄 제어 프로토콜 (Schedule / c: "sch")
 
 - 스케줄 기능은 특정 시간대에 PLC 출력을 자동으로 ON/OFF 제어하는 기능입니다.
 - 즉, “매일 또는 특정 요일에 정해진 시간에 자동으로 스위치를 켜거나 끄는 기능”을 수행합니다.
@@ -183,7 +183,7 @@ https:// i2r.link  접속하면 페이지마다 유튜브 링크를 따라 해�
 ```
 --------------------
 
-### ✅ 입출력 설정 프로토콜 예제 (bindIO / c:"bio")
+#### ✅ 입출력 설정 프로토콜 예제 (bindIO / c:"bio")
 1️⃣ 트리거 등록 <br>
 입력 0번 포트가 ON 되면, → 출력 1번 포트를 ON 시킵니다. d:0 → 지연시간 없음 (즉시 실행) <br>
 - Full JSON (개발용 / 디버그용) <br>
@@ -208,7 +208,7 @@ https:// i2r.link  접속하면 페이지마다 유튜브 링크를 따라 해�
 { "c": "bio", "o": "d", "m": "D4:D4:DA:73:87:3C", "n": 0 } <br>
 ----------------------------
 
-### ✅ 센서 트리거 프로토콜 예제 (bindSensor / c:"bs")    
+#### ✅ 센서 트리거 프로토콜 예제 (bindSensor / c:"bs")    
 - 센서의 측정값이 특정 상한(올라갈 때) 또는 하한(내려갈 때) 에 도달하면 지정한 기기의 출력을 자동으로 제어하는 기능입니다.  <br>
 - 즉, “센서 값이 특정 조건을 만족하면 → **다른 장치(또는 본인)의 릴레이/스위치**를 제어”합니다. <br>
 - 서로 다른 IoT PLC끼리도 연결이 가능하며 **중복 설정**도 가능 합니다. <br>
@@ -381,7 +381,7 @@ react로 구축한 서버는 제 github "React"에 정리해 놓았습니다.
 
 [mongoDB 설치순서](https://github.com/kdi6033/i2r/blob/main/txt/aws%20mongoDB%20install)    
 
-# ✅ PC IoT 서버 (React)    
+## ✅ PC IoT 서버 (React)    
 ** 앞으로 다른 바쁜 작업이 끝나고 나면 정리해서 올리겠습니다.
 - PC에서 React 와 mongoDB를 설치하여 인터넷 상에서 제어한다.
 - 어플에서 IoT-PLC를 와이파이에 접속만 시키면 데이터베이스에 자동 저장되고 제어판넬이 자동으로 생성되어서 모니터링/제어를 할 수 있다.
@@ -401,7 +401,7 @@ react로 구축한 서버는 제 github "React"에 정리해 놓았습니다.
 </table>
 
 
-# ✅ IoT PLC HMI 한글 터치스크린 ChatGPT
+## ✅ IoT PLC HMI 한글 터치스크린 ChatGPT
 
 - ESP32 IoT PLC와 CrowPanel(RP2040)을 RS232 직렬 통신으로 연결하여,
 - CrowPanel은 사용자 인터페이스(UI) 및 I2C 센서 계측을 담당하고,
@@ -427,7 +427,7 @@ react로 구축한 서버는 제 github "React"에 정리해 놓았습니다.
     - I2C는 최대 32바이트 프레임 제한과 양방향 통신의 한계가 있어, PLC와 UI 간 통신에는 적합하지 않음
     - 따라서 UI ↔ PLC 통신은 RS232, 센서 ↔ RP2040 통신만 I2C로 유지
 
-## CrowPanel Pico Display 3.5" HMI 모듈
+### CrowPanel Pico Display 3.5" HMI 모듈
 
 이 보드는 RP2040 MCU + 3.5" 480×320 TFT LCD + 정전식 터치스크린이 결합된 HMI(Human Machine Interface) 모듈입니다. LVGL, C/C++, MicroPython을 지원하여 다양한 UI 및 IoT 응용에 활용할 수 있습니다.
 
@@ -480,7 +480,7 @@ react로 구축한 서버는 제 github "React"에 정리해 놓았습니다.
 { "c": "ti", "light": 120 }
 ```
 
-# ✅ I2C 통신 프로그램
+## ✅ I2C 통신 프로그램
 <details>
 <summary>💻 C code 예제 - 마스터 프로그램 : 터치스크린 RP2040</summary>
     
@@ -555,7 +555,7 @@ void loop() {
 ```
 </details>
 
-# ✅ LVGL, TFT_eSPI 설치
+## ✅ LVGL, TFT_eSPI 설치
 그래픽과 터치스크린을 구현하기 위한 구조를 설명하겠습니다.
 - LVGL 에서는 그래픽에 필요한 설정을 해야 합니다.
 - ILI9341 는 터치 스크린마다 사용하는 종류가 달라지므로 TFT_eSPI 에 정의를 해야 합니다.
@@ -572,7 +572,7 @@ Additional Boards Manager URLs
 https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json
 ```
 
-## 1. LVGL + TFT_eSPI + ILI9341 관계
+### 1. LVGL + TFT_eSPI + ILI9341 관계
 
 **1) LVGL (Light and Versatile Graphics Library)**
 - 오픈소스 GUI 라이브러리
@@ -613,7 +613,7 @@ ILI9341 (하드웨어 컨트롤러)
 LCD 화면 출력
 ```
 
-## 2. LVGL (Light and Versatile Graphics Library) 디스플레이 드라이버
+### 2. LVGL (Light and Versatile Graphics Library) 디스플레이 드라이버
 적은 메모리에서도 부드럽고 직관적인 터치 UI를 구현할 수 있는 오픈소스 그래픽 라이브러리입니다    
 다음 기술 사이트를 참조하세요   
 [lvgl 기술사이트](https://github.com/lvgl/lvgl)    
@@ -633,7 +633,7 @@ LVGL 디스플레이 드라이버는 아래 두 가지를 담당합니다.
 - 보통 화면의 1/10~1/20 크기 버퍼만 두고, 해당 영역만 갱신합니다.
 - 이 버퍼와 실제 하드웨어 전송을 연결하는 것이 디스플레이 드라이버의 역할입니다.
 
-## 3. lvgl 설치 후 lv_conf.h 파일 만들기
+### 3. lvgl 설치 후 lv_conf.h 파일 만들기
 lv_conf_template.h 를 필요한 항목을 수정해서 lv_conf.h 로 저장합니다.
 
 **📌 요약 (수정해야 하는 항목만)**
@@ -724,7 +724,7 @@ ILI9341은 RGB565(16bit) 사용 → LV_COLOR_DEPTH 16 유지
 처음 테스트할 때는 1로 켜두면 좋음
 실제 제품 코드에서는 불필요하면 0으로 꺼서 용량/속도 최적화
 
-## 3. TFT_eSPI 디스플레이 드라이버 설치
+### 3. TFT_eSPI 디스플레이 드라이버 설치
 CrowPanel 터치스크린은 RP2040 + ILI9488 (480x320) 디스플레이에 맞게 수정해야 합니다.
 
 TFT_eSPI 라이브러리 설치     
@@ -966,7 +966,7 @@ void loop() {
 </details>
 
 
-## 4.📘 LVGL 한글 폰트 적용 가이드
+### 4.📘 LVGL 한글 폰트 적용 가이드
 
 ### 📺 시연 영상 (IoT PLC HMI, 한글 띄우기)
 <a href="https://youtu.be/4TOUC_N_nwQ">
