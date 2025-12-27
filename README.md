@@ -28,6 +28,8 @@ ESP32 기반 IoT PLC는
 - 산업 현장에서 안정적으로 실행되는  
 **Physical AI 기반 Edge PLC 제어 구조**를 구현합니다.
 
+---
+
 ## 📺 i2r 공식 채널 및 자료 링크
 - 🛒 i2r 제품구매: href="https://i2r.link/products
 - 💻 GitHub: https://github.com/kdi6033  
