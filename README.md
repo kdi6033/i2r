@@ -1,4 +1,4 @@
-# i2r IoT PLC (Physical · On-Device AI · Edge Controller Lineup)
+# ✅ i2r IoT PLC (Physical · On-Device AI · Edge Controller Lineup)
 
 i2r 플랫폼은  
 - **코드 작성 없이 UI 입력만으로 동작하는 PLC**
@@ -37,12 +37,6 @@ ESP32 기반 IoT PLC는
 - 🌐 공식 사이트: https://i2r.link  
 - 📧 문의: kdi6033@doowon.ac.kr
 ---
-
-## ✅ i2r IoT PLC 
-아이티알에서 제작한 기기 관련 정보를 제공합니다.    
-Data Scientist, AI Scientist 를 희망하시는 분들에게 도움을 드리려 합니다.    
-<br>
-React 웹앱 프로그램를 활용하여 로컬 컴퓨터, AWS 클라우드, 스마트폰 애플리케이션에서 i2r-01, i2r-02, i2r-03, i2r-04, i2r-05 기기의 모니터링 및 제어를 가능하게 합니다.
 
 **사용 방법**   
 - React 웹앱 기반 모니터링 및 제어: 다양한 환경에서 실시간으로 모니터링하고 제어할 수 있습니다.    
