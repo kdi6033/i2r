@@ -1,5 +1,36 @@
 # i2r IoT PLC (Physical · On-Device AI · Edge Controller Lineup)
 
+# i2r IoT PLC (Physical · On-Device AI · Edge Controller Lineup)
+
+i2r 플랫폼은  
+- **코드 작성 없이 UI 입력만으로 동작하는 PLC**
+- **센서 중심의 Physical AI 제어**
+- **On-Device AI 기반 현장 판단**
+- **Edge Controller 기반 즉시 실행**
+
+을 핵심 개념으로 설계된 **클라우드 연동 IoT PLC 플랫폼**입니다.
+
+MQTT · MongoDB · React UI · Python을 연동하여  
+- 센서 데이터 수집
+- 제어 조건 및 규칙 UI 설정
+- 실시간 상태 모니터링
+- PLC 출력 및 액추에이터 제어
+
+를 하나의 통합 환경에서 제공합니다.
+
+ESP32 기반 IoT PLC는  
+- Wi-Fi / Bluetooth / RS-485 / MQTT 통신을 지원하며
+- 센서 입력을 Edge 단에서 즉시 해석하고
+- On-Device AI 판단 결과에 따라
+- PLC 출력과 외부 제어 시스템을 자동으로 동작시킵니다.
+
+이를 통해 **입력(Sensor) → 판단(AI) → 출력(Control)** 이  
+- 프로그램 없이
+- UI 설정만으로
+- 산업 현장에서 안정적으로 실행되는  
+**Physical AI 기반 Edge PLC 제어 구조**를 구현합니다.
+
+
 i2r 플랫폼은 MQTT · MongoDB · React UI · Python 등을 연동하여  
 **프로그램 작성 없이 UI 입력만으로 동작하는 PLC 제어 환경**을 제공하는  
 클라우드 기반 IoT 시스템입니다.
