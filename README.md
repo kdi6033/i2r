@@ -57,14 +57,7 @@
 ## 🔷i2r IoT PLC 사양
 | i2r-02 | i2r-03| i2r-04 | i2r-04-motor |
 | --- | --- | --- | --- |
-|- 정격전압 : 5V DC, 보드내에서는 5V로 설계했습니다. <br>- 입력전압 : 7V~26V DC Free Volt <br>
-- 작동온도 : -40 ℃ - 85 ℃ <br>
-- 입력 : 4개, 접점만 연결되면 동작합니다. 별도의 전압을 인가하면 고장의 원인이 됩니다. <br>
-- 출력 : 1개는 30A 250VAC/30VDC <br>
-3개는 10A VAC, 10A VDC, 10A 125VAC, 10A 28VDC <br>
-- 통신: WIFI 802.11 b / g / n (802.11n에서 최대 150Mbps) 및 Bluetooth 4.2 BR / EDR + BLE
-와이파이는 2.4G에 연결하세요. 5G는 동작하지 않습니다. <br>
-- RS232 통신 : 보드내에 TTL Level의 rx, tx 단자가 있습니다.  | i2r-03| i2r-04 | i2r-04-motor |
+|- 정격전압 : 5V DC, 보드내에서는 5V로 설계했습니다. <br>- 입력전압 : 7V~26V DC Free Volt <br>- 작동온도 : -40 ℃ - 85 ℃ <br>- 입력 : 4개, 접점만 연결되면 동작합니다. 별도의 전압을 인가하면 고장의 원인이 됩니다. <br>- 출력 : 1개는 30A 250VAC/30VDC <br>3개는 10A VAC, 10A VDC, 10A 125VAC, 10A 28VDC <br>- 통신: WIFI 802.11 b / g / n (802.11n에서 최대 150Mbps) 및 Bluetooth 4.2 BR / EDR + BLE <br> 와이파이는 2.4G에 연결하세요. 5G는 동작하지 않습니다. <br>- RS232 통신 : 보드내에 TTL Level의 rx, tx 단자가 있습니다.  | i2r-03| i2r-04 | i2r-04-motor |
 
 
 ---
