@@ -66,7 +66,7 @@
 - 통신: WIFI 802.11 b / g / n (802.11n에서 최대 150Mbps) 및 Bluetooth 4.2 BR / EDR + BLE
 와이파이는 2.4G에 연결하세요. 5G는 동작하지 않습니다.
 - RS232 통신 : 보드내에 TTL Level의 rx, tx 단자가 있습니다.
-  | i2r-03| i2r-04 | i2r-04-motor |
+-  | i2r-03| i2r-04 | i2r-04-motor |
 
 
 ---
