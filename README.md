@@ -53,17 +53,6 @@
 | :---: | :---: | :---: | :---: |
 | <img src="https://github.com/kdi6033/i2r-02/raw/main/images/i2r-02-pin-con.png?raw=true" height="150"> | <img src="https://github.com/kdi6033/i2r-03/raw/main/images/i2r-03-pin-con.png?raw=true" height="140"> | <img src="https://github.com/kdi6033/i2r-04/raw/main/images/i2r-04-circuit.png?raw=true?raw=true" height="140"> | <img src="https://github.com/kdi6033/i2r-04/raw/main/images/i2r-04-motor-circiut.jpg?raw=true?raw=true?raw=true" height="150"> |
 
----
-## 🗂️ Repositories
-| 모델 | 주요 사양 | 구매 및 자료 링크 |
-| :--- | :--- | :--- |
-| **[i2r-01](https://github.com/kdi6033/i2r-01)** | **통신 모듈**<br> Wi-Fi, BLE, RS232, RS485 통합<br>입력전압 5~30V | [🛍️ 네이버](https://smartstore.naver.com/i2r/products/8284829279) \| [🛒 쿠팡](https://www.coupang.com/vp/products/9042380453) \| [🏠 Café24](https://i2rlink.cafe24.com/shop3/product/detail.html?product_no=15) \| [📂 GitHub](https://github.com/kdi6033/i2r-01) |
-| **[i2r-02](https://github.com/kdi6033/i2r-02)** | **IoT PLC (4ch)**<br> 30A 릴레이 1개 + 10A 릴레이 3개<br>Wi-Fi·BLE 통신 | [🛍️ 네이버](https://smartstore.naver.com/i2r/products/8285060920) \| [🛒 쿠팡](https://www.coupang.com/vp/products/8752533658) \| [🏠 Café24](https://i2rlink.cafe24.com/shop3/product/detail.html?product_no=13) \| [📂 GitHub](https://github.com/kdi6033/i2r-02) |
-| **[i2r-03](https://github.com/kdi6033/i2r-03)** | **IoT PLC (센서)**<br> 온·습도 센서 내장<br>30A 1개 + 10A 3개 릴레이 | [🛍️ 네이버](https://smartstore.naver.com/i2r/products/8285011211) \| [🛒 쿠팡](https://www.coupang.com/vp/products/8753606053) \| [🏠 Café24](https://i2rlink.cafe24.com/shop3/product/detail.html?product_no=14) \| [📂 GitHub](https://github.com/kdi6033/i2r-03) |
-| **[i2r-04](https://github.com/kdi6033/i2r-04)** | **IoT PLC (8ch)**<br> 10A 릴레이 8개 구성<br>5~30V 입력, Wi-Fi·BLE | [🛍️ 네이버](https://smartstore.naver.com/i2r/products/9524935681) \| [🛒 쿠팡](https://www.coupang.com/vp/products/8753613193) \| [🏠 Café24](https://i2rlink.cafe24.com/shop3/product/detail.html?product_no=12) \| [📂 GitHub](https://github.com/kdi6033/i2r-04) |
-| **[i2r-05](https://github.com/kdi6033/i2r-05)** | **아두이노 보드 AI IoT**<br> ESP32-S3 기반 AI IoT 보드<br>다양한 스마트 디바이스 연동 | [🛍️ 네이버](https://smartstore.naver.com/i2r/products/11698644965) \| [🛒 쿠팡](https://www.coupang.com/vp/products/9042380454) \| [🏠 Café24](https://i2rlink.cafe24.com/shop3/product/detail.html?product_no=20) \| [📂 GitHub](https://github.com/kdi6033/i2r-05) |
-| **[Shield-1](https://www.coupang.com/vp/products/9042380416)** | **아두이노 확장 쉴드**<br> 온·습도·아날로그·IR·LED<br>i2r-05 전용 확장 쉴드 | [🛍️ 네이버](https://smartstore.naver.com/i2r/products/11747502715) \| [🛒 쿠팡](https://www.coupang.com/vp/products/9042380416) \| [🏠 Café24](https://i2rlink.cafe24.com/shop3/product/detail.html?product_no=21) \| [📂 GitHub](https://github.com/kdi6033/i2r-05#1-i2r-05-shield-v1-보드) |
-| **[Motor](https://i2rlink.cafe24.com/shop3/product/detail.html?product_no=22)** | **모터제어 IoT PLC**<br> 아두이노 확장형 제어 보드<br>모터·센서·IR 제어 최적화 | [🛍️ 네이버](https://smartstore.naver.com/i2r/products/12416774129) \| – \| [🏠 Café24](https://i2rlink.cafe24.com/shop3/product/detail.html?product_no=22) \| [📂 GitHub](https://github.com/kdi6033/i2r-04) |
 
 ---
 
