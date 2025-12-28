@@ -82,15 +82,15 @@
       <td>
         i2r-02 보드와 동일 사양<br><br>
         - 온습도 센서 : AHT21<br>
-		  <span style="display:block; padding-left:20px;">
-		    - 습도 범위 : 0~100% RH<br>
-		    - 온도 범위 : -40 ℃ ~ 120 ℃<br>
-		    - 정확도 : 10~95% RH 구간<br>
-		    - 습도 히스테리시스 : ±1% RH<br>
-		    - 측정 시간 : 50ms<br>
-		    - 응답 시간 : 5초<br>
-		    - 통신 : I2C
-		  </span>
+		  <ul>
+		    <li>습도 범위 : 0~100% RH</li>
+		    <li>온도 범위 : -40 ℃ ~ 120 ℃</li>
+		    <li>정확도 : 10~95% RH 구간</li>
+		    <li>습도 히스테리시스 : ±1% RH</li>
+		    <li>측정 시간 : 50ms</li>
+		    <li>응답 시간 : 5초</li>
+		    <li>통신 : I2C</li>
+		  </ul>
       </td>
     </tr>
   </tbody>
