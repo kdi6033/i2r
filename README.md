@@ -51,7 +51,7 @@
 ## 🔷i2r IoT PLC 회로도
 | i2r-02 | i2r-03| i2r-04 | i2r-04-motor |
 | :---: | :---: | :---: | :---: |
-| <img src="https://github.com/kdi6033/i2r-02/raw/main/images/i2r-02-pin-con.png?raw=true" height="150"> | <img src="https://github.com/kdi6033/i2r-03/raw/main/images/i2r-03-pin-con.png?raw=true" height="140"> | <img src="https://github.com/kdi6033/i2r-04/raw/main/images/i2r-04-kc.jpg?raw=true" height="140"> | <img src="https://github.com/kdi6033/i2r-04/raw/main/images/case-i2r-04-motor.png?raw=true?raw=true" height="150"> |
+| <img src="https://github.com/kdi6033/i2r-02/raw/main/images/i2r-02-pin-con.png?raw=true" height="150"> | <img src="https://github.com/kdi6033/i2r-03/raw/main/images/i2r-03-pin-con.png?raw=true" height="140"> | <img src="https://github.com/kdi6033/i2r-04/raw/main/images/i2r-04-circuit.png?raw=true?raw=true" height="140"> | <img src="https://github.com/kdi6033/i2r-04/raw/main/images/i2r-04-motor-circiut.jpg?raw=true?raw=true?raw=true" height="150"> |
 
 ---
 ## 🗂️ Repositories
