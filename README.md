@@ -39,7 +39,6 @@
   
 ---
 
-
 ## 🔷i2r IoT PLC
 
 | i2r-02<br>IoT PLC (4ch) | i2r-03<br>IoT PLC (4ch 센서) | i2r-04<br>IoT PLC (8ch) | i2r-04-motor<br>모터제어  |
@@ -53,6 +52,9 @@
 | :---: | :---: | :---: | :---: |
 | <img src="https://github.com/kdi6033/i2r-02/raw/main/images/i2r-02-pin-con.png?raw=true" height="150"> | <img src="https://github.com/kdi6033/i2r-03/raw/main/images/i2r-03-pin-con.png?raw=true" height="140"> | <img src="https://github.com/kdi6033/i2r-04/raw/main/images/i2r-04-circuit.png?raw=true?raw=true" height="140"> | <img src="https://github.com/kdi6033/i2r-04/raw/main/images/i2r-04-motor-circiut.jpg?raw=true?raw=true?raw=true" height="150"> |
 | <img src="https://github.com/kdi6033/i2r-02/raw/main/images/i2r-02-1.png?raw=true" height="130"> | <img src="https://github.com/kdi6033/i2r-03/raw/main/images/i2r-03-port.jpg?raw=true?raw=true" height="150">| <img src="https://github.com/kdi6033/i2r-04/raw/main/images/i2r-04-pin.jpg?raw=true?raw=true" height="150"> | |
+
+
+## 🔷i2r IoT PLC 사양
 
 
 ---
