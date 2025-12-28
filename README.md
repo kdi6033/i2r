@@ -68,8 +68,6 @@
 | **[Shield-1](https://www.coupang.com/vp/products/9042380416)** | **아두이노 확장 쉴드**<br> 온·습도·아날로그·IR·LED<br>i2r-05 전용 확장 쉴드 | [🛍️ 네이버](https://smartstore.naver.com/i2r/products/11747502715) \| [🛒 쿠팡](https://www.coupang.com/vp/products/9042380416) \| [🏠 Café24](https://i2rlink.cafe24.com/shop3/product/detail.html?product_no=21) \| [📂 GitHub](https://github.com/kdi6033/i2r-05#1-i2r-05-shield-v1-보드) |
 | **[Motor](https://i2rlink.cafe24.com/shop3/product/detail.html?product_no=22)** | **모터제어 IoT PLC**<br> 아두이노 확장형 제어 보드<br>모터·센서·IR 제어 최적화 | [🛍️ 네이버](https://smartstore.naver.com/i2r/products/12416774129) \| – \| [🏠 Café24](https://i2rlink.cafe24.com/shop3/product/detail.html?product_no=22) \| [📂 GitHub](https://github.com/kdi6033/i2r-04) |
 
-
-
 ---
 
 **사용 방법**   
