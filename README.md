@@ -55,6 +55,46 @@
 
 
 ## 🔷i2r IoT PLC 사양
+
+<table width="100%">
+  <colgroup>
+    <col width="50%">
+    <col width="50%">
+  </colgroup>
+  <thead>
+    <tr>
+      <th>i2r-02</th>
+      <th>i2r-03</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        - 정격전압 : 5V DC, 보드내에서는 5V로 설계했습니다.<br>
+        - 입력전압 : 7V~26V DC Free Volt<br>
+        - 작동온도 : -40 ℃ ~ 85 ℃<br>
+        - 입력 : 4개, 접점만 연결되면 동작 (별도 전압 인가 금지)<br>
+        - 출력 : 1개 30A 250VAC/30VDC, 3개 10A 125VAC/28VDC<br>
+        - 통신 : WiFi 802.11 b/g/n (최대 150Mbps), Bluetooth 4.2 BR/EDR + BLE<br>
+        - WiFi : 2.4GHz 지원 (5GHz 미지원)<br>
+        - RS232 : 보드 내 TTL Level RX/TX 제공
+      </td>
+      <td>
+        i2r-02 보드와 동일 사양<br><br>
+        - 온습도 센서 : AHT21<br>
+        - 습도 범위 : 0~100% RH<br>
+        - 온도 범위 : -40 ℃ ~ 120 ℃<br>
+        - 정확도 : 10~95% RH 구간<br>
+        - 습도 히스테리시스 : ±1% RH<br>
+        - 측정 시간 : 50ms<br>
+        - 응답 시간 : 5초<br>
+        - 통신 : I2C
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
 | i2r-02 | i2r-03| 
 | --- | --- |
 |- 정격전압 : 5V DC, 보드내에서는 5V로 설계했습니다. <br>- 입력전압 : 7V~26V DC Free Volt <br>- 작동온도 : -40 ℃ - 85 ℃ <br>- 입력 : 4개, 접점만 연결되면 동작합니다. 별도의 전압을 인가하면 고장의 원인이 됩니다. <br>- 출력 : 1개는 30A 250VAC/30VDC, 3개는 10A 125VAC/28VDC <br>- 통신: WIFI 802.11 b / g / n (802.11n에서 최대 150Mbps) 및 Bluetooth 4.2 BR / EDR + BLE <br> 와이파이는 2.4G에 연결하세요. 5G는 동작하지 않습니다. <br>- RS232 통신 : 보드내에 TTL Level의 rx, tx 단자가 있습니다.  | i2r-02 보드와 동일사양 <br> - 온습도 센서 : 모델 : AHT21, 습도 측정 범위: 0-100% RH, 온도 범위: -40 'C-120 'C, 습도 정확도 범위: 10% RH에서 95% RH, 습도 히스테리: ± 1% RH, 측정 시간: 50ms, 응답 시간: 5 초, 커뮤니케이션: I2C |
