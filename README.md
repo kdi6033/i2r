@@ -75,8 +75,11 @@
         - 작동온도 : -40 ℃ ~ 85 ℃<br>
         - 입력 : 4개, 접점만 연결되면 동작 (별도 전압 인가 금지)<br>
         - 출력 : 1개 30A 250VAC/30VDC, 3개 10A 125VAC/28VDC<br>
-        - 통신 : WiFi 802.11 b/g/n (최대 150Mbps), Bluetooth 4.2 BR/EDR + BLE<br>
-          WiFi : 2.4GHz 지원 (5GHz 미지원)<br>
+        - 통신 : WiFi 802.11 b/g/n (최대 150Mbps)
+		  <ul>
+			  <li>Bluetooth 4.2 BR/EDR + BLE</li>
+	          <li>WiFi : 2.4GHz 지원 (5GHz 미지원)</li>
+		  </ul>ul><br>
         - RS232 : 보드 내 TTL Level RX/TX 제공
       </td>
       <td>
