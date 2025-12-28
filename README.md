@@ -40,13 +40,13 @@
 ---
 
 
-## 🔷i2r 제품
+## 🔷i2r IoT PLC
 
-| i2r-01<br>IoT 통신 | i2r-02<br>IoT PLC (4ch) | i2r-03<br>IoT PLC (4ch 센서) | i2r-04<br>IoT PLC (8ch) |
+| i2r-02<br>IoT PLC (4ch) | i2r-03<br>IoT PLC (4ch 센서) | i2r-04<br>IoT PLC (8ch) | |
 | :---: | :---: | :---: | :---: |
-| <img src="https://github.com/kdi6033/i2r-01/raw/main/images/i2r01-kc.png?raw=true" height="140"> | <img src="https://github.com/kdi6033/i2r-02/raw/main/images/i2r-02-kc.png?raw=true" height="150"> | <img src="https://github.com/kdi6033/i2r-03/raw/main/images/i2r-03-kc.png?raw=true" height="140"> | <img src="https://github.com/kdi6033/i2r-04/raw/main/images/i2r-04-kc.jpg?raw=true" height="140"> |
-| <img src="https://github.com/kdi6033/i2r-01/raw/main/images/case-i2r01-iso.png?raw=true" height="120"> | <img src="https://github.com/kdi6033/i2r-02/raw/main/images/case-i2r02-iso.png?raw=true" height="130"> | <img src="https://github.com/kdi6033/i2r-03/raw/main/images/case-i2r03-iso1.png?raw=true" height="160"> | <img src="https://github.com/kdi6033/i2r-04/raw/main/images/case-i2r04-3.png?raw=true" height="150"> |
-| <img src="https://github.com/kdi6033/i2r-01/raw/main/images/case-i2r01-kc.png?raw=true" height="140"> | <img src="https://github.com/kdi6033/i2r-02/raw/main/images/case-i2r02-kc.png?raw=true" height="140"> | <img src="https://github.com/kdi6033/i2r-03/raw/main/images/case-i2r03-kc.png?raw=true" height="140"> | <img src="https://github.com/kdi6033/i2r-04/raw/main/images/case-i2r04-kc.png?raw=true" height="135"> |
+| <img src="https://github.com/kdi6033/i2r-02/raw/main/images/i2r-02-kc.png?raw=true" height="150"> | <img src="https://github.com/kdi6033/i2r-03/raw/main/images/i2r-03-kc.png?raw=true" height="140"> | <img src="https://github.com/kdi6033/i2r-04/raw/main/images/i2r-04-kc.jpg?raw=true" height="140"> | |
+| <img src="https://github.com/kdi6033/i2r-02/raw/main/images/case-i2r02-iso.png?raw=true" height="130"> | <img src="https://github.com/kdi6033/i2r-03/raw/main/images/case-i2r03-iso1.png?raw=true" height="160"> | <img src="https://github.com/kdi6033/i2r-04/raw/main/images/case-i2r04-3.png?raw=true" height="150"> | |
+| <img src="https://github.com/kdi6033/i2r-02/raw/main/images/case-i2r02-kc.png?raw=true" height="140"> | <img src="https://github.com/kdi6033/i2r-03/raw/main/images/case-i2r03-kc.png?raw=true" height="140"> | <img src="https://github.com/kdi6033/i2r-04/raw/main/images/case-i2r04-kc.png?raw=true" height="135"> | |
 
 
 | i2r-05<br>AI IoT 아두이노 | i2r-04-motor<br>모터제어 | i2r-05-Shield-v1<br>Shield-v1 |  |
