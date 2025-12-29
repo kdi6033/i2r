@@ -48,7 +48,7 @@
 | <img src="https://github.com/kdi6033/i2r-02/raw/main/images/case-i2r02-kc.png?raw=true" height="140"> | <img src="https://github.com/kdi6033/i2r-03/raw/main/images/case-i2r03-kc.png?raw=true" height="140"> | <img src="https://github.com/kdi6033/i2r-04/raw/main/images/case-i2r04-kc.png?raw=true" height="135"> |  |
 
 <br> 
-| i2r-02<br>IoT PLC HMI | i2r-03 | i2r-04 |  |
+| i2r-02 | i2r-03 | i2r-04 |  |
 | :---: | :---: | :---: | :---: |
 | <img src="https://github.com/kdi6033/i2r-02/raw/main/images/i2r-02-hmi-2.png?raw=true" height="150"> | <img src="https://github.com/kdi6033/i2r-03/raw/main/images/i2r-03-kc.png?raw=true" height="140"> | <img src="https://github.com/kdi6033/i2r-04/raw/main/images/i2r-04-kc.jpg?raw=true" height="140"> | <img src="https://github.com/kdi6033/i2r-04/raw/main/images/case-i2r-04-motor.png?raw=true?raw=true" height="150"> |
 
