@@ -43,22 +43,22 @@
 
 | i2r-02<br>IoT PLC (4ch) | i2r-03<br>IoT PLC (4ch 센서) | i2r-04<br>IoT PLC (8ch) | i2r-04-motor<br>모터제어  |
 | :---: | :---: | :---: | :---: |
-| <img src="https://github.com/kdi6033/i2r-02/raw/main/images/i2r-02-kc.png?raw=true" height="150"> | <img src="https://github.com/kdi6033/i2r-03/raw/main/images/i2r-03-kc.png?raw=true" height="140"> | <img src="https://github.com/kdi6033/i2r-04/raw/main/images/i2r-04-kc.jpg?raw=true" height="140"> | <img src="https://github.com/kdi6033/i2r-04/raw/main/images/case-i2r-04-motor.png?raw=true?raw=true" height="150"> |
+| <img src="https://github.com/kdi6033/i2r-02/raw/main/images/i2r-02-kc.png?raw=true" height="150"> | <img src="https://github.com/kdi6033/i2r-03/raw/main/images/i2r-03-kc.png?raw=true" height="140"> | <img src="https://github.com/kdi6033/i2r-04/raw/main/images/i2r-04-kc.jpg?raw=true" height="140"> | <img src="https://github.com/kdi6033/i2r-04/raw/main/images/case-i2r-04-motor.png?raw=true" height="150"> |
 | <img src="https://github.com/kdi6033/i2r-02/raw/main/images/case-i2r02-iso.png?raw=true" height="130"> | <img src="https://github.com/kdi6033/i2r-03/raw/main/images/case-i2r03-iso1.png?raw=true" height="160"> | <img src="https://github.com/kdi6033/i2r-04/raw/main/images/case-i2r04-3.png?raw=true" height="150"> | <img src="https://github.com/user-attachments/assets/7e89cdee-cd46-428f-a51d-386c9fe9e315?raw=true" height="150"> |
-| <img src="https://github.com/kdi6033/i2r-02/raw/main/images/case-i2r02-kc.png?raw=true" height="140"> | <img src="https://github.com/kdi6033/i2r-03/raw/main/images/case-i2r03-kc.png?raw=true" height="140"> | <img src="https://github.com/kdi6033/i2r-04/raw/main/images/case-i2r04-kc.png?raw=true" height="135"> | <img src="https://github.com/kdi6033/i2r-04/raw/main/images/i2r-04-motor-pin.jpg?raw=true?raw=true" height="150"> |
+| <img src="https://github.com/kdi6033/i2r-02/raw/main/images/case-i2r02-kc.png?raw=true" height="140"> | <img src="https://github.com/kdi6033/i2r-03/raw/main/images/case-i2r03-kc.png?raw=true" height="140"> | <img src="https://github.com/kdi6033/i2r-04/raw/main/images/case-i2r04-kc.png?raw=true" height="135"> | <img src="https://github.com/kdi6033/i2r-04/raw/main/images/i2r-04-motor-pin.jpg?raw=true" height="150"> |
 
 <br> 
 
 | i2r-02<br>IoT PLC HMI | i2r-03<br>IoT PLC HMI | i2r-04<br>IoT PLC HMI |  |
 | :---: | :---: | :---: | :---: |
-| <img src="https://github.com/kdi6033/i2r-02/raw/main/images/i2r-02-hmi-2.png?raw=true" height="150"> | <img src="https://github.com/kdi6033/i2r-03/raw/main/images/3-1-hmi.png?raw=true?raw=true" height="150"> | <img src="https://github.com/kdi6033/i2r-04/raw/main/images/case-i2r-04-motor.png?raw=true?raw=true" height="140"> |  |
-| <img src="https://github.com/kdi6033/i2r-02/raw/main/images/i2r-02-hmi-1.png?raw=true" height="160"> | <img src="https://github.com/kdi6033/i2r-03/raw/main/images/3-2-hmi.png?raw=true?raw=true" height="160"> | <img src="https://github.com/kdi6033/i2r-04/raw/main/images/i2r-04-hmi.png?raw=true?raw=true" height="150"> |  |
+| <img src="https://github.com/kdi6033/i2r-02/raw/main/images/i2r-02-hmi-2.png?raw=true" height="150"> | <img src="https://github.com/kdi6033/i2r-03/raw/main/images/3-1-hmi.png?raw=true" height="150"> | <img src="https://github.com/kdi6033/i2r-04/raw/main/images/case-i2r-04-motor.png?raw=true" height="140"> |  |
+| <img src="https://github.com/kdi6033/i2r-02/raw/main/images/i2r-02-hmi-1.png?raw=true" height="160"> | <img src="https://github.com/kdi6033/i2r-03/raw/main/images/3-2-hmi.png?raw=true" height="160"> | <img src="https://github.com/kdi6033/i2r-04/raw/main/images/i2r-04-hmi.png?raw=true" height="150"> |  |
 
 ## 🔷i2r IoT PLC 회로도
 | i2r-02 | i2r-03| i2r-04 | i2r-04-motor |
 | :---: | :---: | :---: | :---: |
-| <img src="https://github.com/kdi6033/i2r-02/raw/main/images/i2r-02-pin-con.png?raw=true" height="150"> | <img src="https://github.com/kdi6033/i2r-03/raw/main/images/i2r-03-pin-con.png?raw=true" height="140"> | <img src="https://github.com/kdi6033/i2r-04/raw/main/images/i2r-04-circuit.png?raw=true?raw=true" height="140"> | <img src="https://github.com/kdi6033/i2r-04/raw/main/images/i2r-04-motor-circiut.jpg?raw=true?raw=true?raw=true" height="150"> |
-| <img src="https://github.com/kdi6033/i2r-02/raw/main/images/i2r-02-1.png?raw=true" height="130"> | <img src="https://github.com/kdi6033/i2r-03/raw/main/images/i2r-03-port.jpg?raw=true?raw=true" height="150">| <img src="https://github.com/kdi6033/i2r-04/raw/main/images/i2r-04-pin.jpg?raw=true?raw=true" height="150"> | |
+| <img src="https://github.com/kdi6033/i2r-02/raw/main/images/i2r-02-pin-con.png?raw=true" height="150"> | <img src="https://github.com/kdi6033/i2r-03/raw/main/images/i2r-03-pin-con.png?raw=true" height="140"> | <img src="https://github.com/kdi6033/i2r-04/raw/main/images/i2r-04-circuit.png?raw=true" height="140"> | <img src="https://github.com/kdi6033/i2r-04/raw/main/images/i2r-04-motor-circiut.jpg?raw=true?raw=true" height="150"> |
+| <img src="https://github.com/kdi6033/i2r-02/raw/main/images/i2r-02-1.png?raw=true" height="130"> | <img src="https://github.com/kdi6033/i2r-03/raw/main/images/i2r-03-port.jpg?raw=true" height="150">| <img src="https://github.com/kdi6033/i2r-04/raw/main/images/i2r-04-pin.jpg?raw=true" height="150"> | |
 
 
 ## 🔷i2r IoT PLC 사양
