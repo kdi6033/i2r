@@ -233,6 +233,32 @@
 | **`setOutput`**<br> (`so`) | ```{ "c": "so", "m": "A0:B7:65:CD:4D:34", "n": 1, "v": 1 }``` <br> 지정 보드의 `n`번 출력 핀을 제어합니다. `v: 1`은 ON, `v: 0`은 OFF입니다. 릴레이, 모터, LED 등에 사용됩니다. |
 | **`touchInput`**<br> (`ti`) | ```{ "c": "ti", "light": 120 }```<br>RP2040 등의 외부 터치패널에서 측정한 조도 값을 IoT 보드에 전달하여 조건 제어에 활용할 수 있습니다. |
 
+---
+
+#### ✅ 입출력 설정 프로토콜 예제 (bindIO / c:"bio")
+1️⃣ 트리거 등록 <br>
+입력 0번 포트가 ON 되면, → 출력 1번 포트를 ON 시킵니다. 3("d":3)초 후에 4(du":4)초간 동작 d:0 → 지연시간 없음 (즉시 실행) <br>
+- Full JSON (개발용 / 디버그용) <br>
+{"command":"bindIO","operation":"insert","trigger":true,"mac":"D4:8C:49:50:46:F4","portNo":0,"delay":3,"duration":4,"portState":[{"mac":"D4:8C:49:50:46:F4","portNo":0,"value":true}] <br>
+- Compressed JSON (MQTT 실제 전송) <br>
+{"c":"bio","d":3,"m":"D4:8C:49:50:46:F4","o":"insert","n":0,"tr":1,"du":4,"ps":[{"m":"D4:8C:49:50:46:F4","n":0,"v":1}] <br>
+
+2️⃣ 트리거 목록 확인 (List) <br>
+MAC D4:8C:49:50:46:F4 인 i2r 보드에서 입력 0번 포트에 설정된 bindIO(입력→출력 연동) 규칙 목록을 조회하라는 명령입니다. <br>
+- Full JSON (개발용 / 디버그용) <br>
+{command: 'bindIO', operation: 'list', mac: 'D4:8C:49:50:46:F4', portNo: 0} <br>
+- Compressed JSON (MQTT 실제 전송) <br>
+{"c":"bio","m":"D4:8C:49:50:46:F4","o":"list","n":0} <br>
+
+3️⃣ 트리거 삭제 (Delete)  <br>
+MAC D4:8C:49:50:46:F4 인 i2r 보드에서 입력 0번 포트에 설정된 bindIO 규칙 중 slotIndex(sI)가 1번인 항목을 삭제하라는 명령입니다. <br>
+- Full JSON (개발용 / 디버그용) <br>
+{"command":"bindIO","operation":"delete","mac":"D4:8C:49:50:46:F4","portNo":0,"slotIndex":1}  <br>
+- Compressed JSON (MQTT 실제 전송) <br>
+{"c":"bio","m":"D4:8C:49:50:46:F4","o":"delete","n":0,"sI":1} <br>
+----------------------------
+
+
 #### ✅ 스케줄 제어 프로토콜 (Schedule / c: "sch")
 
 - 스케줄 기능은 특정 시간대에 PLC 출력을 자동으로 ON/OFF 제어하는 기능입니다.
@@ -269,7 +295,6 @@
 {"c": "sch","m": "D4:8C:49:50:46:F4","o": "insert","pi": 0,"start": 650,"end": 651,"rm": "weekly","dw": [1, 3]
 }
 ```
-
 	
 3️⃣ 매주 스케줄 목록 조회 (List) <br>
 - 해 장치의 등록된 모든 스케줄을 조회합니다. <br>
@@ -308,29 +333,6 @@
 {"c": "sch","m": "D4:8C:49:50:46:F4","o": "deleteAll","pi": 0}
 ```
 --------------------
-
-#### ✅ 입출력 설정 프로토콜 예제 (bindIO / c:"bio")
-1️⃣ 트리거 등록 <br>
-입력 0번 포트가 ON 되면, → 출력 1번 포트를 ON 시킵니다. 3("d":3)초 후에 4(du":4)초간 동작 d:0 → 지연시간 없음 (즉시 실행) <br>
-- Full JSON (개발용 / 디버그용) <br>
-{"command":"bindIO","operation":"insert","trigger":true,"mac":"D4:8C:49:50:46:F4","portNo":0,"delay":3,"duration":4,"portState":[{"mac":"D4:8C:49:50:46:F4","portNo":0,"value":true}] <br>
-- Compressed JSON (MQTT 실제 전송) <br>
-{"c":"bio","d":3,"m":"D4:8C:49:50:46:F4","o":"insert","n":0,"tr":1,"du":4,"ps":[{"m":"D4:8C:49:50:46:F4","n":0,"v":1}] <br>
-
-2️⃣ 트리거 목록 확인 (List) <br>
-MAC D4:8C:49:50:46:F4 인 i2r 보드에서 입력 0번 포트에 설정된 bindIO(입력→출력 연동) 규칙 목록을 조회하라는 명령입니다. <br>
-- Full JSON (개발용 / 디버그용) <br>
-{command: 'bindIO', operation: 'list', mac: 'D4:8C:49:50:46:F4', portNo: 0} <br>
-- Compressed JSON (MQTT 실제 전송) <br>
-{"c":"bio","m":"D4:8C:49:50:46:F4","o":"list","n":0} <br>
-
-3️⃣ 트리거 삭제 (Delete)  <br>
-MAC D4:8C:49:50:46:F4 인 i2r 보드에서 입력 0번 포트에 설정된 bindIO 규칙 중 slotIndex(sI)가 1번인 항목을 삭제하라는 명령입니다. <br>
-- Full JSON (개발용 / 디버그용) <br>
-{"command":"bindIO","operation":"delete","mac":"D4:8C:49:50:46:F4","portNo":0,"slotIndex":1}  <br>
-- Compressed JSON (MQTT 실제 전송) <br>
-{"c":"bio","m":"D4:8C:49:50:46:F4","o":"delete","n":0,"sI":1} <br>
-----------------------------
 
 #### ✅ 센서 트리거 프로토콜 예제 (bindSensor / c:"bs")    
 - 센서의 측정값이 특정 상한(올라갈 때) 또는 하한(내려갈 때) 에 도달하면 지정한 기기의 출력을 자동으로 제어하는 기능입니다.  <br>
