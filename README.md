@@ -142,7 +142,8 @@
 </table>
 
 ---
-<table width="100%" border="1" cellspacing="0" cellpadding="10" style="table-layout: fixed; border-collapse: collapse; border: 1px solid #ddd; margin-bottom: 20px;">
+
+<table width="100%" border="1" cellspacing="0" cellpadding="10" style="table-layout: fixed; border-collapse: collapse; border: 1px solid #ddd; margin-bottom: -1px;">
   <colgroup>
     <col width="50%">
     <col width="50%">
@@ -218,6 +219,7 @@
     </tr>
   </tbody>
 </table>
+
 ---
 
 ## ✅ 크라우드 연결과  UI 사용방법
