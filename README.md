@@ -142,8 +142,7 @@
 </table>
 
 ---
-
-<table width="100%" border="1" cellspacing="0" cellpadding="10" style="table-layout: fixed; border-collapse: collapse; border: 1px solid #ddd;">
+<table width="100%" border="1" cellspacing="0" cellpadding="10" style="table-layout: fixed; border-collapse: collapse; border: 1px solid #ddd; margin-bottom: 20px;">
   <colgroup>
     <col width="50%">
     <col width="50%">
@@ -183,11 +182,21 @@
         </ul>
       </td>
     </tr>
-    
+  </tbody>
+</table>
+
+<table width="100%" border="1" cellspacing="0" cellpadding="10" style="table-layout: fixed; border-collapse: collapse; border: 1px solid #ddd;">
+  <colgroup>
+    <col width="50%">
+    <col width="50%">
+  </colgroup>
+  <thead>
     <tr style="background-color: #f9f9f9;">
       <th style="padding: 10px; border: 1px solid #ddd;">i2r-04</th>
       <th style="padding: 10px; border: 1px solid #ddd;">i2r-04-motor</th>
     </tr>
+  </thead>
+  <tbody>
     <tr>
       <td style="vertical-align: top; height: 350px; border: 1px solid #ddd;">
         - 정격전압 : 5V DC, 보드내에서는 5V로 설계했습니다.<br>
@@ -209,7 +218,6 @@
     </tr>
   </tbody>
 </table>
-
 ---
 
 ## ✅ 크라우드 연결과  UI 사용방법
