@@ -311,18 +311,18 @@
 
 #### ✅ 입출력 설정 프로토콜 예제 (bindIO / c:"bio")
 1️⃣ 트리거 등록 <br>
-입력 0번 포트가 ON 되면, → 출력 1번 포트를 ON 시킵니다. d:0 → 지연시간 없음 (즉시 실행) <br>
+입력 0번 포트가 ON 되면, → 출력 1번 포트를 ON 시킵니다. 3("d":3)초 후에 4(du":4)초간 동작 d:0 → 지연시간 없음 (즉시 실행) <br>
 - Full JSON (개발용 / 디버그용) <br>
-{"command": "bindIO", "operation": "insert", "trigger": true, "mac": "D4:D4:DA:73:87:3C", "portNo": 0, "delay": 0, "portState": [{ "mac": "D4:D4:DA:73:87:3C", "portNo": 1, "value": true }] } <br>
+{"command":"bindIO","operation":"insert","trigger":true,"mac":"D4:8C:49:50:46:F4","portNo":0,"delay":3,"duration":4,"portState":[{"mac":"D4:8C:49:50:46:F4","portNo":0,"value":true}] <br>
 - Compressed JSON (MQTT 실제 전송) <br>
-{ "c": "bio", "o": "i", "t": true, "m": "D4:D4:DA:73:87:3C", "n": 0, "d": 0, "ps": [ { "m": "D4:D4:DA:73:87:3C", "n": 1, "v": 1 }] } <br>
+{"c":"bio","d":3,"m":"D4:8C:49:50:46:F4","o":"insert","n":0,"tr":1,"du":4,"ps":[{"m":"D4:8C:49:50:46:F4","n":0,"v":1}] <br>
 
 2️⃣ 트리거 목록 확인 (List) <br>
-트리거 현황을 자동으로 요청하면 다음 메시지를 보냅니다. <br>
+o번 포트 list 요청 <br>
 - Full JSON (개발용 / 디버그용) <br>
-{ "command": "bindIO", "operation": "list", "mac": "D4:D4:DA:73:87:3C" } <br>
+{command: 'bindIO', operation: 'list', mac: 'D4:8C:49:50:46:F4', portNo: 0} <br>
 - Compressed JSON (MQTT 실제 전송) <br>
-{ "c":"bio", "o":"l", "m":"D4:D4:DA:73:87:3C" } <br>
+{"c":"bio","m":"D4:8C:49:50:46:F4","o":"list","n":0} <br>
 보드는 등록된 모든 트리거 목록을 응답합니다.  <br>
 { "c":"bio", "o":"l", "m":"D4:D4:DA:73:87:3C", "tr":[ {"n":0, "d":0, "ps":[{"n":1,"v":1}] }]}  <br>
 
