@@ -256,8 +256,15 @@ MAC D4:8C:49:50:46:F4 인 i2r 보드에서 입력 0번 포트에 설정된 bindI
 {"command":"bindIO","operation":"delete","mac":"D4:8C:49:50:46:F4","portNo":0,"slotIndex":1}  <br>
 - Compressed JSON (MQTT 실제 전송) <br>
 {"c":"bio","m":"D4:8C:49:50:46:F4","o":"delete","n":0,"sI":1} <br>
-----------------------------
 
+4️⃣ 전체 삭제 (DeleteAll)  <br>
+MAC D4:8C:49:50:46:F4 인 i2r 보드에서 입력 0번 포트에 설정된 모든 bindIO(입력→출력 연동) 규칙을 전체 삭제하라는 명령입니다.  <br>
+- Full JSON (개발용 / 디버그용) <br>
+{command: 'bindIO', operation: 'deleteAll', mac: 'D4:8C:49:50:46:F4', portNo: 0}
+- Compressed JSON (MQTT 실제 전송) <br>
+{"c":"bio","m":"D4:8C:49:50:46:F4","o":"deleteAll","n":0}
+
+---
 
 #### ✅ 스케줄 제어 프로토콜 (Schedule / c: "sch")
 
