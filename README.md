@@ -143,6 +143,52 @@
 
 ---
 
+<table style="width:100%; table-layout:fixed;">
+  <colgroup>
+    <col style="width:50%;">
+    <col style="width:50%;">
+  </colgroup>
+  <thead>
+    <tr>
+      <th>i2r-02</th>
+      <th>i2r-03</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="vertical-align:top;">
+        - 정격전압 : 5V DC, 보드내에서는 5V로 설계했습니다.<br>
+        - 입력전압 : 7V~26V DC Free Volt<br>
+        - 작동온도 : -40 ℃ ~ 85 ℃<br>
+        - 입력 : 4개, 접점만 연결되면 동작 (별도 전압 인가 금지)<br>
+        - 출력 : 1개 30A 250VAC/30VDC, 3개 10A 125VAC/28VDC<br>
+        - 통신 : WiFi 802.11 b/g/n (최대 150Mbps)
+        <ul style="margin:6px 0 0 16px; padding:0;">
+          <li>Bluetooth 4.2 BR/EDR + BLE</li>
+          <li>WiFi : 2.4GHz 지원 (5GHz 미지원)</li>
+        </ul>
+        - RS232 : 보드 내 TTL Level RX/TX 제공
+      </td>
+      <td style="vertical-align:top;">
+        i2r-02 보드와 동일 사양<br><br>
+        - 온습도 센서 : AHT21
+        <ul style="margin:6px 0 0 16px; padding:0;">
+          <li>습도 범위 : 0~100% RH</li>
+          <li>온도 범위 : -40 ℃ ~ 120 ℃</li>
+          <li>정확도 : 10~95% RH 구간</li>
+          <li>습도 히스테리시스 : ±1% RH</li>
+          <li>측정 시간 : 50ms</li>
+          <li>응답 시간 : 5초</li>
+          <li>통신 : I2C</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+---
+
 ## ✅ 크라우드 연결과  UI 사용방법
  
 - React 웹앱 기반 모니터링 및 제어: 다양한 환경에서 실시간으로 모니터링하고 제어할 수 있습니다.    
