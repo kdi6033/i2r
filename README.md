@@ -143,20 +143,18 @@
 
 ---
 
-<table width="100%" border="1" cellspacing="0" cellpadding="10" style="table-layout: fixed; border-collapse: collapse; border: 1px solid #ddd; margin-bottom: -1px;">
+<table width="100%" border="1" cellspacing="0" cellpadding="10" style="table-layout: fixed; border-collapse: collapse; border: 1px solid #ddd;">
   <colgroup>
-    <col width="50%">
-    <col width="50%">
+    <col width="50%" style="width: 50%;">
+    <col width="50%" style="width: 50%;">
   </colgroup>
-  <thead>
-    <tr style="background-color: #f9f9f9;">
-      <th style="padding: 10px; border: 1px solid #ddd;">i2r-02</th>
-      <th style="padding: 10px; border: 1px solid #ddd;">i2r-03</th>
-    </tr>
-  </thead>
   <tbody>
+    <tr style="background-color: #f9f9f9;">
+      <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold; text-align: center;">i2r-02</td>
+      <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold; text-align: center;">i2r-03</td>
+    </tr>
     <tr>
-      <td style="vertical-align: top; height: 350px; border: 1px solid #ddd;">
+      <td style="vertical-align: top; height: 350px; border: 1px solid #ddd; word-break: break-all;">
         - 정격전압 : 5V DC, 보드내에서는 5V로 설계했습니다.<br>
         - 입력전압 : 7V~26V DC Free Volt<br>
         - 작동온도 : -40 ℃ ~ 85 ℃<br>
@@ -169,7 +167,7 @@
         </ul><br>
         - RS232 : 보드 내 TTL Level RX/TX 제공
       </td>
-      <td style="vertical-align: top; height: 350px; border: 1px solid #ddd;">
+      <td style="vertical-align: top; height: 350px; border: 1px solid #ddd; word-break: break-all;">
         i2r-02 보드와 동일 사양<br><br>
         - 온습도 센서 : AHT21<br>
         <ul>
@@ -183,23 +181,13 @@
         </ul>
       </td>
     </tr>
-  </tbody>
-</table>
-
-<table width="100%" border="1" cellspacing="0" cellpadding="10" style="table-layout: fixed; border-collapse: collapse; border: 1px solid #ddd;">
-  <colgroup>
-    <col width="50%">
-    <col width="50%">
-  </colgroup>
-  <thead>
+    
     <tr style="background-color: #f9f9f9;">
-      <th style="padding: 10px; border: 1px solid #ddd;">i2r-04</th>
-      <th style="padding: 10px; border: 1px solid #ddd;">i2r-04-motor</th>
+      <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold; text-align: center;">i2r-04</td>
+      <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold; text-align: center;">i2r-04-motor</td>
     </tr>
-  </thead>
-  <tbody>
     <tr>
-      <td style="vertical-align: top; height: 350px; border: 1px solid #ddd;">
+      <td style="vertical-align: top; height: 350px; border: 1px solid #ddd; word-break: break-all;">
         - 정격전압 : 5V DC, 보드내에서는 5V로 설계했습니다.<br>
         - 입력전압 : 7V~26V DC Free Volt<br>
         - 작동온도 : -40 ℃ ~ 85 ℃<br>
@@ -212,7 +200,7 @@
         </ul><br>
         - RS232 : 보드 내 TTL Level RX/TX 제공
       </td>
-      <td style="vertical-align: top; height: 350px; border: 1px solid #ddd;">
+      <td style="vertical-align: top; height: 350px; border: 1px solid #ddd; word-break: break-all;">
         i2r-04 보드와 동일 사양<br><br>
         - 조도센서 : GY302 BH1750
       </td>
