@@ -187,6 +187,41 @@
 </table>
 
 
+<table style="width:100%; table-layout:fixed;">
+  <colgroup>
+    <col style="width:50%;">
+    <col style="width:50%;">
+  </colgroup>
+  <thead>
+    <tr>
+      <th>i2r-04</th>
+      <th>i2r-04-motor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="vertical-align:top;">
+        - 정격전압 : 5V DC, 보드내에서는 5V로 설계했습니다.<br>
+        - 입력전압 : 7V~26V DC Free Volt<br>
+        - 작동온도 : -40 ℃ ~ 85 ℃<br>
+        - 입력 : 8개<br>
+        - 출력 : 8개 10A 125VAC/28VDC<br>
+        - 통신 : WiFi 802.11 b/g/n (최대 150Mbps)
+        <ul style="margin:6px 0 0 16px; padding:0;">
+          <li>Bluetooth 4.2 BR/EDR + BLE</li>
+          <li>WiFi : 2.4GHz 지원 (5GHz 미지원)</li>
+        </ul>
+        - RS232 : 보드 내 TTL Level RX/TX 제공
+      </td>
+      <td style="vertical-align:top;">
+        i2r-04 보드와 동일 사양<br><br>
+        - 조도센서 : GY302 BH1750
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
 ---
 
 ## ✅ 크라우드 연결과  UI 사용방법
