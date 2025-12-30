@@ -318,20 +318,18 @@
 {"c":"bio","d":3,"m":"D4:8C:49:50:46:F4","o":"insert","n":0,"tr":1,"du":4,"ps":[{"m":"D4:8C:49:50:46:F4","n":0,"v":1}] <br>
 
 2️⃣ 트리거 목록 확인 (List) <br>
-o번 포트 list 요청 <br>
+MAC D4:8C:49:50:46:F4 인 i2r 보드에서 입력 0번 포트에 설정된 bindIO(입력→출력 연동) 규칙 목록을 조회하라는 명령입니다. <br>
 - Full JSON (개발용 / 디버그용) <br>
 {command: 'bindIO', operation: 'list', mac: 'D4:8C:49:50:46:F4', portNo: 0} <br>
 - Compressed JSON (MQTT 실제 전송) <br>
 {"c":"bio","m":"D4:8C:49:50:46:F4","o":"list","n":0} <br>
-보드는 등록된 모든 트리거 목록을 응답합니다.  <br>
-{ "c":"bio", "o":"l", "m":"D4:D4:DA:73:87:3C", "tr":[ {"n":0, "d":0, "ps":[{"n":1,"v":1}] }]}  <br>
 
 3️⃣ 트리거 삭제 (Delete)  <br>
-입력 0번 트리거를 삭제하려면 다음 메시지를 보냅니다. <br>
+MAC D4:8C:49:50:46:F4 인 i2r 보드에서 입력 0번 포트에 설정된 bindIO 규칙 중 slotIndex(sI)가 1번인 항목을 삭제하라는 명령입니다. <br>
 - Full JSON (개발용 / 디버그용) <br>
-{ "command": "bindIO", "operation": "delete", "mac": "D4:D4:DA:73:87:3C", "portNo": 0 } <br>
+{"command":"bindIO","operation":"delete","mac":"D4:8C:49:50:46:F4","portNo":0,"slotIndex":1}  <br>
 - Compressed JSON (MQTT 실제 전송) <br>
-{ "c": "bio", "o": "d", "m": "D4:D4:DA:73:87:3C", "n": 0 } <br>
+{"c":"bio","m":"D4:8C:49:50:46:F4","o":"delete","n":0,"sI":1} <br>
 ----------------------------
 
 #### ✅ 센서 트리거 프로토콜 예제 (bindSensor / c:"bs")    
