@@ -1,5 +1,3 @@
-✅ i2r IoT PLC (Physical · On-Device AI · Edge Controller Lineup)
-
 <div align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=220&section=header&text=i2r%20IoT%20PLC&fontSize=60&animation=fadeIn&fontAlignY=38&desc=Physical%20%C2%B7%20On-Device%20AI%20%C2%B7%20Edge%20Controller%20Lineup&descAlignY=58&descAlign=50" />
 </div>
@@ -8,9 +6,11 @@
 <div align="center">
   <a href="https://i2r.link">🌐 공식 홈페이지</a> &nbsp;&nbsp; | &nbsp;&nbsp;
   <a href="https://i2r.link/products">🛒 i2r 제품구매</a>
+  <a href="https://www.youtube.com/@i2r-link">▶️ YouTube</a>
 </div>
 
 ---
+✅ i2r IoT PLC (Physical · On-Device AI · Edge Controller Lineup)
 📌 i2r 플랫폼은  
 - **코드 작성 없이 UI 입력만으로 동작하는 PLC**
 - **센서 중심의 Physical AI 제어**
