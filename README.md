@@ -5,7 +5,7 @@
 
 <div align="center">
   <a href="https://i2r.link">🌐 공식 홈페이지</a> &nbsp;&nbsp; | &nbsp;&nbsp;
-  <a href="https://i2r.link/products">🛒 i2r 제품구매</a>
+  <a href="https://i2r.link/products">🛒 i2r 제품구매</a> &nbsp;&nbsp; | &nbsp;&nbsp;
   <a href="https://www.youtube.com/@i2r-link">▶️ YouTube</a>
 </div>
 
