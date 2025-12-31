@@ -353,52 +353,51 @@ MAC D4:8C:49:50:46:F4 인 i2r 보드에서 입력 0번 포트에 설정된 모�
 - 서로 다른 IoT PLC끼리도 연결이 가능하며 **중복 설정**도 가능 합니다. <br>
 
 1️⃣ 트리거 등록 (Insert) <br>
-습도센서의 온도가 55로 상승할 때 맥어드레스가 "D4:D4:DA:73:87:3C"인 기기의 0번 포트의 출력을 true로 한다. "du":0 가 0 이면 지속시간은 무한대 이다. <br>
+MAC D4:8C:49:50:46:F4 장치에서 온도(temperature)가 35℃를 초과하면(tr:1), 동작기기(MAC D4:8C:49:50:46:F4)가  3초 지연(d:3) 후 4초 동안(du:4) 0번 출력(n:0)을 ON(v:1)하도록 조건을 추가(insert)하는 센서 바인딩 명령입니다. <br>
 - Full JSON (개발용 / 디버그용) <br>
-{"command": "bindSensor","operation": "insert","mac": "D4:D4:DA:73:87:3C","type": "humidity","trigger": true,"triggerValue": 55,"duration": 0,
-  "portState": [{"mac": "D4:D4:DA:73:87:3C","portNo": 0,"value": true}] }     <br> 
+{"command":"bindSensor","typeSensor":"temperature","mac":"D4:8C:49:50:46:F4","operation":"insert","trigger":true,"triggerValue":35,"duration":4,"delay":3,"portState":[{"mac":"D4:8C:49:50:46:F4","portNo":0,"value":true}]} <br>
 - Compressed JSON (MQTT 실제 전송) <br>
 ```
-{"c":"bs","ts":"humi","m":"D4:D4:DA:73:87:3C","o":"insert","tr":1,"tv":55,"du":0,"ps":[{"m":"D4:D4:DA:73:87:3C","n":0,"v":1}]}
+{"c":"bs","ts":"temperature","d":3,"m":"D4:8C:49:50:46:F4","o":"insert","tr":1,"tv":35,"du":4,"ps":[{"m":"D4:8C:49:50:46:F4","n":0,"v":1}]}
 ```
 
 2️⃣ 트리거 목록 확인 (List) <br>
 습도에 대한 리스트를 요청한다. <br>
 - Full JSON (개발용 / 디버그용) <br>
-{"command": "bindSensor","operation": "list","mac": "D4:D4:DA:73:87:3C","type": "humidity"} <br>
+{"command":"bindSensor","typeSensor":"temperature","mac":"D4:8C:49:50:46:F4","operation":"list"} <br>
 - Compressed JSON (MQTT 실제 전송) <br>
 ```
- {"c":"bs","ts":"humidity","m":"D4:D4:DA:73:87:3C","o":"list"}
+{"c":"bs","ts":"temperature","m":"D4:8C:49:50:46:F4","o":"list"}
 ```
 - 응답예시 <br>
-{"c":"bs","o":"list","ts":"humi","tr":1,"tv":55,"du":0,"sI":11,"ps":[{"m":"D4:D4:DA:73:87:3C","n":0,"v":1}],"e":"kdi6033@gmail.com","t":"3","fr":"D4:D4:DA:73:87:3C","m":"D4:D4:DA:73:87:3C"} <br>
+{"c":"bs","o":"list","ts":"temp","tr":1,"tv":35,"du":4,"d":3,"sI":6,"ps":[{"m":"D4:8C:49:50:46:F4","n":0,"v":1}],"e":"kdi6033@gmail.com","t":"i2r-03-hmi","fr":"D4:8C:49:50:46:F4","m":"D4:8C:49:50:46:F4"} <br>
 
 3️⃣ 트리거 삭제 (Delete) <br>
 습도센서에서 슬롯번호 1 의 설정을 제거한다. <br>
 - Full JSON (개발용 / 디버그용) <br>
-{"command": "bindSensor","operation": "delete","mac": "D4:D4:DA:73:87:3C","type": "humidity","slotIndex": 1} <br>
+{"command":"bindSensor","typeSensor":"temperature","mac":"D4:8C:49:50:46:F4","operation":"delete","slotIndex":6}
 - Compressed JSON (MQTT 실제 전송) <br>
 ```
-{"c":"bs","ts":"humidity","m":"D4:D4:DA:73:87:3C","o":"delete","sI":1}
+{"c":"bs","ts":"temperature","m":"D4:8C:49:50:46:F4","o":"delete","sI":6}
 ```
 
 4️⃣ 센서 타입 전체 삭제 (DeleteAll) <br>
 습도센서의 설정된 모든 값을 제거한다. <br>
 - Full JSON (개발용 / 디버그용) <br>
-{"command": "bindSensor","operation": "calibration","mac": "D4:D4:DA:73:87:3C","type": "humidity","value": 44} <br>
+{"command":"bindSensor","typeSensor":"temperature","mac":"D4:8C:49:50:46:F4","operation":"deleteAll"} <br>
 
 - Compressed JSON (MQTT 실제 전송) <br>
 ```
- {"c":"bs","ts":"humidity","m":"D4:D4:DA:73:87:3C","o":"deleteAll"}
+ {"c":"bs","ts":"temperature","m":"D4:8C:49:50:46:F4","o":"deleteAll"}
 ```
 
 5️⃣ 센서 보정 (Calibration) <br>
 습도센서의 현재 값을 44로 설정한다. <br>
 - Full JSON (개발용 / 디버그용) <br>
-{"command": "bindSensor","operation": "cali","mac": "D4:D4:DA:73:87:3C","type": "humidity","value": 44} <br>
+{"command":"bindSensor","typeSensor":"temperature","operation":"calibration","mac":"D4:8C:49:50:46:F4","value":44} <br>
 - Compressed JSON (MQTT 실제 전송) <br>
 ```
-{"c":"bs","ts":"humidity","m":"D4:D4:DA:73:87:3C","o":"cali","v":44}
+{"c":"bs","ts":"temperature","m":"D4:8C:49:50:46:F4","o":"cali","v":44}
 ```
 
 ----------------
