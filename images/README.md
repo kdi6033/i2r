@@ -3,7 +3,8 @@
 | :---: | :---: | :---: | :---: |
 | <img src="https://github.com/kdi6033/i2r/blob/main/images/i2r-01.jpg?raw=true" width="200"> | <img src="https://github.com/kdi6033/i2r/blob/main/images/i2r-02.jpg?raw=true" width="200"> | <img src="https://github.com/kdi6033/i2r/blob/main/images/i2r-03.jpg?raw=true" width="200"> | <img src="https://github.com/kdi6033/i2r/blob/main/images/i2r-04.jpg?raw=true" width="200"> |
 | **i2r-01** | **i2r-02** | **i2r-03** | **i2r-04** |
-| <img src="https://github.com/kdi6033/i2r/blob/main/images/ai_circuit.png?raw=true" width="200"> | | | |
+| <img src="https://github.com/kdi6033/i2r/blob/main/images/ai_circuit.png?raw=true" width="200"> | <img src="https://github.com/kdi6033/i2r/blob/main/images/github_qr.png?raw=true" width="200"> | <img src="https://github.com/kdi6033/i2r/blob/main/images/i2r_link_qr.png?raw=true" width="200"> | |
+| | github | i2r.link | |
 
 ### 🛒 Shopping Channels
 | | | | |
