@@ -9,7 +9,7 @@
 ### Icon
 | | | | |
 | :---: | :---: | :---: | :---: |
-| <img src="https://github.com/kdi6033/i2r/blob/main/images/cpu-ai.png?raw=true" width="200"> | <img src="https://github.com/kdi6033/i2r/blob/main/images/icon-memory?raw=true" width="200"> | | |
+| <img src="https://github.com/kdi6033/i2r/blob/main/images/cpu-ai.png?raw=true" width="200"> | <img src="https://github.com/kdi6033/i2r/blob/main/images/icon-memory.png?raw=true" width="200"> | | |
 
 ### 🛒 Shopping Channels
 | | | | |
