@@ -6,6 +6,11 @@
 | <img src="https://github.com/kdi6033/i2r/blob/main/images/ai_circuit.png?raw=true" width="200"> | <img src="https://github.com/kdi6033/i2r/blob/main/images/github_qr.png?raw=true" width="200"> | <img src="https://github.com/kdi6033/i2r/blob/main/images/i2r_link_qr.png?raw=true" width="200"> | |
 | | github | i2r.link | |
 
+### Icon
+| | | | |
+| :---: | :---: | :---: | :---: |
+| <img src="https://github.com/kdi6033/i2r/blob/main/images/cpu-ai.png?raw=true" width="200"> | | | |
+
 ### 🛒 Shopping Channels
 | | | | |
 | :---: | :---: | :---: | :---: |
