@@ -187,6 +187,7 @@
 | bat               | `bat`    | battaery output, 센서 보드에 들어오는 밭데리 전압 (예: `3.4`)                      |
 | command           | `c`      | 명령 종류 (예: `df`, `so`, `gs`, `sch`, `bs` 등 축약어 사용)                      |
 | calibration       | `cali`   | 	센서값 보정 (예: 28.1)                                                         |
+| config            | `cfg`    | ssid password email 등 와이파이 정보를 터치 판넬에 보냄                            |
 | delay             | `d`      | 입력신호가 들어오고 출력이 나가기 까지 지연시간 단위:초                              |
 | duration          | `du`     | 센서에 의해서 동작할 때 동작시간 0이면 무한대로 지속함                               |
 | dayOfWeek         | `dw`     | 반복 요일: 숫자(0=일 \~ 6=토), 또는 배열 `[1,3,5]` (월, 수, 금)                     |
@@ -213,6 +214,7 @@
 | trigger           | `tr`     | `bio`: ON(1) OFF(0) 가 될 때 트리거 설정 후 delay를 설정하면 그 시간에 동작한다.   |
 | triggerValue      | `tv`     | 트리거가 동작하는 센서 값                                                        |
 | type              | `t`      | 보드 종류 (예: `3` = i2r-03)                                                    |
+| touch panel infor.| `ti`     | 보드의 정보를 터치판넬에 보냄                                                    |
 | typeSensor        | `ts`     | 센서 타입 (`temp`, `humi`, `light`)                                             |
 
 ---
