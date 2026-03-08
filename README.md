@@ -195,7 +195,6 @@
 | endMinutes (분)   | `end`    | 종료 시간 (예: 오전 10시 = `600`)                                                 |
 | fileName          | `f`      | file Name                                                                       |
 | from              | `fr`     | 메세지를 보내는 기기의 mac 주소                                                   |
-| getStatus         | `gs`     | 보드 상태 요청 (온도, 습도, in/out 등)                                            |
 | humidity          | `humi`   | 센서 현재 습도 값 (예: `55`)                                                       |
 | in                | `in`     | 입력 상태 배열 (예: `[0,1,0,0]`)                                                  |
 | light             | `light`  | 센서 조도 값 (예: `120`)                                                          |
@@ -226,6 +225,7 @@
 | `bindIO`           | `bio`            | 입력 상태에 따라 출력 연동 설정  |
 | `bindSensor`       | `bs`             | 센서 조건에 따라 출력 제어 (온도, 습도, 조도 등) |
 | `downloadFirmware` | `df`             | 보드에 펌웨어를 다운로드 |
+| `getStatus`        | `gs`             | 보드 상태 요청 (온도, 습도, in/out version 등)          |
 | `schedule`         | `sch`            | 시간 기반 출력 동작 스케줄 설정  | 
 | `setInfo`          | `si`             | Wi-Fi, MQTT 브로커 등 설정 정보 전송 |
 | `setOutput`        | `so`             | 핀출력을 표시 (1 = ON, 0 = OFF) |
