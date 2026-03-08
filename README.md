@@ -215,6 +215,7 @@
 | type              | `t`      | 보드 종류 (예: `3` = i2r-03)                                                    |
 | touch panel infor.| `ti`     | 보드의 정보를 터치판넬에 보냄                                                    |
 | typeSensor        | `ts`     | 센서 타입 (`temp`, `humi`, `light`)                                             |
+| version           | `v`      | 프로그램 버젼                                                                   |
 
 ---
 
