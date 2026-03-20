@@ -49,7 +49,6 @@
 2. 채팅창에 아래 붙여넣기:
 ```
 https://raw.githubusercontent.com/kdi6033/i2r/main/CLAUDE.md
-읽고 i2r-03 출력1번 1초 간격으로 ON OFF 해줘
 읽고 [원하는 동작을 한국어로 설명]
 ```
 
