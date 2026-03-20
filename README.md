@@ -41,6 +41,26 @@
 **Physical AI 기반 Edge PLC 제어 구조**를 구현합니다.
 
 ---
+## ✅ 🤖 AI로 코드 자동 생성
+
+**코딩 경험 없어도 됩니다!**
+
+1. [claude.ai](https://claude.ai) 접속
+2. 채팅창에 아래 붙여넣기:
+```
+https://raw.githubusercontent.com/kdi6033/i2r/main/CLAUDE.md
+읽고 i2r-03 출력1번 1초 간격으로 ON OFF 해줘
+읽고 [원하는 동작을 한국어로 설명]
+```
+
+**예시:**
+- `i2r-03 출력1번 1초 간격으로 ON OFF 해줘`
+- `i2r-02 입력1번으로 신호에 따라 출력1 이 동작하게 해줘`
+
+→ 완성 코드 복사 → Arduino IDE 붙여넣기 → 업로드
+
+----
+
 
 ## 📺 i2r 공식 채널 및 자료 링크
 - 🛒 i2r 제품구매: href="https://i2r.link/products
