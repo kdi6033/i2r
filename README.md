@@ -41,7 +41,7 @@
 **Physical AI 기반 Edge PLC 제어 구조**를 구현합니다.
 
 ---
-## ✅ 🤖 AI로 코드 자동 생성
+## ✅ 🤖 Claude Code 사용 Physical AI 자동 프로그램
 
 **코딩 경험 없어도 됩니다!**
 
