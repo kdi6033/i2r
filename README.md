@@ -54,7 +54,7 @@ https://raw.githubusercontent.com/kdi6033/i2r/main/CLAUDE.md
 
 **예시:**
 - `i2r-03 출력1번 1초 간격으로 ON OFF 해줘`
-- `i2r-02 입력1번으로 신호에 따라 출력1 이 동작하게 해줘`
+- [`i2r-02 입력1번으로 신호에 따라 출력1 이 동작하게 해줘`](https://youtube.com/shorts/yQJLtpTKilg)
 
 → 완성 코드 복사 → Arduino IDE 붙여넣기 → 업로드
 
