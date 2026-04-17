@@ -40,26 +40,8 @@
 - 산업 현장에서 안정적으로 실행되는  
 **Physical AI 기반 Edge PLC 제어 구조**를 구현합니다.
 
----
-## ✅ 🤖 Claude Code 사용 Physical AI PLC 자동 프로그램
-
-**코딩 경험 없어도 됩니다!**
-
-1. [claude.ai](https://claude.ai) 접속
-2. 채팅창에 아래 붙여넣기:
-```
-https://raw.githubusercontent.com/kdi6033/i2r/main/CLAUDE.md
-읽고 [원하는 동작을 한국어로 설명]
-```
-
-**예시:**
-- `i2r-03 출력1번 1초 간격으로 ON OFF 해줘`
-- [`i2r-02 입력1번으로 신호에 따라 출력1 이 동작하게 해줘`](https://youtube.com/shorts/yQJLtpTKilg)
-- [`온도가 33도 이상으로 올라가면 출력1번에 전구를 켜줘, 현재 온도를 시리얼로  표시하고 2초에 한번씩 동작해줘`](https://youtube.com/shorts/xKLkLMAawDE)
-
-→ 완성 코드 복사 → Arduino IDE 붙여넣기 → 업로드
-
 ----
+
 
 ## ✅ i2r AI IoT PLC 개요
 
@@ -174,7 +156,26 @@ https://raw.githubusercontent.com/kdi6033/i2r/main/CLAUDE.md
   </tbody>
 </table>
 
----
+----
+## ✅ 🤖 Claude Code 사용 Physical AI PLC 자동 프로그램
+
+**코딩 경험 없어도 됩니다!**
+
+1. [claude.ai](https://claude.ai) 접속
+2. 채팅창에 아래 붙여넣기:
+```
+https://raw.githubusercontent.com/kdi6033/i2r/main/CLAUDE.md
+읽고 [원하는 동작을 한국어로 설명]
+```
+
+**예시:**
+- `i2r-03 출력1번 1초 간격으로 ON OFF 해줘`
+- [`i2r-02 입력1번으로 신호에 따라 출력1 이 동작하게 해줘`](https://youtube.com/shorts/yQJLtpTKilg)
+- [`온도가 33도 이상으로 올라가면 출력1번에 전구를 켜줘, 현재 온도를 시리얼로  표시하고 2초에 한번씩 동작해줘`](https://youtube.com/shorts/xKLkLMAawDE)
+
+→ 완성 코드 복사 → Arduino IDE 붙여넣기 → 업로드
+
+----
 
 ## ✅ 크라우드 연결과  UI 사용방법
  
