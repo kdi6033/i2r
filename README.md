@@ -198,6 +198,7 @@ https://raw.githubusercontent.com/kdi6033/i2r/main/CLAUDE.md
 - 모든 메시지는 경량화를 위해 **축약된 필드명**과 **축약된 명령어 코드(`c`)**를 사용합니다.
 
 📌 기본 MQTT 토픽 구조
+
 ---
 - **intopic**  : `i2r/{email}/in`  
 - **outtopic** : `i2r/{email}/out`
