@@ -459,7 +459,7 @@ Tools->Boars Manager
 
 <img src="https://github.com/user-attachments/assets/51f0ed8c-96f8-4c98-aa2b-f361b2235f68" width="30%" />
 
-### partitions.csv 파일 작성
+📌 partitions.csv 파일 작성
 Flash 메모리 할당을 합니다.
 Skech->Export Compiled Binary 를 실행하면 build 디렉토리가 만들어 집니다.
 다음은 생성된 파일 용량 입니다.
@@ -515,7 +515,7 @@ spiffs,   data, spiffs,  0x510000, 0x180000
 - 마지막으로 SPIFFS 파티션은 파일 시스템 저장 공간입니다. SPIFFS는 플래시 메모리를 기반으로 한 파일 시스템으로, 디바이스가 HTML 파일, 이미지, 스크립트 파일 등 다양한 파일 데이터를 저장하고 읽을 수 있도록 도와줍니다. 예를 들어, 웹서버를 구현하는 경우 웹 페이지의 정적 파일을 SPIFFS에 저장할 수 있습니다.  이 파티션은 1.5MB 크기로 할당되어 있으며, 시스템이 파일 기반 데이터를 관리할 수 있는 중요한 공간입니다. Offset: 0x510000 에서 시작해서 Size: 0x180000 (1.5MB) 할당.
 
 
-## ✅ IoT PLC HMI 한글 터치스크린 ChatGPT
+## ✅ HMI 한글 터치스크린 (CrowPanel Pico Display 3.5)
 
 - ESP32 IoT PLC와 CrowPanel(RP2040)을 RS232 직렬 통신으로 연결하여,
 - CrowPanel은 사용자 인터페이스(UI) 및 I2C 센서 계측을 담당하고,
