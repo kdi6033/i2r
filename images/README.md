@@ -5,7 +5,8 @@
 | **i2r-01** | **i2r-02** | **i2r-03** | **i2r-04** |
 | <img src="https://github.com/kdi6033/i2r/blob/main/images/ai_circuit.png?raw=true" width="200"> | <img src="https://github.com/kdi6033/i2r/blob/main/images/github_qr.png?raw=true" width="200"> | <img src="https://github.com/kdi6033/i2r/blob/main/images/i2r_link_qr.png?raw=true" width="200"> | <img src="https://github.com/kdi6033/i2r/blob/main/images/Pico Display-3.5.png?raw=true" width="200"> |
 | | github | i2r.link | |
-| <img src="https://github.com/kdi6033/i2r/blob/main/images/iot_cloud.png?raw=true" width="200"> | <img src="https://github.com/kdi6033/i2r/blob/main/images/esp32-cpu.png?raw=true" width="100"> | <img src="https://github.com/kdi6033/i2r/blob/main/images/i2r_main.png?raw=true" width="200"> | |
+| <img src="https://github.com/kdi6033/i2r/blob/main/images/iot_cloud.png?raw=true" width="200"> | <img src="https://github.com/kdi6033/i2r/blob/main/images/esp32-cpu.png?raw=true" width="100"> | <img src="https://github.com/kdi6033/i2r/blob/main/images/i2r_main.png?raw=true" width="200"> | <img src="https://github.com/kdi6033/i2r/blob/main/images/smartfarm_elderly.png?raw=true" width="200"> |
+|  <img src="https://github.com/kdi6033/i2r/blob/main/images/i2r_platform_overview.png?raw=true" width="200"> |  <img src="https://github.com/kdi6033/i2r/blob/main/images/lcd.png?raw=true" width="200"> |  <img src="https://github.com/kdi6033/i2r/blob/main/images/lcd_link.png?raw=true" width="200"> | <img src="https://github.com/kdi6033/i2r/blob/main/images/lcd_link_plc.png?raw=true" width="200"> |
 
 
 ### Icon
