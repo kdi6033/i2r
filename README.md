@@ -179,7 +179,7 @@ https://raw.githubusercontent.com/kdi6033/i2r/main/CLAUDE.md
 
 ----
 
-## ✅ 크라우드 연결과  UI 사용방법
+## ✅ i2r 크라우드 서버 연결과  No Code 프로그램
  
 - React 웹앱 기반 모니터링 및 제어: 다양한 환경에서 실시간으로 모니터링하고 제어할 수 있습니다.    
 - AWS 클라우드: 클라우드 기반으로 원격지에서도 기기의 상태를 모니터링하고 제어가 가능합니다.     
@@ -190,7 +190,7 @@ https://raw.githubusercontent.com/kdi6033/i2r/main/CLAUDE.md
 
 <img src="https://github.com/kdi6033/i2r/blob/main/images/i2r.png?raw=true" width="400">
 
-## ✅ 프로토콜
+## ✅ i2r 통신 프로토콜
 **2025년7월15일 chatgpt에 적합한 프로토콜을 새로 작성하고 있습니다. 이전에 구매한 보드는 7월30일 이후 새로운 펌웨어를 다운 받아 주세요**
 
 - i2r 보드의 mqtt 통신에서는 아래와 같이 구성되어 email을 저장하면 다음 토픽으로 자신에 해당되는 데이터를 통신 할 수 있습니다.     
