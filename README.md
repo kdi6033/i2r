@@ -443,7 +443,7 @@ MAC D4:8C:49:50:46:F4 장치에서 온도(temperature)가 35℃를 초과하면(
 
 ----------------
 
-# ✅ 아두이노 프로그램 설정    
+## ✅ 아두이노 프로그램 설정    
 <a href="https://youtu.be/UrJd-RHRh6U">
     <img src="https://github.com/user-attachments/assets/67556286-b878-44ef-9175-553a6aa418ef" alt="Updating the screen" width="400">
 </a>    
