@@ -53,6 +53,9 @@
   
 ---
 
+<img src="https://github.com/kdi6033/i2r/blob/main/images/i2r_platform_overview.png?raw=true" width="600">
+
+
 🔷i2r IoT PLC
 
 | i2r-02<br>IoT PLC (4ch) | i2r-03<br>IoT PLC (4ch 센서) | i2r-04<br>IoT PLC (8ch) | i2r-04-motor<br>모터제어  |
