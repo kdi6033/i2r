@@ -188,6 +188,8 @@ https://raw.githubusercontent.com/kdi6033/i2r/main/CLAUDE.md
 **스마트폰,탭,PC로 제어**    
 ""https://i2r.link**  접속하면 페이지마다 유튜브 링크를 따라 해보시면 쉽게 사용할 수 있습니다.
 
+<img src="https://github.com/kdi6033/i2r/blob/main/images/i2r.png?raw=true" width="400">
+
 ## ✅ 프로토콜
 **2025년7월15일 chatgpt에 적합한 프로토콜을 새로 작성하고 있습니다. 이전에 구매한 보드는 7월30일 이후 새로운 펌웨어를 다운 받아 주세요**
 
