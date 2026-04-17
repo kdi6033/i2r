@@ -10,6 +10,8 @@
 </div>
 
 ---
+<img src="https://github.com/kdi6033/i2r/blob/main/images/smartfarm_elderly.png?raw=true" width="400">
+
 ## ✅ i2r AI IoT PLC 개요 (Physical · On-Device AI · Edge Controller Lineup)    
 
 📌 i2r 플랫폼은  
