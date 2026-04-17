@@ -10,7 +10,7 @@
 </div>
 
 ---
-✅ i2r IoT PLC (Physical · On-Device AI · Edge Controller Lineup)
+## ✅ i2r AI IoT PLC 개요 (Physical · On-Device AI · Edge Controller Lineup)
 
 📌 i2r 플랫폼은  
 - **코드 작성 없이 UI 입력만으로 동작하는 PLC**
@@ -41,9 +41,6 @@
 **Physical AI 기반 Edge PLC 제어 구조**를 구현합니다.
 
 ----
-
-
-## ✅ i2r AI IoT PLC 개요
 
 📺 i2r 공식 채널 및 자료 링크
 - 🛒 i2r 제품구매: href="https://i2r.link/products
