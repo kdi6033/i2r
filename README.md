@@ -514,72 +514,6 @@ spiffs,   data, spiffs,  0x510000, 0x180000
 
 - 마지막으로 SPIFFS 파티션은 파일 시스템 저장 공간입니다. SPIFFS는 플래시 메모리를 기반으로 한 파일 시스템으로, 디바이스가 HTML 파일, 이미지, 스크립트 파일 등 다양한 파일 데이터를 저장하고 읽을 수 있도록 도와줍니다. 예를 들어, 웹서버를 구현하는 경우 웹 페이지의 정적 파일을 SPIFFS에 저장할 수 있습니다.  이 파티션은 1.5MB 크기로 할당되어 있으며, 시스템이 파일 기반 데이터를 관리할 수 있는 중요한 공간입니다. Offset: 0x510000 에서 시작해서 Size: 0x180000 (1.5MB) 할당.
 
-# ✅ 아마존 크라우드 AWS IoT 서버  (React)     
-react로 구축한 서버는 제 github "React"에 정리해 놓았습니다.
-
-<table>
-  <tr>
-    <td>
-      <a href="https://youtu.be/n1MRXSVtbBI">
-        <img src="https://github.com/user-attachments/assets/8a2ccaba-8b4a-44a1-8ac9-556d96cbd0ad" alt="AWS Instal EC2 Ubuntu Server 22.04" width="400">
-      </a>
-    </td>
-    <td>
-      <a href="https://youtu.be/5ojpKiQ00qk">
-        <img src="https://github.com/user-attachments/assets/10dfdc4e-d581-4cfe-92f1-8a700069e1f4" alt="AWS IOT Core Mqtt" width="400">
-      </a>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <a href="https://youtu.be/mruzmon95BE">
-        <img src="https://github.com/user-attachments/assets/bb05f92c-e8d3-4ca2-a0c4-7a97adb5c08f" alt="AWS IOT Core Mqtt" width="400">
-      </a>
-    </td>
-    <td>
-      <a href="https://youtu.be/WJrOxAN7ZH0">
-        <img src="https://github.com/user-attachments/assets/69d1455b-cbb1-4f09-b0c2-356d4bbcc515" alt="AWS IOT Core Mqtt" width="400">
-      </a>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <a href="https://youtu.be/vLT3sr_xAFE">
-        <img src="https://github.com/user-attachments/assets/7c56667a-631c-4bc4-a681-a7a4a49cb729" alt="AWS IoT server" width="400">
-      </a>
-    </td>
-    <td>
-      <a href="https://youtu.be/Q7IL_ERRIwI">
-        <img src="https://github.com/user-attachments/assets/5f8fae58-d80b-4d26-b863-c20c24a20021" alt="AWS IoT 보안 server" width="400">
-      </a>
-    </td>
-  </tr>
-</table>
-
-
-<br>
-
-[mongoDB 설치순서](https://github.com/kdi6033/i2r/blob/main/txt/aws%20mongoDB%20install)    
-
-## ✅ PC IoT 서버 (React)    
-** 앞으로 다른 바쁜 작업이 끝나고 나면 정리해서 올리겠습니다.
-- PC에서 React 와 mongoDB를 설치하여 인터넷 상에서 제어한다.
-- 어플에서 IoT-PLC를 와이파이에 접속만 시키면 데이터베이스에 자동 저장되고 제어판넬이 자동으로 생성되어서 모니터링/제어를 할 수 있다.
-
-<table>
-  <tr>
-    <td>
-        <a href="https://youtu.be/5spmnQX0IjM">
-            <img src="https://github.com/user-attachments/assets/9da548f6-9872-48d7-846c-e790586c5511" alt="mongodb, compass 윈도우용 설치하기 " width="400">
-        </a>  
-    </td>
-    <td>
-        mongoDB에 데이터가 자동으로 저장 된 모습    
-        <img src="https://github.com/user-attachments/assets/1c8ee718-8561-4eeb-bdd4-366b209b9fc6" width="400">    <br>
-    </td>
-  </tr>
-</table>
-
 
 ## ✅ IoT PLC HMI 한글 터치스크린 ChatGPT
 
@@ -2119,6 +2053,79 @@ extern const lv_font_t NotoSansKR_20;
 { "c": "so", "m": "D4:8C:49:50:46:F4", "n": 1, "v": 0 } 을 보내줘
 ```
 ---
+
+
+## ✅ 아마존 크라우드 AWS IoT 서버  (React)     
+react로 구축한 서버는 제 github "React"에 정리해 놓았습니다.
+
+<table>
+  <tr>
+    <td>
+      <a href="https://youtu.be/n1MRXSVtbBI">
+        <img src="https://github.com/user-attachments/assets/8a2ccaba-8b4a-44a1-8ac9-556d96cbd0ad" alt="AWS Instal EC2 Ubuntu Server 22.04" width="400">
+      </a>
+    </td>
+    <td>
+      <a href="https://youtu.be/5ojpKiQ00qk">
+        <img src="https://github.com/user-attachments/assets/10dfdc4e-d581-4cfe-92f1-8a700069e1f4" alt="AWS IOT Core Mqtt" width="400">
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <a href="https://youtu.be/mruzmon95BE">
+        <img src="https://github.com/user-attachments/assets/bb05f92c-e8d3-4ca2-a0c4-7a97adb5c08f" alt="AWS IOT Core Mqtt" width="400">
+      </a>
+    </td>
+    <td>
+      <a href="https://youtu.be/WJrOxAN7ZH0">
+        <img src="https://github.com/user-attachments/assets/69d1455b-cbb1-4f09-b0c2-356d4bbcc515" alt="AWS IOT Core Mqtt" width="400">
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <a href="https://youtu.be/vLT3sr_xAFE">
+        <img src="https://github.com/user-attachments/assets/7c56667a-631c-4bc4-a681-a7a4a49cb729" alt="AWS IoT server" width="400">
+      </a>
+    </td>
+    <td>
+      <a href="https://youtu.be/Q7IL_ERRIwI">
+        <img src="https://github.com/user-attachments/assets/5f8fae58-d80b-4d26-b863-c20c24a20021" alt="AWS IoT 보안 server" width="400">
+      </a>
+    </td>
+  </tr>
+</table>
+
+
+<br>
+
+[mongoDB 설치순서](https://github.com/kdi6033/i2r/blob/main/txt/aws%20mongoDB%20install)    
+
+## ✅ PC IoT 서버 (React)    
+** 앞으로 다른 바쁜 작업이 끝나고 나면 정리해서 올리겠습니다.
+- PC에서 React 와 mongoDB를 설치하여 인터넷 상에서 제어한다.
+- 어플에서 IoT-PLC를 와이파이에 접속만 시키면 데이터베이스에 자동 저장되고 제어판넬이 자동으로 생성되어서 모니터링/제어를 할 수 있다.
+
+<table>
+  <tr>
+    <td>
+        <a href="https://youtu.be/5spmnQX0IjM">
+            <img src="https://github.com/user-attachments/assets/9da548f6-9872-48d7-846c-e790586c5511" alt="mongodb, compass 윈도우용 설치하기 " width="400">
+        </a>  
+    </td>
+    <td>
+        mongoDB에 데이터가 자동으로 저장 된 모습    
+        <img src="https://github.com/user-attachments/assets/1c8ee718-8561-4eeb-bdd4-366b209b9fc6" width="400">    <br>
+    </td>
+  </tr>
+</table>
+-----
+
+
+
+
+
 
 <br>     
 <details>
