@@ -159,7 +159,7 @@
 </table>
 
 ----
-## ✅ 바이브 코딩 ( Claude Code, Physical AI PLC 자동 프로그램)
+ ✅ 바이브 코딩 ( Claude Code, Physical AI PLC 자동 프로그램)
 
 **코딩 경험 없어도 됩니다!**
 
@@ -179,7 +179,7 @@ https://raw.githubusercontent.com/kdi6033/i2r/main/CLAUDE.md
 
 ----
 
-## ✅ i2r 크라우드 서버 연결과  No Code 프로그램
+ ✅ i2r 크라우드 서버 연결과  No Code 프로그램
  
 - React 웹앱 기반 모니터링 및 제어: 다양한 환경에서 실시간으로 모니터링하고 제어할 수 있습니다.    
 - AWS 클라우드: 클라우드 기반으로 원격지에서도 기기의 상태를 모니터링하고 제어가 가능합니다.     
@@ -190,7 +190,7 @@ https://raw.githubusercontent.com/kdi6033/i2r/main/CLAUDE.md
 
 <img src="https://github.com/kdi6033/i2r/blob/main/images/i2r.png?raw=true" width="400">
 
-## ✅ i2r 통신 프로토콜
+ ✅ i2r 통신 프로토콜
 **2025년7월15일 chatgpt에 적합한 프로토콜을 새로 작성하고 있습니다. 이전에 구매한 보드는 7월30일 이후 새로운 펌웨어를 다운 받아 주세요**
 
 - i2r 보드의 mqtt 통신에서는 아래와 같이 구성되어 email을 저장하면 다음 토픽으로 자신에 해당되는 데이터를 통신 할 수 있습니다.     
@@ -444,7 +444,7 @@ MAC D4:8C:49:50:46:F4 장치에서 온도(temperature)가 35℃를 초과하면(
 
 ----------------
 
-## ✅ 아두이노 프로그램 설정    
+ ✅ 아두이노 프로그램 설정    
 <a href="https://youtu.be/UrJd-RHRh6U">
     <img src="https://github.com/user-attachments/assets/67556286-b878-44ef-9175-553a6aa418ef" alt="Updating the screen" width="400">
 </a>    
@@ -515,7 +515,7 @@ spiffs,   data, spiffs,  0x510000, 0x180000
 - 마지막으로 SPIFFS 파티션은 파일 시스템 저장 공간입니다. SPIFFS는 플래시 메모리를 기반으로 한 파일 시스템으로, 디바이스가 HTML 파일, 이미지, 스크립트 파일 등 다양한 파일 데이터를 저장하고 읽을 수 있도록 도와줍니다. 예를 들어, 웹서버를 구현하는 경우 웹 페이지의 정적 파일을 SPIFFS에 저장할 수 있습니다.  이 파티션은 1.5MB 크기로 할당되어 있으며, 시스템이 파일 기반 데이터를 관리할 수 있는 중요한 공간입니다. Offset: 0x510000 에서 시작해서 Size: 0x180000 (1.5MB) 할당.
 
 
-## ✅ I2C 통신 프로그램
+ ✅ I2C 통신 프로그램
 <details>
 <summary>💻 C code 예제 - 마스터 프로그램 : 터치스크린 RP2040</summary>
     
@@ -592,40 +592,7 @@ void loop() {
 
 ## ✅ HMI 한글 터치스크린 ( rp2040 + 3.5"LCD)
 
-📌LCD 모듈 하드웨어 사양 (Specifications)
-
-| 항목 | 상세 내용 |
-| :--- | :--- |
-| **화면 크기** | 3.5 Inch |
-| **패널 타입** | IPS (광시야각) |
-| **해상도** | 480 x 320 Pixels |
-| **표현 색상** | 16-bit RGB 65K colors |
-| **LCD 드라이버 IC** | ILI9488 |
-| **터치 컨트롤러 IC** | XPT2046 (저항식 터치) |
-| **인터페이스** | SPI (4-Wire) |
-| **동작 전압** | 3.3V ~ 5V |
-
-📌  LCD 모듈 주요 특징
-- **IPS 패널:** 상하좌우 넓은 시야각 제공 및 선명한 색감
-- **한글 지원:** 한글 폰트 렌더링 최적화 포함
-- **터치 입력:** XPT2046 기반의 안정적인 터치 인터페이스
-- **SD 슬롯:** 뒷면 SD 카드 슬롯을 통한 이미지 로딩 가능
-
-📌 RP2040-Zero ↔ TJCTM24024-SPI 핀 연결 회로도
-
-> **LCD**: TJCTM24024-SPI (2.4" TFT SPI 240×320)  
-> **MCU**: RP2040-Zero  
-> **드라이버**: ILI9341 (디스플레이) + XPT2046 (터치패널)  
-> **라이브러리**: LVGL
-
------
-📌 3.5" IPS LCD HMI — i2r-02 IoT PLC 연동 가이드
-
 RP2040-Zero와 3.5인치 IPS LCD를 이용해 **i2r-02 IoT PLC**용 HMI(Human Machine Interface)를 만드는 방법을 설명합니다.
-
-> 참고 소스: [`hmi-i2r02/hmi-i2r02.ino`](hmi-i2r02/hmi-i2r02.ino)
-
----
 
 📌 1. 부품 목록
 
