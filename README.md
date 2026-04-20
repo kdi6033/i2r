@@ -591,6 +591,7 @@ void loop() {
 </details>
 
 ## ✅ HMI 한글 터치스크린 (IPS HD 3.5인치 SPI 시리얼 LCD 모듈 480*320 TFT 모듈 ILI9488)
+
 # 3.5" IPS ILI9488 SPI LCD Module with Touch
 
 이 저장소는 **3.5인치 IPS LCD(ILI9488)** 모듈을 이용한 한글 터치 제어 프로그램 소스코드를 포함하고 있습니다.
