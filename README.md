@@ -515,6 +515,82 @@ spiffs,   data, spiffs,  0x510000, 0x180000
 - 마지막으로 SPIFFS 파티션은 파일 시스템 저장 공간입니다. SPIFFS는 플래시 메모리를 기반으로 한 파일 시스템으로, 디바이스가 HTML 파일, 이미지, 스크립트 파일 등 다양한 파일 데이터를 저장하고 읽을 수 있도록 도와줍니다. 예를 들어, 웹서버를 구현하는 경우 웹 페이지의 정적 파일을 SPIFFS에 저장할 수 있습니다.  이 파티션은 1.5MB 크기로 할당되어 있으며, 시스템이 파일 기반 데이터를 관리할 수 있는 중요한 공간입니다. Offset: 0x510000 에서 시작해서 Size: 0x180000 (1.5MB) 할당.
 
 
+## ✅ I2C 통신 프로그램
+<details>
+<summary>💻 C code 예제 - 마스터 프로그램 : 터치스크린 RP2040</summary>
+    
+```c
+#include <Wire.h>
+
+#define I2C_ADDR 0x08  // ESP32 슬레이브 주소
+#define SDA_PIN 20     // I2C SDA 핀
+#define SCL_PIN 21     // I2C SCL 핀
+
+void setup() {
+  Wire.setSDA(SDA_PIN);
+  Wire.setSCL(SCL_PIN);
+  Wire.begin();  // I2C 마스터 시작
+  Serial.begin(115200);
+  delay(1000);
+  Serial.println("I2C Master 시작");
+}
+
+void sendCommand(const String& cmd) {
+  Wire.beginTransmission(I2C_ADDR);
+  Wire.write(cmd.c_str());
+  Wire.endTransmission();
+  Serial.println("전송: " + cmd);
+}
+
+void loop() {
+  sendCommand("{\"cmd\":\"on\"}");
+  delay(3000);
+
+  sendCommand("{\"cmd\":\"off\"}");
+  delay(3000);
+}
+```
+</details>
+
+<details>
+<summary>💻 C code 예제 - 슬레이브 프로그램 : IoT PLC ESP32</summary>
+    
+```c
+#include <Wire.h>
+
+#define SLAVE_ADDR 0x08
+#define SDA_PIN 16
+#define SCL_PIN 17
+
+String received = "";
+
+void receiveEvent(int howMany) {
+  char c;
+  received = "";
+  while (Wire.available()) {
+    c = Wire.read();
+    received += c;
+  }
+  Serial.println("수신된 데이터: " + received);
+}
+
+void setup() {
+  Serial.begin(115200);
+  delay(500);
+  Serial.println("I2C Slave 시작");
+
+  // 슬레이브 모드로 SDA/SCL 핀 지정
+  Wire.begin(SLAVE_ADDR, SDA_PIN, SCL_PIN, 100000);
+  Wire.onReceive(receiveEvent);
+}
+
+void loop() {
+  // 슬레이브는 이벤트 기반이므로 loop는 비워둠
+}
+```
+</details>
+
+
 ## ✅ HMI 한글 터치스크린 (CrowPanel Pico Display 3.5)
 
 - ESP32 IoT PLC와 CrowPanel(RP2040)을 RS232 직렬 통신으로 연결하여,
@@ -593,81 +669,6 @@ spiffs,   data, spiffs,  0x510000, 0x180000
 ```
 { "c": "ti", "light": 120 }
 ```
-
-## ✅ I2C 통신 프로그램
-<details>
-<summary>💻 C code 예제 - 마스터 프로그램 : 터치스크린 RP2040</summary>
-    
-```c
-#include <Wire.h>
-
-#define I2C_ADDR 0x08  // ESP32 슬레이브 주소
-#define SDA_PIN 20     // I2C SDA 핀
-#define SCL_PIN 21     // I2C SCL 핀
-
-void setup() {
-  Wire.setSDA(SDA_PIN);
-  Wire.setSCL(SCL_PIN);
-  Wire.begin();  // I2C 마스터 시작
-  Serial.begin(115200);
-  delay(1000);
-  Serial.println("I2C Master 시작");
-}
-
-void sendCommand(const String& cmd) {
-  Wire.beginTransmission(I2C_ADDR);
-  Wire.write(cmd.c_str());
-  Wire.endTransmission();
-  Serial.println("전송: " + cmd);
-}
-
-void loop() {
-  sendCommand("{\"cmd\":\"on\"}");
-  delay(3000);
-
-  sendCommand("{\"cmd\":\"off\"}");
-  delay(3000);
-}
-```
-</details>
-
-<details>
-<summary>💻 C code 예제 - 슬레이브 프로그램 : IoT PLC ESP32</summary>
-    
-```c
-#include <Wire.h>
-
-#define SLAVE_ADDR 0x08
-#define SDA_PIN 16
-#define SCL_PIN 17
-
-String received = "";
-
-void receiveEvent(int howMany) {
-  char c;
-  received = "";
-  while (Wire.available()) {
-    c = Wire.read();
-    received += c;
-  }
-  Serial.println("수신된 데이터: " + received);
-}
-
-void setup() {
-  Serial.begin(115200);
-  delay(500);
-  Serial.println("I2C Slave 시작");
-
-  // 슬레이브 모드로 SDA/SCL 핀 지정
-  Wire.begin(SLAVE_ADDR, SDA_PIN, SCL_PIN, 100000);
-  Wire.onReceive(receiveEvent);
-}
-
-void loop() {
-  // 슬레이브는 이벤트 기반이므로 loop는 비워둠
-}
-```
-</details>
 
 ## ✅ LVGL, TFT_eSPI 설치
 그래픽과 터치스크린을 구현하기 위한 구조를 설명하겠습니다.
@@ -1633,14 +1634,6 @@ ILI9341은 RGB565(16bit) 사용 → LV_COLOR_DEPTH 16 유지
 
 ```
 </details>
-
-
-
-
-
-
-
-
 
 
 ### 3. TFT_eSPI 디스플레이 드라이버 설치
