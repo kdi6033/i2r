@@ -593,6 +593,7 @@ void loop() {
 ## ✅ HMI 한글 터치스크린 ( rp2040 + 3.5"LCD)
 
 RP2040-Zero와 3.5인치 IPS LCD를 이용해 **i2r-02 IoT PLC**용 HMI(Human Machine Interface)를 만드는 방법을 설명합니다.
+<img src="https://github.com/kdi6033/i2r/blob/main/images/lcd.png?raw=true" width="600">
 
 ** 📌 1. 부품 목록 ** 
 
