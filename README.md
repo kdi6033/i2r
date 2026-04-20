@@ -159,7 +159,7 @@
 </table>
 
 ----
-## ✅ 🤖 Claude Code 바이브 코딩 (Physical AI PLC 자동 프로그램)
+## ✅ 바이브 코딩 ( Claude Code, Physical AI PLC 자동 프로그램)
 
 **코딩 경험 없어도 됩니다!**
 
