@@ -590,7 +590,7 @@ void loop() {
 ```
 </details>
 
-## ✅ HMI 한글 터치스크린 ( rp2040 + IPS HD 3.5인치 SPI 시리얼 LCD 모듈 480*320 TFT 모듈 ILI9488)
+## ✅ HMI 한글 터치스크린 ( rp2040 + 3.5"LCD)
 
 📌LCD 모듈 하드웨어 사양 (Specifications)
 
