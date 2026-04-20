@@ -9,7 +9,7 @@
 
 |  <img src="https://github.com/kdi6033/i2r/blob/main/images/i2r_platform_overview.png?raw=true" width="200"> |  <img src="https://github.com/kdi6033/i2r/blob/main/images/lcd.png?raw=true" width="200"> |  <img src="https://github.com/kdi6033/i2r/blob/main/images/lcd_link.png?raw=true" width="200"> | <img src="https://github.com/kdi6033/i2r/blob/main/images/lcd_link_plc.png?raw=true" width="200"> |
 
-| <img src="https://github.com/kdi6033/i2r/blob/main/images/i2r.png?raw=true" width="200"> | <img src="https://github.com/kdi6033/i2r/blob/main/images/lcd_menu.png?raw=true" width="200"> | | |
+| <img src="https://github.com/kdi6033/i2r/blob/main/images/i2r.png?raw=true" width="200"> | <img src="https://github.com/kdi6033/i2r/blob/main/images/lcd_menu.png?raw=true" width="200"> |  <img src="https://github.com/kdi6033/i2r/blob/main/images/lcd_menu01.png?raw=true" width="200"> |  <img src="https://github.com/kdi6033/i2r/blob/main/images/lcd_menu02.png?raw=true" width="200"> |
 
 
 ### Icon
