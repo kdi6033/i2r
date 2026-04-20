@@ -592,11 +592,7 @@ void loop() {
 
 ## ✅ HMI 한글 터치스크린 (IPS HD 3.5인치 SPI 시리얼 LCD 모듈 480*320 TFT 모듈 ILI9488)
 
-# 3.5" IPS ILI9488 SPI LCD Module with Touch
-
-이 저장소는 **3.5인치 IPS LCD(ILI9488)** 모듈을 이용한 한글 터치 제어 프로그램 소스코드를 포함하고 있습니다.
-
-## 1. 하드웨어 사양 (Specifications)
+📌 1. 하드웨어 사양 (Specifications)
 
 | 항목 | 상세 내용 |
 | :--- | :--- |
@@ -609,7 +605,7 @@ void loop() {
 | **인터페이스** | SPI (4-Wire) |
 | **동작 전압** | 3.3V ~ 5V |
 
-## 2. 핀 맵 (Pin Configuration)
+📌  2. 핀 맵 (Pin Configuration)
 
 본 모듈은 LCD와 터치 패널이 SPI 인터페이스를 공유하거나 별도로 연결될 수 있습니다.
 
@@ -630,15 +626,148 @@ void loop() {
 | **T_OUT** | Touch_OUT | 터치 데이터 출력 (MISO) |
 | **T_IRQ** | Touch_IRQ | 터치 인터럽트 출력 |
 
-## 3. 주요 특징
+📌  3. 주요 특징
 - **IPS 패널:** 상하좌우 넓은 시야각 제공 및 선명한 색감
 - **한글 지원:** 한글 폰트 렌더링 최적화 포함
 - **터치 입력:** XPT2046 기반의 안정적인 터치 인터페이스
 - **SD 슬롯:** 뒷면 SD 카드 슬롯을 통한 이미지 로딩 가능
 
-## 4. 라이브러리 의존성
+📌  4. 라이브러리 의존성
 - [TFT_eSPI](https://github.com/Bodmer/TFT_eSPI) (추천 라이브러리)
 - [XPT2046_Touchscreen](https://github.com/PaulStoffregen/XPT2046_Touchscreen)
+
+
+
+# RP2040-Zero ↔ TJCTM24024-SPI 핀 연결 회로도
+
+> **LCD**: TJCTM24024-SPI (2.4" TFT SPI 240×320)  
+> **MCU**: RP2040-Zero  
+> **드라이버**: ILI9341 (디스플레이) + XPT2046 (터치패널)  
+> **라이브러리**: LVGL
+
+---
+
+## 1. 전원
+
+| RP2040-Zero | LCD 핀 | 색상 | 설명 |
+|:-----------:|:------:|:----:|------|
+| 3.3V | VCC | 🔴 빨강 | 전원 (5V 연결 금지) |
+| GND | GND | ⚫ 검정 | 접지 |
+
+---
+
+## 2. 디스플레이 (ILI9341) — SPI0
+
+| RP2040-Zero | LCD 핀 | 색상 | 설명 |
+|:-----------:|:------:|:----:|------|
+| GPIO 2 | SCK | 🟢 초록 | SPI 클럭 |
+| GPIO 3 | SDI (MOSI) | 🟢 초록 | SPI 데이터 출력 |
+| GPIO 4 | SDO (MISO) | 🟢 초록 | SPI 데이터 입력 |
+| GPIO 8 | DC | 🔵 파랑 | Data / Command 선택 |
+| GPIO 9 | CS | 🩷 분홍 | LCD Chip Select |
+| GPIO 13 | LED (BL) | 🟡 노랑 | 백라이트 (PWM 제어 가능) |
+| GPIO 15 | RESET | 🩵 하늘 | LCD 리셋 |
+
+---
+
+## 3. 터치패널 (XPT2046) — SPI0 공유
+
+> SCK / MOSI / MISO 는 디스플레이와 **공유**, CS 핀만 분리
+
+| RP2040-Zero | LCD 핀 | 색상 | 설명 |
+|:-----------:|:------:|:----:|------|
+| GPIO 2 | T_CLK | 🟢 초록 (공유) | SCK 공유 |
+| GPIO 3 | T_DIN | 🟢 초록 (공유) | MOSI 공유 |
+| GPIO 4 | T_DO | 🟢 초록 (공유) | MISO 공유 |
+| GPIO 5 | T_CS | 🟣 보라 | 터치 Chip Select (별도) |
+| GPIO 6 | T_IRQ | 🟠 주황 | 터치 인터럽트 |
+
+---
+
+## 4. 배선 다이어그램 (ASCII)
+
+```
+RP2040-Zero                        TJCTM24024-SPI
+┌─────────────┐                    ┌──────────────┐
+│         3.3V├────────────────────┤VCC           │
+│          GND├────────────────────┤GND           │
+│             │                    │              │
+│  [디스플레이 ILI9341]             │              │
+│       GPIO 2├────────────────────┤SCK           │
+│       GPIO 3├────────────────────┤SDI (MOSI)    │
+│       GPIO 4├────────────────────┤SDO (MISO)    │
+│       GPIO 8├────────────────────┤DC            │
+│       GPIO 9├────────────────────┤CS            │
+│      GPIO 13├────────────────────┤LED (BL)      │
+│      GPIO 15├────────────────────┤RESET         │
+│             │                    │              │
+│  [터치 XPT2046 — SPI 공유]        │              │
+│       GPIO 2├ ··· ··· ··· ·· ···┤T_CLK (공유)  │
+│       GPIO 3├ ··· ··· ··· ·· ···┤T_DIN (공유)  │
+│       GPIO 4├ ··· ··· ··· ·· ···┤T_DO  (공유)  │
+│       GPIO 5├────────────────────┤T_CS          │
+│       GPIO 6├────────────────────┤T_IRQ         │
+└─────────────┘                    └──────────────┘
+      실선 ─── : 전용 배선
+      점선 ···  : SPI 버스 공유
+```
+
+---
+
+## 5. SPI 핀 정의 (코드용)
+
+```c
+// SPI 공통
+#define SPI_PORT    spi0
+#define PIN_SCK     2
+#define PIN_MOSI    3
+#define PIN_MISO    4
+
+// 디스플레이 (ILI9341)
+#define PIN_LCD_CS  9
+#define PIN_LCD_DC  8
+#define PIN_LCD_RST 15
+#define PIN_LCD_BL  13    // PWM 백라이트
+
+// 터치패널 (XPT2046)
+#define PIN_TP_CS   5
+#define PIN_TP_IRQ  6
+```
+
+---
+
+## 6. SPI 속도 주의사항
+
+| 대상 | SPI 속도 | 비고 |
+|------|:--------:|------|
+| ILI9341 디스플레이 | **40 MHz** | 화면 갱신 |
+| XPT2046 터치 | **2.5 MHz** | 터치 읽기 시 속도 낮춤 |
+
+> **CS 전환 시 반드시 SPI 클럭 속도를 변경해야 합니다.**  
+> `spi_set_baudrate(SPI_PORT, 2500000)` → T_CS LOW → 읽기 → T_CS HIGH → `spi_set_baudrate(SPI_PORT, 40000000)`
+
+---
+
+## 7. LVGL 해상도 설정
+
+```c
+#define LCD_H_RES  240
+#define LCD_V_RES  320
+#define LV_COLOR_DEPTH  16   // lv_conf.h 설정
+```
+
+---
+
+## 8. 참고 부품
+
+| 부품 | 사양 |
+|------|------|
+| MCU | RP2040-Zero (Waveshare) |
+| LCD | TJCTM24024-SPI, 2.4인치, 240×320 |
+| 디스플레이 IC | ILI9341 |
+| 터치 IC | XPT2046 (저항막 방식) |
+| 인터페이스 | SPI (4-wire) |
+| 전원 전압 | 3.3V |
 
   
 
