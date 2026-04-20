@@ -159,7 +159,7 @@
 </table>
 
 ----
- ✅ 바이브 코딩 ( Claude Code, Physical AI PLC 자동 프로그램)
+##  ✅ 바이브 코딩 ( Claude Code, Physical AI PLC 자동 프로그램)
 
 **코딩 경험 없어도 됩니다!**
 
@@ -179,7 +179,7 @@ https://raw.githubusercontent.com/kdi6033/i2r/main/CLAUDE.md
 
 ----
 
- ✅ i2r 크라우드 서버 연결과  No Code 프로그램
+##  ✅ i2r 크라우드 서버 연결과  No Code 프로그램
  
 - React 웹앱 기반 모니터링 및 제어: 다양한 환경에서 실시간으로 모니터링하고 제어할 수 있습니다.    
 - AWS 클라우드: 클라우드 기반으로 원격지에서도 기기의 상태를 모니터링하고 제어가 가능합니다.     
@@ -190,7 +190,7 @@ https://raw.githubusercontent.com/kdi6033/i2r/main/CLAUDE.md
 
 <img src="https://github.com/kdi6033/i2r/blob/main/images/i2r.png?raw=true" width="400">
 
- ✅ i2r 통신 프로토콜
+##  ✅ i2r 통신 프로토콜
 **2025년7월15일 chatgpt에 적합한 프로토콜을 새로 작성하고 있습니다. 이전에 구매한 보드는 7월30일 이후 새로운 펌웨어를 다운 받아 주세요**
 
 - i2r 보드의 mqtt 통신에서는 아래와 같이 구성되어 email을 저장하면 다음 토픽으로 자신에 해당되는 데이터를 통신 할 수 있습니다.     
@@ -444,7 +444,7 @@ MAC D4:8C:49:50:46:F4 장치에서 온도(temperature)가 35℃를 초과하면(
 
 ----------------
 
- ✅ 아두이노 프로그램 설정    
+##  ✅ 아두이노 프로그램 설정    
 <a href="https://youtu.be/UrJd-RHRh6U">
     <img src="https://github.com/user-attachments/assets/67556286-b878-44ef-9175-553a6aa418ef" alt="Updating the screen" width="400">
 </a>    
@@ -515,7 +515,7 @@ spiffs,   data, spiffs,  0x510000, 0x180000
 - 마지막으로 SPIFFS 파티션은 파일 시스템 저장 공간입니다. SPIFFS는 플래시 메모리를 기반으로 한 파일 시스템으로, 디바이스가 HTML 파일, 이미지, 스크립트 파일 등 다양한 파일 데이터를 저장하고 읽을 수 있도록 도와줍니다. 예를 들어, 웹서버를 구현하는 경우 웹 페이지의 정적 파일을 SPIFFS에 저장할 수 있습니다.  이 파티션은 1.5MB 크기로 할당되어 있으며, 시스템이 파일 기반 데이터를 관리할 수 있는 중요한 공간입니다. Offset: 0x510000 에서 시작해서 Size: 0x180000 (1.5MB) 할당.
 
 
- ✅ I2C 통신 프로그램
+##  ✅ I2C 통신 프로그램
 <details>
 <summary>💻 C code 예제 - 마스터 프로그램 : 터치스크린 RP2040</summary>
     
