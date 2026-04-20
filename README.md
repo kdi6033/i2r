@@ -1789,7 +1789,7 @@ ILI9341은 RGB565(16bit) 사용 → LV_COLOR_DEPTH 16 유지
 </details>
 
 
-### 3. TFT_eSPI 디스플레이 드라이버 설치
+📌 3. TFT_eSPI 디스플레이 드라이버 설치
 CrowPanel 터치스크린은 RP2040 + ILI9488 (480x320) 디스플레이에 맞게 수정해야 합니다.
 
 TFT_eSPI 라이브러리 설치     
@@ -2032,9 +2032,9 @@ void loop() {
 </details>
 
 
-### 4.📘 LVGL 한글 폰트 적용 가이드
+📌 4.📘 LVGL 한글 폰트 적용 가이드
 
-### 📺 시연 영상 (IoT PLC HMI, 한글 띄우기)
+📌 📺 시연 영상 (IoT PLC HMI, 한글 띄우기)
 <a href="https://youtu.be/4TOUC_N_nwQ">
   <img src="https://github.com/user-attachments/assets/07f24466-0a23-4921-a16c-edf3d1b6fb63" width="300" />
 </a>
