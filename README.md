@@ -590,6 +590,56 @@ void loop() {
 ```
 </details>
 
+## ✅ HMI 한글 터치스크린 (IPS HD 3.5인치 SPI 시리얼 LCD 모듈 480*320 TFT 모듈 ILI9488)
+# 3.5" IPS ILI9488 SPI LCD Module with Touch
+
+이 저장소는 **3.5인치 IPS LCD(ILI9488)** 모듈을 이용한 한글 터치 제어 프로그램 소스코드를 포함하고 있습니다.
+
+## 1. 하드웨어 사양 (Specifications)
+
+| 항목 | 상세 내용 |
+| :--- | :--- |
+| **화면 크기** | 3.5 Inch |
+| **패널 타입** | IPS (광시야각) |
+| **해상도** | 480 x 320 Pixels |
+| **표현 색상** | 16-bit RGB 65K colors |
+| **LCD 드라이버 IC** | ILI9488 |
+| **터치 컨트롤러 IC** | XPT2046 (저항식 터치) |
+| **인터페이스** | SPI (4-Wire) |
+| **동작 전압** | 3.3V ~ 5V |
+
+## 2. 핀 맵 (Pin Configuration)
+
+본 모듈은 LCD와 터치 패널이 SPI 인터페이스를 공유하거나 별도로 연결될 수 있습니다.
+
+| Pin | Function | Description |
+| :--- | :--- | :--- |
+| **VCC** | Power | 3.3V / 5V 입력 |
+| **GND** | Ground | 접지 |
+| **CS** | LCD_CS | LCD 칩 선택 신호 |
+| **RESET** | LCD_RST | LCD 리셋 신호 |
+| **DC/RS** | LCD_DC | 데이터/커맨드 선택 |
+| **SDI(MOSI)** | SPI_MOSI | SPI 데이터 입력 |
+| **SCK** | SPI_CLK | SPI 클럭 신호 |
+| **LED** | Backlight | 백라이트 제어 (High 활성) |
+| **SDO(MISO)** | SPI_MISO | SPI 데이터 출력 |
+| **T_CLK** | Touch_CLK | 터치 클럭 신호 |
+| **T_CS** | Touch_CS | 터치 칩 선택 신호 |
+| **T_DIN** | Touch_DIN | 터치 데이터 입력 (MOSI) |
+| **T_OUT** | Touch_OUT | 터치 데이터 출력 (MISO) |
+| **T_IRQ** | Touch_IRQ | 터치 인터럽트 출력 |
+
+## 3. 주요 특징
+- **IPS 패널:** 상하좌우 넓은 시야각 제공 및 선명한 색감
+- **한글 지원:** 한글 폰트 렌더링 최적화 포함
+- **터치 입력:** XPT2046 기반의 안정적인 터치 인터페이스
+- **SD 슬롯:** 뒷면 SD 카드 슬롯을 통한 이미지 로딩 가능
+
+## 4. 라이브러리 의존성
+- [TFT_eSPI](https://github.com/Bodmer/TFT_eSPI) (추천 라이브러리)
+- [XPT2046_Touchscreen](https://github.com/PaulStoffregen/XPT2046_Touchscreen)
+
+  
 
 ## ✅ HMI 한글 터치스크린 (CrowPanel Pico Display 3.5)
 
