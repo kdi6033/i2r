@@ -840,7 +840,7 @@ Additional Boards Manager URLs
 https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json
 ```
 
-### 1. LVGL + TFT_eSPI + ILI9341 관계
+📌 1. LVGL + TFT_eSPI + ILI9341 관계
 
 **1) LVGL (Light and Versatile Graphics Library)**
 - 오픈소스 GUI 라이브러리
@@ -881,12 +881,12 @@ ILI9341 (하드웨어 컨트롤러)
 LCD 화면 출력
 ```
 
-### 2. LVGL (Light and Versatile Graphics Library) 디스플레이 드라이버
+📌 2. LVGL (Light and Versatile Graphics Library) 디스플레이 드라이버
 적은 메모리에서도 부드럽고 직관적인 터치 UI를 구현할 수 있는 오픈소스 그래픽 라이브러리입니다    
 다음 기술 사이트를 참조하세요   
 [lvgl 기술사이트](https://github.com/lvgl/lvgl)    
 
-### 📺 시연 영상 (IoT PLC HMI, LVGL 설치와 Hello 띄우기)
+📌 📺 시연 영상 (IoT PLC HMI, LVGL 설치와 Hello 띄우기)
 <a href="https://youtu.be/wRLgRPrYtvk">
   <img src="https://github.com/user-attachments/assets/6dea72b2-359e-486d-a27f-4110a77b258c" width="300" />
 </a>
@@ -901,7 +901,7 @@ LVGL 디스플레이 드라이버는 아래 두 가지를 담당합니다.
 - 보통 화면의 1/10~1/20 크기 버퍼만 두고, 해당 영역만 갱신합니다.
 - 이 버퍼와 실제 하드웨어 전송을 연결하는 것이 디스플레이 드라이버의 역할입니다.
 
-### 3. lvgl 설치 후 lv_conf.h 파일 만들기
+📌 3. lvgl 설치 후 lv_conf.h 파일 만들기
 lv_conf_template.h 를 필요한 항목을 수정해서 lv_conf.h 로 저장합니다.
 
 **📌 요약 (수정해야 하는 항목만)**
