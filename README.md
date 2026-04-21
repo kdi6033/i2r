@@ -56,7 +56,7 @@
 <img src="https://github.com/kdi6033/i2r/blob/main/images/i2r_platform_overview.png?raw=true" width="600">
 
 
-## 🔷i2r IoT PLC
+## 🔷i2r IoT PLC & sensor 
 
 | i2r-02 | i2r-03 | i2r-04 | i2r-04-motor  |
 | :---: | :---: | :---: | :---: |
