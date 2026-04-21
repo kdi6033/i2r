@@ -69,9 +69,9 @@
 
 | i2r-02-hmi | i2r-03-hmi | i2r-04-hmi | i2r-06 |
 | :---: | :---: | :---: | :---: |
-| IoT PLC HMI | IoT PLC HMI | IoT PLC HMI | 온습도 측정 |
-| <img src="https://github.com/kdi6033/i2r-02/raw/main/images/i2r-02-hmi-2.png?raw=true" height="150"> | <img src="https://github.com/kdi6033/i2r-03/raw/main/images/3-1-hmi.png?raw=true" height="150"> | <img src="https://github.com/kdi6033/i2r-04/raw/main/images/case-i2r-04-motor.png?raw=true" height="140"> |  |
-| <img src="https://github.com/kdi6033/i2r-02/raw/main/images/i2r-02-hmi-1.png?raw=true" height="160"> | <img src="https://github.com/kdi6033/i2r-03/raw/main/images/3-2-hmi.png?raw=true" height="160"> | <img src="https://github.com/kdi6033/i2r-04/raw/main/images/i2r-04-hmi.png?raw=true" height="150"> |  |
+| IoT PLC HMI | IoT PLC HMI | IoT PLC HMI | 온습도 제어 |
+| <img src="https://github.com/kdi6033/i2r-02/raw/main/images/i2r-02-hmi-2.png?raw=true" height="150"> | <img src="https://github.com/kdi6033/i2r-03/raw/main/images/3-1-hmi.png?raw=true" height="150"> | <img src="https://github.com/kdi6033/i2r-04/raw/main/images/case-i2r-04-motor.png?raw=true" height="140"> | <img src="https://github.com/kdi6033/i2r-02/raw/main/images/i2r-02-hmi-2.png?raw=true" height="150"> |
+| <img src="https://github.com/kdi6033/i2r-02/raw/main/images/i2r-02-hmi-1.png?raw=true" height="160"> | <img src="https://github.com/kdi6033/i2r-03/raw/main/images/3-2-hmi.png?raw=true" height="160"> | <img src="https://github.com/kdi6033/i2r-04/raw/main/images/i2r-04-hmi.png?raw=true" height="150"> | <img src="https://github.com/kdi6033/i2r-02/raw/main/images/i2r-02-hmi-2.png?raw=true" height="150"> |
 
 🔷i2r IoT PLC 회로도
 | i2r-02 | i2r-03| i2r-04 | i2r-04-motor |
