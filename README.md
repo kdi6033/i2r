@@ -79,6 +79,10 @@
 | <img src="https://github.com/kdi6033/i2r-02/raw/main/images/i2r-02-pin-con.png?raw=true" height="150"> | <img src="https://github.com/kdi6033/i2r-03/raw/main/images/i2r-03-pin-con.png?raw=true" height="140"> | <img src="https://github.com/kdi6033/i2r-04/raw/main/images/i2r-04-circuit.png?raw=true" height="140"> | <img src="https://github.com/kdi6033/i2r-04/raw/main/images/i2r-04-motor-circiut.jpg?raw=true?raw=true" height="150"> |
 | <img src="https://github.com/kdi6033/i2r-02/raw/main/images/i2r-02-1.png?raw=true" height="130"> | <img src="https://github.com/kdi6033/i2r-03/raw/main/images/i2r-03-port.jpg?raw=true" height="150">| <img src="https://github.com/kdi6033/i2r-04/raw/main/images/i2r-04-pin.jpg?raw=true" height="150"> | |
 
+| i2r-06 |  |  |  |
+| :---: | :---: | :---: | :---: |
+| <img src="https://github.com/kdi6033/i2r-05/blob/main/images/i2r-06-circut.png?raw=true" height="150"> |  |  |  |
+
 
 🔷i2r IoT PLC 사양
 
