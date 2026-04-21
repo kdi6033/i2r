@@ -58,6 +58,8 @@
 
 ## 🔷i2r IoT PLC & sensor 
 
+**그림을 보고 모델을 확인 하세요 **
+
 | i2r-02 | i2r-03 | i2r-04 | i2r-04-motor  |
 | :---: | :---: | :---: | :---: |
 | IoT PLC (4ch) | IoT PLC (4ch 센서) | IoT PLC (8ch) | 모터제어  |
