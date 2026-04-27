@@ -14,6 +14,20 @@
   <a href="https://www.youtube.com/@i2r-link" target="_blank" rel="noopener noreferrer">
     <img src="https://img.shields.io/badge/YouTube-FF0000?style=flat-square&logo=youtube&logoColor=white" alt="Youtube" />
   </a>
+
+
+  <a href="https://i2r.link" target="_blank" rel="noopener noreferrer">
+    <img src="https://img.shields.io/badge/공식%20홈페이지-0078D4?style=flat-badge&logo=googlechrome&logoColor=white" alt="Homepage" />
+  </a>
+  &nbsp;
+  <a href="https://i2r.link/products" target="_blank" rel="noopener noreferrer">
+    <img src="https://img.shields.io/badge/i2r%20제품구매-FFB900?style=flat-badge&logo=shopify&logoColor=white" alt="Shop" />
+  </a>
+  &nbsp;
+  <a href="https://www.youtube.com/@i2r-link" target="_blank" rel="noopener noreferrer">
+    <img src="https://img.shields.io/badge/YouTube-FF0000?style=flat-badge&logo=youtube&logoColor=white" alt="Youtube" />
+  </a>
+  
 </div>
 
 
@@ -30,6 +44,8 @@
     <img src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="Youtube" />
   </a>
 </div>
+
+
 ---
 <img src="https://github.com/kdi6033/i2r/blob/main/images/smartfarm_elderly.png?raw=true" width="600">
 
