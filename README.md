@@ -1,16 +1,7 @@
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=220&section=header&text=i2r%20IoT%20PLC&fontSize=60&animation=fadeIn&fontAlignY=38&desc=Physical%20%C2%B7%20On-Device%20AI%20%C2%B7%20Edge%20Controller%20Lineup&descAlignY=58&descAlign=50" />
-</div>
-
-
-
-<div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=220&section=header&text=i2r%20IoT%20PLC%20+%20Sensor&fontSize=60&animation=fadeIn&fontAlignY=38&desc=Physical%20%C2%B7%20On-Device%20AI%20%C2%B7%20Edge%20Controller%20Lineup&descAlignY=58&descAlign=50" />
-<div align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=220&section=header&text=i2r%20IoT%20PLC%20%EC%99%80%20Sensor&fontSize=60&animation=fadeIn&fontAlignY=38&desc=Physical%20%C2%B7%20On-Device%20AI%20%C2%B7%20Edge%20Controller%20Lineup&descAlignY=58&descAlign=50" />
 </div>
   <br />
-
   <a href="홈페이지_주소">
     <img src="https://img.shields.io/badge/공식%20홈페이지-0078D4?style=flat&logo=googlechrome&logoColor=white" alt="Homepage" />
   </a>
