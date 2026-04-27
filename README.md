@@ -23,6 +23,9 @@
   <a href="https://www.youtube.com/@i2r-link">▶️ YouTube</a>
 </div>
 
+
+[🌐 공식 홈페이지](https://i2r.link) | [🛒 i2r 제품구매](https://i2r.link/products) | [▶️ YouTube](https://www.youtube.com/@i2r-link)
+
 ---
 <img src="https://github.com/kdi6033/i2r/blob/main/images/smartfarm_elderly.png?raw=true" width="600">
 
