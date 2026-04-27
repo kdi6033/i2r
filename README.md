@@ -1,7 +1,7 @@
 <div align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=220&section=header&text=i2r%20IoT%20PLC%20%EC%99%80%20Sensor&fontSize=60&animation=fadeIn&fontAlignY=38&desc=Physical%20%C2%B7%20On-Device%20AI%20%C2%B7%20Edge%20Controller%20Lineup&descAlignY=58&descAlign=50" />
-</div>
-<br />
+
+  <br />
 
   <a href="https://i2r.link" target="_blank" rel="noopener noreferrer">
     <img src="https://img.shields.io/badge/공식%20홈페이지-0078D4?style=flat-square&logo=googlechrome&logoColor=white" alt="Homepage" />
@@ -15,6 +15,7 @@
     <img src="https://img.shields.io/badge/YouTube-FF0000?style=flat-square&logo=youtube&logoColor=white" alt="Youtube" />
   </a>
 </div>
+
 
 <div align="center">
   <a href="https://i2r.link">🌐 공식 홈페이지</a> &nbsp;&nbsp; | &nbsp;&nbsp;
