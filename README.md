@@ -64,7 +64,7 @@
 <img src="https://github.com/kdi6033/i2r/blob/main/images/i2r_platform_overview.png?raw=true" width="600">
 
 
-## 🔷i2r IoT PLC & sensor 
+## ✅ i2r IoT PLC & sensor 
 
 **그림을 보고 모델을 확인 하세요**
 
