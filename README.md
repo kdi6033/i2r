@@ -16,30 +16,6 @@
   </a>
 </div>
 
-
-<div align="center">
-  <a href="https://i2r.link">🌐 공식 홈페이지</a> &nbsp;&nbsp; | &nbsp;&nbsp;
-  <a href="https://i2r.link/products">🛒 i2r 제품구매</a> &nbsp;&nbsp; | &nbsp;&nbsp;
-  <a href="https://www.youtube.com/@i2r-link">▶️ YouTube</a>
-</div>
-
-
-<div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=220&section=header&text=i2r%20IoT%20PLC%20%EC%99%80%20Sensor&fontSize=60&animation=fadeIn&fontAlignY=38&desc=Physical%20%C2%B7%20On-Device%20AI%20%C2%B7%20Edge%20Controller%20Lineup&descAlignY=58&descAlign=50" />
-
-  <br />
-
-  <a href="https://i2r.link" target="_blank">
-    <img src="https://img.shields.io/badge/공식%20홈페이지-0078D4?style=for-the-badge&logo=googlechrome&logoColor=white" />
-  </a>
-  <a href="https://i2r.link/products" target="_blank">
-    <img src="https://img.shields.io/badge/i2r%20제품구매-FFB900?style=for-the-badge&logo=shopify&logoColor=white" />
-  </a>
-  <a href="https://www.youtube.com/@i2r-link" target="_blank">
-    <img src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" />
-  </a>
-</div>
-
 ---
 <img src="https://github.com/kdi6033/i2r/blob/main/images/smartfarm_elderly.png?raw=true" width="600">
 
