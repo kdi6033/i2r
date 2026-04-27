@@ -20,7 +20,7 @@
 ---
 <img src="https://github.com/kdi6033/i2r/blob/main/images/smartfarm_elderly.png?raw=true" width="600">
 
-## ✅1. i2r AI IoT PLC 개요 (Physical · On-Device AI · Edge Controller Lineup)    
+## ✅ 1. i2r AI IoT PLC 개요 (Physical · On-Device AI · Edge Controller Lineup)    
 
 📌 i2r 플랫폼은  
 - **코드 작성 없이 UI 입력만으로 동작하는 PLC**
@@ -64,7 +64,7 @@
 <img src="https://github.com/kdi6033/i2r/blob/main/images/i2r_platform_overview.png?raw=true" width="600">
 
 
-## ✅ i2r IoT PLC & sensor 
+## ✅ 2. i2r IoT PLC & sensor 
 
 **그림을 보고 모델을 확인 하세요**
 
@@ -175,7 +175,7 @@
 </table>
 
 ----
-##  ✅ 바이브 코딩 ( Claude Code, Physical AI PLC 자동 프로그램)
+##  ✅ 3. 바이브 코딩 ( Claude Code, Physical AI PLC 자동 프로그램)
 
 **코딩 경험 없어도 됩니다!**
 
@@ -195,7 +195,7 @@ https://raw.githubusercontent.com/kdi6033/i2r/main/CLAUDE.md
 
 ----
 
-##  ✅ i2r 크라우드 서버 연결과  No Code 프로그램
+##  ✅ 4. i2r 크라우드 서버 연결과  No Code 프로그램
  
 - React 웹앱 기반 모니터링 및 제어: 다양한 환경에서 실시간으로 모니터링하고 제어할 수 있습니다.    
 - AWS 클라우드: 클라우드 기반으로 원격지에서도 기기의 상태를 모니터링하고 제어가 가능합니다.     
@@ -206,7 +206,7 @@ https://raw.githubusercontent.com/kdi6033/i2r/main/CLAUDE.md
 
 <img src="https://github.com/kdi6033/i2r/blob/main/images/i2r.png?raw=true" width="400">
 
-##  ✅ i2r 통신 프로토콜
+##  ✅ 5. i2r 통신 프로토콜
 **2025년7월15일 chatgpt에 적합한 프로토콜을 새로 작성하고 있습니다. 이전에 구매한 보드는 7월30일 이후 새로운 펌웨어를 다운 받아 주세요**
 
 - i2r 보드의 mqtt 통신에서는 아래와 같이 구성되어 email을 저장하면 다음 토픽으로 자신에 해당되는 데이터를 통신 할 수 있습니다.     
@@ -460,7 +460,7 @@ MAC D4:8C:49:50:46:F4 장치에서 온도(temperature)가 35℃를 초과하면(
 
 ----------------
 
-##  ✅ 아두이노 프로그램 설정    
+##  ✅ 6. 아두이노 프로그램 설정    
 <a href="https://youtu.be/UrJd-RHRh6U">
     <img src="https://github.com/user-attachments/assets/67556286-b878-44ef-9175-553a6aa418ef" alt="Updating the screen" width="400">
 </a>    
@@ -531,7 +531,7 @@ spiffs,   data, spiffs,  0x510000, 0x180000
 - 마지막으로 SPIFFS 파티션은 파일 시스템 저장 공간입니다. SPIFFS는 플래시 메모리를 기반으로 한 파일 시스템으로, 디바이스가 HTML 파일, 이미지, 스크립트 파일 등 다양한 파일 데이터를 저장하고 읽을 수 있도록 도와줍니다. 예를 들어, 웹서버를 구현하는 경우 웹 페이지의 정적 파일을 SPIFFS에 저장할 수 있습니다.  이 파티션은 1.5MB 크기로 할당되어 있으며, 시스템이 파일 기반 데이터를 관리할 수 있는 중요한 공간입니다. Offset: 0x510000 에서 시작해서 Size: 0x180000 (1.5MB) 할당.
 
 
-##  ✅ I2C 통신 프로그램
+##  ✅ 7. I2C 통신 프로그램
 <details>
 <summary>💻 C code 예제 - 마스터 프로그램 : 터치스크린 RP2040</summary>
     
@@ -609,7 +609,7 @@ void loop() {
 ----
 
 
-## ✅ 3. Arduino 1.3인치 OLED LCD 쉴드 (shield-03)
+## ✅ 8. Arduino 1.3인치 OLED LCD 쉴드 (shield-03)
 
 **i2r-05 보드 ESP32-S3** 보드를 사용하여 **1.3인치 I2C OLED 디스플레이 (SH1106 드라이버)** 를 제어하는 방법을 설명합니다.
 
@@ -697,7 +697,7 @@ void loop(void) {
 
 ----
 
-## ✅ HMI 한글 터치스크린 ( rp2040 + 3.5"LCD)
+## ✅ 9. HMI 한글 터치스크린 ( rp2040 + 3.5"LCD)
 
 RP2040-Zero와 3.5인치 IPS LCD를 이용해 **i2r-02 IoT PLC**용 HMI(Human Machine Interface)를 만드는 방법을 설명합니다.
 <img src="https://github.com/kdi6033/i2r/blob/main/images/lcd.png?raw=true" width="600">
@@ -995,7 +995,7 @@ HMI 보드는 `/config.json`에 설정을 저장합니다.
 
   
 -----
-## ✅ HMI 한글 터치스크린 (CrowPanel Pico Display 3.5)
+## ✅ 10. HMI 한글 터치스크린 (CrowPanel Pico Display 3.5)
 
 - ESP32 IoT PLC와 CrowPanel(RP2040)을 RS232 직렬 통신으로 연결하여,
 - CrowPanel은 사용자 인터페이스(UI) 및 I2C 센서 계측을 담당하고,
@@ -1074,7 +1074,7 @@ HMI 보드는 `/config.json`에 설정을 저장합니다.
 { "c": "ti", "light": 120 }
 ```
 
-## ✅ LVGL, TFT_eSPI 설치
+## ✅ 11. LVGL, TFT_eSPI 설치
 그래픽과 터치스크린을 구현하기 위한 구조를 설명하겠습니다.
 - LVGL 에서는 그래픽에 필요한 설정을 해야 합니다.
 - ILI9341 는 터치 스크린마다 사용하는 종류가 달라지므로 TFT_eSPI 에 정의를 해야 합니다.
@@ -2452,7 +2452,7 @@ extern const lv_font_t NotoSansKR_20;
 ---
 
 
-## ✅ 아마존 크라우드 AWS IoT 서버  (React)     
+## ✅ 12. 아마존 크라우드 AWS IoT 서버  (React)     
 react로 구축한 서버는 제 github "React"에 정리해 놓았습니다.
 
 <table>
@@ -2499,7 +2499,7 @@ react로 구축한 서버는 제 github "React"에 정리해 놓았습니다.
 
 [mongoDB 설치순서](https://github.com/kdi6033/i2r/blob/main/txt/aws%20mongoDB%20install)    
 
-## ✅ PC IoT 서버 (React)    
+## ✅ 13. PC IoT 서버 (React)    
 ** 앞으로 다른 바쁜 작업이 끝나고 나면 정리해서 올리겠습니다.
 - PC에서 React 와 mongoDB를 설치하여 인터넷 상에서 제어한다.
 - 어플에서 IoT-PLC를 와이파이에 접속만 시키면 데이터베이스에 자동 저장되고 제어판넬이 자동으로 생성되어서 모니터링/제어를 할 수 있다.
