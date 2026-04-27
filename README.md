@@ -7,16 +7,19 @@
 
   <br/>
 
-  <a href="URL_입력">
-    <img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=220&section=header&text=i2r%20IoT%20PLC%20%26%20Sensor&fontSize=60&animation=fadeIn&fontAlignY=38&desc=Physical%20%C2%B7%20On-Device%20AI%20%C2%B7%20Edge%20Controller%20Lineup&descAlignY=58&descAlign=50" alt="header" />
+<div align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=220&section=header&text=i2r%20IoT%20PLC%20%26%20Sensor&fontSize=60&animation=fadeIn&fontAlignY=38&desc=Physical%20%C2%B7%20On-Device%20AI%20%C2%B7%20Edge%20Controller%20Lineup&descAlignY=58&descAlign=50" alt="header" />
+
   <br />
-  &nbsp;
-  <a href="URL_입력">
-    <img src="https://img.shields.io/badge/i2r%20제품구매-FFB900?style=flat-square&logo=shoppingcart&logoColor=white"/>
+
+  <a href="홈페이지_주소">
+    <img src="https://img.shields.io/badge/공식%20홈페이지-0078D4?style=flat&logo=googlechrome&logoColor=white" alt="Homepage" />
   </a>
-  &nbsp;
-  <a href="URL_입력">
-    <img src="https://img.shields.io/badge/YouTube-FF0000?style=flat-square&logo=youtube&logoColor=white"/>
+  <a href="구매처_주소">
+    <img src="https://img.shields.io/badge/i2r%20제품구매-FFB900?style=flat&logo=cart&logoColor=white" alt="Shop" />
+  </a>
+  <a href="유튜브_주소">
+    <img src="https://img.shields.io/badge/YouTube-FF0000?style=flat&logo=youtube&logoColor=white" alt="Youtube" />
   </a>
 </div>
 
