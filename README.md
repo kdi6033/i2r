@@ -606,6 +606,97 @@ void loop() {
 ```
 </details>
 
+----
+
+
+## ✅ 3. Arduino 1.3인치 OLED LCD 쉴드 (shield-03)
+
+**i2r-05 보드 ESP32-S3** 보드를 사용하여 **1.3인치 I2C OLED 디스플레이 (SH1106 드라이버)** 를 제어하는 방법을 설명합니다.
+
+🎯  하드웨어 사양 (Hardware Specifications)
+
+| 항목 | 설명 |
+| :--- | :--- |
+| **디스플레이 타입** | OLED (Organic Light-Emitting Diode) |
+| **화면 크기** | 1.3 인치 (대각선) |
+| **해상도** | 128 x 64 픽셀 |
+| **드라이버 IC** | **SH1106** |
+| **통신 방식** | I2C (IIC) |
+| **I2C 주소** | 0x3C (일반적) 또는 0x3D |
+| **동작 전압** | 3.3V ~ 5V |
+| **시야각** | > 160° |
+
+🎯 핀 연결 (ESP32-S3 기준)
+| OLED 핀 | ESP32-S3 핀 | 비고 |
+| :--- | :--- | :--- |
+| **GND** | GND | 접지 |
+| **VCC** | 3.3V / 5V | 전원 |
+| **SCL** | **GPIO 17** | Serial Clock |
+| **SDA** | **GPIO 18** | Serial Data |
+
+> **참고**: ESP32-S3의 I2C 핀(SDA/SCL)은 맵핑이 가능하지만, 이 예제에서는 **SDA=18, SCL=17**번 핀을 사용하도록 코드가 작성되어 있습니다.
+
+---
+
+🎯 필요한 라이브러리 (Software Dependencies)
+
+이 프로젝트는 단색 디스플레이를 위한 강력한 그래픽 라이브러리인 **U8g2**를 사용합니다.
+
+1.  **라이브러리 설치 방법**:
+    1.  아두이노 IDE를 실행합니다.
+    2.  메뉴에서 **스케치 (Sketch)** -> **라이브러리 포함하기 (Include Library)** -> **라이브러리 관리 (Manage Libraries...)** 로 이동합니다.
+    3.  검색창에 `U8g2` (작성자: **olikraus**)를 입력하여 검색합니다.
+    4.  **설치 (Install)** 버튼을 클릭합니다.
+
+---
+
+
+<br>     
+<details>
+    <summary>💻 아두이노 프로그램</summary>
+
+```c
+#include <Arduino.h>
+#include <U8g2lib.h>
+#include <Wire.h>
+
+// 1.3인치 SH1106 I2C OLED 예제 (SDA=18, SCL=17)
+// 아두이노 라이브러리 매니저에서 "U8g2" 라이브러리를 설치해야 합니다.
+
+// SDA = 18, SCL = 17 핀 설정
+// 생성자 파라미터: (Rotation, Reset, Clock/SCL, Data/SDA)
+// ESP32-S3의 경우 HW I2C 생성자에 핀 번호를 직접 전달하면 내부적으로 Wire.begin(sda, scl)을 호출합니다.
+U8G2_SH1106_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0, U8X8_PIN_NONE, 17, 18);
+
+void setup(void) {
+  u8g2.begin();  // 디스플레이 초기화
+}
+
+void loop(void) {
+  u8g2.clearBuffer();          // 내부 메모리 지우기
+  
+  u8g2.setFont(u8g2_font_ncenB08_tr); // 폰트 설정
+  u8g2.drawStr(0, 10, "Hello World!"); // (x, y)
+  
+  u8g2.drawStr(0, 30, "ESP32-S3");
+  u8g2.drawStr(0, 45, "SDA: 18, SCL: 17");
+  
+  u8g2.sendBuffer();          // 디스플레이 전송
+  delay(1000);  
+}
+```
+</details>
+
+🚀 실행 방법
+
+1.  위의 **핀 연결 표**를 참고하여 1.3" OLED를 ESP32-S3 보드에 연결합니다 (SDA: 18, SCL: 17).
+2.  아두이노 IDE에서 `lcd1-3.ino` 파일을 엽니다.
+3.  **툴 (Tools)** -> **보드 (Board)** 메뉴에서 사용 중인 ESP32-S3 보드를 선택합니다. (예: `ESP32S3 Dev Module`)
+4.  포트를 선택하고 **업로드 (Upload)** 버튼을 누릅니다.
+5.  업로드가 완료되면 OLED 화면에 "Hello World!" 문구와 핀 정보가 출력되는지 확인합니다.
+
+----
+
 ## ✅ HMI 한글 터치스크린 ( rp2040 + 3.5"LCD)
 
 RP2040-Zero와 3.5인치 IPS LCD를 이용해 **i2r-02 IoT PLC**용 HMI(Human Machine Interface)를 만드는 방법을 설명합니다.
