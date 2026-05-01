@@ -11,6 +11,8 @@
 
 | <img src="https://github.com/kdi6033/i2r/blob/main/images/i2r.png?raw=true" width="200"> | <img src="https://github.com/kdi6033/i2r/blob/main/images/lcd_menu.png?raw=true" width="200"> |  <img src="https://github.com/kdi6033/i2r/blob/main/images/lcd_menu01.png?raw=true" width="200"> |  <img src="https://github.com/kdi6033/i2r/blob/main/images/lcd_menu02.png?raw=true" width="200"> |
 
+|  <img src="https://github.com/kdi6033/i2r/blob/main/images/rp2040-Zero.png?raw=true" width="200"> | | | |
+
 
 ### Icon
 | | | | |
