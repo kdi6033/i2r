@@ -723,18 +723,18 @@ RP2040-Zero와 3.5인치 IPS LCD를 이용해 **i2r-02 IoT PLC**용 HMI(Human Ma
 |:-----------:|:-----------:|:-----------:|------|
 | **5V** | 1 | VDD | **반드시 5V** — 3.3V 시 터치 오작동 |
 | GND | 2 | GND | 접지 |
-| GPIO 9 | 3 | CS | LCD Chip Select |
-| GPIO 15 | 4 | RST | LCD 리셋 |
-| GPIO 8 | 5 | DC | 데이터/커맨드 선택 |
-| GPIO 3 | 6 | SDI (MOSI) | LCD 데이터 입력 |
-| GPIO 2 | 7 | SCK | SPI 클럭 |
-| GPIO 13 | 8 | BL | 백라이트 (PWM 제어) |
+| GPIO 2 | 3 | CS | LCD Chip Select |
+| GPIO 3 | 4 | RST | LCD 리셋 |
+| GPIO 4 | 5 | DC | 데이터/커맨드 선택 |
+| **GPIO 11** | 6 | SDI (MOSI) | LCD 데이터 입력 |
+| **GPIO 10** | 7 | SCK | SPI 클럭 |
+| GPIO 5 | 8 | BL | 백라이트 (PWM 제어) |
 | ❌ **연결 금지** | 9 | SDO | ILI9488 버스 충돌 방지 — 반드시 비워둠 |
-| GPIO 2 | 10 | TCK | 터치 클럭 — SCK(7번)와 공통 배선 |
-| GPIO 5 | 11 | TCS | 터치 Chip Select |
-| GPIO 3 | 12 | TDI | 터치 데이터 입력 — MOSI(6번)와 공통 배선 |
-| **GPIO 4** | **13** | **TDO** | **터치 데이터 출력 — 반드시 연결** |
-| GPIO 6 | 14 | PEN (IRQ) | 터치 인터럽트 (옵션) |
+| **GPIO 10** | 10 | TCK | 터치 클럭 — SCK(7번)와 공통 배선 |
+| GPIO 6 | 11 | TCS | 터치 Chip Select |
+| **GPIO 11** | 12 | TDI | 터치 데이터 입력 — MOSI(6번)와 공통 배선 |
+| **GPIO 12** | **13** | **TDO** | **터치 데이터 출력 — 반드시 연결** |
+| GPIO 8 | 14 | PEN (IRQ) | 터치 인터럽트 (옵션) |
 
 > **주의**: SDO(9번) 핀은 ILI9488의 하드웨어 결함으로 SPI 버스 충돌을 일으킵니다. **절대 연결하지 않습니다.**
 
@@ -747,8 +747,6 @@ RP2040-Zero와 3.5인치 IPS LCD를 이용해 **i2r-02 IoT PLC**용 HMI(Human Ma
 | GPIO 0 (TX) | RX | HMI → PLC 데이터 전송 |
 | GPIO 1 (RX) | TX | PLC → HMI 데이터 수신 |
 | GND | GND | 공통 접지 (필수) |
-
-<img src="https://github.com/kdi6033/i2r/blob/main/images/lcd_link_plc.png?raw=true" width="600">
 
 ---
 
