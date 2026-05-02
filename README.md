@@ -748,13 +748,13 @@ RP2040-Zero와 3.5인치 IPS LCD를 이용해 **i2r-02 IoT PLC**용 HMI(Human Ma
 
 ---
 
-** 📌 4. I2C ** 
-| RP2040-Zero | LCD 핀 번호 | LCD 핀 이름 | 비고 |
-|:-----------:|:-----------:|:-----------:|------|
-| 3V3     | 1      | VDD | 3.3V  |
-| GND     | 2      | GND | 접지 |
-| GPIO 2  | 3      | CS  | LCD Chip Select |
-| GPIO 3  | 4      | RST | LCD 리셋 |
+** 📌 4. I2C 통신 ** 
+| RP2040-Zero | 비고 |
+|:-----------:|:-----------:|
+| 3V3      | 3.3V  |
+| GND      | 접지   |
+| GPIO 26  |  SDA  |
+| GPIO 27  |  SCL  | 
 
 ---
 
