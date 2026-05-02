@@ -721,20 +721,18 @@ RP2040-Zero와 3.5인치 IPS LCD를 이용해 **i2r-02 IoT PLC**용 HMI(Human Ma
 
 | RP2040-Zero | LCD 핀 번호 | LCD 핀 이름 | 비고 |
 |:-----------:|:-----------:|:-----------:|------|
-| **5V** | 1 | VDD | **반드시 5V** — 3.3V 시 터치 오작동 |
-| GND | 2 | GND | 접지 |
-| GPIO 2 | 3 | CS | LCD Chip Select |
-| GPIO 3 | 4 | RST | LCD 리셋 |
-| GPIO 4 | 5 | DC | 데이터/커맨드 선택 |
-| **GPIO 11** | 6 | SDI (MOSI) | LCD 데이터 입력 |
-| **GPIO 10** | 7 | SCK | SPI 클럭 |
-| GPIO 5 | 8 | BL | 백라이트 (PWM 제어) |
+| **5V**  | 1      | VDD | **반드시 5V** — 3.3V 시 터치 오작동 |
+| GND     | 2      | GND | 접지 |
+| GPIO 2  | 3      | CS  | LCD Chip Select |
+| GPIO 3  | 4      | RST | LCD 리셋 |
+| GPIO 4  | 5      | DC  | 데이터/커맨드 선택 |
+| GPIO 11 | 6 & 12 | SDI (MOSI) & TDI | LCD 데이터 입력, PCB에서 LCD 6번과 12번을 묶어서 GPIO 11번에 연결 |
+| GPIO 10 | 7 & 10 | SCK & TCK | SPI 클럭, PCB에서 LCD 7번과 10번을 묶어서 GPIO 10번에 연결 |
+| GPIO 5  | 8      | BL | 백라이트 (PWM 제어) |
 | ❌ **연결 금지** | 9 | SDO | ILI9488 버스 충돌 방지 — 반드시 비워둠 |
-| **GPIO 10** | 10 | TCK | 터치 클럭 — SCK(7번)와 공통 배선 |
-| GPIO 6 | 11 | TCS | 터치 Chip Select |
-| **GPIO 11** | 12 | TDI | 터치 데이터 입력 — MOSI(6번)와 공통 배선 |
-| **GPIO 12** | **13** | **TDO** | **터치 데이터 출력 — 반드시 연결** |
-| GPIO 8 | 14 | PEN (IRQ) | 터치 인터럽트 (옵션) |
+| GPIO 6  | 11     | TCS | 터치 Chip Select |
+| GPIO 12 | 13     | TDO | 터치 데이터 출력 — 반드시 연결 |
+| GPIO 8  | 14     | PEN (IRQ) | 터치 인터럽트 (옵션) |
 
 > **주의**: SDO(9번) 핀은 ILI9488의 하드웨어 결함으로 SPI 버스 충돌을 일으킵니다. **절대 연결하지 않습니다.**
 
