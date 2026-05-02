@@ -748,7 +748,228 @@ RP2040-Zero와 3.5인치 IPS LCD를 이용해 **i2r-02 IoT PLC**용 HMI(Human Ma
 
 ---
 
-** 📌 4. 핵심 기술: 하이브리드 드라이버 ** 
+** 📌 4. I2C ** 
+| RP2040-Zero | LCD 핀 번호 | LCD 핀 이름 | 비고 |
+|:-----------:|:-----------:|:-----------:|------|
+| 3V3     | 1      | VDD | 3.3V  |
+| GND     | 2      | GND | 접지 |
+| GPIO 2  | 3      | CS  | LCD Chip Select |
+| GPIO 3  | 4      | RST | LCD 리셋 |
+
+---
+
+** 📌 5. TFT_eSPI 라이브러리 & 예제 프로그램 ** 
+
+TFT_eSPI 라이브러리를 설치하고 \Arduino\libraries\TFT_eSPI\
+이 폴더 안에 있는 기존 User_Setup.h를 프로젝트의 User_Setup.h로 덮어쓰기:
+TFT_eSPI 라이브러리에 "내 LCD 드라이버와 연결 핀이 이것"이라고 알려주는 필수 설정 파일입니다.
+
+<br>     
+<details>
+    <summary>💻 User_Setup.h </summary>
+
+```c
+// TFT_eSPI User_Setup - CrowPanel 3.5" IPS ILI9488 (RP2040)
+
+#define USER_SETUP_INFO " 3.5 ILI9488 RP2040"
+
+// ----- Section 1: Driver -----
+#define ILI9488_DRIVER
+
+// 3.5" 320x480 (portrait)
+#define TFT_WIDTH  320
+#define TFT_HEIGHT 480
+
+// IPS 패널 색 반전
+//#define TFT_INVERSION_OFF
+#define TFT_INVERSION_ON
+
+// ----- Section 2: Pins -----
+#define TFT_CS    2    // LCD CS (LCD 3번)
+#define TFT_RST   3    // LCD Reset (LCD 4번)
+#define TFT_DC    4    // LCD Data/Command (LCD 5번)
+#define TFT_MOSI  11   // LCD SDI + 터치 TDI 공유 (LCD 6, 12번)
+#define TFT_SCLK  10   // LCD SCK + 터치 TCK 공유 (LCD 7, 10번)
+#define TFT_BL    5    // 백라이트 (LCD 8번)
+#define TFT_MISO  12   // 터치 TDO (LCD 13번) — SPI1 RX
+#define TFT_BACKLIGHT_ON HIGH
+
+// 터치 (XPT2046)
+#define TOUCH_CS  6    // 터치 CS (LCD 11번)
+#define TOUCH_IRQ 8    // 터치 IRQ (LCD 14번)
+
+// ----- Section 3: RP2040 SPI -----
+#define TFT_SPI_PORT 1
+
+// ----- Section 4: SPI speed -----
+#define SPI_FREQUENCY       40000000
+#define SPI_READ_FREQUENCY  20000000
+#define SPI_TOUCH_FREQUENCY  2500000
+
+// ----- Section 5: Fonts -----
+#define LOAD_GLCD
+#define LOAD_FONT2
+#define LOAD_FONT4
+#define LOAD_FONT6
+#define LOAD_FONT7
+#define LOAD_FONT8
+#define LOAD_GFXFF
+#define SMOOTH_FONT
+
+```
+</details>
+
+
+
+<br>     
+<details>
+    <summary>💻 예제1: 2초마다 배경색을 빨강→초록→파랑으로 순환하며 화면 중앙에 "Hello world"를 흰색으로 표시합니다. </summary>
+
+```c
+#include <TFT_eSPI.h>
+
+TFT_eSPI tft = TFT_eSPI();
+
+void printCenter(const char* text) {
+  int16_t tw = tft.textWidth(text, 4);
+  int16_t th = tft.fontHeight(4);
+  tft.drawString(text, (480 - tw) / 2, (320 - th) / 2, 4);
+}
+
+void setup() {
+  Serial.begin(115200);
+
+  pinMode(TFT_BL, OUTPUT);
+  digitalWrite(TFT_BL, TFT_BACKLIGHT_ON);
+
+  tft.init();
+  tft.setRotation(1);
+  tft.fillScreen(TFT_BLACK);
+
+  tft.setTextColor(TFT_WHITE);
+  printCenter("Hello world");
+
+  Serial.println("Hello world Displayed!");
+}
+
+int color_state = 0;
+
+void loop() {
+  delay(2000);
+
+  if (color_state == 0) {
+    tft.fillScreen(TFT_RED);
+    color_state = 1;
+  } else if (color_state == 1) {
+    tft.fillScreen(TFT_GREEN);
+    color_state = 2;
+  } else {
+    tft.fillScreen(TFT_BLUE);
+    color_state = 0;
+  }
+
+  tft.setTextColor(TFT_WHITE);
+  printCenter("Hello world");
+}
+
+```
+</details>
+
+
+
+<br>     
+<details>
+    <summary>💻 에제2: 터치 버튼을 누를 때마다 버튼 색이 빨강(OFF)↔초록(ON)으로 토글되는 터치 UI 예제입니다. </summary>
+
+```c
+#include <TFT_eSPI.h>
+
+TFT_eSPI tft = TFT_eSPI();
+
+bool buttonState = false;
+bool lastTouchState = false;
+
+const int btnX = 140;
+const int btnY = 110;
+const int btnW = 200;
+const int btnH = 100;
+
+void drawButton() {
+  uint16_t btnColor = buttonState ? TFT_GREEN : TFT_RED;
+  const char* btnText = buttonState ? "ON" : "OFF";
+
+  tft.fillRoundRect(btnX, btnY, btnW, btnH, 15, btnColor);
+
+  tft.setTextColor(TFT_WHITE);
+  int16_t tw = tft.textWidth(btnText, 4);
+  int16_t th = tft.fontHeight(4);
+  tft.drawString(btnText, btnX + (btnW - tw) / 2, btnY + (btnH - th) / 2, 4);
+}
+
+bool getTouchCoords(int16_t &x, int16_t &y) {
+  uint16_t rx = 0, ry = 0;
+
+  if (digitalRead(TOUCH_IRQ) == LOW) {
+    if (tft.getTouchRaw(&rx, &ry)) {
+      x = map(ry, 204, 3781, 0, 480);
+      y = map(rx, 3808, 311, 0, 320);
+      x = constrain(x, 0, 479);
+      y = constrain(y, 0, 319);
+      return true;
+    }
+  }
+  return false;
+}
+
+void setup() {
+  Serial.begin(115200);
+
+  pinMode(TFT_BL, OUTPUT);
+  digitalWrite(TFT_BL, TFT_BACKLIGHT_ON);
+  pinMode(TOUCH_IRQ, INPUT_PULLUP);
+
+  tft.init();
+  tft.setRotation(1);
+  tft.fillScreen(TFT_BLACK);
+
+  tft.setTextColor(TFT_WHITE);
+  int16_t tw = tft.textWidth("Touch Button Test", 4);
+  tft.drawString("Touch Button Test", (480 - tw) / 2, 40, 4);
+
+  drawButton();
+}
+
+void loop() {
+  int16_t x, y;
+  bool isTouched = getTouchCoords(x, y);
+
+  if (isTouched && !lastTouchState) {
+    Serial.print("Touch: X="); Serial.print(x);
+    Serial.print(" Y="); Serial.println(y);
+
+    if (x >= btnX && x <= btnX + btnW && y >= btnY && y <= btnY + btnH) {
+      buttonState = !buttonState;
+      drawButton();
+      Serial.println(buttonState ? "ON" : "OFF");
+    }
+  }
+
+  lastTouchState = isTouched;
+  delay(20);
+}
+
+
+```
+</details>
+
+
+
+
+
+
+---
+
+** 📌 6. 핵심 기술: 하이브리드 드라이버 ** 
 
 이 LCD 모듈은 하드웨어 SPI 사용 시 터치 인식률이 낮아지는 특성이 있습니다.  
 이를 해결하기 위해 **비트뱅 터치 읽기 + 하드웨어 SPI 화면 출력**을 혼합한 방식을 사용합니다.
