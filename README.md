@@ -1279,7 +1279,7 @@ HMI 보드는 `/config.json`에 설정을 저장합니다.
 **📌 12. claude 를 이용한 바이브 코딩** 
 
 
-### 바이브 코딩이란?
+**바이브 코딩이란?**
 
 **바이브 코딩(Vibe Coding)** 은 코드를 직접 타이핑하는 대신,  
 **"이런 느낌으로 동작했으면 좋겠다"** 는 의도를 AI에게 자연어로 설명하면  
@@ -1289,14 +1289,14 @@ AI가 전체 코드를 작성·수정해 주는 개발 방식입니다.
 
 ---
 
-### 사용 방법
+**사용 방법**
 
-#### 1단계 — 템플릿 파일 준비
+**1단계 — 템플릿 파일 준비**
 
 이 프로젝트는 **[LCD35.md](./LCD35.md)** 에 전체 소스 코드와 회로 정보를 담아 두었습니다.  
 Claude가 이 파일을 읽으면 하드웨어 구성과 기존 코드를 완전히 파악합니다.
 
-#### 2단계 — Claude에게 프롬프트 입력
+**2단계 — Claude에게 프롬프트 입력**
 
 아래 형식을 복사해서 [claude.ai](https://claude.ai) 또는 Claude Code에 붙여넣으세요.
 
@@ -1304,36 +1304,36 @@ Claude가 이 파일을 읽으면 하드웨어 구성과 기존 코드를 완전
 https://raw.githubusercontent.com/kdi6033/i2r/main/LCD35.md 읽고 [원하는 동작을 한국어로 설명]
 ```
 
-#### 3단계 — 결과 코드를 Arduino IDE에 붙여넣기
+**3단계 — 결과 코드를 Arduino IDE에 붙여넣기**
 
 Claude가 수정된 `.ino` 파일을 출력합니다. 그대로 복사해서 업로드하면 됩니다.
 
 ---
 
-### 바이브 코딩 예시
+**바이브 코딩 예시**
 
-#### 예시 1 — 화면에 새 데이터 표시
+**예시 1 — 화면에 새 데이터 표시**
 ```
 https://raw.githubusercontent.com/kdi6033/i2r/main/LCD35.md 읽고
 ESP32에서 {"c":"ti","rpm":1500,"temp":72.3} JSON을 보내면
 제어판 탭 중앙에 RPM과 온도를 크게 표시해줘
 ```
 
-#### 예시 2 — 채널 수 변경
+**예시 2 — 채널 수 변경**
 ```
 https://raw.githubusercontent.com/kdi6033/i2r/main/LCD35.md 읽고
 입력 LED를 4개에서 8개로 늘려줘
 두 줄로 배치하고 LED 크기는 46px로 줄여줘
 ```
 
-#### 예시 3 — 다크 테마 적용
+**예시 3 — 다크 테마 적용**
 ```
 https://raw.githubusercontent.com/kdi6033/i2r/main/LCD35.md 읽고
 전체 색상을 다크 테마로 바꿔줘
 배경은 #1A1A2E, 패널은 #16213E, 텍스트는 흰색 계열로 해줘
 ```
 
-#### 예시 4 — 새 탭 추가
+**예시 4 — 새 탭 추가**
 ```
 https://raw.githubusercontent.com/kdi6033/i2r/main/LCD35.md 읽고
 "그래프" 탭을 추가해줘
@@ -1341,7 +1341,7 @@ https://raw.githubusercontent.com/kdi6033/i2r/main/LCD35.md 읽고
 최근 30개 값을 표시하고 자동 스크롤 해줘
 ```
 
-#### 예시 5 — 버튼 이름 변경
+**5 — 버튼 이름 변경**
 ```
 https://raw.githubusercontent.com/kdi6033/i2r/main/LCD35.md 읽고
 출력 버튼 4개의 이름을 숫자 대신
@@ -1350,7 +1350,7 @@ https://raw.githubusercontent.com/kdi6033/i2r/main/LCD35.md 읽고
 
 ---
 
-### 바이브 코딩 워크플로우
+**바이브 코딩 워크플로우**
 
 ```
 ┌─────────────────────────────────────────────┐
@@ -1376,7 +1376,7 @@ https://raw.githubusercontent.com/kdi6033/i2r/main/LCD35.md 읽고
 
 ---
 
-### 주의사항
+**주의사항**
 
 | 항목 | 설명 |
 |------|------|
@@ -1387,22 +1387,21 @@ https://raw.githubusercontent.com/kdi6033/i2r/main/LCD35.md 읽고
 
 ---
 
-### 더 잘 활용하는 팁
+**더 잘 활용하는 팁**
 
 - **구체적일수록** 좋습니다. "버튼 추가해줘" 보다 "제어판 탭 오른쪽 하단에 비상정지 버튼을 빨간색으로 추가해줘" 가 낫습니다.
 - **JSON 포맷을 명시**하면 통신 파싱 코드까지 자동 생성됩니다.
 - 결과가 마음에 안 들면 **이어서 수정 요청**할 수 있습니다. `"방금 코드에서 버튼 크기만 키워줘"`
 - Claude Code(VS Code 확장)를 사용하면 파일을 직접 수정해줍니다.
 
+**HMI-i2r 다운로드**
 
-| 파일 | 설명 |
-|------|------|
-| [`hmi-i2r02/hmi-i2r02.ino`](hmi-i2r02/hmi-i2r02.ino) | HMI 메인 펌웨어 |
-| [`lcd_ips_35.md`](lcd_ips_35.md) | 3.5" IPS LCD 기술 레퍼런스 (프로그래밍용) |
-| [`lcd.md`](lcd.md) | 2.4" LCD 배선 참고 |
-| `NotoSansKR_20.h` | 한글 폰트 헤더 |
-| `lv_qrcode.hpp` / `qrcodegen.hpp` | QR 코드 생성 라이브러리 |
+아래 링크에서 zip 파일을 다운로드해서 프로그램 하세요.
 
+[**hmi-i2r.zip 다운로드**](https://github.com/kdi6033/download/raw/main/hmi/hmi-i2r.zip)
+
+압축을 해제하면 `hmi-i2r` 폴더가 생성됩니다.  
+`hmi-i2r.ino` 파일을 Arduino IDE로 열어 RP2040-Zero에 업로드하세요.
 
   
 -----
