@@ -704,7 +704,7 @@ RP2040-Zero와 3.5인치 IPS LCD를 이용해 **i2r-02 IoT PLC**용 HMI(Human Ma
 
 <img src="https://github.com/kdi6033/i2r/blob/main/images/rp2040-Zero.png?raw=true" width="600">
 
-** 📌 1. 부품 목록 ** 
+**📌 1. 부품 목록** 
 
 | 부품 | 사양 |
 |------|------|
@@ -717,7 +717,7 @@ RP2040-Zero와 3.5인치 IPS LCD를 이용해 **i2r-02 IoT PLC**용 HMI(Human Ma
 
 ---
 
-** 📌 2. LCD 핀 연결 ** 
+**📌 2. LCD 핀 연결** 
 
 | RP2040-Zero | LCD 핀 번호 | LCD 핀 이름 | 비고 |
 |:-----------:|:-----------:|:-----------:|------|
@@ -738,7 +738,7 @@ RP2040-Zero와 3.5인치 IPS LCD를 이용해 **i2r-02 IoT PLC**용 HMI(Human Ma
 
 ---
 
-** 📌 3. RP2040 ↔ i2r-02 PLC 연결 ** 
+**📌 3. RP2040 ↔ i2r-02 PLC 연결** 
 
 | RP2040-Zero | i2r-02 (ESP32) | 설명 |
 |:-----------:|:--------------:|------|
@@ -748,7 +748,7 @@ RP2040-Zero와 3.5인치 IPS LCD를 이용해 **i2r-02 IoT PLC**용 HMI(Human Ma
 
 ---
 
-** 📌 4. I2C 통신 ** 
+**📌 4. I2C 통신** 
 | RP2040-Zero | 비고 |
 |:-----------:|:-----------:|
 | 3V3      | 3.3V  |
@@ -876,7 +876,6 @@ void loop() {
 </details>
 
 
-
 <br>     
 <details>
     <summary>💻 에제2: 터치 버튼을 누를 때마다 버튼 색이 빨강(OFF)↔초록(ON)으로 토글되는 터치 UI 예제입니다. </summary>
@@ -962,90 +961,159 @@ void loop() {
 ```
 </details>
 
----
+<br>     
+<details>
+    <summary>💻 에제3: 예제2에서ㅓ 터치 버튼이 오동작을 하면 calibration 으로 화면 터치위치 값을 알려주세요 </summary>
 
-** 📌 6. 핵심 기술: 하이브리드 드라이버 ** 
+```c
+/*
+ * Touch Calibration for ILI9488 + XPT2046 (RP2040)
+ *
+ * 화면 4 모서리 십자를 순서대로 터치하면
+ * map() 파라미터를 Serial과 화면에 출력합니다.
+ *
+ * 순서: 좌상 → 우상 → 우하 → 좌하
+ */
 
-TFT_eSPI 라이브러리가 SPI1 하드웨어 포트를 독점 사용하는데, XPT2046 터치 IC도 같은 SPI 버스를 공유합니다. LVGL 콜백 시점에 SPI 충돌이 발생하므로, 소프트웨어로 SPI를 직접 구현한 것입니다.
-이 LCD 모듈은 하드웨어 SPI 사용 시 터치 인식률이 낮아지는 특성이 있습니다.  
-이를 해결하기 위해 **비트뱅 터치 읽기 + 하드웨어 SPI 화면 출력**을 혼합한 방식을 사용합니다.
+#include <TFT_eSPI.h>
 
-```
-터치 읽기  : GPIO 직접 제어(비트뱅) → XPT2046 좌표 100% 신뢰성 추출
-화면 출력  : gpio_set_function()으로 핀을 SPI 모드 복구 → TFT_eSPI 고속 렌더링
-흐름 요약
+TFT_eSPI tft = TFT_eSPI();
 
-LVGL 이벤트
-    ↓
-핀: SPI → GPIO 전환
-    ↓
-비트뱅으로 XPT2046 읽기 (raw 12bit 값)
-    ↓
-핀: GPIO → SPI 복구
-    ↓
-map() → 화면 좌표 변환
-    ↓
-LVGL에 좌표 전달
-```
+#define SCREEN_W 480
+#define SCREEN_H 320
+#define MARGIN   20
 
----
+const int16_t TARGET_X[4] = { MARGIN, SCREEN_W - MARGIN, SCREEN_W - MARGIN, MARGIN };
+const int16_t TARGET_Y[4] = { MARGIN, MARGIN,             SCREEN_H - MARGIN, SCREEN_H - MARGIN };
+const char*   LABEL[4]    = { "1:Left-Top", "2:Right-Top", "3:Right-Bottom", "4:Left-Bottom" };
 
-** 📌 5. 터치 비트뱅 코드 ** 
+uint16_t rawRX[4], rawRY[4];
+int      step        = 0;
+bool     waitRelease = false;
 
-```cpp
-#define TP_SCK  2
-#define TP_MOSI 3
-#define TP_MISO 4
-#define TP_CS   5
+void drawCross(int16_t x, int16_t y, uint16_t color) {
+  tft.drawLine(x - 18, y,      x + 18, y,      color);
+  tft.drawLine(x,      y - 18, x,      y + 18, color);
+  tft.drawCircle(x, y, 6, color);
+}
 
-uint8_t bb_transfer(uint8_t data) {
-  uint8_t result = 0;
-  for (int i = 7; i >= 0; i--) {
-    digitalWrite(TP_MOSI, (data >> i) & 1);
-    digitalWrite(TP_SCK, LOW);  delayMicroseconds(2);
-    result = (result << 1) | digitalRead(TP_MISO);
-    digitalWrite(TP_SCK, HIGH); delayMicroseconds(2);
+void showStep(int s) {
+  tft.fillScreen(TFT_BLACK);
+
+  for (int i = 0; i < s; i++)
+    drawCross(TARGET_X[i], TARGET_Y[i], TFT_DARKGREY);
+
+  drawCross(TARGET_X[s], TARGET_Y[s], TFT_YELLOW);
+
+  tft.setTextColor(TFT_WHITE);
+  tft.setTextSize(2);
+  tft.setCursor(10, SCREEN_H / 2 - 20);
+  tft.printf("Touch %s", LABEL[s]);
+
+  tft.setTextColor(TFT_CYAN);
+  tft.setTextSize(1);
+  tft.setCursor(10, SCREEN_H / 2 + 15);
+  tft.printf("Step %d / 4", s + 1);
+}
+
+void showResult() {
+  // 좌우 쌍 평균 → ry 가 화면 X 방향
+  float ry_left  = (rawRY[0] + rawRY[3]) / 2.0f;
+  float ry_right = (rawRY[1] + rawRY[2]) / 2.0f;
+
+  // 상하 쌍 평균 → rx 가 화면 Y 방향
+  float rx_top    = (rawRX[0] + rawRX[1]) / 2.0f;
+  float rx_bottom = (rawRX[2] + rawRX[3]) / 2.0f;
+
+  // MARGIN 위치 → 0 / 480(320) 외삽
+  float sx  = ry_right - ry_left;
+  int ry0   = (int)(ry_left  - sx * MARGIN / (SCREEN_W - 2 * MARGIN));
+  int ry480 = (int)(ry_right + sx * MARGIN / (SCREEN_W - 2 * MARGIN));
+
+  float sy   = rx_bottom - rx_top;
+  int rx0    = (int)(rx_top    - sy * MARGIN / (SCREEN_H - 2 * MARGIN));
+  int rx320  = (int)(rx_bottom + sy * MARGIN / (SCREEN_H - 2 * MARGIN));
+
+  Serial.println("\n===== Calibration Result =====");
+  Serial.printf("x = map(ry, %d, %d, 0, 480);\n", ry0, ry480);
+  Serial.printf("y = map(rx, %d, %d, 0, 320);\n", rx0, rx320);
+  Serial.println("================================");
+
+  tft.fillScreen(TFT_BLACK);
+
+  tft.setTextColor(TFT_GREEN);
+  tft.setTextSize(2);
+  tft.setCursor(10, 15);
+  tft.println("Calibration Done!");
+
+  tft.setTextColor(TFT_WHITE);
+  tft.setTextSize(2);
+  tft.setCursor(10, 60);
+  tft.println("Copy to your sketch:");
+
+  tft.setTextColor(TFT_YELLOW);
+  tft.setTextSize(1);
+  tft.setCursor(10, 100);
+  tft.printf("x = map(ry, %d, %d, 0, 480);", ry0, ry480);
+  tft.setCursor(10, 118);
+  tft.printf("y = map(rx, %d, %d, 0, 320);", rx0, rx320);
+
+  tft.setTextColor(TFT_DARKGREY);
+  tft.setCursor(10, 160);
+  tft.println("Raw values (rx / ry):");
+  for (int i = 0; i < 4; i++) {
+    tft.setCursor(10, 175 + i * 14);
+    tft.printf("%s  rx=%4d  ry=%4d", LABEL[i], rawRX[i], rawRY[i]);
   }
-  return result;
+
+  tft.setTextColor(TFT_CYAN);
+  tft.setCursor(10, 270);
+  tft.println("Press RESET to redo.");
 }
 
-uint16_t bb_read(uint8_t cmd) {
-  digitalWrite(TP_CS, LOW); delayMicroseconds(5);
-  bb_transfer(cmd);
-  delayMicroseconds(5);
-  uint16_t res = (uint16_t)bb_transfer(0x00) << 8;
-  res |= bb_transfer(0x00);
-  digitalWrite(TP_CS, HIGH);
-  return res >> 3;
+void setup() {
+  Serial.begin(115200);
+
+  pinMode(TFT_BL, OUTPUT);
+  digitalWrite(TFT_BL, TFT_BACKLIGHT_ON);
+  pinMode(TOUCH_IRQ, INPUT_PULLUP);
+
+  tft.init();
+  tft.setRotation(1);
+
+  showStep(0);
 }
 
-// LVGL 터치 콜백
-void my_touchpad_read(lv_indev_t *indev, lv_indev_data_t *data) {
-  pinMode(TP_SCK,  OUTPUT);
-  pinMode(TP_MOSI, OUTPUT);
-  pinMode(TP_MISO, INPUT);
+void loop() {
+  if (step >= 4) return;
 
-  uint16_t rx = bb_read(0xD0); // → 화면 Y 방향
-  uint16_t ry = bb_read(0x90); // → 화면 X 방향
+  uint16_t rx = 0, ry = 0;
+  bool touched = (digitalRead(TOUCH_IRQ) == LOW) && tft.getTouchRaw(&rx, &ry);
 
-  gpio_set_function(TP_SCK,  GPIO_FUNC_SPI); // SPI 복구
-  gpio_set_function(TP_MOSI, GPIO_FUNC_SPI);
-
-  if (rx > 100 && rx < 4000 && ry > 100 && ry < 4000) {
-    data->state   = LV_INDEV_STATE_PRESSED;
-    int16_t px = (int16_t)map(ry,  204, 3781,   0, 480); // ry → screenX
-    int16_t py = (int16_t)map(rx, 3808,  311,   0, 320); // rx → screenY (역방향)
-    data->point.x = (lv_coord_t)constrain(px, 0, 479);
-    data->point.y = (lv_coord_t)constrain(py, 0, 319);
-  } else {
-    data->state = LV_INDEV_STATE_RELEASED;
+  if (waitRelease) {
+    if (!touched) waitRelease = false;
+    return;
   }
+
+  if (touched) {
+    rawRX[step] = rx;
+    rawRY[step] = ry;
+    Serial.printf("[%d] %s  rx=%d  ry=%d\n", step + 1, LABEL[step], rx, ry);
+    step++;
+    waitRelease = true;
+    if (step >= 4) showResult();
+    else           showStep(step);
+  }
+
+  delay(20);
 }
+
 ```
+</details>
 
 ---
 
-** 📌 6. i2r-02 통신 프로토콜 ** 
+**📌 6. i2r-02 통신 프로토콜** 
 
 HMI(RP2040)와 PLC(ESP32)는 **Serial1 UART 9600 bps**로 JSON을 교환합니다.  
 메시지는 줄바꿈(`\n`)으로 구분합니다.
