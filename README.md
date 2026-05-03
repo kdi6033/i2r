@@ -781,8 +781,8 @@ TFT_eSPI 라이브러리에 "내 LCD 드라이버와 연결 핀이 이것"이라
 #define TFT_HEIGHT 480
 
 // IPS 패널 색 반전
-//#define TFT_INVERSION_OFF
-#define TFT_INVERSION_ON
+#define TFT_INVERSION_OFF
+//#define TFT_INVERSION_ON
 
 // ----- Section 2: Pins -----
 #define TFT_CS    2    // LCD CS (LCD 3번)
