@@ -742,8 +742,8 @@ RP2040-Zero와 3.5인치 IPS LCD를 이용해 **i2r-02 IoT PLC**용 HMI(Human Ma
 
 | RP2040-Zero | i2r-02 (ESP32) | 설명 |
 |:-----------:|:--------------:|------|
-| GPIO 0 (TX) | RX | HMI → PLC 데이터 전송 |
-| GPIO 1 (RX) | TX | PLC → HMI 데이터 수신 |
+| GPIO 12 (TX) | RX | HMI → PLC 데이터 전송 |
+| GPIO 13 (RX) | TX | PLC → HMI 데이터 수신 |
 | GND | GND | 공통 접지 (필수) |
 
 ---
