@@ -964,7 +964,7 @@ void loop() {
 
 <br>     
 <details>
-    <summary>💻 에제3: 예제2에서ㅓ 터치 버튼이 오동작을 하면 calibration 으로 화면 터치위치 값을 알려주세요 </summary>
+    <summary>💻 에제3: 예제2에서 터치 버튼이 오동작을 하면 calibration 으로 화면 터치위치 값을 알려주세요 </summary>
 
 ```c
 /*
