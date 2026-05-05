@@ -731,8 +731,8 @@ RP2040-Zero와 3.5인치 IPS LCD를 이용해 **i2r-02 IoT PLC**용 HMI(Human Ma
 | GPIO 5  | 8      | BL | 백라이트 (PWM 제어) |
 | ❌ **연결 금지** | 9 | SDO | ILI9488 버스 충돌 방지 — 반드시 비워둠 |
 | GPIO 6  | 11     | TCS | 터치 Chip Select |
-| GPIO 12 | 13     | TDO | 터치 데이터 출력 — 반드시 연결 |
-| GPIO 8  | 14     | PEN (IRQ) | 터치 인터럽트 (옵션) |
+| GPIO 8  | 13     | TDO | 터치 데이터 출력 — 반드시 연결 |
+| GPIO 9  | 14     | PEN (IRQ) | 터치 인터럽트 (옵션) |
 
 > **주의**: SDO(9번) 핀은 ILI9488의 하드웨어 결함으로 SPI 버스 충돌을 일으킵니다. **절대 연결하지 않습니다.**
 
