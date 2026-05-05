@@ -770,41 +770,42 @@ TFT_eSPI 라이브러리에 "내 LCD 드라이버와 연결 핀이 이것"이라
 
 ```c
 // TFT_eSPI User_Setup - CrowPanel 3.5" IPS ILI9488 (RP2040)
+// 핀 연결 가이드: lcd_github.md 참조
 
-#define USER_SETUP_INFO " 3.5 ILI9488 RP2040"
+#define USER_SETUP_INFO "CrowPanel 3.5 ILI9488 RP2040"
 
 // ----- Section 1: Driver -----
 #define ILI9488_DRIVER
 
 // 3.5" 320x480 (portrait)
-#define TFT_WIDTH  320
+#define TFT_WIDTH 320
 #define TFT_HEIGHT 480
 
 // IPS 패널 색 반전
 #define TFT_INVERSION_OFF
-//#define TFT_INVERSION_ON
+// #define TFT_INVERSION_ON
 
 // ----- Section 2: Pins -----
-#define TFT_CS    2    // LCD CS (LCD 3번)
-#define TFT_RST   3    // LCD Reset (LCD 4번)
-#define TFT_DC    4    // LCD Data/Command (LCD 5번)
-#define TFT_MOSI  11   // LCD SDI + 터치 TDI 공유 (LCD 6, 12번)
-#define TFT_SCLK  10   // LCD SCK + 터치 TCK 공유 (LCD 7, 10번)
-#define TFT_BL    5    // 백라이트 (LCD 8번)
-#define TFT_MISO  12   // 터치 TDO (LCD 13번) — SPI1 RX
+#define TFT_CS   2   // LCD CS (LCD 3번)
+#define TFT_RST  3   // LCD Reset (LCD 4번)
+#define TFT_DC   4   // LCD Data/Command (LCD 5번)
+#define TFT_MOSI 11  // LCD SDI + 터치 TDI 공유 (LCD 6, 12번)
+#define TFT_SCLK 10  // LCD SCK + 터치 TCK 공유 (LCD 7, 10번)
+#define TFT_BL   5   // 백라이트 (LCD 8번)
+#define TFT_MISO 8   // 터치 TDO (LCD 13번) — SPI1 RX
 #define TFT_BACKLIGHT_ON HIGH
 
 // 터치 (XPT2046)
-#define TOUCH_CS  6    // 터치 CS (LCD 11번)
-#define TOUCH_IRQ 8    // 터치 IRQ (LCD 14번)
+#define TOUCH_CS  6  // 터치 CS (LCD 11번)
+#define TOUCH_IRQ 9  // 터치 IRQ (LCD 14번)
 
 // ----- Section 3: RP2040 SPI -----
 #define TFT_SPI_PORT 1
 
 // ----- Section 4: SPI speed -----
-#define SPI_FREQUENCY       40000000
-#define SPI_READ_FREQUENCY  20000000
-#define SPI_TOUCH_FREQUENCY  2500000
+#define SPI_FREQUENCY 40000000
+#define SPI_READ_FREQUENCY 20000000
+#define SPI_TOUCH_FREQUENCY 2500000
 
 // ----- Section 5: Fonts -----
 #define LOAD_GLCD
