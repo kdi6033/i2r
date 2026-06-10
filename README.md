@@ -1567,15 +1567,15 @@ LVGL 디스플레이 드라이버는 아래 두 가지를 담당합니다.
 lv_conf_template.h 를 필요한 항목을 수정해서 lv_conf.h 로 저장합니다.
 
 **📌 요약 (수정해야 하는 항목만)**
-1.#if 0 → #if 1
-2. LV_COLOR_DEPTH = 16 (ILI9341)
-3. LV_MEM_CUSTOM = 1 (malloc/free 사용)
-4. LV_TICK_CUSTOM = 1, millis() 기반 설정
-5. LV_DPI_DEF = 130 (3.5" 기준)
-6. 폰트 설정: 필요 시 한글 폰트 추가
-7. 위젯: 필요한 것만 1로 유지
-8. 데모: 학습 시 1, 실제 코드에선 0
 
+1.#if 0 → #if 1    
+2. LV_COLOR_DEPTH = 16 (ILI9341)    
+3. LV_MEM_CUSTOM = 1 (malloc/free 사용)    
+4. LV_TICK_CUSTOM = 1, millis() 기반 설정    
+5. LV_DPI_DEF = 130 (3.5" 기준)    
+6. 폰트 설정: 필요 시 한글 폰트 추가    
+7. 위젯: 필요한 것만 1로 유지    
+8. 데모: 학습 시 1, 실제 코드에선 0    
 
 **1) 파일 활성화**
 ```
