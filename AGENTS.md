@@ -33,7 +33,9 @@ otto 개발을 도와줘          (i2r 스킬을 설치한 뒤에는 주소 없�
 | I2R_IoT | [kdi6033/I2R_IoT](https://github.com/kdi6033/I2R_IoT) | Wi-Fi, MQTT, 시간 (보드 쪽 통신) |
 | OttoI2R | [kdi6033/OttoI2R](https://github.com/kdi6033/OttoI2R) | Otto 로봇 동작 |
 
-- i2r 통신 프로토콜(MQTT 토픽, JSON 명령)은 이 저장소 [README 5장](README.md)에 있습니다.
+- i2r 통신 프로토콜(MQTT 토픽, JSON 명령, 축약 코드의 뜻)의 **원본은 [i2r-server/protocol.md](https://github.com/kdi6033/i2r-server/blob/main/protocol.md)** 입니다. 원문을 읽습니다: `curl -sL https://raw.githubusercontent.com/kdi6033/i2r-server/main/protocol.md`
+  - 이 저장소 README 5장은 요약과 링크만 있습니다. 예전 5장 표의 `t`(숫자), `rm`(0/1), `start`·`end`(분), `df`는 실제와 다르니 쓰지 않습니다.
+  - 사용자 스케치는 JSON을 직접 만들지 않고 각 키트의 라이브러리 함수를 씁니다. protocol.md는 라이브러리, 서버, 시뮬레이터를 고칠 때 봅니다.
 - **그냥 "plc"라고만 하면** 다른 회사 PLC(지멘스, LS 등)일 수 있으니 "i2r PLC(i2r-02/03/04)인가요?"라고 한 번 묻습니다.
 - **그냥 "otto"라고만 하면** 이 안내판을 통해 왔다면 Otto I2R 로봇으로 봅니다. 일반 Otto DIY(아두이노 나노) 이야기가 분명하면 i2r 키트를 쓰지 않습니다.
 - 무엇을 할지 말하지 않았으면 "PLC 프로그램 / Otto 로봇 / 시뮬레이터·서버 중 무엇을 하실 건가요? (여러 개 가능)"라고 묻습니다.

@@ -249,258 +249,27 @@ https://github.com/kdi6033/i2r 읽고 i2r 개발을 도와줘. [원하는 동작
 <img src="https://github.com/kdi6033/i2r/blob/main/images/i2r.png?raw=true" width="400">
 
 ##  ✅ 5. i2r 통신 프로토콜
-**2025년7월15일 chatgpt에 적합한 프로토콜을 새로 작성하고 있습니다. 이전에 구매한 보드는 7월30일 이후 새로운 펌웨어를 다운 받아 주세요**
 
-- i2r 보드의 mqtt 통신에서는 아래와 같이 구성되어 email을 저장하면 다음 토픽으로 자신에 해당되는 데이터를 통신 할 수 있습니다.     
-- 이 문서는 i2r IoT 보드와 클라이언트 간 MQTT 통신 시 사용하는 JSON 기반 명령어 프로토콜을 설명합니다.  
-- 모든 메시지는 경량화를 위해 **축약된 필드명**과 **축약된 명령어 코드(`c`)**를 사용합니다.
+> 📌 **프로토콜 원본이 옮겨졌습니다 → [i2r-server/protocol.md](https://github.com/kdi6033/i2r-server/blob/main/protocol.md)**
+> 축약 코드(`c`, `m`, `d`, `bio` …)의 전체 이름과 뜻은 [9장 축약 코드 사전](https://github.com/kdi6033/i2r-server/blob/main/protocol.md#9-축약-코드-사전)에 있습니다.
+> 🤖 AI는 원문을 읽습니다: `https://raw.githubusercontent.com/kdi6033/i2r-server/main/protocol.md`
 
-📌 기본 MQTT 토픽 구조
+i2r 보드(IoT PLC i2r-02/03/04, Otto)는 MQTT로 **JSON 한 줄**을 주고받습니다. 짧게 보내려고 필드와 명령에 축약 코드를 씁니다.
 
----
-- **intopic**  : `i2r/{email}/in`  
-- **outtopic** : `i2r/{email}/out`
+| 항목 | 내용 |
+|---|---|
+| 토픽 | 받기 `i2r/{그룹}/in`, 보내기 `i2r/{그룹}/out` (공식 펌웨어 v2.0은 `{그룹}` 자리에 이메일) |
+| 봉투 | `m` 받는 보드 MAC, `fr` 보낸 보드 MAC, `t` 보드 종류(`"i2r-03"`), `e` 그룹(이메일) |
+| 공통 명령 | `gs` 상태 요청, `st` 시간 맞추기, `si` Wi-Fi·MQTT 설정(USB) |
+| PLC 명령 | `so` 출력, `bio` 입력→출력 규칙, `sch` 시간표, `bs` 센서→출력 규칙·보정 |
+| 보드가 보내는 것 | 상태 `{"m","in","out","t","e","temp","humi","fr"}`, `hello` 자기소개, `lw` 살아 있음, `err` 오류 |
+| 번호 | JSON은 **0부터** (`"n":0` = OUT1 = 스위치 1) |
 
-> `email`은 각 사용자의 고유 ID 역할을 합니다.
----
+예시: `{"c":"so","m":"AA:BB:CC:DD:EE:FF","n":0,"v":1}` → 그 보드의 OUT1 켜기
 
-📌 JSON 메시지 필드명 요약
-
-| 전체 명칭         | 축약 코드 | 설명                                                                           |
-| ----------------- | -------- | ------------------------------------------------------------------------------- |
-| adc               | `adc`    | analog to digital, 센서 ad converter (예: `3.4`)                                 |
-| bat               | `bat`    | battaery output, 센서 보드에 들어오는 밭데리 전압 (예: `3.4`)                      |
-| command           | `c`      | 명령 종류 (예: `df`, `so`, `gs`, `sch`, `bs` 등 축약어 사용)                      |
-| calibration       | `cali`   | 	센서값 보정 (예: 28.1)                                                         |
-| config            | `cfg`    | ssid password email 등 와이파이 정보를 터치 판넬에 보냄                            |
-| delay             | `d`      | 입력신호가 들어오고 출력이 나가기 까지 지연시간 단위:초                              |
-| duration          | `du`     | 센서에 의해서 동작할 때 동작시간 0이면 무한대로 지속함                               |
-| dayOfWeek         | `dw`     | 반복 요일: 숫자(0=일 \~ 6=토), 또는 배열 `[1,3,5]` (월, 수, 금)                     |
-| email             | `e`      | email                                                                            |
-| endMinutes (분)   | `end`    | 종료 시간 (예: 오전 10시 = `600`)                                                 |
-| fileName          | `f`      | file Name                                                                       |
-| from              | `fr`     | 메세지를 보내는 기기의 mac 주소                                                   |
-| humidity          | `humi`   | 센서 현재 습도 값 (예: `55`)                                                       |
-| in                | `in`     | 입력 상태 배열 (예: `[0,1,0,0]`)                                                  |
-| light             | `light`  | 센서 조도 값 (예: `120`)                                                          |
-| mac               | `m`      | 대상 장치의 MAC 주소 (예: `"A0:B7:65:CD:4D:34"`)                                  |
-| portNo            | `n`      | 출력 핀 번호 (0부터 시작)                                                         |
-| value             | `v`      | 출력 값: `true` 또는 `false`, 혹은 수치 값                                        |
-| operation         | `o`      | 작업 종류: `"save"`, `"list"`, `"delete"`, `"deleteAll"`, `"cali"`, `"insert"` 등 |
-| out               | `out`    | 출력 상태 배열 (예: `[1,0,0,0]`)                                                  |
-| pinIndex          | `pi`     | 출력 핀 인덱스 (0\~3)                                                             |
-| pageNo            | `pn`     | 	list 에서 데이터의 번호                                                        |
-| portState         | `ps`     | 제어할 출력 포트 정보 배열 (예: `[{"m": "...", "n": 0, "v": true}]`)               |
-| repeatMode        | `rm`     | 반복 주기: `0` = 매일, `1` = 매주                                                  |
-| slotIndex         | `sI`     | 스케줄 작업시 슬롯 (번호)인덱스 지정                                               |
-| startMinutes (분) | `start`  | 시작 시간 (예: 오전 9시 30분 = `570`)                                             |
-| temperature       | `temp`   | 센서 현재 온도 값 (예: `27.8`)                                                    |
-| trigger           | `tr`     | `bio`: ON(1) OFF(0) 가 될 때 트리거 설정 후 delay를 설정하면 그 시간에 동작한다.   |
-| triggerValue      | `tv`     | 트리거가 동작하는 센서 값                                                        |
-| type              | `t`      | 보드 종류 (예: `3` = i2r-03)                                                    |
-| touch panel infor.| `ti`     | 보드의 정보를 터치판넬에 보냄                                                    |
-| typeSensor        | `ts`     | 센서 타입 (`temp`, `humi`, `light`)                                             |
-| version           | `ver`    | 프로그램 버젼                                                                   |
-
----
-
-📌 명령어 (command : c) 축약 코드 목록
-
-| 전체 명칭           | 축약 코드 (`c`)   | 설명 |
-|---------------------|------------------|------|
-| `bindIO`           | `bio`            | 입력 상태에 따라 출력 연동 설정  |
-| `bindSensor`       | `bs`             | 센서 조건에 따라 출력 제어 (온도, 습도, 조도 등) |
-| `downloadFirmware` | `df`             | 보드에 펌웨어를 다운로드 |
-| `getStatus`        | `gs`             | 보드 상태 요청 (온도, 습도, in/out version 등)          |
-| `schedule`         | `sch`            | 시간 기반 출력 동작 스케줄 설정  | 
-| `setInfo`          | `si`             | Wi-Fi, MQTT 브로커 등 설정 정보 전송 |
-| `setOutput`        | `so`             | 핀출력을 표시 (1 = ON, 0 = OFF) |
-| `touchInput`       | `ti`            | Touch Panel(RP2040 등) 전달 |
-
----
-📌 예제 및 상세 설명 
-
-| `command` (`c`) | 예제 및 상세 설명 |
-|----------------|-------------------|
-| **`downloadFirmware`**<br> (`df`) |인터넷에서 통신으로 펌웨어를 보드로 내려 받는다<br> {"c":"df","m":"D8:13:2A:C3:E7:68","fileName":"i2r-03.ino.bin"} |
-| **`setInfo`** <br>(`si`) |와이파이 및 통신에 필요한 정보를 보내 보드에 기록하여 기기는 여기 정보로 통신을 연결한다.<br> {"c":"si",'ssid':'***','password'='***', 'e':'***', 'mqttBroker':'ai.doowon.ac.kr'}} |
-| **`bindIO`**<br> (`bio`) | **`bind_input_output`**<br>아래 상세설명 참조|
-| **`bindSensor`**<br> (`bs`) | 아래 상세설명 참조 |:
-| **`downloadFirmware`**<br> (`df`) | ```{ "c": "df", "m": "D8:13:2A:C3:E7:68", "fileName": "i2r-03.ino.bin" }``` <br>지정한 MAC 주소를 가진 보드에 인터넷을 통해 펌웨어를 다운로드합니다. `.ino.bin` 또는 `.bin` 파일이 대상이며, OTA 업데이트를 통해 자동 적용됩니다. |
-| **`getStatus`**<br> (`gs`) | ```{ "c": "gs", "m": "EC:64:C9:43:E8:B8" }```<br>지정 보드의 상태를 요청합니다. 응답으로 온도, 습도, 입력포트(`in`), 출력포트(`out`) 정보가 포함됩니다.<br>응답 예시:<br>`{"t":3,"email":"kdi6033@gmail.com","m":"EC:64:C9:43:E8:B8","temp":28.4,"humi":38,"in":[0,0,0,0],"out":[0,0,0,0]}` |
-| **`scheduleOutput`**<br> (`sch`) | 아래 상세설명 참조 |
-| **`setInfo`**<br> (`si`) | ```{ "c": "si", "ssid": "i2r_wifi", "password": "00000000", "email": "user@example.com", "mqttBroker": "mqtt.i2r.link" }``` <br> 보드가 Wi-Fi 및 MQTT 브로커에 연결할 수 있도록 설정 정보를 저장합니다. 이후 재시작 시 자동 연결됩니다. |
-| **`setOutput`**<br> (`so`) | ```{ "c": "so", "m": "A0:B7:65:CD:4D:34", "n": 1, "v": 1 }``` <br> 지정 보드의 `n`번 출력 핀을 제어합니다. `v: 1`은 ON, `v: 0`은 OFF입니다. 릴레이, 모터, LED 등에 사용됩니다. |
-| **`touchInput`**<br> (`ti`) | ```{ "c": "ti", "light": 120 }```<br>RP2040 등의 외부 터치패널에서 측정한 조도 값을 IoT 보드에 전달하여 조건 제어에 활용할 수 있습니다. |
-
----
-
-📌 입출력 설정 프로토콜 예제 (bindIO / c:"bio")
-1️⃣ 트리거 등록 <br>
-입력 0번 포트가 ON 되면, → 출력 1번 포트를 ON 시킵니다. 3("d":3)초 후에 4(du":4)초간 동작 d:0 → 지연시간 없음 (즉시 실행) <br>
-- Full JSON (개발용 / 디버그용) <br>
-{"command":"bindIO","operation":"insert","trigger":true,"mac":"D4:8C:49:50:46:F4","portNo":0,"delay":3,"duration":4,"portState":[{"mac":"D4:8C:49:50:46:F4","portNo":0,"value":true}] <br>
-- Compressed JSON (MQTT 실제 전송) <br>
-```
-{"c":"bio","d":3,"m":"D4:8C:49:50:46:F4","o":"insert","n":0,"tr":1,"du":4,"ps":[{"m":"D4:8C:49:50:46:F4","n":0,"v":1}] <br>
-```
-
-2️⃣ 트리거 목록 확인 (List) <br>
-MAC D4:8C:49:50:46:F4 인 i2r 보드에서 입력 0번 포트에 설정된 bindIO(입력→출력 연동) 규칙 목록을 조회하라는 명령입니다. <br>
-- Full JSON (개발용 / 디버그용) <br>
-{command: 'bindIO', operation: 'list', mac: 'D4:8C:49:50:46:F4', portNo: 0} <br>
-- Compressed JSON (MQTT 실제 전송) <br>
-```
-{"c":"bio","m":"D4:8C:49:50:46:F4","o":"list","n":0} <br>
-```
-
-3️⃣ 트리거 삭제 (Delete)  <br>
-MAC D4:8C:49:50:46:F4 인 i2r 보드에서 입력 0번 포트에 설정된 bindIO 규칙 중 slotIndex(sI)가 1번인 항목을 삭제하라는 명령입니다. <br>
-- Full JSON (개발용 / 디버그용) <br>
-{"command":"bindIO","operation":"delete","mac":"D4:8C:49:50:46:F4","portNo":0,"slotIndex":1}  <br>
-- Compressed JSON (MQTT 실제 전송) <br>
-```
-{"c":"bio","m":"D4:8C:49:50:46:F4","o":"delete","n":0,"sI":1} <br>
-```
-
-4️⃣ 전체 삭제 (DeleteAll)  <br>
-MAC D4:8C:49:50:46:F4 인 i2r 보드에서 입력 0번 포트에 설정된 모든 bindIO(입력→출력 연동) 규칙을 전체 삭제하라는 명령입니다.  <br>
-- Full JSON (개발용 / 디버그용) <br>
-{command: 'bindIO', operation: 'deleteAll', mac: 'D4:8C:49:50:46:F4', portNo: 0}
-- Compressed JSON (MQTT 실제 전송) <br>
-```
-{"c":"bio","m":"D4:8C:49:50:46:F4","o":"deleteAll","n":0}
-```
-
----
-
-📌 스케줄 제어 프로토콜 (Schedule / c: "sch")
-
-- 스케줄 기능은 특정 시간대에 PLC 출력을 자동으로 ON/OFF 제어하는 기능입니다.
-- 즉, “매일 또는 특정 요일에 정해진 시간에 자동으로 스위치를 켜거나 끄는 기능”을 수행합니다.
-- 모든 설정은 MQTT 메시지(JSON 형식)으로 전송됩니다.
-
-1️⃣ 매일 스케줄 등록 (Insert) <br>
-- 매일 10:44부터 10:45까지 MAC 주소 "D4:8C:49:50:46:F4" 장치의 0번 포트 출력을 켜는 스케줄을 등록합니다. <br>
-- "rm":"daily"는 매일 반복, "dw":0은 요일(일요일)을 의미하며 "dw"가 생략되면 daily 모드로 동작합니다. <br>
-- start와 end는 자정(00:00) 기준 분 단위입니다. 예: 10:44 → 10×60 + 44 = 644, 10:45 → 645
-- Full JSON (개발용 / 디버그용) <br>
-{ "command":"schedule", "dayOfWeek":0, "endMinutes":645, "mac":"D4:8C:49:50:46:F4", "operation":"insert", "pinIndex":0, "repeatMode":"daily", "startMinutes":644 } <br>
-- Compressed JSON (MQTT 실제 전송) <br>
-```
-{"c":"sch","dw":0,"end":645,"m":"D4:8C:49:50:46:F4","o":"insert","pi":0,"rm":"daily","start":644}
-```
-
-2️⃣ 매주 스케줄 등록 (Insert) <br>
-
-- 매주 월요일(1), 수요일(3) 오전 10:50부터 10:51까지 <br>
-- MAC 주소 "D4:8C:49:50:46:F4" 장치의 0번 포트 출력을 켜는 스케줄을 등록합니다. <br>
-- "rm":"weekly"는 주간 반복을 의미하며, "dw":[1,3]은 월요일(1)과 수요일(3)에만 동작함을 뜻합니다. <br>
-- "dw" 배열 값은 0=일, 1=월, 2=화, 3=수, 4=목, 5=금, 6=토입니다. <br>
-- start와 end는 자정(00:00) 기준 분 단위입니다.  예: 10:50 → 10×60 + 50 = 650, 10:51 → 651 <br>
-- "pi":0은 제어할 포트 번호입니다. <br>
-
-- Full JSON (개발용 / 디버그용) <br>
-{"c": "sch","m": "D4:8C:49:50:46:F4","o": "insert","pi": 0,"start": 650,"end": 651,"rm": "weekly","dw": [1, 3]}
-{ "command":"schedule", "dayOfWeek":[1, 3], "endMinutes":645, "mac":"D4:8C:49:50:46:F4", "operation":"insert","pinIndex":0, "repeatMode":"weekly", "startMinutes":644 }
-
-- Compressed JSON (MQTT 실제 전송) <br>
-```
-{"c":"sch","dw":[1,3],"end":645,"m":"D4:8C:49:50:46:F4","o":"insert","pi":0,"rm":"weekly","start":644}
-```
-	
-3️⃣ 매주 스케줄 목록 조회 (List) <br>
-- 해 장치의 등록된 모든 스케줄을 조회합니다. <br>
-- Full JSON (개발용 / 디버그용) <br>
-{"command": "schedule","operation": "list","mac": "D4:8C:49:50:46:F4","pinIndex": 0} <br>
-
-- Compressed JSON (MQTT 실제 전송) <br>
-```
-{"c": "sch","m": "D4:8C:49:50:46:F4","o": "list","pi": 0}
-```
-- 응답 예시 <br>
-{"c": "sch","m": "D4:8C:49:50:46:F4","o": "list","pi": 0,"rm": "weekly","dw": [1,3],"start": 650,"end": 651,"slotIndex": 2} <br>
-
-
-4️⃣ 매주 스케줄 삭제 (Delete)  <br>
-특정 slotIndex를 지정하여 해당 스케줄 한 개만 삭제합니다.  <br>
-"sI"는 slotIndex를 의미하며, 목록 조회(List) 결과에서 받은 값을 사용합니다.  <br>
-
-- Full JSON (개발용 / 디버그용) <br>
-{"command": "schedule","operation": "delete","mac": "D4:8C:49:50:46:F4","pinIndex": 0,"slotIndex": 2}  <br>
-
-- Compressed JSON (MQTT 실제 전송) <br>
-```
-{"c": "sch","m": "D4:8C:49:50:46:F4","o": "delete","pi": 0,"sI": 2}
-```
-
-5️⃣ 매주 스케줄 전체 삭제 (DeleteAll)  <br>
-- 해당 장치의 특정 포트(pi)에 등록된 모든 주간 스케줄을 삭제합니다.  <br>
-- 여러 요일 또는 여러 시간대 스케줄을 한 번에 제거할 때 사용합니다.  <br>
-- 
-- Full JSON (개발용 / 디버그용) <br>
-{"command": "schedule","operation": "deleteAll","mac": "D4:8C:49:50:46:F4","pinIndex": 0}  <br>
-
-- Compressed JSON (MQTT 실제 전송) <br>
-```
-{"c": "sch","m": "D4:8C:49:50:46:F4","o": "deleteAll","pi": 0}
-```
---------------------
-
-📌 센서 트리거 프로토콜 예제 (bindSensor / c:"bs")    
-- 센서의 측정값이 특정 상한(올라갈 때) 또는 하한(내려갈 때) 에 도달하면 지정한 기기의 출력을 자동으로 제어하는 기능입니다.  <br>
-- 즉, “센서 값이 특정 조건을 만족하면 → **다른 장치(또는 본인)의 릴레이/스위치**를 제어”합니다. <br>
-- 서로 다른 IoT PLC끼리도 연결이 가능하며 **중복 설정**도 가능 합니다. <br>
-
-1️⃣ 트리거 등록 (Insert) <br>
-MAC D4:8C:49:50:46:F4 장치에서 온도(temperature)가 35℃를 초과하면(tr:1), 동작기기(MAC D4:8C:49:50:46:F4)가  3초 지연(d:3) 후 4초 동안(du:4) 0번 출력(n:0)을 ON(v:1)하도록 조건을 추가(insert)하는 센서 바인딩 명령입니다. <br>
-- Full JSON (개발용 / 디버그용) <br>
-{"command":"bindSensor","typeSensor":"temperature","mac":"D4:8C:49:50:46:F4","operation":"insert","trigger":true,"triggerValue":35,"duration":4,"delay":3,"portState":[{"mac":"D4:8C:49:50:46:F4","portNo":0,"value":true}]} <br>
-- Compressed JSON (MQTT 실제 전송) <br>
-```
-{"c":"bs","ts":"temperature","d":3,"m":"D4:8C:49:50:46:F4","o":"insert","tr":1,"tv":35,"du":4,"ps":[{"m":"D4:8C:49:50:46:F4","n":0,"v":1}]}
-```
-
-2️⃣ 트리거 목록 확인 (List) <br>
-습도에 대한 리스트를 요청한다. <br>
-- Full JSON (개발용 / 디버그용) <br>
-{"command":"bindSensor","typeSensor":"temperature","mac":"D4:8C:49:50:46:F4","operation":"list"} <br>
-- Compressed JSON (MQTT 실제 전송) <br>
-```
-{"c":"bs","ts":"temperature","m":"D4:8C:49:50:46:F4","o":"list"}
-```
-- 응답예시 <br>
-{"c":"bs","o":"list","ts":"temp","tr":1,"tv":35,"du":4,"d":3,"sI":6,"ps":[{"m":"D4:8C:49:50:46:F4","n":0,"v":1}],"e":"kdi6033@gmail.com","t":"i2r-03-hmi","fr":"D4:8C:49:50:46:F4","m":"D4:8C:49:50:46:F4"} <br>
-
-3️⃣ 트리거 삭제 (Delete) <br>
-습도센서에서 슬롯번호 1 의 설정을 제거한다. <br>
-- Full JSON (개발용 / 디버그용) <br>
-{"command":"bindSensor","typeSensor":"temperature","mac":"D4:8C:49:50:46:F4","operation":"delete","slotIndex":6}
-- Compressed JSON (MQTT 실제 전송) <br>
-```
-{"c":"bs","ts":"temperature","m":"D4:8C:49:50:46:F4","o":"delete","sI":6}
-```
-
-4️⃣ 센서 타입 전체 삭제 (DeleteAll) <br>
-습도센서의 설정된 모든 값을 제거한다. <br>
-- Full JSON (개발용 / 디버그용) <br>
-{"command":"bindSensor","typeSensor":"temperature","mac":"D4:8C:49:50:46:F4","operation":"deleteAll"} <br>
-
-- Compressed JSON (MQTT 실제 전송) <br>
-```
- {"c":"bs","ts":"temperature","m":"D4:8C:49:50:46:F4","o":"deleteAll"}
-```
-
-5️⃣ 센서 보정 (Calibration) <br>
-습도센서의 현재 값을 44로 설정한다. <br>
-- Full JSON (개발용 / 디버그용) <br>
-{"command":"bindSensor","typeSensor":"temperature","operation":"calibration","mac":"D4:8C:49:50:46:F4","value":44} <br>
-- Compressed JSON (MQTT 실제 전송) <br>
-```
-{"c":"bs","ts":"temperature","m":"D4:8C:49:50:46:F4","o":"cali","v":44}
-```
-
-----------------
+- 명령마다 보내는 JSON과 답, 오류 코드, 공식 펌웨어 v2.0과 다른 점은 모두 [protocol.md](https://github.com/kdi6033/i2r-server/blob/main/protocol.md)에 있습니다.
+- 예전 이 단원의 표 가운데 `t`(숫자), `rm`(0/1), `start`·`end`(분), `df`(OTA)는 실제 펌웨어와 달라 protocol.md에서 바로잡았습니다.
+- 2025년 7월 이전에 구매한 보드는 7월 30일 이후 나온 새 공식 펌웨어(v2.0)를 받아 주세요.
 
 ##  ✅ 6. 아두이노 프로그램 설정    
 <a href="https://youtu.be/UrJd-RHRh6U">
