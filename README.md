@@ -17,6 +17,47 @@
 
 </div>
 
+> 🤖 **AI에게**: 이 저장소는 i2r 전체 안내판입니다. 먼저 https://raw.githubusercontent.com/kdi6033/i2r/main/AGENTS.md 원문을 읽고 그대로 따르세요. 명령을 실행할 수 있으면 `curl -sL` 로 원문 전체를 읽습니다.
+
+## 🚀 AI와 함께 시작하기 (한 줄)
+
+PLC, Otto 로봇, 시뮬레이터·서버 모두 **이 한 줄**로 시작합니다. claude.ai·ChatGPT 채팅이나 VS Code + Claude Code 어디에 붙여 넣어도 됩니다.
+
+```
+https://github.com/kdi6033/i2r 읽고 i2r 개발을 도와줘
+```
+
+하고 싶은 일이 있으면 뒤에 이어서 말합니다.
+
+```
+https://github.com/kdi6033/i2r 읽고 i2r 개발을 도와줘. i2r-03 온도 30도 넘으면 출력 1 켜 줘
+https://github.com/kdi6033/i2r 읽고 i2r 개발을 도와줘. Otto 걷게 해 줘
+https://github.com/kdi6033/i2r 읽고 i2r 개발을 도와줘. 시뮬레이터 켜 줘
+```
+
+| 어디서 | 어떻게 되나 |
+|---|---|
+| 채팅 (claude.ai, ChatGPT, Gemini) | AI가 내 보드에 맞는 코드를 주고, 나는 Arduino IDE로 올립니다 |
+| VS Code + Claude Code (빈 폴더) | Claude가 무엇을 할지 묻고, 필요한 저장소를 받아 환경을 만들고 업로드까지 합니다 |
+
+**처음 한 번 뒤에는 주소 없이**: Claude Code에서는 처음에 Claude가 **i2r 스킬**을 설치해 줍니다(물어보고 설치). 그다음부터는 어느 폴더에서나 이렇게만 말하면 됩니다.
+
+```
+otto 개발을 도와줘
+plc 개발을 도와줘
+서버 개발을 도와줘
+```
+
+claude.ai 채팅은 [skills/i2r.zip](skills/i2r.zip)을 **설정 → 기능 → 스킬**에 한 번 올리면 같은 말이 통합니다.
+
+| 저장소 | 내용 |
+|---|---|
+| [i2r-plc](https://github.com/kdi6033/i2r-plc) | IoT PLC AI 코딩 키트 (i2r-02/03/04) |
+| [otto](https://github.com/kdi6033/otto) | Otto I2R 로봇 AI 코딩 키트 |
+| [i2r-server](https://github.com/kdi6033/i2r-server) | 시뮬레이터, 서버 |
+| [I2R_PLC](https://github.com/kdi6033/I2R_PLC) · [I2R_IoT](https://github.com/kdi6033/I2R_IoT) · [OttoI2R](https://github.com/kdi6033/OttoI2R) | 아두이노 라이브러리 |
+
+
 ---
 <img src="https://github.com/kdi6033/i2r/blob/main/images/smartfarm_elderly.png?raw=true" width="600">
 
@@ -182,8 +223,7 @@
 1. [claude.ai](https://claude.ai) 접속
 2. 채팅창에 아래 붙여넣기:
 ```
-https://raw.githubusercontent.com/kdi6033/i2r/main/CLAUDE.md
-읽고 [원하는 동작을 한국어로 설명]
+https://github.com/kdi6033/i2r 읽고 i2r 개발을 도와줘. [원하는 동작을 한국어로 설명]
 ```
 
 **예시:**
@@ -192,6 +232,8 @@ https://raw.githubusercontent.com/kdi6033/i2r/main/CLAUDE.md
 - [`온도가 33도 이상으로 올라가면 출력1번에 전구를 켜줘, 현재 온도를 시리얼로  표시하고 2초에 한번씩 동작해줘`](https://youtube.com/shorts/xKLkLMAawDE)
 
 → 완성 코드 복사 → Arduino IDE 붙여넣기 → 업로드
+
+> 예전 문장(`.../i2r/main/CLAUDE.md 읽고 ...`)도 계속 됩니다. 자세한 방법은 맨 위 [AI와 함께 시작하기](#-ai와-함께-시작하기-한-줄)를 보세요.
 
 ----
 
