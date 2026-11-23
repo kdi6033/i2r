@@ -22,7 +22,7 @@ otto 개발을 도와줘          (i2r 스킬을 설치한 뒤에는 주소 없�
 |---|---|---|
 | plc, i2r-02, i2r-03, i2r-04, 릴레이, 입력/출력, 온습도 제어 | [kdi6033/i2r-plc](https://github.com/kdi6033/i2r-plc) | IoT PLC AI 코딩 키트 |
 | otto, 오토, Otto 로봇, 걷는 로봇, i2r-05 로봇 | [kdi6033/otto](https://github.com/kdi6033/otto) | Otto I2R 로봇 AI 코딩 키트 |
-| 서버, 시뮬레이터, 가상 보드, 프로토콜 시험, 대시보드, PLC 웹 제어(휴대폰으로 PLC, 보드 웹서버, standalone, 스케줄, 입력 규칙, 센서 트리거) | [kdi6033/i2r-server](https://github.com/kdi6033/i2r-server) | 시뮬레이터, 보드 펌웨어 예제 `examples/` (① standalone 보드 혼자 동작 ✅, ② local, ③ cloud 만드는 중). 서버 프로그램(로컬, 아마존)은 만드는 중 |
+| 서버, 시뮬레이터, 가상 보드, 프로토콜 시험, 대시보드, PLC 웹 제어(휴대폰으로 PLC, 보드 웹서버, standalone, 스케줄, 입력 규칙, 센서 트리거) | [kdi6033/i2r-server](https://github.com/kdi6033/i2r-server) | 시뮬레이터, 연결 방식 세 가지: `standalone/` 보드 혼자 웹서버 ✅, `local/` 현장 서버(i2r-05), `aws/` 아마존 서버 (만드는 중) |
 
 라이브러리는 보통 **받지 않습니다.** 각 키트가 아두이노 라이브러리 매니저로 설치합니다.
 사용자가 라이브러리 자체를 고치고 싶다고 할 때만 받습니다.
