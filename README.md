@@ -17,7 +17,7 @@
 
 </div>
 
-> 🤖 **AI에게**: 이 저장소는 i2r 전체 안내판입니다. 먼저 https://raw.githubusercontent.com/kdi6033/i2r/main/AGENTS.md 원문을 읽고 그대로 따르세요. 명령을 실행할 수 있으면 `curl -sL` 로 원문 전체를 읽습니다.
+> 🤖 **AI에게**: 이 저장소는 i2r 전체 안내판입니다. 먼저 https://raw.githubusercontent.com/kdi6033/i2r/main/AGENTS.md 원문을 읽고 그대로 따르세요. 명령을 실행할 수 있으면 `curl -sL` 로 원문 전체를 읽습니다. 받을 키트를 말하지 않았으면 저장소를 받기 전에 "어떤 개발 환경을 만들까요? 1. 모두 다 (PLC + Otto 로봇 + 시뮬레이터·서버) ← 추천 / 2. 골라서 받기"를 그대로 묻습니다 (보드는 아직 묻지 않음).
 
 ## 🚀 AI와 함께 시작하기 (한 줄)
 
