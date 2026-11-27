@@ -1,0 +1,219 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 570" font-family="'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif">
+  <defs>
+    <!-- 포스터 다크 프리미엄 배경 -->
+    <linearGradient id="bgPoster" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="0.5" stop-color="#1e1b4b"/>
+      <stop offset="1" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <!-- 배경 글로우 효과 -->
+    <radialGradient id="glow1" cx="0.2" cy="0.2" r="0.5">
+      <stop offset="0" stop-color="#6366f1" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#6366f1" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="0.8" cy="0.85" r="0.5">
+      <stop offset="0" stop-color="#10b981" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#10b981" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- 상단 Claude Code 배지 -->
+    <linearGradient id="gBadge" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#8b5cf6"/>
+      <stop offset="1" stop-color="#3b82f6"/>
+    </linearGradient>
+
+    <!-- 사람 아바타 그라데이션 -->
+    <linearGradient id="gHuman" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3b82f6"/>
+      <stop offset="1" stop-color="#1d4ed8"/>
+    </linearGradient>
+
+    <!-- AI 로봇 그라데이션 -->
+    <linearGradient id="gAi" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#a855f7"/>
+      <stop offset="1" stop-color="#6366f1"/>
+    </linearGradient>
+
+    <!-- PLC 보드 그라데이션 -->
+    <linearGradient id="gBoard" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#10b981"/>
+      <stop offset="1" stop-color="#047857"/>
+    </linearGradient>
+
+    <!-- 문장 1 배지 (블루/인디고) -->
+    <linearGradient id="gCmd1" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2563eb"/>
+      <stop offset="1" stop-color="#4f46e5"/>
+    </linearGradient>
+
+    <!-- 문장 2 배지 (에메랄드/틸) -->
+    <linearGradient id="gCmd2" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#059669"/>
+      <stop offset="1" stop-color="#0d9488"/>
+    </linearGradient>
+
+    <!-- 하단 골드/앰버 하이라이트 -->
+    <linearGradient id="gGold" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f59e0b"/>
+      <stop offset="1" stop-color="#ea580c"/>
+    </linearGradient>
+
+    <!-- 카드 그림자 -->
+    <filter id="shCard" x="-6%" y="-8%" width="112%" height="124%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#020617" flood-opacity="0.45"/>
+    </filter>
+    <filter id="shPill" x="-6%" y="-10%" width="112%" height="128%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#020617" flood-opacity="0.25"/>
+    </filter>
+
+    <!-- 화살표 마커 -->
+    <marker id="arrCyan" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#38bdf8"/>
+    </marker>
+    <marker id="arrGreen" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#34d399"/>
+    </marker>
+  </defs>
+
+  <!-- 포스터 배경 -->
+  <rect width="880" height="570" rx="26" fill="url(#bgPoster)" stroke="#334155" stroke-width="2"/>
+  <rect width="880" height="570" rx="26" fill="url(#glow1)"/>
+  <rect width="880" height="570" rx="26" fill="url(#glow2)"/>
+
+  <!-- ================= 상단 배지 ================= -->
+  <g filter="url(#shPill)">
+    <rect x="330" y="16" width="220" height="32" rx="16" fill="url(#gBadge)"/>
+  </g>
+  <text x="440" y="37" text-anchor="middle" font-size="15" font-weight="800" fill="#ffffff" letter-spacing="0.5">🤖 Claude Code × i2r PLC</text>
+
+
+  <!-- ================= 상단 그래픽: 사람이 AI · PLC 보드와 대화하는 그림 ================= -->
+  <g filter="url(#shCard)">
+    <rect x="44" y="56" width="792" height="114" rx="18" fill="#131c31" stroke="#475569" stroke-width="1.5"/>
+  </g>
+
+  <!-- 1) 왼쪽: 사람 (말하는 사용자) -->
+  <g transform="translate(66, 68)">
+    <!-- 사람 원형 프레임 -->
+    <circle cx="44" cy="45" r="38" fill="url(#gHuman)" stroke="#93c5fd" stroke-width="2"/>
+    <!-- 사람 머리 & 어깨 실루엣 -->
+    <circle cx="44" cy="34" r="12" fill="#ffffff"/>
+    <path d="M24 66 C24 51, 64 51, 64 66" fill="#ffffff"/>
+    <!-- 음성 전파 (말하는 그래픽) -->
+    <path d="M90 35 Q97 45 90 55" fill="none" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M98 28 Q108 45 98 62" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M106 21 Q119 45 106 69" fill="none" stroke="#7dd3fc" stroke-width="2.5" stroke-linecap="round"/>
+
+    <!-- 말풍선 -->
+    <rect x="122" y="12" width="166" height="66" rx="14" fill="#1e293b" stroke="#38bdf8" stroke-width="1.8"/>
+    <polygon points="122,42 111,46 122,52" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="205" y="37" text-anchor="middle" font-size="13.5" font-weight="800" fill="#38bdf8">🎙️ 내가 말로 지시</text>
+    <text x="205" y="58" text-anchor="middle" font-size="12" font-weight="700" fill="#e2e8f0">"30도 넘으면 켜 줘!"</text>
+  </g>
+
+  <!-- 화살표: 말풍선 -> AI -->
+  <line x1="364" y1="113" x2="394" y2="113" stroke="#38bdf8" stroke-width="3" stroke-dasharray="5,3" marker-end="url(#arrCyan)"/>
+
+  <!-- 2) 중앙: AI 에이전트 (Claude) -->
+  <g transform="translate(402, 68)">
+    <!-- AI 로봇 본체 -->
+    <rect x="6" y="10" width="90" height="70" rx="16" fill="url(#gAi)" stroke="#c4b5fd" stroke-width="2"/>
+    <!-- 안테나 -->
+    <line x1="51" y1="0" x2="51" y2="10" stroke="#c4b5fd" stroke-width="3"/>
+    <circle cx="51" cy="0" r="4" fill="#fbbf24"/>
+    <!-- 로봇 얼굴 스크린 -->
+    <rect x="18" y="21" width="66" height="32" rx="8" fill="#0f172a"/>
+    <!-- 빛나는 눈 -->
+    <circle cx="36" cy="36" r="5" fill="#38bdf8"/>
+    <circle cx="66" cy="36" r="5" fill="#38bdf8"/>
+    <!-- 미소 입 -->
+    <path d="M41 45 Q51 51 61 45" fill="none" stroke="#34d399" stroke-width="2.2" stroke-linecap="round"/>
+    <!-- 하단 텍스트 -->
+    <text x="51" y="71" text-anchor="middle" font-size="11.5" font-weight="900" fill="#ffffff">Claude AI</text>
+  </g>
+
+  <!-- 화살표: AI -> PLC 보드 (자동 코딩·업로드) -->
+  <g transform="translate(508, 86)">
+    <rect x="4" y="2" width="98" height="22" rx="11" fill="#312e81" stroke="#818cf8" stroke-width="1"/>
+    <text x="53" y="17" text-anchor="middle" font-size="11" font-weight="800" fill="#c7d2fe">자동 코딩·업로드</text>
+    <line x1="4" y1="32" x2="98" y2="32" stroke="#34d399" stroke-width="3" marker-end="url(#arrGreen)"/>
+    <line x1="100" y1="44" x2="8" y2="44" stroke="#38bdf8" stroke-width="2" stroke-dasharray="4,3"/>
+    <text x="53" y="58" text-anchor="middle" font-size="10.5" font-weight="700" fill="#7dd3fc">상태 응답</text>
+  </g>
+
+  <!-- 3) 오른쪽: i2r AI PLC 보드 그래픽 -->
+  <g transform="translate(622, 68)">
+    <!-- PCB 기판 -->
+    <rect x="0" y="6" width="192" height="78" rx="12" fill="url(#gBoard)" stroke="#6ee7b7" stroke-width="2"/>
+    <!-- 상단/하단 단자대 (터미널 블록) -->
+    <g fill="#d1fae5">
+      <rect x="16" y="1" width="14" height="7" rx="1.5"/>
+      <rect x="36" y="1" width="14" height="7" rx="1.5"/>
+      <rect x="56" y="1" width="14" height="7" rx="1.5"/>
+      <rect x="76" y="1" width="14" height="7" rx="1.5"/>
+      <rect x="16" y="82" width="14" height="7" rx="1.5"/>
+      <rect x="36" y="82" width="14" height="7" rx="1.5"/>
+      <rect x="56" y="82" width="14" height="7" rx="1.5"/>
+      <rect x="76" y="82" width="14" height="7" rx="1.5"/>
+    </g>
+    <!-- ESP32 칩 -->
+    <rect x="16" y="20" width="64" height="48" rx="6" fill="#0f172a" stroke="#94a3b8" stroke-width="1.5"/>
+    <text x="48" y="42" text-anchor="middle" font-size="11.5" font-weight="900" fill="#38bdf8">i2r 기기</text>
+    <text x="48" y="57" text-anchor="middle" font-size="10" font-family="Consolas,monospace" font-weight="700" fill="#cbd5e1">ESP32</text>
+
+    <!-- 릴레이 & 동작 LED 표시 -->
+    <rect x="92" y="18" width="86" height="52" rx="8" fill="#064e3b" stroke="#34d399" stroke-width="1.2"/>
+    <circle cx="108" cy="33" r="5" fill="#fbbf24"/>
+    <circle cx="126" cy="33" r="5" fill="#fbbf24"/>
+    <circle cx="144" cy="33" r="5" fill="#34d399"/>
+    <circle cx="162" cy="33" r="5" fill="#34d399"/>
+    <text x="135" y="58" text-anchor="middle" font-size="11.5" font-weight="800" fill="#ecfdf5">⚡ 보드 즉시 동작!</text>
+  </g>
+
+
+  <!-- ================= 카드 1: 처음 시작할 때 (환경 심기) ================= -->
+  <g filter="url(#shCard)">
+    <rect x="44" y="184" width="792" height="126" rx="18" fill="#1e293b" stroke="#60a5fa" stroke-width="2"/>
+  </g>
+
+  <!-- 좌측 스텝 태그 -->
+  <rect x="64" y="200" width="166" height="30" rx="15" fill="url(#gCmd1)"/>
+  <text x="147" y="220" text-anchor="middle" font-size="13.5" font-weight="800" fill="#ffffff">🚀 1. 처음 시작할 때</text>
+  <text x="244" y="220" font-size="14" font-weight="700" fill="#93c5fd">GitHub의 AI용 지식과 개발 도구를 내 PC에 자동으로 심습니다</text>
+
+  <!-- 명령어 프롬프트 박스 1 (변경된 짧은 문구) -->
+  <rect x="64" y="242" width="752" height="52" rx="12" fill="#0f172a" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="86" y="274" font-size="16" font-weight="800" fill="#60a5fa">💬</text>
+  <text x="118" y="274" font-size="17" font-family="Consolas,'Malgun Gothic',monospace" font-weight="800" fill="#ffffff">"https://github.com/kdi6033/i2r 읽고 i2r 개발을 도와줘"</text>
+
+
+  <!-- ================= 카드 2: 새 기능이 나왔을 때 (최신 업데이트) ================= -->
+  <g filter="url(#shCard)">
+    <rect x="44" y="324" width="792" height="126" rx="18" fill="#1e293b" stroke="#34d399" stroke-width="2"/>
+  </g>
+
+  <!-- 좌측 스텝 태그 -->
+  <rect x="64" y="340" width="190" height="30" rx="15" fill="url(#gCmd2)"/>
+  <text x="159" y="360" text-anchor="middle" font-size="13.5" font-weight="800" fill="#ffffff">🔄 2. 새 기능이 나왔을 때</text>
+  <text x="268" y="360" font-size="14" font-weight="700" fill="#6ee7b7">내가 만든 코드는 그대로 지키면서 최신 예제와 기능만 쏙 받아옵니다</text>
+
+  <!-- 명령어 프롬프트 박스 2 -->
+  <rect x="64" y="382" width="752" height="52" rx="12" fill="#0f172a" stroke="#10b981" stroke-width="1.5"/>
+  <text x="86" y="414" font-size="16" font-weight="800" fill="#34d399">💬</text>
+  <text x="118" y="414" font-size="17" font-family="Consolas,'Malgun Gothic',monospace" font-weight="800" fill="#ffffff">"저장소를 최신으로 업데이트해 줘"</text>
+  <text x="794" y="413" text-anchor="end" font-size="13.5" font-weight="700" fill="#34d399">✓ 내 코드는 안전 보관</text>
+
+
+  <!-- ================= 하단 피날레 배너: 그다음부터는 말만 하세요! ================= -->
+  <g filter="url(#shCard)">
+    <rect x="44" y="466" width="792" height="82" rx="18" fill="url(#gGold)"/>
+  </g>
+
+  <text x="74" y="501" font-size="20" font-weight="900" fill="#ffffff">🎙️ 그다음부터는 말(음성·글)만 하세요!</text>
+  <text x="74" y="528" font-size="14.5" font-weight="700" fill="#fef3c7">"온도가 30도 넘으면 출력 1 켜 줘"  ➔  AI가 알아서 코드 작성 · 컴파일 · 보드 업로드까지 끝!</text>
+
+  <!-- 우측 뱃지 -->
+  <rect x="676" y="485" width="140" height="44" rx="22" fill="#ffffff"/>
+  <text x="746" y="513" text-anchor="middle" font-size="15.5" font-weight="900" fill="#d97706">⚡ 100% 자동</text>
+</svg>
