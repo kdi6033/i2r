@@ -60,7 +60,7 @@ claude.ai 채팅은 [skills/i2r.zip](skills/i2r.zip)을 **설정 → 기능 → 
 | [i2r-plc](https://github.com/kdi6033/i2r-plc) | IoT PLC AI 코딩 키트 (i2r-02/03/04) |
 | [otto](https://github.com/kdi6033/otto) | Otto I2R 로봇 AI 코딩 키트 |
 | [i2r-server](https://github.com/kdi6033/i2r-server) | 시뮬레이터, 서버 |
-| [i2r-05 / file/chatbot](https://github.com/kdi6033/i2r-05/tree/main/file/chatbot) | AI 챗봇 키트 (i2r-05 + i2r-shield-03, Gemini) |
+| [i2r-05 / examples](https://github.com/kdi6033/i2r-05/tree/main/examples) | AI 챗봇 키트 (i2r-05 + i2r-shield-03, Gemini) |
 | [I2R_PLC](https://github.com/kdi6033/I2R_PLC) · [I2R_IoT](https://github.com/kdi6033/I2R_IoT) · [OttoI2R](https://github.com/kdi6033/OttoI2R) | 아두이노 라이브러리 |
 
 

@@ -20,7 +20,7 @@ description: i2r 제품을 프로그램하거나 개발 환경을 만들 때 쓴
 | plc, i2r-02/03/04 | https://github.com/kdi6033/i2r-plc | https://raw.githubusercontent.com/kdi6033/i2r-plc/main/AGENTS.md |
 | otto, 오토 로봇 | https://github.com/kdi6033/otto | https://raw.githubusercontent.com/kdi6033/otto/main/AGENTS.md |
 | 서버, 시뮬레이터 | https://github.com/kdi6033/i2r-server | 저장소의 CLAUDE.md |
-| 챗봇, LLM, i2r-shield-03 | https://github.com/kdi6033/i2r-05 (`--depth 1`, 예제는 file/chatbot/) | https://raw.githubusercontent.com/kdi6033/i2r-05/main/file/chatbot/CLAUDE.md |
+| 챗봇, LLM, i2r-shield-03 | https://github.com/kdi6033/i2r-05 (`--depth 1`, 예제는 examples/) | https://raw.githubusercontent.com/kdi6033/i2r-05/main/docs/chatbot.md |
 
 - Claude Code라면 고른 저장소를 작업 폴더 안에 `git clone`하고, 그 안의 CLAUDE.md를 읽고 "처음 한 번 환경 만들기"를 한다.
 - 채팅이라면 안내서를 읽고 전체 코드를 주어 사용자가 Arduino IDE로 올리게 한다.
