@@ -108,7 +108,7 @@ i2r 개발을 도와줘 / otto 개발을 도와줘     (i2r 스킬을 설치한 
 4. 받은 키트 폴더의 **CLAUDE.md(없으면 AGENTS.md)를 읽고** (AI 챗봇은 `i2r-05/file/chatbot/CLAUDE.md`), 거기 적힌 "처음 한 번 환경 만들기"를 그대로 합니다.
    - i2r-plc, otto: arduino-cli, esp32 보드 패키지, 라이브러리 설치, 예제 컴파일
    - i2r-server: Python, paho-mqtt 확인, 서버 고르기, 시뮬레이터 켜기
-   - AI 챗봇: esp32 보드 패키지, ESP32-audioI2S-master 라이브러리, step1 컴파일. Gemini API 키와 Wi-Fi는 업로드할 때 묻습니다
+   - AI 챗봇: esp32 보드 패키지, ESP32-audioI2S-master 라이브러리, step1 컴파일. Gemini API 키와 Wi-Fi는 여기서 묻지 않고, 프로그램을 만들 때(컴파일 전) 묻습니다. 내 프로그램은 `i2r-05/file/chatbot/my_sketches/` 에 둡니다
    - 시뮬레이터처럼 **계속 켜져 있는 프로그램은 백그라운드로** 실행합니다. 앞에서 실행하면 대화가 멈춥니다.
    - **여러 키트를 받았으면** 같은 것은 한 번만 합니다: esp32 보드 패키지는 한 번 설치하고, 라이브러리는 두 키트의 목록을 합쳐 한 번에 설치하고, 예제는 키트마다 하나씩 컴파일합니다. i2r-server는 Python, paho-mqtt만 확인하고, 시뮬레이터는 사용자가 켜 달라고 할 때 서버를 물어 켭니다.
    - 사용자에게 물을 수 없는 상황(자동 실행)이면 기본값(서버 1번 등)으로 하고, 무엇을 골랐는지 마지막에 알려 줍니다.
