@@ -26,6 +26,7 @@ i2r 개발을 도와줘 / otto 개발을 도와줘     (i2r 스킬을 설치한 
 |---|---|---|
 | plc, i2r-02, i2r-03, i2r-04, 릴레이, 입력/출력, 온습도 제어 | [kdi6033/i2r-plc](https://github.com/kdi6033/i2r-plc) | IoT PLC AI 코딩 키트 |
 | otto, 오토, Otto 로봇, 걷는 로봇, i2r-05 로봇 | [kdi6033/otto](https://github.com/kdi6033/otto) | Otto I2R 로봇 AI 코딩 키트 |
+| 챗봇, AI 챗봇, LLM, Gemini, 음성 대화, 음성 인식(STT), 음성 출력(TTS), i2r-shield-03, step1·step2·step3, llm.ino | [kdi6033/i2r-05](https://github.com/kdi6033/i2r-05) 의 `file/chatbot/` | i2r-05 보드 + i2r-shield-03 AI 챗봇 키트 (예제: step1 → step2 → step3 → llm) |
 | 서버, 시뮬레이터, 가상 보드, 프로토콜 시험, 대시보드, PLC 웹 제어(휴대폰으로 PLC, 보드 웹서버, standalone, 스케줄, 입력 규칙, 센서 트리거), Otto 휴대폰 조종(otto.local) | [kdi6033/i2r-server](https://github.com/kdi6033/i2r-server) | 시뮬레이터, 연결 방식 세 가지: `standalone/` 보드 혼자 웹서버 ✅ (PLC `i2r-02/03/04`, Otto 로봇 `i2r-otto` → `http://otto.local`), `local/` 현장 서버(i2r-05), `aws/` 아마존 서버 (만드는 중) |
 
 라이브러리는 보통 **받지 않습니다.** 각 키트가 아두이노 라이브러리 매니저로 설치합니다.
@@ -47,17 +48,17 @@ i2r 개발을 도와줘 / otto 개발을 도와줘     (i2r 스킬을 설치한 
 
 | 사용자가 말한 것 | 받을 키트 |
 |---|---|
-| "plc", "otto", "서버", "시뮬레이터"처럼 키트를 말함 | **묻지 않고** 그 키트만 (여러 개 말하면 그것들) |
-| "모두", "전부", "다 받아 줘" | **묻지 않고** 셋 다: i2r-plc, otto, i2r-server |
+| "plc", "otto", "서버", "시뮬레이터", "챗봇"처럼 키트를 말함 | **묻지 않고** 그 키트만 (여러 개 말하면 그것들) |
+| "모두", "전부", "다 받아 줘" | **묻지 않고** 넷 다: i2r-plc, otto, i2r-server, i2r-05(챗봇) |
 | 키트를 말하지 않음 ("i2r 개발을 도와줘"만) | 아래 질문을 **한 번만**, 이 문장 그대로 묻습니다 |
 
 ```
 어떤 개발 환경을 만들까요?
- 1. 모두 다 (PLC + Otto 로봇 + 시뮬레이터·서버) ← 추천
- 2. 골라서 받기 (PLC / Otto 로봇 / 시뮬레이터·서버 중 여러 개 선택)
+ 1. 모두 다 (PLC + Otto 로봇 + 시뮬레이터·서버 + AI 챗봇) ← 추천
+ 2. 골라서 받기 (PLC / Otto 로봇 / 시뮬레이터·서버 / AI 챗봇 중 여러 개 선택)
 ```
 
-- 선택 질문 도구(AskUserQuestion 등)가 있으면 그것으로 묻습니다. 2번을 고르면 세 키트를 여러 개 고를 수 있게 한 번 더 묻습니다.
+- 선택 질문 도구(AskUserQuestion 등)가 있으면 그것으로 묻습니다. 2번을 고르면 네 키트를 여러 개 고를 수 있게 한 번 더 묻습니다.
 - 이 단계에서 보드(i2r-02/03/04 등)는 묻지 않습니다. 보드는 프로그램을 만들 때 각 키트의 안내대로 묻습니다.
 - 사용자에게 물을 수 없는 상황(자동 실행)이면 1번(모두 다)으로 하고, 마지막에 그렇게 했다고 알립니다.
 - 나중에 "otto도 받아 줘"처럼 말하면 그 키트만 더 받습니다 (4.1, 이미 있는 키트는 다시 받지 않음).
@@ -74,6 +75,7 @@ i2r 개발을 도와줘 / otto 개발을 도와줘     (i2r 스킬을 설치한 
 1. 1장 지도에서 고른 키트의 AGENTS.md 원문을 읽고 그대로 따릅니다.
    - PLC: https://raw.githubusercontent.com/kdi6033/i2r-plc/main/AGENTS.md
    - Otto: https://raw.githubusercontent.com/kdi6033/otto/main/AGENTS.md
+   - AI 챗봇: https://raw.githubusercontent.com/kdi6033/i2r-05/main/file/chatbot/CLAUDE.md (예제 코드는 같은 폴더의 step1/step1.ino 등을 원문으로 읽음)
 2. 코드는 처음부터 끝까지 전체를 주고, 사용자가 Arduino IDE로 올리게 합니다. 처음이면 그 키트 README의 "처음 한 번 준비"(Arduino IDE, 보드 설정, 라이브러리)를 안내합니다.
 3. 시뮬레이터와 서버는 채팅에서 켤 수 없습니다. [i2r-server README](https://github.com/kdi6033/i2r-server)의 "직접 켜기"를 안내하거나 Claude Code를 권합니다.
 4. 다음부터 주소 없이 쓰고 싶다고 하면 6장을 안내합니다.
@@ -86,7 +88,7 @@ i2r 개발을 도와줘 / otto 개발을 도와줘     (i2r 스킬을 설치한 
 
 - 저장소는 **반드시 작업 폴더 안에** 받습니다. 홈 폴더, `/tmp`, `~/tmp`, 임시 폴더 같은 다른 곳에 받지 않습니다. 명령을 실행할 때마다 작업 폴더 경로를 그대로 씁니다.
 
-- `i2r-plc/`, `otto/`, `i2r-server/`가 이미 있으면 **다시 받지 않습니다.** 필요하면 그 폴더에서 `git pull --ff-only`만 합니다.
+- `i2r-plc/`, `otto/`, `i2r-server/`, `i2r-05/`가 이미 있으면 **다시 받지 않습니다.** 필요하면 그 폴더에서 `git pull --ff-only`만 합니다.
 - 작업 폴더 자체가 키트 저장소(예: 폴더 안에 바로 `AGENTS.md`, `examples/`)라면 그 키트로 바로 작업하고, 다른 키트는 상위 폴더가 아니라 **사용자에게 물어서** 받을 곳을 정합니다.
 - 비어 있거나 키트가 없으면 4.2로 갑니다.
 
@@ -98,12 +100,15 @@ i2r 개발을 도와줘 / otto 개발을 도와줘     (i2r 스킬을 설치한 
    git clone https://github.com/kdi6033/i2r-plc
    git clone https://github.com/kdi6033/otto
    git clone https://github.com/kdi6033/i2r-server
+   git clone --depth 1 https://github.com/kdi6033/i2r-05
    ```
+   AI 챗봇(i2r-05)은 사진이 많아 `--depth 1`로 받습니다. 챗봇 예제는 `i2r-05/file/chatbot/` 에 있습니다.
    이 i2r 저장소는 받지 않아도 됩니다(사진이 많아 큽니다). 이 안내판은 주소로 읽습니다.
 3. **바로 작업 폴더 맨 위에 작업 폴더 안내(4.3)를 만듭니다.** 설치 도중에 멈춰도 다음에 이어서 할 수 있게, 키트를 받은 직후에 만듭니다.
-4. 받은 키트 폴더의 **CLAUDE.md(없으면 AGENTS.md)를 읽고**, 거기 적힌 "처음 한 번 환경 만들기"를 그대로 합니다.
+4. 받은 키트 폴더의 **CLAUDE.md(없으면 AGENTS.md)를 읽고** (AI 챗봇은 `i2r-05/file/chatbot/CLAUDE.md`), 거기 적힌 "처음 한 번 환경 만들기"를 그대로 합니다.
    - i2r-plc, otto: arduino-cli, esp32 보드 패키지, 라이브러리 설치, 예제 컴파일
    - i2r-server: Python, paho-mqtt 확인, 서버 고르기, 시뮬레이터 켜기
+   - AI 챗봇: esp32 보드 패키지, ESP32-audioI2S-master 라이브러리, step1 컴파일. Gemini API 키와 Wi-Fi는 업로드할 때 묻습니다
    - 시뮬레이터처럼 **계속 켜져 있는 프로그램은 백그라운드로** 실행합니다. 앞에서 실행하면 대화가 멈춥니다.
    - **여러 키트를 받았으면** 같은 것은 한 번만 합니다: esp32 보드 패키지는 한 번 설치하고, 라이브러리는 두 키트의 목록을 합쳐 한 번에 설치하고, 예제는 키트마다 하나씩 컴파일합니다. i2r-server는 Python, paho-mqtt만 확인하고, 시뮬레이터는 사용자가 켜 달라고 할 때 서버를 물어 켭니다.
    - 사용자에게 물을 수 없는 상황(자동 실행)이면 기본값(서버 1번 등)으로 하고, 무엇을 골랐는지 마지막에 알려 줍니다.
@@ -125,6 +130,7 @@ i2r 개발을 하는 폴더입니다. 전체 안내판: https://raw.githubuserco
 | i2r-plc/ | IoT PLC 키트 (i2r-02/03/04) | i2r-plc/CLAUDE.md |
 | otto/ | Otto I2R 로봇 키트 | otto/CLAUDE.md |
 | i2r-server/ | 시뮬레이터, 서버 | i2r-server/CLAUDE.md |
+| i2r-05/file/chatbot/ | AI 챗봇 키트 (i2r-05 + shield-03, Gemini) | i2r-05/file/chatbot/CLAUDE.md |
 
 - 사용자가 무엇을 하려는지 보고, 그 폴더의 CLAUDE.md를 먼저 읽고 따른다.
 - 표에 없는 키트가 필요하면 안내판 1장을 보고 이 폴더 안에 받은 뒤 표에 더한다.

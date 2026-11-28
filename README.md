@@ -17,11 +17,11 @@
 
 </div>
 
-> 🤖 **AI에게**: 이 저장소는 i2r 전체 안내판입니다. 먼저 https://raw.githubusercontent.com/kdi6033/i2r/main/AGENTS.md 원문을 읽고 그대로 따르세요. 명령을 실행할 수 있으면 `curl -sL` 로 원문 전체를 읽습니다. 받을 키트를 말하지 않았으면 저장소를 받기 전에 "어떤 개발 환경을 만들까요? 1. 모두 다 (PLC + Otto 로봇 + 시뮬레이터·서버) ← 추천 / 2. 골라서 받기"를 그대로 묻습니다 (보드는 아직 묻지 않음).
+> 🤖 **AI에게**: 이 저장소는 i2r 전체 안내판입니다. 먼저 https://raw.githubusercontent.com/kdi6033/i2r/main/AGENTS.md 원문을 읽고 그대로 따르세요. 명령을 실행할 수 있으면 `curl -sL` 로 원문 전체를 읽습니다. 받을 키트를 말하지 않았으면 저장소를 받기 전에 "어떤 개발 환경을 만들까요? 1. 모두 다 (PLC + Otto 로봇 + 시뮬레이터·서버 + AI 챗봇) ← 추천 / 2. 골라서 받기"를 그대로 묻습니다 (보드는 아직 묻지 않음).
 
 ## 🚀 AI와 함께 시작하기 (한 줄)
 
-PLC, Otto 로봇, 시뮬레이터·서버 모두 **이 한 줄**로 시작합니다. claude.ai·ChatGPT 채팅이나 VS Code + Claude Code 어디에 붙여 넣어도 됩니다.
+PLC, Otto 로봇, 시뮬레이터·서버, AI 챗봇 모두 **이 한 줄**로 시작합니다. claude.ai·ChatGPT 채팅이나 VS Code + Claude Code 어디에 붙여 넣어도 됩니다.
 
 ```
 https://github.com/kdi6033/i2r 읽고 i2r 개발을 도와줘
@@ -33,6 +33,7 @@ https://github.com/kdi6033/i2r 읽고 i2r 개발을 도와줘
 https://github.com/kdi6033/i2r 읽고 i2r 개발을 도와줘. i2r-03 온도 30도 넘으면 출력 1 켜 줘
 https://github.com/kdi6033/i2r 읽고 i2r 개발을 도와줘. Otto 걷게 해 줘
 https://github.com/kdi6033/i2r 읽고 i2r 개발을 도와줘. 시뮬레이터 켜 줘
+https://github.com/kdi6033/i2r 읽고 i2r 개발을 도와줘. 챗봇 step1 올려 줘
 ```
 
 | 어디서 | 어떻게 되나 |
@@ -40,7 +41,7 @@ https://github.com/kdi6033/i2r 읽고 i2r 개발을 도와줘. 시뮬레이터 �
 | 채팅 (claude.ai, ChatGPT, Gemini) | AI가 내 보드에 맞는 코드를 주고, 나는 Arduino IDE로 올립니다 |
 | VS Code + Claude Code (빈 폴더) | Claude가 **"1. 모두 다(추천) / 2. 골라서 받기"** 를 묻고, 저장소를 받아 환경을 만들고 업로드까지 합니다 |
 
-- 묻지 않고 바로 받으려면 뒤에 붙입니다: `모두 받아 줘` (PLC + Otto + 시뮬레이터·서버), `plc 개발 환경을 만들어 줘`, `otto 개발 환경을 만들어 줘`.
+- 묻지 않고 바로 받으려면 뒤에 붙입니다: `모두 받아 줘` (PLC + Otto + 시뮬레이터·서버 + AI 챗봇), `plc 개발 환경을 만들어 줘`, `otto 개발 환경을 만들어 줘`.
 - 나중에 다른 키트가 필요하면 `otto도 받아 줘`처럼 말하면 그것만 더 받습니다.
 
 **처음 한 번 뒤에는 주소 없이**: Claude Code에서는 처음에 Claude가 **i2r 스킬**을 설치해 줍니다(물어보고 설치). 그다음부터는 어느 폴더에서나 이렇게만 말하면 됩니다.
@@ -59,6 +60,7 @@ claude.ai 채팅은 [skills/i2r.zip](skills/i2r.zip)을 **설정 → 기능 → 
 | [i2r-plc](https://github.com/kdi6033/i2r-plc) | IoT PLC AI 코딩 키트 (i2r-02/03/04) |
 | [otto](https://github.com/kdi6033/otto) | Otto I2R 로봇 AI 코딩 키트 |
 | [i2r-server](https://github.com/kdi6033/i2r-server) | 시뮬레이터, 서버 |
+| [i2r-05 / file/chatbot](https://github.com/kdi6033/i2r-05/tree/main/file/chatbot) | AI 챗봇 키트 (i2r-05 + i2r-shield-03, Gemini) |
 | [I2R_PLC](https://github.com/kdi6033/I2R_PLC) · [I2R_IoT](https://github.com/kdi6033/I2R_IoT) · [OttoI2R](https://github.com/kdi6033/OttoI2R) | 아두이노 라이브러리 |
 
 
